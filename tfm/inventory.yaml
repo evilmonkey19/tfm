@@ -1,0 +1,8 @@
+hosts:
+  R1:
+    username: user
+    password: password
+    port: 6000
+    nos:
+      plugin: huawei_smartax.py
+    configuration_file: configs/config_1.yaml

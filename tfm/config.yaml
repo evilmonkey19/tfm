@@ -27,7 +27,7 @@ frames:
         sn: 46VBSM4LFW7QLGAV
       - config_state: online
         control_flag: configuring
-        description: The fretful sweatshop promotes.
+        description: The fretful sweatshop.
         match_state: mismatch
         online_offline: online
         ont_id: 1
