@@ -1,0 +1,113 @@
+---
+vlans:
+  office:
+    vid: 100
+dps:
+  swc1:
+    dp_id: 0x1
+    interfaces:
+      1:
+        name: "swc1-1"
+        description: "office"
+        native_vlan: office
+      2:
+        name: "swc1-2"
+        description: "office"
+        native_vlan: office
+
+  swc2:
+    dp_id: 0x2
+    interfaces:
+      1:
+        name: "swc2-1"
+        description: "office"
+        native_vlan: office
+      2:
+        name: "swc2-2"
+        description: "office"
+        native_vlan: office
+
+  swc3:
+    dp_id: 0x3
+    interfaces:
+      1:
+        name: "swc3-1"
+        description: "office"
+        native_vlan: office
+      2:
+        name: "swc3-2"
+        description: "office"
+        native_vlan: office
+
+  swc4:
+    dp_id: 0x4
+    interfaces:
+      1:
+        name: "swc4-1"
+        description: "office"
+        native_vlan: office
+      2:
+        name: "swc4-2"
+        description: "office"
+        native_vlan: office
+
+  swa1:
+    dp_id: 0x5
+    interfaces:
+      1:
+        name: "swa1-1"
+        description: "office"
+        native_vlan: office
+      2:
+        name: "swa1-2"
+        description: "office"
+        native_vlan: office
+
+  swa2:
+    dp_id: 0x6
+    interfaces:
+      1:
+        name: "swa2-1"
+        description: "office"
+        native_vlan: office
+      2:
+        name: "swa2-2"
+        description: "office"
+        native_vlan: office
+
+  swa3:
+    dp_id: 0x7
+    interfaces:
+      1:
+        name: "swa3-1"
+        description: "office"
+        native_vlan: office
+      2:
+        name: "swa3-2"
+        description: "office"
+        native_vlan: office
+
+  swa4:
+    dp_id: 0x8
+    interfaces:
+      1:
+        name: "swa4-1"
+        description: "office"
+        native_vlan: office
+      2:
+        name: "swa4-2"
+        description: "office"
+        native_vlan: office
+
+  swa5:
+    dp_id: 0x9
+    interfaces:
+      1:
+        name: "swa5-1"
+        description: "office"
+        native_vlan: office
+      2:
+        name: "swa5-2"
+        description: "office"
+        native_vlan: office
+
