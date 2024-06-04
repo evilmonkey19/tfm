@@ -1,19 +1,19 @@
 frames:
 - frame_id: 0
   slots:
-  - boardname: 58NJMKQU
+  - boardname: A9JDVU6Z
     online_offline: ''
     slotid: 0
-    status: Active_normal
+    status: Standby
     subtype0: ''
     subtype1: ''
-  - boardname: 6KX2R8OR
+  - boardname: 8PF6BTFD
     online_offline: ''
     slotid: 1
-    status: Failed
+    status: Standby
     subtype0: ''
     subtype1: ''
-  - boardname: 0MP9WMIC
+  - boardname: C1PUIVD4
     online_offline: ''
     ports:
     - - config_state: online
@@ -593,27 +593,27 @@ frames:
         run_state: online
         sn: YMY8Y3HHTERKPP6Z
     slotid: 2
-    status: Normal
+    status: Failed
     subtype0: ''
     subtype1: ''
-  - boardname: DIX0BGA3
+  - boardname: ERFLC7YS
     online_offline: ''
     slotid: 3
-    status: Failed
-    subtype0: CPCF
-    subtype1: ''
-  - boardname: 90B07OWB
-    online_offline: Offline
-    slotid: 4
     status: Normal
     subtype0: CPCF
+    subtype1: JY4A
+  - boardname: OF0YW6RX
+    online_offline: Offline
+    slotid: 4
+    status: Active_normal
+    subtype0: CPCF
     subtype1: ''
-  - boardname: PQSW2QU8
+  - boardname: ZWUW9XU8
     online_offline: ''
     slotid: 5
-    status: Standby_failed
-    subtype0: ''
-    subtype1: AIPJ
+    status: Standby
+    subtype0: AXWW
+    subtype1: ''
 services:
 - network_service: telnet
   port: 23

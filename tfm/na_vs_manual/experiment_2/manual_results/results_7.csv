@@ -1,1 +1,7 @@
 SlotID,BoardName,Status,Subtype0,SubType1,Online-Oflline
+0,T1LR92DT,Active_normal,,,
+1,,,,,
+2,ETN93P23,Active,,,
+3,WVB1PVIC,Standby_failed,,,
+4,XZX8ANB8,Auto_find,CPCF,,Offline
+5,GBLT63FW,Standby,,,

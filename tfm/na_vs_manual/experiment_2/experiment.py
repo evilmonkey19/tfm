@@ -77,16 +77,23 @@ with FakeNOS(inventory=inventory) as net:
     time_taken = time.time() - start_time
 
 number_of_mismatchs = 0
-for real_board in values["frames"][0]["slots"]:
-    checked_values_board = {
-        "slot_id": str(real_board["slotid"]),
-        "boardname": real_board["boardname"],
-        "subtype_0": real_board.get("subtype0", ""),
-        "subtype_1": real_board.get("subtype1", ""),
-        "status": real_board.get("status", ""),
-        "online_offline": real_board.get("online_offline", ""),
+checked_values_boards = [
+    {
+        "slot_id": str(board["slotid"]),
+        "boardname": board["boardname"],
+        "subtype_0": board.get("subtype0", ""),
+        "subtype_1": board.get("subtype1", ""),
+        "status": board.get("status", ""),
+        "online_offline": board.get("online_offline", ""),
     }
-    assert checked_values_board == boards[real_board["slotid"]], f"Real board: {checked_values_board}, Detected board: {boards[real_board['slotid']]}"
+    for board in values["frames"][0]["slots"]
+]
+for real_board in checked_values_boards:
+    try:
+        assert real_board == boards[int(real_board["slot_id"])], f"Real board: {real_board}, Detected board: {boards[int(real_board['slot_id'])]}"
+    except AssertionError:
+        number_of_mismatchs += 1
+        print(f"Real board: {real_board}, Detected board: {boards[int(real_board['slot_id'])]}")
 
 with open(f"na_results.csv", "a+", encoding="utf-8") as file:
     file.write(f"{number_of_mismatchs},{time_taken}\n")
@@ -108,23 +115,24 @@ with FakeNOS(inventory=inventory) as net:
     finish_time = time.time()
 
 total_mismatchs = 0
-# with open(f"manual_results/results_{args.value}.csv", "r", encoding="utf-8") as file, \
-#     open(f"configurations/real/config_experiment_{args.value}.yaml", "r", encoding="utf-8") as real_file:
-#     csv_reader = csv.reader(file, delimiter=',')
-#     real_services = yaml.safe_load(real_file.read())["services"]
-#     next(csv_reader)  # Skip the first row (titles)
-#     for row, real_service in zip(csv_reader, real_services):
-#         detected_service = {
-#             "network_service": row[0],
-#             "port": int(row[1]) if row[1] != "" else None,
-#             "state": row[2]
-#         }
-#         if detected_service not in real_services:
-#             total_mismatchs += 1
-#             continue
-#         if detected_service != real_service:
-#             total_mismatchs += 1
-
-# with open(f"manual_results.csv", "a+", encoding="utf-8") as file:
-#     file.write(f"{total_mismatchs},{finish_time - start_time}\n")
+with open(f"manual_results/results_{args.value}.csv", "r", encoding="utf-8") as file:
+    csv_reader = csv.reader(file, delimiter=',')
+    next(csv_reader)  # Skip the first row (titles)
+    for row in csv_reader:
+        board = {
+            "slot_id": row[0],
+            "boardname": row[1],
+            "status": row[2],
+            "subtype_0": row[3],
+            "subtype_1": row[4],
+            "online_offline": row[5],
+        }
+        try:
+            assert board == checked_values_boards[int(row[0])], f"Real board: {board}, Detected board: {checked_values_boards[int(row[0])]}"
+        except AssertionError:
+            total_mismatchs += 1
+            print(f"Real board: {board}, Detected board: {checked_values_boards[int(row[0])]}")
+            
+with open(f"manual_results.csv", "a+", encoding="utf-8") as file:
+    file.write(f"{total_mismatchs},{finish_time - start_time}\n")
         

@@ -1,19 +1,19 @@
 frames:
 - frame_id: 0
   slots:
-  - boardname: ZU3PEWC7
+  - boardname: IP3RSQEY
     online_offline: ''
     slotid: 0
-    status: Active
-    subtype0: JMIH
+    status: Active_normal
+    subtype0: ''
     subtype1: ''
-  - boardname: 2RA1R0C8
+  - boardname: YH6K9XLV
     online_offline: ''
     slotid: 1
-    status: Failed
-    subtype0: VCKA
+    status: Active
+    subtype0: ''
     subtype1: ''
-  - boardname: NK8RP5DL
+  - boardname: J7S4GCJ1
     online_offline: ''
     ports:
     - - config_state: online
@@ -593,25 +593,25 @@ frames:
         run_state: online
         sn: YMY8Y3HHTERKPP6Z
     slotid: 2
-    status: Failed
+    status: Normal
     subtype0: ''
     subtype1: ''
-  - boardname: IWBC5XGH
+  - boardname: A123ABCD
     online_offline: ''
     slotid: 3
-    status: Normal
+    status: Active_normal
     subtype0: CPCF
     subtype1: ''
-  - boardname: 4R8EFOJA
+  - boardname: A123ABCD
     online_offline: Offline
     slotid: 4
-    status: Normal
+    status: Standby_failed
     subtype0: CPCF
     subtype1: ''
-  - boardname: GSHEOMXS
+  - boardname: 74C7B7LC
     online_offline: ''
     slotid: 5
-    status: Active
+    status: Standby
     subtype0: ''
     subtype1: ''
 services:

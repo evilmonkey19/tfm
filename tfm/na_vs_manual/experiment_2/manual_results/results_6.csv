@@ -1,1 +1,7 @@
 SlotID,BoardName,Status,Subtype0,SubType1,Online-Oflline
+0,L67HC1IZ,Auto_find,,,
+1,,,,,
+2,97L6A9U2,Standby_failed,,,
+3,JYE18BT7,Failed,CPCF,TGIL,
+4,A123ABCD,Standby_failed,CPCF,,Offline
+5,OHMKGCCM,Active_normal,HK91,,
