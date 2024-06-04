@@ -626,33 +626,33 @@ services:
   state: enable
 - network_service: snmp
   port: 161
-  state: disable
+  state: enable
 - network_service: ftp-client
   port: null
   state: disable
 - network_service: sftp-client
-  port: 51821
+  port: null
   state: disable
 - network_service: ntp
-  port: 123
+  port: 24723
   state: enable
 - network_service: radius
-  port: 60159
+  port: null
   state: enable
 - network_service: dhcp-relay
   port: 67
   state: enable
 - network_service: dhcpv6-relay
   port: 547
-  state: enable
+  state: disable
 - network_service: ntp6
-  port: 123
+  port: 50557
   state: disable
 - network_service: ipdr
-  port: 4737
-  state: disable
+  port: 56272
+  state: enable
 - network_service: twamp
-  port: 4294967295
+  port: 862
   state: disable
 - network_service: netconf
   port: 830
@@ -661,17 +661,20 @@ services:
   port: 23
   state: disable
 - network_service: sshv6
-  port: 22
+  port: 4903
   state: disable
 - network_service: snmpv6
   port: 161
-  state: enable
+  state: disable
 - network_service: web-proxy
-  port: 39023
+  port: 48379
   state: disable
 - network_service: portal
   port: 2000
-  state: disable
+  state: enable
 - network_service: capwap
   port: 5246
-  state: disable
+  state: enable
+- network_service: mqtt
+  port: 8883
+  state: enable

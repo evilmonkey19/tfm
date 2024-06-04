@@ -617,10 +617,10 @@ frames:
 services:
 - network_service: telnet
   port: 23
-  state: enable
+  state: disable
 - network_service: trace
   port: 1026
-  state: disable
+  state: enable
 - network_service: ssh
   port: 6000
   state: enable
@@ -632,12 +632,12 @@ services:
   state: disable
 - network_service: sftp-client
   port: null
-  state: disable
+  state: enable
 - network_service: ntp
   port: 123
   state: enable
 - network_service: radius
-  port: 40771
+  port: null
   state: enable
 - network_service: dhcp-relay
   port: 67
@@ -647,31 +647,34 @@ services:
   state: disable
 - network_service: ntp6
   port: 123
-  state: enable
+  state: disable
 - network_service: ipdr
   port: 4737
   state: disable
 - network_service: twamp
-  port: 4294967295
-  state: disable
+  port: 862
+  state: enable
 - network_service: netconf
   port: 830
   state: disable
 - network_service: telnetv6
-  port: 25712
+  port: 23
   state: enable
 - network_service: sshv6
-  port: 22
+  port: 16878
   state: enable
 - network_service: snmpv6
   port: 161
   state: disable
 - network_service: web-proxy
-  port: 8024
-  state: disable
+  port: 6919
+  state: enable
 - network_service: portal
-  port: 2000
+  port: 19396
   state: disable
 - network_service: capwap
   port: 5246
+  state: enable
+- network_service: mqtt
+  port: 8883
   state: enable

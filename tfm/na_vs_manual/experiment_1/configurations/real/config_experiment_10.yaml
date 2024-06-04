@@ -617,57 +617,57 @@ frames:
 services:
 - network_service: telnet
   port: 23
-  state: enable
+  state: disable
 - network_service: trace
-  port: 1026
+  port: 48095
   state: enable
 - network_service: ssh
   port: 6000
   state: enable
 - network_service: snmp
   port: 161
-  state: disable
+  state: enable
 - network_service: ftp-client
-  port: null
+  port: 65010
   state: disable
 - network_service: sftp-client
   port: null
-  state: enable
+  state: disable
 - network_service: ntp
   port: 123
   state: enable
 - network_service: radius
-  port: 2813
+  port: null
   state: disable
 - network_service: dhcp-relay
   port: 67
-  state: disable
+  state: enable
 - network_service: dhcpv6-relay
   port: 547
-  state: disable
+  state: enable
 - network_service: ntp6
   port: 123
   state: disable
 - network_service: ipdr
-  port: 27570
+  port: 12687
   state: enable
 - network_service: twamp
-  port: 9741
+  port: 10418
   state: disable
 - network_service: netconf
-  port: 10366
+  port: 53553
   state: disable
 - network_service: telnetv6
-  port: 23
+  port: 40457
   state: enable
 - network_service: sshv6
-  port: 13153
-  state: disable
+  port: 22
+  state: enable
 - network_service: snmpv6
   port: 161
-  state: enable
+  state: disable
 - network_service: web-proxy
-  port: 8024
+  port: 52897
   state: enable
 - network_service: portal
   port: 2000

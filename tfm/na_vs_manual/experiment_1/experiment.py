@@ -122,7 +122,7 @@ with FakeNOS(inventory=inventory) as net:
     finish_time = time.time()
 
 total_mismatchs = 0
-with open(f"manual_results/results_1.csv", "r", encoding="utf-8") as file, \
+with open(f"manual_results/results_{args.value}.csv", "r", encoding="utf-8") as file, \
     open(f"configurations/real/config_experiment_{args.value}.yaml", "r", encoding="utf-8") as real_file:
     csv_reader = csv.reader(file, delimiter=',')
     real_services = yaml.safe_load(real_file.read())["services"]

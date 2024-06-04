@@ -1,19 +1,19 @@
 frames:
 - frame_id: 0
   slots:
-  - boardname: A123ABCD
+  - boardname: ZU3PEWC7
     online_offline: ''
     slotid: 0
-    status: Normal
-    subtype0: ''
+    status: Active
+    subtype0: JMIH
     subtype1: ''
-  - boardname: ''
+  - boardname: 2RA1R0C8
     online_offline: ''
     slotid: 1
-    status: ''
-    subtype0: ''
+    status: Failed
+    subtype0: VCKA
     subtype1: ''
-  - boardname: H901GPSFE
+  - boardname: NK8RP5DL
     online_offline: ''
     ports:
     - - config_state: online
@@ -593,52 +593,52 @@ frames:
         run_state: online
         sn: YMY8Y3HHTERKPP6Z
     slotid: 2
-    status: Normal
+    status: Failed
     subtype0: ''
     subtype1: ''
-  - boardname: A123ABCD
+  - boardname: IWBC5XGH
     online_offline: ''
     slotid: 3
-    status: Active_normal
+    status: Normal
     subtype0: CPCF
     subtype1: ''
-  - boardname: A123ABCD
+  - boardname: 4R8EFOJA
     online_offline: Offline
     slotid: 4
-    status: Standby_failed
+    status: Normal
     subtype0: CPCF
     subtype1: ''
-  - boardname: ''
+  - boardname: GSHEOMXS
     online_offline: ''
     slotid: 5
-    status: ''
+    status: Active
     subtype0: ''
     subtype1: ''
 services:
 - network_service: telnet
   port: 23
-  state: enable
+  state: disable
 - network_service: trace
   port: 1026
-  state: enable
+  state: disable
 - network_service: ssh
   port: 6000
   state: enable
 - network_service: snmp
   port: 161
-  state: disable
+  state: enable
 - network_service: ftp-client
   port: null
-  state: disable
+  state: null
 - network_service: sftp-client
   port: null
-  state: enable
+  state: null
 - network_service: ntp
   port: 123
   state: enable
 - network_service: radius
-  port: 2813
-  state: disable
+  port: null
+  state: enable
 - network_service: dhcp-relay
   port: 67
   state: disable
@@ -649,32 +649,32 @@ services:
   port: 123
   state: disable
 - network_service: ipdr
-  port: 27570
+  port: 4737
   state: enable
 - network_service: twamp
-  port: 9741
-  state: disable
+  port: 862
+  state: enable
 - network_service: netconf
-  port: 10366
-  state: disable
+  port: 830
+  state: enable
 - network_service: telnetv6
   port: 23
-  state: enable
+  state: disable
 - network_service: sshv6
-  port: 13153
+  port: 22
   state: disable
 - network_service: snmpv6
   port: 161
-  state: enable
+  state: disable
 - network_service: web-proxy
   port: 8024
-  state: enable
+  state: disable
 - network_service: portal
   port: 2000
-  state: enable
+  state: disable
 - network_service: capwap
   port: 5246
   state: disable
 - network_service: mqtt
   port: 8883
-  state: enable
+  state: disable

@@ -36,7 +36,7 @@ services:
     port: 4737
     state: enable
   - network_service: twamp
-    port: 4294967295
+    port: 862
     state: enable
   - network_service: netconf
     port: 830
@@ -58,4 +58,7 @@ services:
     state: disable
   - network_service: capwap
     port: 5246
+    state: disable
+  - network_service: mqtt
+    port: 8883
     state: disable

@@ -1,0 +1,22 @@
+Network Service, Port, State
+telnet,23,disable
+trace,1026,disable
+ssh,6000,enable
+snmp,161,enable
+ftp-client,,enable
+sftp-client,,enable
+ntp,28974,disable
+radius,,disable
+dhcp-relay,67,disable
+dhcpv6-relay,14689,disable
+ntp6,123,enable
+ipdr,60868,enable
+twamp,862,enable
+netconf,41541,enable
+telnetv6,50624,enable
+sshv6,22,enable
+snmpv6,161,disable
+web-proxy,8024,disable
+portal,2000,disable
+capwap,6785,enable
+mqtt,8883,disable
