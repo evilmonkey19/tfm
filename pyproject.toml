@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<3.13"
-ntc-templates = { git = "https://github.com/networktocode/ntc-templates.git", rev = "21a5bab7ca5aed2a1224df71bf37b5cc94678742" }
+ntc-templates = { path = "../ntc-templates", develop=true }
 netmiko = "^4.3.0"
 fakenos = { path = "../fakenos", develop=true}
 jinja2 = "^3.1.4"
