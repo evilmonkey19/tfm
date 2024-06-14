@@ -670,6 +670,20 @@ files = [
 cp2110 = ["hidapi"]
 
 [[package]]
+name = "python-dotenv"
+version = "1.0.1"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "python-dotenv-1.0.1.tar.gz", hash = "sha256:e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca"},
+    {file = "python_dotenv-1.0.1-py3-none-any.whl", hash = "sha256:f7b63ef50f1b690dddf550d03497b66d609393b40b564ed0d674909a68ebf16a"},
+]
+
+[package.extras]
+cli = ["click (>=5.0)"]
+
+[[package]]
 name = "pyyaml"
 version = "6.0.1"
 description = "YAML parser and emitter for Python"
@@ -791,6 +805,21 @@ future = "*"
 six = "*"
 
 [[package]]
+name = "ttp"
+version = "0.9.5"
+description = "Template Text Parser"
+optional = false
+python-versions = ">=2.7,<4.0"
+files = [
+    {file = "ttp-0.9.5-py2.py3-none-any.whl", hash = "sha256:2c9fcf560b3f696e9fdd3554dc8e4622cbb10cac1d4fca13a7cf608c4a7fd137"},
+    {file = "ttp-0.9.5.tar.gz", hash = "sha256:234414f4d3039d2d1cde09993f89f8db1b34d447f76c6a402555cefac2e59c4e"},
+]
+
+[package.extras]
+docs = ["Sphinx (==4.3.0)", "readthedocs-sphinx-search (==0.1.1)", "sphinx_rtd_theme (==1.0.0)", "sphinxcontrib-applehelp (==1.0.1)", "sphinxcontrib-devhelp (==1.0.1)", "sphinxcontrib-htmlhelp (==2.0.0)", "sphinxcontrib-jsmath (==1.0.1)", "sphinxcontrib-napoleon (==0.7)", "sphinxcontrib-qthelp (==1.0.2)", "sphinxcontrib-serializinghtml (==1.1.5)", "sphinxcontrib-spelling (==7.2.1)"]
+full = ["cerberus (>=1.3.0,<1.4.0)", "deepdiff (>=5.8.0,<5.9.0)", "jinja2 (>=3.0.0,<3.1.0)", "n2g (>=0.2.0,<0.3.0)", "openpyxl (>=3.0.0,<3.1.0)", "pyyaml (==6.0)", "tabulate (>=0.8.0,<0.9.0)", "ttp_templates (<1.0.0)", "yangson (>=1.4.0,<1.5.0)"]
+
+[[package]]
 name = "typing-extensions"
 version = "4.12.1"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -834,4 +863,4 @@ cli = ["rich (==9.10.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.1,<3.13"
-content-hash = "50da025b3e150fe68b4d60d67f216aa51ec4c5e69143eab631e880d38a4eb7de"
+content-hash = "82ba800aa83d2ab1a8612cb8d514200246a6c230d85fa0c276a8b871f67e1260"

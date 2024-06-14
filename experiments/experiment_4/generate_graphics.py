@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Read the CSV files
-manual_results = pd.read_csv('manual_results/results_1.csv')
+manual_results = pd.read_csv('manual_results.csv')
 na_results = pd.read_csv('na_results.csv')
 
 # Plot the data

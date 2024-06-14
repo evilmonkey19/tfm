@@ -1,0 +1,11 @@
+<group name="tconts">
+  &lt;T-CONT   {{ t_cont_id }}&gt;           DBA Profile-ID:{{ dba_profile_id }}
+  <group name="gem_ports">
+    &lt;Gem Index {{ gem_index }}&gt;
+    |Serv-Type:{{ service_type }} |Encrypt:{{ encrypt }} |Cascade:{{ cascade }} |GEM-CAR:{{ gem_car }}            |
+    |Upstream-priority-queue:{{ upstream_priority_queue }}  |Downstream-priority-queue:{{ downstream_priority_queue }}       |
+    <group name="gem_mappings">
+     {{ mapping_index }} {{ vlan | DIGIT }}  {{priority}} {{port_type}}  {{port_id}}  {{bundle_id}}  {{flow_car}}  {{transparent}}
+    </group>
+  </group>
+</group>
