@@ -39,13 +39,16 @@ def main():
 
     with ConnectHandler(**CREDENTIALS) as conn:
         output = conn.send_command(BOARD_COMMAND)
+        print(output)
         parsed_output = parse_output(platform=PLATFORM, command=BOARD_COMMAND, data=output)
         slot_id, n_ports = [(board["slot_id"], GPON_BOARDS[board["boardname"]])
                                 for board in parsed_output
                                 if board["boardname"] in GPON_BOARDS][0]
         for i in range(n_ports):
             command = f"{BASE_ONT_COMMAND} {slot_id} {i}"
+            print(command)
             output = conn.send_command(command)
+            print(output)
             result = parse_output(platform=PLATFORM, command=command, data=output)
             results.append(result)
 

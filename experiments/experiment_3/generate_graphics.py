@@ -1,44 +1,43 @@
-"""
-Check that services are correctly set up and the possible errors
-compared to the manual configuration are correctly detected.
-"""
 import os
-from timeit import default_timer as timer
-from datetime import timedelta
-import csv
-
 from dotenv import load_dotenv
-from fakenos import FakeNOS
-
-from experiments.experiment_1.script import main
-from experiments.config_generator import generate_config
+import pandas as pd
+import matplotlib.pyplot as plt
 
 load_dotenv()
 
-generate_config("configuration.yaml.j2")
+WORLD_RECORD_WPM=os.getenv("WORLD_RECORD_WPM")
+MIN_CONNECTION_TIME=float(os.getenv("MIN_CONNECTION_TIME"))
 
-rounds = int(os.getenv("ROUNDS"))
+na_results = pd.read_csv('na_results.csv')
+na_results['time_duration'] = pd.to_timedelta(na_results['Time taken'])
+na_results['total_seconds'] = na_results['time_duration'].dt.total_seconds()
 
-start, end = 0, 0
 
-for i in range(rounds):
-    inventory = {
-        "hosts": {
-            "OLT": {
-                "username": "admin",
-                "password": "admin",
-                "port": 6000,
-                "platform": "huawei_smartax",
-                "configuration_file": "configuration.yaml.j2"
-            }
-        }
-    }
-    with FakeNOS(inventory=inventory) as net:
-        start = timer()
-        main()
-        end = timer()
-        print(f"Try {i}: {timedelta(seconds=end-start)}")
+time_typing = 0
+with open('results.csv', 'r', encoding='utf-8') as file:
+    script = file.read()
+    words = script.split()
+    time_typing = len(words) / int(WORLD_RECORD_WPM) * 60
 
-    with open("na_results.csv", "a+", newline="\n", encoding="utf-8") as file:
-        writer = csv.writer(file)
-        writer.writerow([str(timedelta(seconds=end-start))])
+human_time = time_typing + int(MIN_CONNECTION_TIME)
+
+plt.plot(na_results['total_seconds'], label='Network Automation')
+
+# plot a horizontal line representing the time taken by a human
+plt.axhline(y=human_time, color='r', linestyle='--', label='Manual (Barbara Blackburn)')
+
+# Set the title and labels
+plt.title("Gathering boards info using manual and network automation")
+plt.xticks(range(0, 101, 10))
+plt.xlabel('Experiment number')
+plt.ylabel('Time (s)')
+
+# Show the legend
+plt.legend()
+
+# Save the plot as SVG and PNG
+plt.savefig('comparison.svg')
+plt.savefig('comparison.png')
+
+# Show the plot
+plt.show()

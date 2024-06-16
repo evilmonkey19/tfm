@@ -1,0 +1,92 @@
+services:
+  rabbitmq:
+    image: rabbitmq
+    networks:
+      worker1-net:
+        ipv4_address: 10.1.0.2
+      worker2-net:
+        ipv4_address: 10.2.0.2
+
+  worker-site-1:
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    command: python3 -m worker --site 1
+    depends_on:
+      - rabbitmq
+    networks:
+      worker1-net:
+        ipv4_address: 10.1.0.3
+      huawei1-net:
+        ipv4_address: 192.168.1.2
+
+  # worker-site-2:
+  #   build:
+  #     context: .
+  #     dockerfile: worker.Dockerfile
+  #   command: python3 -m worker --site 2
+  #   depends_on:
+  #     - rabbitmq
+  #   networks:
+  #     worker2-net:
+  #       ipv4_address: 10.2.0.2
+  #     huawei2-net:
+  #       ipv4_address: 172.20.2.1
+
+  # huawei_smartax-site-1:
+  #   build:
+  #     context: .
+  #     dockerfile: huawei_smartax.Dockerfile
+  #   command: python huawei_smartax.py
+  #   depends_on:
+  #     - worker-site-1
+  #   environment:
+  #     - PORT=6000
+  #     - HOSTNAME=huawei_smartax-site-1
+  #   ports:
+  #     - "6000:6000"
+  #   networks:
+  #     huawei1-net:
+  #       ipv4_address: 172.20.1.2
+
+  # huawei_smartax-site-2:
+  #   build:
+  #     context: .
+  #     dockerfile: huawei_smartax.Dockerfile
+  #   command: python huawei_smartax.py
+  #   depends_on:
+  #     - worker-site-2
+  #   environment:
+  #     - PORT=6000
+  #     - HOSTNAME=huawei_smartax-site-2
+  #   ports:
+  #     - "6000:6000"
+  #   networks:
+  #     huawei2-net:
+  #       ipv4_address: 172.20.2.2
+
+networks:
+  worker1-net:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 10.1.0.0/16
+  worker2-net:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 10.2.0.0/16
+  huawei1-net:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
+  huawei2-net:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 192.168.2.0/24

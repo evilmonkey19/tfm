@@ -1,0 +1,10 @@
+  -------------------------------------------------------------------------
+  SlotID  BoardName  Status          SubType0  SubType1  Online/Offline  
+  -------------------------------------------------------------------------
+<group name="table_data">
+  {{slot_id|DIGIT }} 
+  {{slot_id|DIGIT | _start_}} {{boardname}} {{status | _end_}}
+  {{slot_id|DIGIT | _start_}} {{boardname}} {{status}} {{subtype0 | _end_}}
+  {{slot_id|DIGIT|_start_}} {{boardname}} {{status}} {{subtype0}} {{online_offline|_end_}}
+  {{slot_id|DIGIT|_start_}} {{boardname}} {{status}} {{subtype0}} {{subtype1}} {{online_offline|_end_}}
+</group>
