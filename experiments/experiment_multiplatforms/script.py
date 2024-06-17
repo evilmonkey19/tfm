@@ -32,6 +32,7 @@ inventory = {
 
 results = {platform: [] for platform in available_platforms}
 for round in range(rounds):
+    print(f"Round {round+1}/{rounds}")
     for platform in available_platforms:
         inventory["hosts"]["R1"]["platform"] = platform
         credentials["device_type"] = platform
@@ -40,8 +41,8 @@ for round in range(rounds):
             start_time = time.time()
             conn = ConnectHandler(**credentials)
             conn.disconnect()
-            print(f"Platform: {platform}, Time: {time.time()- start_time:.2f}")
             results[platform].append(time.time() - start_time)
+            print(f"Platform: {platform}, Time: {time.time()- start_time:.2f}")
     
 with open(f"results.csv", "a+", encoding="utf-8") as f:
     writer = csv.writer(f)
