@@ -1,11 +1,11 @@
 FROM python:3.12-slim
 
-ARG LOCATION=generic_location
+RUN apt update && apt install -y openssh-client
 
-RUN pip install celery
+RUN pip install celery netmiko ntc-templates
 
 WORKDIR /app
 
 COPY tasks.py ./tasks.py
 
-CMD ["celery", "-A", "tasks", "worker", "-n", "${LOCATION}", "-Q", "${LOCATION},celery", "--loglevel=info"]
+# CMD ["celery", "-A", "tasks", "worker", "-n", "${LOCATION}", "-Q", "${LOCATION},celery", "--loglevel=info"]
