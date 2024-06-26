@@ -20,6 +20,7 @@ generate_config("configuration.yaml.j2")
 rounds = int(os.getenv("ROUNDS"))
 
 start, end = 0, 0
+list_of_times = []
 
 for i in range(rounds):
     inventory = {
@@ -37,8 +38,11 @@ for i in range(rounds):
         start = timer()
         main()
         end = timer()
+        list_of_times.append(timedelta(seconds=end-start))
         print(f"Try {i}: {timedelta(seconds=end-start)}")
 
-    with open("na_results.csv", "a+", newline="\n", encoding="utf-8") as file:
+    with open("na_results.csv", "w", newline="\n", encoding="utf-8") as file:
         writer = csv.writer(file)
-        writer.writerow([str(timedelta(seconds=end-start))])
+        writer.writerow(["Time"])
+        for time in list_of_times:
+            writer.writerow([str(time)])

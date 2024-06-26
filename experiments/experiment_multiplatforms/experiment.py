@@ -38,14 +38,13 @@ for round in range(rounds):
         credentials["device_type"] = platform
         with FakeNOS(inventory) as net:
             time.sleep(1)
-            conn = ConnectHandler(**credentials)
             start_time = time.time()
-            conn.send_command('enable', auto_find_prompt=False)
+            conn = ConnectHandler(**credentials)
+            conn.disconnect()
             results[platform].append(time.time() - start_time)
             print(f"Platform: {platform}, Time: {time.time()- start_time:.2f}")
-            conn.disconnect()
     
-with open(f"results.csv", "a+", encoding="utf-8") as f:
+with open(f"results.csv", "w", encoding="utf-8") as f:
     writer = csv.writer(f)
     writer.writerow(results.keys())
     for i in range(rounds):

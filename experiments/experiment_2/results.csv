@@ -2,7 +2,7 @@ slot_id,boardname,status,subtype_0,subtype_1,online_offline
 0,H901TWEDE,Normal,,,
 1,,,,,
 2,,,,,
-2,H901PISA,Normal,,,
+2,H901PILA,Normal,,,
 3,H902MPLAE,Normal,CPCF,,
-4,H901MPSCE,Standby_failed,CPCF,,Offline
+4,H902MPLAE,Standby_failed,CPCF,,Offline
 5,,,,,
