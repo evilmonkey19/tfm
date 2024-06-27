@@ -1,11 +1,10 @@
 import pandas as pd
+import numpy as np
 
 import matplotlib.pyplot as plt
 
 # Read the CSV file into a pandas DataFrame
 df = pd.read_csv('results.csv')
-# Remove the column for Yamaha
-df = df.drop('yamaha', axis=1)
 
 # Calculate the average time for each vendor
 average_time = df.mean()
@@ -17,10 +16,10 @@ std_dev = df.std()
 plt.barh(average_time.sort_values(ascending=True).index, average_time.sort_values(ascending=True).values, xerr=std_dev.sort_values(ascending=True).values, capsize=5)
 plt.ylabel('Vendor')
 plt.xlabel('Average Time')
-plt.title('Average Time to access for each platform in Netmiko')
-plt.xticks(range(0, 12, 1))  # Set y-axis ticks to be in increments of 5
+plt.title('Average time to send a command on each platform in Netmiko')
+plt.xticks(np.arange(0, 0.2, 0.03))  # Set y-axis ticks to be in increments of 5
 # Add horizontal lines for each vertical line
-for i in range(0,12,1):
+for i in np.arange(0,0.2,0.03):
     plt.axvline(x=i, color='gray', linestyle='dotted', alpha=0.2)
 plt.tight_layout()
 plt.subplots_adjust(left=0.2)

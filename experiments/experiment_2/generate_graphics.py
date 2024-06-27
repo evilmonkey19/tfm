@@ -11,7 +11,7 @@ WPM_ELECTRONIC_TYPEWRITER=os.getenv("WPM_ELECTRONIC_TYPEWRITER")
 MIN_CONNECTION_TIME=float(os.getenv("MIN_CONNECTION_TIME"))
 
 na_results = pd.read_csv('na_results.csv')
-na_results['time_duration'] = pd.to_timedelta(na_results['Time taken'])
+na_results['time_duration'] = pd.to_timedelta(na_results['Time'])
 na_results['total_seconds'] = na_results['time_duration'].dt.total_seconds()
 
 
@@ -39,17 +39,6 @@ plt.title("Gathering boards info using manual and network automation")
 plt.xticks(range(0, 101, 10))
 plt.xlabel('Experiment number')
 plt.ylabel('Time (s)')
-
-# Show the legend
-plt.legend()
-
-# Save the plot as SVG and PNG
-plt.savefig('comparison.svg')
-plt.savefig('comparison.png')
-
-# Show the plot
-plt.show()
-
 
 # Show the legend
 plt.legend()

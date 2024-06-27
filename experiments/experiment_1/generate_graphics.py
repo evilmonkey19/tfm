@@ -11,7 +11,7 @@ WPM_ELECTRONIC_TYPEWRITER=os.getenv("WPM_ELECTRONIC_TYPEWRITER")
 MIN_CONNECTION_TIME=float(os.getenv("MIN_CONNECTION_TIME"))
 
 na_results = pd.read_csv('na_results.csv')
-na_results['time_duration'] = pd.to_timedelta(na_results['Time taken'])
+na_results['time_duration'] = pd.to_timedelta(na_results['Time'])
 na_results['total_seconds'] = na_results['time_duration'].dt.total_seconds()
 
 
@@ -30,9 +30,9 @@ time_typing_electronic = time_typing_electronic + MIN_CONNECTION_TIME
 plt.plot(na_results['total_seconds'], label='Network Automation')
 
 # plot a horizontal line representing the time taken by a human
-plt.axhline(y=time_typing_manual_5_min, color='g', linestyle='--', label='World Guinness Record Manual Typewriter 5 min')
-plt.axhline(y=time_typing_manual_1_hour, color='b', linestyle='--', label='World Guinness Record Manual Typewriter 1 hour')
-plt.axhline(y=time_typing_electronic, color='y', linestyle='--', label='World Guinness Record Electronic Typewriter')
+plt.axhline(y=time_typing_manual_5_min, color='g', linestyle='--', label='Manual Typewriter 5 min')
+plt.axhline(y=time_typing_manual_1_hour, color='b', linestyle='--', label='Manual Typewriter 1 hour')
+plt.axhline(y=time_typing_electronic, color='y', linestyle='--', label='Electronic Typewriter')
 
 # Set the title and labels
 plt.title("Gathering service states using manual and network automation")

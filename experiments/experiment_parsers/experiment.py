@@ -5,7 +5,7 @@ import time
 
 load_dotenv()
 
-rounds = int(os.getenv("ROUNDS", 1))
+rounds = int(os.getenv("ROUNDS", 100))
 
 output = """
   -------------------------------------------------------------------------
@@ -29,12 +29,14 @@ for i in range(rounds):
     ## REGEX ##
     import re
     pattern = r"\s+(\d+)\s+(\s*\w*)?(\s*\w*)?(\s*\w*)?(\s*\w*)?(Online|Offline)?$"
+    pattern = re.compile(pattern)
     start_time = time.time()
-    for line in output.splitlines():
-        match = re.match(pattern, line)
+    lines = output.splitlines()
+    for line in lines:
+        match = pattern.match(line)
         if match:
             pass
-    results["regex"].append(time.time()- start_time)
+    results["regex"].append(time.time() - start_time)
 
     ## TEXTFSM ##
     import textfsm
