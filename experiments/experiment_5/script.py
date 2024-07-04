@@ -7,8 +7,8 @@ import asyncio
 import socket
 import time
 import timeit
-import logging
 from concurrent.futures import wait, ALL_COMPLETED, ThreadPoolExecutor
+from alive_progress import alive_bar
 from fakenos import FakeNOS
 from fakenos.core.nos import available_platforms
 
@@ -19,16 +19,14 @@ from scrapli import AsyncScrapli
 
 import paramiko
 
+import asyncssh
+
 from ssh2.session import Session
 
 
-logger = logging.getLogger("fakenos.plugins.servers.ssh_server_paramiko")
-logger.setLevel(logging.DEBUG)
-
-# import asyncssh
-
 N_ROUNDS = 2
-N_HOSTS = [1, 2, 4, 8, 16, 32, 64, 128]
+# N_HOSTS = [1, 2, 4, 8, 16, 32, 64, 128]
+N_HOSTS = [1, 2]
 
 inventory_base = {
     "hosts": {
@@ -56,64 +54,62 @@ def netmiko_handler(credential):
 netmiko_platforms = list(set(available_platforms) & set(CLASS_MAPPER_BASE.keys()))
 netmiko_platforms = [platform for platform in netmiko_platforms if "yamaha" not in platform]
 
-for hosts in N_HOSTS:
-    break
-    print(f'Number of hosts: {hosts}')
-    for round in range(N_ROUNDS):
-        print(f'Round {round + 1}/{N_ROUNDS}')
-        for platform in netmiko_platforms:
-            print(f'Platform: {platform}')
-            inventory = {
-                "hosts": {
-                    **inventory_base["hosts"],
-                    "R": {
-                        **inventory_base["hosts"]["R"],
-                        "platform": platform,
-                        "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Netmiko") as bar:
+    for hosts in N_HOSTS:
+        print(f'Number of hosts: {hosts}')
+        for round in range(N_ROUNDS):
+            print(f'Round {round + 1}/{N_ROUNDS}')
+            for platform in netmiko_platforms:
+                print(f'Platform: {platform}')
+                inventory = {
+                    "hosts": {
+                        **inventory_base["hosts"],
+                        "R": {
+                            **inventory_base["hosts"]["R"],
+                            "platform": platform,
+                            "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+                        }
                     }
                 }
-            }
-            if hosts > 1:
-                inventory["hosts"]["R"]["replicas"] = hosts
-            credentials = [{
-                "host": "localhost",
-                "username": "user",
-                "password": "user",
-                "device_type": platform,
-                "port": 6000+i
-            } for i in range(hosts)]
-            with FakeNOS(inventory):
-                with ThreadPoolExecutor(max_workers=hosts) as executor:
-                    futures = []
-                    results = []
-                    for host in range(hosts):
-                        credential = credentials[host]
-                        futures.append(executor.submit(netmiko_handler, credential))
-                    wait(futures, return_when=ALL_COMPLETED)
-                    for future in futures:
-                        result = future.result()
-                        results.append(result)
-                    min_connection = min([result[0] for result in results])
-                    max_connection = max([result[0] for result in results])
-                    avg_connection = sum([result[0] for result in results]) / hosts
-                    min_command = min([result[1] for result in results])
-                    max_command = max([result[1] for result in results])
-                    avg_command = sum([result[1] for result in results]) / hosts
-                    min_disconnection = min([result[2] for result in results])
-                    max_disconnection = max([result[2] for result in results])
-                    avg_disconnection = sum([result[2] for result in results]) / hosts
-                    with open(f"netmiko/{platform}_{hosts}.csv", "a+", encoding="utf-8") as file:
-                        writer = csv.writer(file)
-                        writer.writerow([min_connection, max_connection, avg_connection, 
-                                         min_command, max_command, avg_command, 
-                                         min_disconnection, max_disconnection, avg_disconnection])
-        
+                if hosts > 1:
+                    inventory["hosts"]["R"]["replicas"] = hosts
+                credentials = [{
+                    "host": "localhost",
+                    "username": "user",
+                    "password": "user",
+                    "device_type": platform,
+                    "port": 6000+i
+                } for i in range(hosts)]
+                with FakeNOS(inventory):
+                    with ThreadPoolExecutor(max_workers=hosts) as executor:
+                        futures = []
+                        results = []
+                        for host in range(hosts):
+                            credential = credentials[host]
+                            futures.append(executor.submit(netmiko_handler, credential))
+                        wait(futures, return_when=ALL_COMPLETED)
+                        for future in futures:
+                            result = future.result()
+                            results.append(result)
+                        min_connection = min([result[0] for result in results])
+                        max_connection = max([result[0] for result in results])
+                        avg_connection = sum([result[0] for result in results]) / hosts
+                        min_command = min([result[1] for result in results])
+                        max_command = max([result[1] for result in results])
+                        avg_command = sum([result[1] for result in results]) / hosts
+                        min_disconnection = min([result[2] for result in results])
+                        max_disconnection = max([result[2] for result in results])
+                        avg_disconnection = sum([result[2] for result in results]) / hosts
+                        with open(f"netmiko/{platform}_{hosts}.csv", "a+", encoding="utf-8") as file:
+                            writer = csv.writer(file)
+                            writer.writerow([min_connection, max_connection, avg_connection, 
+                                            min_command, max_command, avg_command, 
+                                            min_disconnection, max_disconnection, avg_disconnection])
+            bar()
 ### SCRAPLI ###
 async def scrapli_handler(credential):
     connect_start = timeit.default_timer()
-    print("CONNECTANDO")
     async with AsyncScrapli(**credential) as conn:
-        print("CONECTADO")
         time_to_connect = timeit.default_timer() - connect_start
         command_start = timeit.default_timer()
         await conn.send_command("enable")
@@ -133,50 +129,51 @@ scrapli_to_netmiko = {
     "arista_eos": "arista_eos",
 }
 
-for hosts in N_HOSTS:
-    break
-    print(f'Number of hosts: {hosts}')
-    for round in range(N_ROUNDS):
-        print(f'Round {round + 1}/{N_ROUNDS}')
-        for platform, netmiko_platform in scrapli_to_netmiko.items():
-            print(f'Platform: {platform}')
-            inventory = {
-                "hosts": {
-                    **inventory_base["hosts"],
-                    "R": {
-                        **inventory_base["hosts"]["R"],
-                        "platform": netmiko_platform,
-                        "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Scrapli") as bar:
+    for hosts in N_HOSTS:
+        print(f'Number of hosts: {hosts}')
+        for round in range(N_ROUNDS):
+            print(f'Round {round + 1}/{N_ROUNDS}')
+            for platform, netmiko_platform in scrapli_to_netmiko.items():
+                print(f'Platform: {platform}')
+                inventory = {
+                    "hosts": {
+                        **inventory_base["hosts"],
+                        "R": {
+                            **inventory_base["hosts"]["R"],
+                            "platform": netmiko_platform,
+                            "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+                        }
                     }
                 }
-            }
-            if hosts > 1:
-                inventory["hosts"]["R"]["replicas"] = hosts
-            credentials = [{
-                "host": "localhost",
-                "auth_username": "user",
-                "auth_password": "user",
-                "platform": platform,
-                "auth_strict_key": False,
-                "transport": "asyncssh",
-                "port": 6000+i
-            } for i in range(hosts)]
-            with FakeNOS(inventory):
-                results = asyncio.run(run_scrapli_gather(credentials))
-                min_connection = min([result[0] for result in results])
-                max_connection = max([result[0] for result in results])
-                avg_connection = sum([result[0] for result in results]) / hosts
-                min_command = min([result[1] for result in results])
-                max_command = max([result[1] for result in results])
-                avg_command = sum([result[1] for result in results]) / hosts
-                min_disconnection = min([result[2] for result in results])
-                max_disconnection = max([result[2] for result in results])
-                avg_disconnection = sum([result[2] for result in results]) / hosts
-                with open(f"scrapli/{netmiko_platform}_{hosts}.csv", "a+", encoding="utf-8") as file:
-                    writer = csv.writer(file)
-                    writer.writerow([min_connection, max_connection, avg_connection, 
-                                     min_command, max_command, avg_command,
-                                    min_disconnection, max_disconnection, avg_disconnection])
+                if hosts > 1:
+                    inventory["hosts"]["R"]["replicas"] = hosts
+                credentials = [{
+                    "host": "localhost",
+                    "auth_username": "user",
+                    "auth_password": "user",
+                    "platform": platform,
+                    "auth_strict_key": False,
+                    "transport": "asyncssh",
+                    "port": 6000+i
+                } for i in range(hosts)]
+                with FakeNOS(inventory):
+                    results = asyncio.run(run_scrapli_gather(credentials))
+                    min_connection = min([result[0] for result in results])
+                    max_connection = max([result[0] for result in results])
+                    avg_connection = sum([result[0] for result in results]) / hosts
+                    min_command = min([result[1] for result in results])
+                    max_command = max([result[1] for result in results])
+                    avg_command = sum([result[1] for result in results]) / hosts
+                    min_disconnection = min([result[2] for result in results])
+                    max_disconnection = max([result[2] for result in results])
+                    avg_disconnection = sum([result[2] for result in results]) / hosts
+                    with open(f"scrapli/{netmiko_platform}_{hosts}.csv", "a+", encoding="utf-8") as file:
+                        writer = csv.writer(file)
+                        writer.writerow([min_connection, max_connection, avg_connection, 
+                                        min_command, max_command, avg_command,
+                                        min_disconnection, max_disconnection, avg_disconnection])
+            bar()
 
 ### PARAMIKO ###
 def paramiko_handler(credential):
@@ -212,43 +209,139 @@ def paramiko_handler(credential):
 
     return time_to_connect, time_to_send_command, time_to_disconnect
 
-for hosts in N_HOSTS:
-    break
-    print(f'Number of hosts: {hosts}')
-    for round in range(N_ROUNDS):
-        print(f'Round {round + 1}/{N_ROUNDS}')
-        for platform in netmiko_platforms:
-            print(f'Platform: {platform}')
-            inventory = {
-                "hosts": {
-                    **inventory_base["hosts"],
-                    "R": {
-                        **inventory_base["hosts"]["R"],
-                        "platform": platform,
-                        "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Paramiko") as bar:
+    for hosts in N_HOSTS:
+        print(f'Number of hosts: {hosts}')
+        for round in range(N_ROUNDS):
+            print(f'Round {round + 1}/{N_ROUNDS}')
+            for platform in netmiko_platforms:
+                print(f'Platform: {platform}')
+                inventory = {
+                    "hosts": {
+                        **inventory_base["hosts"],
+                        "R": {
+                            **inventory_base["hosts"]["R"],
+                            "platform": platform,
+                            "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+                        }
                     }
                 }
-            }
-            if hosts > 1:
-                inventory["hosts"]["R"]["replicas"] = hosts
-            credentials = [{
-                "host": "localhost",
-                "username": "user",
-                "password": "user",
-                "device_type": platform,
-                "port": 6000+i
-            } for i in range(hosts)]
-            with FakeNOS(inventory):
-                with ThreadPoolExecutor(max_workers=hosts) as executor:
-                    futures = []
-                    results = []
-                    for host in range(hosts):
-                        credential = credentials[host]
-                        futures.append(executor.submit(paramiko_handler, credential))
-                    wait(futures, return_when=ALL_COMPLETED)
-                    for future in futures:
-                        result = future.result()
-                        results.append(result)
+                if hosts > 1:
+                    inventory["hosts"]["R"]["replicas"] = hosts
+                credentials = [{
+                    "host": "localhost",
+                    "username": "user",
+                    "password": "user",
+                    "device_type": platform,
+                    "port": 6000+i
+                } for i in range(hosts)]
+                with FakeNOS(inventory):
+                    with ThreadPoolExecutor(max_workers=hosts) as executor:
+                        futures = []
+                        results = []
+                        for host in range(hosts):
+                            credential = credentials[host]
+                            futures.append(executor.submit(paramiko_handler, credential))
+                        wait(futures, return_when=ALL_COMPLETED)
+                        for future in futures:
+                            result = future.result()
+                            results.append(result)
+                        min_connection = min([result[0] for result in results])
+                        max_connection = max([result[0] for result in results])
+                        avg_connection = sum([result[0] for result in results]) / hosts
+                        min_command = min([result[1] for result in results])
+                        max_command = max([result[1] for result in results])
+                        avg_command = sum([result[1] for result in results]) / hosts
+                        min_disconnection = min([result[2] for result in results])
+                        max_disconnection = max([result[2] for result in results])
+                        avg_disconnection = sum([result[2] for result in results]) / hosts
+                        with open(f"paramiko/{platform}_{hosts}.csv", "a+", encoding="utf-8") as file:
+                            writer = csv.writer(file)
+                            writer.writerow([min_connection, max_connection, avg_connection, 
+                                            min_command, max_command, avg_command, 
+                                            min_disconnection, max_disconnection, avg_disconnection])
+            bar()
+### ASYNCSSH ###
+async def get_prompt(proc):
+    prompt: str = ''
+    while True:
+        data = await proc.stdout.read(1)
+        prompt = prompt + data if data != '\n' else ''
+        if data.endswith((">", "#", "$")):
+            prompt.strip()
+            break
+    return prompt
+
+async def send_command(proc, command: str, prompt: str):        
+    proc.stdin.write(command + "\r\n")
+    await proc.stdin.drain()
+    await _send_command(proc, command)
+    output: str = await _get_output(proc, prompt)
+    return output
+
+async def _get_output(proc, prompt: str):
+    output: str = ''
+    while True:
+        output += await proc.stdout.read(1)
+        if output[-1] in ['#', '>', '$']:
+            break
+    return output
+
+async def _send_command(proc, command: str):
+    command_sent: str = ''
+    while True:
+        data = await proc.stdout.read(1)
+        command_sent += data
+        if command_sent == command + '\r\n':
+            break
+
+async def asyncssh_handler(credential):
+    connect_start = timeit.default_timer()
+    async with asyncssh.connect(**credential) as conn:
+        time_to_connect = timeit.default_timer() - connect_start
+        time_to_send_command = timeit.default_timer()
+        async with conn.create_process(term_type='xterm') as proc:
+            prompt = await get_prompt(proc)
+            await send_command(proc, "enable", prompt)
+        time_to_send_command = timeit.default_timer() - time_to_send_command
+        disconnect_start = timeit.default_timer()
+    time_to_disconnect = timeit.default_timer() - disconnect_start
+    
+    return time_to_connect, time_to_send_command, time_to_disconnect
+
+async def run_asyncssh_gather(credentials):
+    results = await asyncio.gather(*[asyncssh_handler(credential) for credential in credentials])
+    return results
+
+with alive_bar(len(N_HOSTS)*N_ROUNDS, title="AsyncSSh") as bar:
+    for hosts in N_HOSTS:
+        print(f'Number of hosts: {hosts}')
+        for round in range(N_ROUNDS):
+            print(f'Round {round + 1}/{N_ROUNDS}')
+            for platform in netmiko_platforms:
+                print(f'Platform: {platform}')
+                inventory = {
+                    "hosts": {
+                        **inventory_base["hosts"],
+                        "R": {
+                            **inventory_base["hosts"]["R"],
+                            "platform": platform,
+                            "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+                        }
+                    }
+                }
+                if hosts > 1:
+                    inventory["hosts"]["R"]["replicas"] = hosts
+                credentials = [{
+                    "host": "localhost",
+                    "username": "user",
+                    "password": "user",
+                    "client_keys": None,
+                    "known_hosts": None,
+                    "port": 6000+i
+                } for i in range(hosts)]
+                with FakeNOS(inventory):
+                    results = asyncio.run(run_asyncssh_gather(credentials))
                     min_connection = min([result[0] for result in results])
                     max_connection = max([result[0] for result in results])
                     avg_connection = sum([result[0] for result in results]) / hosts
@@ -258,13 +351,12 @@ for hosts in N_HOSTS:
                     min_disconnection = min([result[2] for result in results])
                     max_disconnection = max([result[2] for result in results])
                     avg_disconnection = sum([result[2] for result in results]) / hosts
-                    with open(f"paramiko/{platform}_{hosts}.csv", "a+", encoding="utf-8") as file:
+                    with open(f"asyncssh/{platform}_{hosts}.csv", "a+", encoding="utf-8") as file:
                         writer = csv.writer(file)
                         writer.writerow([min_connection, max_connection, avg_connection, 
-                                         min_command, max_command, avg_command, 
-                                         min_disconnection, max_disconnection, avg_disconnection])
-        
-### ASYNCSSH ###
+                                        min_command, max_command, avg_command,
+                                        min_disconnection, max_disconnection, avg_disconnection])
+            bar()
 
 ### PYTHON-SSH2 ###
 def python_ssh2_handler(credential):
@@ -281,70 +373,81 @@ def python_ssh2_handler(credential):
     session.handshake(sock)
     session.userauth_password(username, password)
     channel = session.open_session()
+    prompt = ""
+    while True:
+        _, data = channel.read()
+        if data.decode().endswith(('>', '#', '~$', "$")):
+            data = data.decode().replace('>','').replace('#','').replace('$','').replace('~','')
+            if '\n' in data:
+                prompt = data.split('\n')[-1].strip()[:-1]
+            else:
+                prompt = data.strip()[:-1]
+            break
     time_to_connect = timeit.default_timer() - connect_start
-
     command_start = timeit.default_timer()
-    channel.execute("h")
-    channel.wait_eof()
-
+    channel.write("enable" + "\n")
+    while True:
+        _, data = channel.read()
+        if data.decode()[:-1].startswith(prompt):
+            break
     time_to_send_command = timeit.default_timer() - command_start
 
     disconnect_start = timeit.default_timer()
-
     channel.close()
-    channel.wait_closed()
-
+    sock.close()
     time_to_disconnect = timeit.default_timer() - disconnect_start
 
     return time_to_connect, time_to_send_command, time_to_disconnect
 
-for hosts in N_HOSTS:
-    print(f'Number of hosts: {hosts}')
-    for round in range(N_ROUNDS):
-        print(f'Round {round + 1}/{N_ROUNDS}')
-        for platform in netmiko_platforms:
-            print(f'Platform: {platform}')
-            inventory = {
-                "hosts": {
-                    **inventory_base["hosts"],
-                    "R": {
-                        **inventory_base["hosts"]["R"],
-                        "platform": platform,
-                        "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Python-SSH2") as bar:
+    for hosts in N_HOSTS:
+        print(f'Number of hosts: {hosts}')
+        for round in range(N_ROUNDS):
+            print(f'Round {round + 1}/{N_ROUNDS}')
+            for platform in netmiko_platforms:
+                print(f'Platform: {platform}')
+                inventory = {
+                    "hosts": {
+                        **inventory_base["hosts"],
+                        "R": {
+                            **inventory_base["hosts"]["R"],
+                            "platform": platform,
+                            "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+                        }
                     }
                 }
-            }
-            if hosts > 1:
-                inventory["hosts"]["R"]["replicas"] = hosts
-            credentials = [{
-                "host": "localhost",
-                "username": "user",
-                "password": "user",
-                "device_type": platform,
-                "port": 6000+i
-            } for i in range(hosts)]
-            with FakeNOS(inventory):
-                with ThreadPoolExecutor(max_workers=hosts) as executor:
-                    futures = []
-                    results = []
-                    for host in range(hosts):
-                        credential = credentials[host]
-                        futures.append(executor.submit(python_ssh2_handler, credential))
-                    wait(futures, return_when=ALL_COMPLETED)
-                    for future in futures:
-                        result = future.result()
-                        results.append(result)
-                    min_connection = min([result[0] for result in results])
-                    max_connection = max([result[0] for result in results])
-                    avg_connection = sum([result[0] for result in results]) / hosts
-                    min_command = min([result[1] for result in results])
-                    max_command = max([result[1] for result in results])
-                    avg_command = sum([result[1] for result in results]) / hosts
-                    min_disconnection = min([result[2] for result in results])
-                    max_disconnection = max([result[2] for result in results])
-                    avg_disconnection = sum([result[2] for result in results]) / hosts
-                    with open(f"paramiko/{platform}_{hosts}.csv", "a+", encoding="utf-8") as file:
-                        writer = csv.writer(file)
-                        writer.writerow([min_connection, max_connection, avg_connection, 
-                                         min_command, max_command, avg_command, 
-                                         min_disconnection, max_disconnection, avg_disconnection])
+                if hosts > 1:
+                    inventory["hosts"]["R"]["replicas"] = hosts
+                credentials = [{
+                    "host": "localhost",
+                    "username": "user",
+                    "password": "user",
+                    "device_type": platform,
+                    "port": 6000+i
+                } for i in range(hosts)]
+                with FakeNOS(inventory):
+                    with ThreadPoolExecutor(max_workers=hosts) as executor:
+                        futures = []
+                        results = []
+                        for host in range(hosts):
+                            credential = credentials[host]
+                            futures.append(executor.submit(python_ssh2_handler, credential))
+                        wait(futures, return_when=ALL_COMPLETED)
+                        for future in futures:
+                            result = future.result()
+                            results.append(result)
+                        min_connection = min([result[0] for result in results])
+                        max_connection = max([result[0] for result in results])
+                        avg_connection = sum([result[0] for result in results]) / hosts
+                        min_command = min([result[1] for result in results])
+                        max_command = max([result[1] for result in results])
+                        avg_command = sum([result[1] for result in results]) / hosts
+                        min_disconnection = min([result[2] for result in results])
+                        max_disconnection = max([result[2] for result in results])
+                        avg_disconnection = sum([result[2] for result in results]) / hosts
+                        with open(f"ssh2_python/{platform}_{hosts}.csv", "a+", encoding="utf-8") as file:
+                            writer = csv.writer(file)
+                            writer.writerow([min_connection, max_connection, avg_connection, 
+                                            min_command, max_command, avg_command, 
+                                            min_disconnection, max_disconnection, avg_disconnection])
+            bar()
