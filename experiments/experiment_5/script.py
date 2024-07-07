@@ -8,7 +8,7 @@ import socket
 import time
 import timeit
 from concurrent.futures import wait, ALL_COMPLETED, ThreadPoolExecutor
-from alive_progress import alive_bar
+import multiprocessing
 from fakenos import FakeNOS
 from fakenos.core.nos import available_platforms
 
@@ -24,9 +24,9 @@ import asyncssh
 from ssh2.session import Session
 
 
-N_ROUNDS = 2
-# N_HOSTS = [1, 2, 4, 8, 16, 32, 64, 128]
-N_HOSTS = [1, 2]
+N_ROUNDS = 100
+N_HOSTS = [1, 2, 4, 8, 16, 32, 64, 128]
+# N_HOSTS = [64,128]
 
 inventory_base = {
     "hosts": {
@@ -54,13 +54,13 @@ def netmiko_handler(credential):
 netmiko_platforms = list(set(available_platforms) & set(CLASS_MAPPER_BASE.keys()))
 netmiko_platforms = [platform for platform in netmiko_platforms if "yamaha" not in platform]
 
-with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Netmiko") as bar:
+def python_netmiko_test():
     for hosts in N_HOSTS:
-        print(f'Number of hosts: {hosts}')
+        print(f'Netmiko: Number of hosts: {hosts}')
         for round in range(N_ROUNDS):
-            print(f'Round {round + 1}/{N_ROUNDS}')
+            print(f'Netmiko: Round {round + 1}/{N_ROUNDS}')
             for platform in netmiko_platforms:
-                print(f'Platform: {platform}')
+                print(f'Netmiko: Platform: {platform}')
                 inventory = {
                     "hosts": {
                         **inventory_base["hosts"],
@@ -105,7 +105,6 @@ with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Netmiko") as bar:
                             writer.writerow([min_connection, max_connection, avg_connection, 
                                             min_command, max_command, avg_command, 
                                             min_disconnection, max_disconnection, avg_disconnection])
-            bar()
 ### SCRAPLI ###
 async def scrapli_handler(credential):
     connect_start = timeit.default_timer()
@@ -129,20 +128,21 @@ scrapli_to_netmiko = {
     "arista_eos": "arista_eos",
 }
 
-with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Scrapli") as bar:
+def python_scrapli_test():
     for hosts in N_HOSTS:
-        print(f'Number of hosts: {hosts}')
+        break
+        print(f'Scrapli: Number of hosts: {hosts}')
         for round in range(N_ROUNDS):
-            print(f'Round {round + 1}/{N_ROUNDS}')
+            print(f'Scrapli: Round {round + 1}/{N_ROUNDS}')
             for platform, netmiko_platform in scrapli_to_netmiko.items():
-                print(f'Platform: {platform}')
+                print(f'Scrapli: Platform: {platform}')
                 inventory = {
                     "hosts": {
                         **inventory_base["hosts"],
                         "R": {
                             **inventory_base["hosts"]["R"],
                             "platform": netmiko_platform,
-                            "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+                            "port": [7000, 7000+hosts-1] if hosts > 1 else 7000
                         }
                     }
                 }
@@ -155,7 +155,7 @@ with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Scrapli") as bar:
                     "platform": platform,
                     "auth_strict_key": False,
                     "transport": "asyncssh",
-                    "port": 6000+i
+                    "port": 7000+i
                 } for i in range(hosts)]
                 with FakeNOS(inventory):
                     results = asyncio.run(run_scrapli_gather(credentials))
@@ -173,7 +173,6 @@ with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Scrapli") as bar:
                         writer.writerow([min_connection, max_connection, avg_connection, 
                                         min_command, max_command, avg_command,
                                         min_disconnection, max_disconnection, avg_disconnection])
-            bar()
 
 ### PARAMIKO ###
 def paramiko_handler(credential):
@@ -209,20 +208,21 @@ def paramiko_handler(credential):
 
     return time_to_connect, time_to_send_command, time_to_disconnect
 
-with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Paramiko") as bar:
+def python_paramiko_test():
     for hosts in N_HOSTS:
-        print(f'Number of hosts: {hosts}')
+        break
+        print(f'Paramiko: Number of hosts: {hosts}')
         for round in range(N_ROUNDS):
-            print(f'Round {round + 1}/{N_ROUNDS}')
+            print(f'Paramiko: Round {round + 1}/{N_ROUNDS}')
             for platform in netmiko_platforms:
-                print(f'Platform: {platform}')
+                print(f'Paramiko: Platform: {platform}')
                 inventory = {
                     "hosts": {
                         **inventory_base["hosts"],
                         "R": {
                             **inventory_base["hosts"]["R"],
                             "platform": platform,
-                            "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+                            "port": [8000, 8000+hosts-1] if hosts > 1 else 8000
                         }
                     }
                 }
@@ -233,7 +233,7 @@ with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Paramiko") as bar:
                     "username": "user",
                     "password": "user",
                     "device_type": platform,
-                    "port": 6000+i
+                    "port": 8000+i
                 } for i in range(hosts)]
                 with FakeNOS(inventory):
                     with ThreadPoolExecutor(max_workers=hosts) as executor:
@@ -260,7 +260,7 @@ with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Paramiko") as bar:
                             writer.writerow([min_connection, max_connection, avg_connection, 
                                             min_command, max_command, avg_command, 
                                             min_disconnection, max_disconnection, avg_disconnection])
-            bar()
+
 ### ASYNCSSH ###
 async def get_prompt(proc):
     prompt: str = ''
@@ -272,7 +272,7 @@ async def get_prompt(proc):
             break
     return prompt
 
-async def send_command(proc, command: str, prompt: str):        
+async def send_command(proc, command: str, prompt: str):
     proc.stdin.write(command + "\r\n")
     await proc.stdin.drain()
     await _send_command(proc, command)
@@ -313,20 +313,21 @@ async def run_asyncssh_gather(credentials):
     results = await asyncio.gather(*[asyncssh_handler(credential) for credential in credentials])
     return results
 
-with alive_bar(len(N_HOSTS)*N_ROUNDS, title="AsyncSSh") as bar:
+def python_asyncssh_test():
     for hosts in N_HOSTS:
-        print(f'Number of hosts: {hosts}')
+        break
+        print(f'AsyncSSH: Number of hosts: {hosts}')
         for round in range(N_ROUNDS):
-            print(f'Round {round + 1}/{N_ROUNDS}')
+            print(f'AsyncSSH: Round {round + 1}/{N_ROUNDS}')
             for platform in netmiko_platforms:
-                print(f'Platform: {platform}')
+                print(f'AsyncSSH: Platform: {platform}')
                 inventory = {
                     "hosts": {
                         **inventory_base["hosts"],
                         "R": {
                             **inventory_base["hosts"]["R"],
                             "platform": platform,
-                            "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+                            "port": [9000, 9000+hosts-1] if hosts > 1 else 9000
                         }
                     }
                 }
@@ -338,7 +339,7 @@ with alive_bar(len(N_HOSTS)*N_ROUNDS, title="AsyncSSh") as bar:
                     "password": "user",
                     "client_keys": None,
                     "known_hosts": None,
-                    "port": 6000+i
+                    "port": 9000+i
                 } for i in range(hosts)]
                 with FakeNOS(inventory):
                     results = asyncio.run(run_asyncssh_gather(credentials))
@@ -356,7 +357,6 @@ with alive_bar(len(N_HOSTS)*N_ROUNDS, title="AsyncSSh") as bar:
                         writer.writerow([min_connection, max_connection, avg_connection, 
                                         min_command, max_command, avg_command,
                                         min_disconnection, max_disconnection, avg_disconnection])
-            bar()
 
 ### PYTHON-SSH2 ###
 def python_ssh2_handler(credential):
@@ -399,20 +399,21 @@ def python_ssh2_handler(credential):
 
     return time_to_connect, time_to_send_command, time_to_disconnect
 
-with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Python-SSH2") as bar:
+def python_ssh2_test():
     for hosts in N_HOSTS:
-        print(f'Number of hosts: {hosts}')
+        break
+        print(f'Python-SSH2: Number of hosts: {hosts}')
         for round in range(N_ROUNDS):
-            print(f'Round {round + 1}/{N_ROUNDS}')
+            print(f'Python-SSH2: Round {round + 1}/{N_ROUNDS}')
             for platform in netmiko_platforms:
-                print(f'Platform: {platform}')
+                print(f'Python-SSH2: Platform: {platform}')
                 inventory = {
                     "hosts": {
                         **inventory_base["hosts"],
                         "R": {
                             **inventory_base["hosts"]["R"],
                             "platform": platform,
-                            "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+                            "port": [10000, 10000+hosts-1] if hosts > 1 else 10000
                         }
                     }
                 }
@@ -423,7 +424,7 @@ with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Python-SSH2") as bar:
                     "username": "user",
                     "password": "user",
                     "device_type": platform,
-                    "port": 6000+i
+                    "port": 10000+i
                 } for i in range(hosts)]
                 with FakeNOS(inventory):
                     with ThreadPoolExecutor(max_workers=hosts) as executor:
@@ -450,4 +451,24 @@ with alive_bar(len(N_HOSTS)*N_ROUNDS, title="Python-SSH2") as bar:
                             writer.writerow([min_connection, max_connection, avg_connection, 
                                             min_command, max_command, avg_command, 
                                             min_disconnection, max_disconnection, avg_disconnection])
-            bar()
+
+if __name__ == "__main__":
+    p1 = multiprocessing.Process(target=python_netmiko_test)
+    # p2 = multiprocessing.Process(target=python_scrapli_test)
+    # p3 = multiprocessing.Process(target=python_paramiko_test)
+    # p4 = multiprocessing.Process(target=python_asyncssh_test)
+    # p5 = multiprocessing.Process(target=python_ssh2_test)
+
+    p1.start()
+    # p2.start()
+    # p3.start()
+    # p4.start()
+    # p5.start()
+
+    p1.join()
+    # p2.join()
+    # p3.join()
+    # p4.join()
+    # p5.join()
+
+    print("Done!")
