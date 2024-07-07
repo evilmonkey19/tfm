@@ -25,8 +25,8 @@ from ssh2.session import Session
 
 
 N_ROUNDS = 100
-N_HOSTS = [1, 2, 4, 8, 16, 32, 64, 128]
-# N_HOSTS = [64,128]
+# N_HOSTS = [1, 2, 4, 8, 16, 32, 64, 128]
+N_HOSTS = [64,128]
 
 inventory_base = {
     "hosts": {
