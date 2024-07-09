@@ -25,8 +25,8 @@ from ssh2.session import Session
 
 
 N_ROUNDS = 100
-# N_HOSTS = [1, 2, 4, 8, 16, 32, 64, 128]
-N_HOSTS = [64,128]
+N_HOSTS = [1, 2, 4, 8, 16, 32, 64, 128]
+# N_HOSTS = [2, 4, 8, 16, 32, 64, 128]
 
 inventory_base = {
     "hosts": {
@@ -67,7 +67,7 @@ def python_netmiko_test():
                         "R": {
                             **inventory_base["hosts"]["R"],
                             "platform": platform,
-                            "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
+                            "port": [5000, 5000+hosts-1] if hosts > 1 else 5000
                         }
                     }
                 }
@@ -78,7 +78,7 @@ def python_netmiko_test():
                     "username": "user",
                     "password": "user",
                     "device_type": platform,
-                    "port": 6000+i
+                    "port": 5000+i
                 } for i in range(hosts)]
                 with FakeNOS(inventory):
                     with ThreadPoolExecutor(max_workers=hosts) as executor:

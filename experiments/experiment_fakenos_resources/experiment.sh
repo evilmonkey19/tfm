@@ -5,11 +5,11 @@ platforms=(
 )
 
 n_hosts=(
-    1 2 
+    1 2 4 8 16 32 64 128
 )
 
 for n in "${n_hosts[@]}"; do
-    for ((i=0; i<2; i++)); do
+    for ((i=0; i<100; i++)); do
         for platform in "${platforms[@]}"; do
             python script.py "$platform" "$n"
         done
