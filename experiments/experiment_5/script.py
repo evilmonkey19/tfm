@@ -25,8 +25,8 @@ from ssh2.session import Session
 
 
 N_ROUNDS = 100
-N_HOSTS = [1, 2, 4, 8, 16, 32, 64, 128]
-# N_HOSTS = [2, 4, 8, 16, 32, 64, 128]
+# N_HOSTS = [1, 2, 4, 8, 16, 32, 64, 128]
+N_HOSTS = [8, 16, 32, 64]
 
 inventory_base = {
     "hosts": {
@@ -130,7 +130,6 @@ scrapli_to_netmiko = {
 
 def python_scrapli_test():
     for hosts in N_HOSTS:
-        break
         print(f'Scrapli: Number of hosts: {hosts}')
         for round in range(N_ROUNDS):
             print(f'Scrapli: Round {round + 1}/{N_ROUNDS}')
@@ -210,7 +209,6 @@ def paramiko_handler(credential):
 
 def python_paramiko_test():
     for hosts in N_HOSTS:
-        break
         print(f'Paramiko: Number of hosts: {hosts}')
         for round in range(N_ROUNDS):
             print(f'Paramiko: Round {round + 1}/{N_ROUNDS}')
@@ -315,7 +313,6 @@ async def run_asyncssh_gather(credentials):
 
 def python_asyncssh_test():
     for hosts in N_HOSTS:
-        break
         print(f'AsyncSSH: Number of hosts: {hosts}')
         for round in range(N_ROUNDS):
             print(f'AsyncSSH: Round {round + 1}/{N_ROUNDS}')
@@ -401,7 +398,6 @@ def python_ssh2_handler(credential):
 
 def python_ssh2_test():
     for hosts in N_HOSTS:
-        break
         print(f'Python-SSH2: Number of hosts: {hosts}')
         for round in range(N_ROUNDS):
             print(f'Python-SSH2: Round {round + 1}/{N_ROUNDS}')

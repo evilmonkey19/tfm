@@ -5,7 +5,7 @@ platforms=(
 )
 
 n_hosts=(
-    1 2 4 8 16 32 64 128
+    32 64 128
 )
 
 for n in "${n_hosts[@]}"; do
