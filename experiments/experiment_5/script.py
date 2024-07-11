@@ -26,7 +26,7 @@ from ssh2.session import Session
 
 N_ROUNDS = 100
 # N_HOSTS = [1, 2, 4, 8, 16, 32, 64, 128]
-N_HOSTS = [8, 16, 32, 64]
+N_HOSTS = [64, 128]
 
 inventory_base = {
     "hosts": {
@@ -53,6 +53,7 @@ def netmiko_handler(credential):
 
 netmiko_platforms = list(set(available_platforms) & set(CLASS_MAPPER_BASE.keys()))
 netmiko_platforms = [platform for platform in netmiko_platforms if "yamaha" not in platform]
+netmiko_platforms = ["cisco_xr", "cisco_nxos", "juniper_junos", "arista_eos"]
 
 def python_netmiko_test():
     for hosts in N_HOSTS:
