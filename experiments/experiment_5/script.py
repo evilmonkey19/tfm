@@ -24,9 +24,9 @@ import asyncssh
 from ssh2.session import Session
 
 
-N_ROUNDS = 100
+N_ROUNDS = 86
 # N_HOSTS = [1, 2, 4, 8, 16, 32, 64, 128]
-N_HOSTS = [64, 128]
+N_HOSTS = [64]
 
 inventory_base = {
     "hosts": {
@@ -53,7 +53,9 @@ def netmiko_handler(credential):
 
 netmiko_platforms = list(set(available_platforms) & set(CLASS_MAPPER_BASE.keys()))
 netmiko_platforms = [platform for platform in netmiko_platforms if "yamaha" not in platform]
-netmiko_platforms = ["cisco_xr", "cisco_nxos", "juniper_junos", "arista_eos"]
+# netmiko_platforms = ["cisco_xr", "cisco_nxos", "juniper_junos", "arista_eos"]
+netmiko_platforms = ["cisco_nxos", "juniper_junos", "arista_eos"]
+# netmiko_platforms = ["cisco_xr"]
 
 def python_netmiko_test():
     for hosts in N_HOSTS:
@@ -68,7 +70,7 @@ def python_netmiko_test():
                         "R": {
                             **inventory_base["hosts"]["R"],
                             "platform": platform,
-                            "port": [5000, 5000+hosts-1] if hosts > 1 else 5000
+                            "port": [6000, 6000+hosts-1] if hosts > 1 else 6000
                         }
                     }
                 }
@@ -79,7 +81,7 @@ def python_netmiko_test():
                     "username": "user",
                     "password": "user",
                     "device_type": platform,
-                    "port": 5000+i
+                    "port": 6000+i
                 } for i in range(hosts)]
                 with FakeNOS(inventory):
                     with ThreadPoolExecutor(max_workers=hosts) as executor:
@@ -372,7 +374,8 @@ def python_ssh2_handler(credential):
     session.userauth_password(username, password)
     channel = session.open_session()
     prompt = ""
-    while True:
+    start_time = time.time()
+    while start_time + 60 > time.time():
         _, data = channel.read()
         if data.decode().endswith(('>', '#', '~$', "$")):
             data = data.decode().replace('>','').replace('#','').replace('$','').replace('~','')
@@ -384,7 +387,8 @@ def python_ssh2_handler(credential):
     time_to_connect = timeit.default_timer() - connect_start
     command_start = timeit.default_timer()
     channel.write("enable" + "\n")
-    while True:
+    start_time = time.time()
+    while start_time + 60 > time.time():
         _, data = channel.read()
         if data.decode()[:-1].startswith(prompt):
             break
@@ -430,7 +434,7 @@ def python_ssh2_test():
                         for host in range(hosts):
                             credential = credentials[host]
                             futures.append(executor.submit(python_ssh2_handler, credential))
-                        wait(futures, return_when=ALL_COMPLETED)
+                        wait(futures, return_when=ALL_COMPLETED, timeout=60)
                         for future in futures:
                             result = future.result()
                             results.append(result)
@@ -450,22 +454,24 @@ def python_ssh2_test():
                                             min_disconnection, max_disconnection, avg_disconnection])
 
 if __name__ == "__main__":
-    p1 = multiprocessing.Process(target=python_netmiko_test)
+    # p1 = multiprocessing.Process(target=python_netmiko_test)
     # p2 = multiprocessing.Process(target=python_scrapli_test)
     # p3 = multiprocessing.Process(target=python_paramiko_test)
     # p4 = multiprocessing.Process(target=python_asyncssh_test)
     # p5 = multiprocessing.Process(target=python_ssh2_test)
 
-    p1.start()
+    # p1.start()
     # p2.start()
     # p3.start()
     # p4.start()
     # p5.start()
 
-    p1.join()
+    # p1.join()
     # p2.join()
     # p3.join()
     # p4.join()
     # p5.join()
+
+    python_netmiko_test()
 
     print("Done!")

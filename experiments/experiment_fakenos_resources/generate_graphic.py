@@ -3,216 +3,129 @@ import numpy as np
 
 import matplotlib.pyplot as plt
 
-# Read the CSV file into a pandas DataFrame
-alcatel_aos = pd.read_csv('results/alcatel_aos.csv')
-alcatel_sros = pd.read_csv('results/alcatel_sros.csv')
-allied_telesis_awplus = pd.read_csv('results/allied_telesis_awplus.csv')
-arista_eos = pd.read_csv('results/arista_eos.csv')
-aruba_os = pd.read_csv('results/aruba_os.csv')
-avaya_ers = pd.read_csv('results/avaya_ers.csv')
-avaya_vsp = pd.read_csv('results/avaya_vsp.csv')
-broadcom_icos = pd.read_csv('results/broadcom_icos.csv')
-brocade_netiron = pd.read_csv('results/brocade_netiron.csv')
-checkpoint_gaia = pd.read_csv('results/checkpoint_gaia.csv')
-cisco_asa = pd.read_csv('results/cisco_asa.csv')
-cisco_ftd = pd.read_csv('results/cisco_ftd.csv')
-cisco_ios = pd.read_csv('results/cisco_ios.csv')
-cisco_nxos = pd.read_csv('results/cisco_nxos.csv')
-cisco_s300 = pd.read_csv('results/cisco_s300.csv')
-cisco_xr = pd.read_csv('results/cisco_xr.csv')
-dell_force10 = pd.read_csv('results/dell_force10.csv')
-dlink_ds = pd.read_csv('results/dlink_ds.csv')
-eltex = pd.read_csv('results/eltex.csv')
-ericsson_ipos = pd.read_csv('results/ericsson_ipos.csv')
-extreme_exos = pd.read_csv('results/extreme_exos.csv')
-hp_comware = pd.read_csv('results/hp_comware.csv')
-hp_procurve = pd.read_csv('results/hp_procurve.csv')
-huawei_smartax = pd.read_csv('results/huawei_smartax.csv')
-huawei_vrp = pd.read_csv('results/huawei_vrp.csv')
-ipinfusion_ocnos = pd.read_csv('results/ipinfusion_ocnos.csv')
-juniper_junos = pd.read_csv('results/juniper_junos.csv')
-linux = pd.read_csv('results/linux.csv')
-ubiquiti_edgerouter = pd.read_csv('results/ubiquiti_edgerouter.csv')
-ubiquiti_edgeswitch = pd.read_csv('results/ubiquiti_edgeswitch.csv')
-vyatta_vyos = pd.read_csv('results/vyatta_vyos.csv')
-zyxel_os = pd.read_csv('results/zyxel_os.csv')
+platforms = [
+    'alcatel_aos', 'alcatel_sros', 'allied_telesis_awplus', 'arista_eos', 'aruba_os',
+    'avaya_ers', 'avaya_vsp', 'broadcom_icos', 'brocade_netiron', 'checkpoint_gaia',
+    'cisco_asa', 'cisco_ftd', 'cisco_nxos', 'cisco_s300', 'cisco_xr', 'dell_force10',
+    'dlink_ds', 'eltex', 'ericsson_ipos', 'extreme_exos', 'hp_comware', 'hp_procurve',
+    'huawei_smartax', 'huawei_vrp', 'ipinfusion_ocnos', 'juniper_junos', 'linux',
+    'ubiquiti_edgerouter', 'ubiquiti_edgeswitch', 'vyatta_vyos', 'zyxel_os'
+]
+
+n_hosts = [1, 2, 4, 8, 16, 32, 64, 128]
 
 results = {
-    'alcatel_aos': alcatel_aos,
-    'alcatel_sros': alcatel_sros,
-    'allied_telesis_awplus': allied_telesis_awplus,
-    'arista_eos': arista_eos,
-    'aruba_os': aruba_os,
-    'avaya_ers': avaya_ers,
-    'avaya_vsp': avaya_vsp,
-    'broadcom_icos': broadcom_icos,
-    'brocade_netiron': brocade_netiron,
-    'checkpoint_gaia': checkpoint_gaia,
-    'cisco_asa': cisco_asa,
-    'cisco_ftd': cisco_ftd,
-    'cisco_ios': cisco_ios,
-    'cisco_nxos': cisco_nxos,
-    'cisco_s300': cisco_s300,
-    'cisco_xr': cisco_xr,
-    'dell_force10': dell_force10,
-    'dlink_ds': dlink_ds,
-    'eltex': eltex,
-    'ericsson_ipos': ericsson_ipos,
-    'extreme_exos': extreme_exos,
-    'hp_comware': hp_comware,
-    'hp_procurve': hp_procurve,
-    'huawei_smartax': huawei_smartax,
-    'huawei_vrp': huawei_vrp,
-    'ipinfusion_ocnos': ipinfusion_ocnos,
-    'juniper_junos': juniper_junos,
-    'linux': linux,
-    'ubiquiti_edgerouter': ubiquiti_edgerouter,
-    'ubiquiti_edgeswitch': ubiquiti_edgeswitch,
-    'vyatta_vyos': vyatta_vyos,
-    'zyxel_os': zyxel_os,
+    "cpu_usage": [],
+    "memory_usage": [],
+    "time": []
 }
 
+for platform in platforms:
+    for n_host in n_hosts:
+        df = pd.read_csv(f"fakenos/{platform}_{n_host}.csv")
+        results["cpu_usage"].append((platform, n_host, df['CPU time'].mean(), df['CPU time'].std()))
+        results["memory_usage"].append((platform, n_host, df[' RAM usage'].mean(), df[' RAM usage'].std()))
+        results["time"].append((platform, n_host, df[' Time taken'].mean(), df[' Time taken'].std()))
 
-### CPU Usage ###
-# Calculate the average CPU usage for each vendor
-average_cpu_usage = {}
-for vendor, df in results.items():
-    average_cpu_usage[vendor] = df['CPU time'].mean()
+# for each platform do a bar graph with the average cpu usage per host number and the standard deviation as error bar
+for platform in platforms:
+    df = pd.DataFrame(results["cpu_usage"], columns=["Platform", "Hosts", "CPU Usage", "Std Dev"])
+    df = df[df["Platform"] == platform]
+    plt.errorbar([str(n) for n in n_hosts], df["CPU Usage"], yerr=df["Std Dev"], capsize=5)
+    plt.xlabel("Number of Hosts")
+    plt.ylabel("Average CPU Usage (%)")
+    plt.title(f"Average CPU Usage for {platform} in FakeNOS")
+    plt.xticks([str(n) for n in n_hosts])
+    plt.savefig(f"graphs/cpu_usage_{platform}.png", dpi=300)
+    plt.close()
 
-# Calculate the standard deviation for each vendor
-std_dev_cpu_usage = {}
-for vendor, df in results.items():
-    std_dev_cpu_usage[vendor] = df['CPU time'].std()
+    df = pd.DataFrame(results["memory_usage"], columns=["Platform", "Hosts", "Memory Usage", "Std Dev"])
+    df = df[df["Platform"] == platform]
+    plt.errorbar([str(n) for n in n_hosts], df["Memory Usage"]/1024, yerr=df["Std Dev"]/1024, capsize=5)
+    plt.xlabel("Number of Hosts")
+    plt.ylabel("Average Memory Usage (kb)")
+    plt.title(f"Average Memory Usage for {platform} in FakeNOS")
+    plt.xticks([str(n) for n in n_hosts])
+    plt.savefig(f"graphs/memory_usage_{platform}.png", dpi=300)
+    plt.close()
 
-# Plot the bar graph with error bars
-plt.barh(
-    [vendor.replace('_', ' ').title() for vendor in sorted(average_cpu_usage, key=average_cpu_usage.get)],
-    [average_cpu_usage[vendor] for vendor in sorted(average_cpu_usage, key=average_cpu_usage.get)],
-    xerr=[std_dev_cpu_usage[vendor] for vendor in sorted(average_cpu_usage, key=average_cpu_usage.get)],
-    capsize=5
-)
-plt.ylabel('Vendor')
-plt.xlabel('Average CPU Usage (%)')
-plt.title('Average CPU Usage for each platform in FakeNOS')
-plt.xticks(np.arange(0, 1, 0.1))  # Set y-axis ticks to be in increments of 10
-# Add horizontal lines for each vertical line
-for i in np.arange(0, 1, 0.1):
-    plt.axvline(x=i, color='gray', linestyle='dotted', alpha=0.2)
-plt.tight_layout()
-plt.subplots_adjust(left=0.2)
-plt.savefig('results_cpu_usage.png', dpi=300)
-plt.savefig('results_cpu_usage.svg', dpi=300)
-plt.show()
-
-### Memory Usage ###
-# Calculate the average memory usage for each vendor
-average_memory_usage = {}
-for vendor, df in results.items():
-    average_memory_usage[vendor] = df[' RAM usage'].mean() / 1024 / 1024
-
-# Calculate the standard deviation for each vendor
-std_dev_memory_usage = {}
-for vendor, df in results.items():
-    std_dev_memory_usage[vendor] = df[' RAM usage'].std() / 1024 / 1024
-
-# Plot the bar graph with error bars
-plt.barh(
-    [vendor.replace('_', ' ').title() for vendor in sorted(average_memory_usage, key=average_memory_usage.get)],
-    [average_memory_usage[vendor] for vendor in sorted(average_memory_usage, key=average_memory_usage.get)],
-    xerr=[std_dev_memory_usage[vendor] for vendor in sorted(average_memory_usage, key=average_memory_usage.get)],
-    capsize=5
-)
-plt.ylabel('Vendor')
-plt.xlabel('Average Memory Usage (MB)')
-plt.title('Average Memory Usage for each platform in FakeNOS')
-plt.xticks(np.arange(0, 20, 1))  # Set y-axis ticks to be in increments of 50
-# Add horizontal lines for each vertical line
-for i in np.arange(0, 20, 1):
-    plt.axvline(x=i, color='gray', linestyle='dotted', alpha=0.2)
-plt.tight_layout()
-plt.subplots_adjust(left=0.2)
-plt.savefig('results_memory_usage.png', dpi=300)
-plt.savefig('results_memory_usage.svg', dpi=300)
-
-plt.show()
-
-### Time to Access ###
-# Calculate the average time to access for each vendor
-average_time = {}
-for vendor, df in results.items():
-    average_time[vendor] = df[' Time taken'].mean()
-
-# Calculate the maximum time for each vendor
-max_time = {}
-for vendor, df in results.items():
-    max_time[vendor] = df[' Time taken'].max()
-
-# Calculate the minimum time for each vendor
-min_time = {}
-for vendor, df in results.items():
-    min_time[vendor] = df[' Time taken'].min()
-
-# Plot the bar graph with maximum, minimum, and average indicators
-plt.barh(
-    [vendor.replace('_', ' ').title() for vendor in sorted(average_time, key=lambda x: max_time[x])],
-    [max_time[vendor] for vendor in sorted(average_time, key=lambda x: max_time[x])],
-    color='red',
-    alpha=0.5,
-    label='Maximum Time'
-)
-plt.barh(
-    [vendor.replace('_', ' ').title() for vendor in sorted(average_time, key=lambda x: max_time[x])],
-    [average_time[vendor] for vendor in sorted(average_time, key=lambda x: max_time[x])],
-    color='green',
-    alpha=0.8,
-    label='Average Time'
-)
-plt.barh(
-    [vendor.replace('_', ' ').title() for vendor in sorted(average_time, key=lambda x: max_time[x])],
-    [min_time[vendor] for vendor in sorted(average_time, key=lambda x: max_time[x])],
-    color='blue',
-    alpha=0.5,
-    label='Minimum Time'
-)
-plt.ylabel('Vendor')
-plt.xlabel('Time (s)')
-plt.title('Time until device is available to user for each platform in FakeNOS')
-plt.legend()
-plt.xticks(np.arange(0, 2, 0.1))  # Set y-axis ticks to be in increments of 0.1
-# Add horizontal lines for each vertical line
-for i in np.arange(0, 2, 0.1):
-    plt.axvline(x=i, color='gray', linestyle='dotted', alpha=0.2)
-plt.tight_layout()
-plt.subplots_adjust(left=0.2)
-plt.savefig('results_time.png', dpi=300)
-plt.savefig('results_time.svg', dpi=300)
-plt.show()
+    df = pd.DataFrame(results["time"], columns=["Platform", "Hosts", "Time", "Std Dev"])
+    df = df[df["Platform"] == platform]
+    plt.errorbar([str(n) for n in n_hosts], df["Time"], yerr=df["Std Dev"], capsize=5)
+    plt.xlabel("Number of Hosts")
+    plt.ylabel("Average Time Taken (s)")
+    plt.title(f"Average Time Taken for {platform} in FakeNOS")
+    plt.xticks([str(n) for n in n_hosts])
+    plt.savefig(f"graphs/time_{platform}.png", dpi=300)
+    plt.close()
 
 
-# plot the time until the device is available to the user in vyatta_vyos
-plt.ylabel('Time (s)')
-plt.xlabel('Round Number')
-plt.title('Time until device is available to user in Huawei Smartax')
-plt.plot(huawei_smartax[' Time taken'])
-plt.show()
+platforms_to_plot = ["huawei_smartax", "cisco_nxos", "juniper_junos", "linux", "arista_eos"]
+### CPU ###
+for platform in platforms_to_plot:
+    df = pd.DataFrame(results["cpu_usage"], columns=["Platform", "Hosts", "CPU Usage", "Std Dev"])
+    df = df[df["Platform"] == platform]
+    plt.plot([str(n) for n in n_hosts], df["CPU Usage"], label=platform, marker='o')
+plt.xlabel("Number of Hosts")
+plt.ylabel("Average CPU Usage (%)")
+plt.title("Average CPU Usage for FakeNOS")
+plt.legend(loc=2)
+plt.savefig("graphs/cpu_5.png", dpi=300)
+plt.close()
 
+for platform in platforms:
+    df = pd.DataFrame(results["cpu_usage"], columns=["Platform", "Hosts", "CPU Usage", "Std Dev"])
+    df = df[df["Platform"] == platform]
+    plt.plot([str(n) for n in n_hosts], df["CPU Usage"], label=platform)
+plt.xlabel("Number of Hosts")
+plt.ylabel("Average CPU Usage (%)")
+plt.title("Average CPU Usage for FakeNOS")
+plt.legend(loc=2, fontsize=5)
+plt.savefig("graphs/cpu_all.png", dpi=300)
+plt.close()
 
-# Calculate the average time for each vendor
+### Memory ###
+for platform in platforms_to_plot:
+    df = pd.DataFrame(results["memory_usage"], columns=["Platform", "Hosts", "Memory Usage", "Std Dev"])
+    df = df[df["Platform"] == platform]
+    plt.plot([str(n) for n in n_hosts], df["Memory Usage"]/1024, label=platform, marker='o')
+plt.xlabel("Number of Hosts")
+plt.ylabel("Average Memory Usage (KB)")
+plt.title("Average Memory Usage for FakeNOS")
+plt.legend(loc=2)
+plt.savefig("graphs/memory_5.png", dpi=300)
+plt.close()
 
-# Calculate the standard deviation for each vendor
-# std_dev = df.std()
+for platform in platforms:
+    df = pd.DataFrame(results["memory_usage"], columns=["Platform", "Hosts", "Memory Usage", "Std Dev"])
+    df = df[df["Platform"] == platform]
+    plt.plot([str(n) for n in n_hosts], df["Memory Usage"]/1024, label=platform)
+plt.xlabel("Number of Hosts")
+plt.ylabel("Average Memory Usage (KB)")
+plt.title("Average Memory Usage for FakeNOS")
+plt.legend(loc=2, fontsize=5)
+plt.savefig("graphs/memory_all.png", dpi=300)
+plt.close()
 
-# # Plot the bar graph with error bars
-# # plt.barh(average_time.sort_values(ascending=True).index, average_time.sort_values(ascending=True).values, xerr=std_dev.sort_values(ascending=True).values, capsize=5)
-# plt.ylabel('Vendor')
-# plt.xlabel('Average Time')
-# plt.title('Average Time to access for each platform in Netmiko')
-# plt.xticks(range(0, 12, 1))  # Set y-axis ticks to be in increments of 5
-# # Add horizontal lines for each vertical line
-# for i in range(0,12,1):
-#     plt.axvline(x=i, color='gray', linestyle='dotted', alpha=0.2)
-# plt.tight_layout()
-# plt.subplots_adjust(left=0.2)
-# plt.savefig('results.png', dpi=300)
-# plt.savefig('results.svg', dpi=300)
-# plt.show()
+### Time taken ###
+for platform in platforms_to_plot:
+    df = pd.DataFrame(results["time"], columns=["Platform", "Hosts", "Time", "Std Dev"])
+    df = df[df["Platform"] == platform]
+    plt.plot([str(n) for n in n_hosts], df["Time"], label=platform, marker='o')
+plt.xlabel("Number of Hosts")
+plt.ylabel("Average Time Taken (s)")
+plt.title("Average Time Taken for FakeNOS")
+plt.legend(loc=2)
+plt.savefig("graphs/time_5.png", dpi=300)
+plt.close()
+
+for platform in platforms:
+    df = pd.DataFrame(results["time"], columns=["Platform", "Hosts", "Time", "Std Dev"])
+    df = df[df["Platform"] == platform]
+    plt.plot([str(n) for n in n_hosts], df["Time"], label=platform)
+plt.xlabel("Number of Hosts")
+plt.ylabel("Average Time Taken (s)")
+plt.title("Average Time Taken for FakeNOS")
+plt.legend(loc=2, fontsize=5)
+plt.savefig("graphs/time_all.png", dpi=300)
+plt.close()

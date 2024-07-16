@@ -1,11 +1,7 @@
 import csv
-import os
-from dotenv import load_dotenv
 import time
 
-load_dotenv()
-
-rounds = int(os.getenv("ROUNDS", 100))
+rounds = 1_000_000
 
 output = """
   -------------------------------------------------------------------------
@@ -26,12 +22,13 @@ results = {
     "ttp": [],
 }
 for i in range(rounds):
+    print("Roudn", i)
     ## REGEX ##
     import re
     pattern = r"\s+(\d+)\s+(\s*\w*)?(\s*\w*)?(\s*\w*)?(\s*\w*)?(Online|Offline)?$"
     pattern = re.compile(pattern)
     start_time = time.time()
-    lines = output.splitlines()
+    lines = re.split(r"\n", output)
     for line in lines:
         match = pattern.match(line)
         if match:
