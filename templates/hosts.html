@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>FakeNOS</title>
+</head>
+<body class="bg-zinc-100">
+    <div class="m-16 flex flex-col gap-8">
+        <h1 class="text-3xl underline text-zinc-800">FakeNOS Hosts</h1>
+        <div class="flex flex-row gap-8">
+            {% for hostname, host in hosts.items() %}
+            <div class="border-2 border-black p-4 rounded-xl w-56 flex flex-col gap-1 bg-zinc-50">
+                <div class="flex flex-row gap-2 items-center">
+                    <div class="w-3 h-3 rounded-full {% if host.running %} bg-green-500 {% else %} bg-red-500 {% endif %}"></div>
+                    <h1 class="font-bold text-2xl">{{hostname}}</h1>
+                </div>
+                <p>Username: <span class="text-zinc-700">{{host.username}}</span></p>
+                <p>Password: <span class="text-zinc-700">{{host.password}}</span></p>
+                <p>Port: <span class="text-zinc-700">{{host.port}}</span></p>
+                <p>Platform: <span class="text-zinc-700">{{host.platform}}</span></p>
+                <form action="{% if host.running %}
+                {{url_for('shutdown_host', host=hostname)}}
+                {% else %}
+                {{url_for('start_host', host=hostname)}}
+                {% endif %}
+                 " method="POST">
+                    <button type="submit" class="p-2 rounded-lg {% if host.running %} bg-red-300 {% else %} bg-green-300 {% endif %} hover:scale-105 w-full">
+                        {% if host.running %} Shutdown {% else %} Start {% endif %}
+                    </button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

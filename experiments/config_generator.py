@@ -639,3 +639,7 @@ def generate_config(path: str = 'huawei_smartax.yaml.j2'):
     with open (path, 'w', encoding='utf-8') as f:
         f.write(yaml.dump(configurations))
     return configurations
+
+if __name__ == '__main__':
+    import sys
+    generate_config(sys.argv[1] if len(sys.argv) > 1 else 'huawei_smartax.yaml.j2')
