@@ -40,7 +40,7 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/api/hosts")
 async def root():
-    hosts = sorted(list(net.hosts), key=lambda x: int(x[1:]))
+    hosts = list(net.hosts)
     return {"hosts": [{host: {
         "username": net.hosts[host].username,
         "password": net.hosts[host].password,
@@ -81,7 +81,7 @@ async def unregister_ont(host: str, ont_sn: str):
 
 @app.get("/", response_class=HTMLResponse)
 async def hosts(request: Request):
-    hosts = sorted(list(net.hosts), key=lambda x: int(x[1:]))
+    hosts = list(net.hosts)
     hosts = {host: net.hosts[host] for host in hosts}
     print(hosts)
     return templates.TemplateResponse(

@@ -7,8 +7,6 @@ from netmiko import ConnectHandler
 from ntc_templates.parse import parse_output
 import celery
 
-from master import receive_onts_data, notify_olt_not_responding, notify_all_onts
-
 logging.basicConfig(level=logging.INFO)
 
 RABBITMQ_IP = os.environ.get('RABBITMQ_IP', 'localhost')
@@ -55,10 +53,8 @@ GPON_BOARDS: dict[str, int] = {
 def get_onts():
     results = []
     print("Connecting to the device")
-    print(credentials)
     with ConnectHandler(**credentials) as conn:
         output = conn.send_command("display board 0")
-        print(output)
         parsed_output = parse_output(
              platform="huawei_smartax",
              command="display board 0",
@@ -70,15 +66,15 @@ def get_onts():
                                 if board["boardname"] in GPON_BOARDS][0]
         for i in range(n_ports):
             command = f"display ont info 0 {slot_id} {i}"
-            print(command)
             output = conn.send_command(command)
             result = parse_output(
                  platform="huawei_smartax",
                  command=command,
                  data=output
                 )
+            print(result)
             results.append(result)
-        return results
+    return results
 
 def get_all_onts():
     onts = []
@@ -100,6 +96,7 @@ def get_all_onts():
                  command=command,
                  data=output
                 )
+            print(len(result))
             for ont in result:
                 onts.append({
                     "fsp": ont["fsp"],
@@ -116,12 +113,14 @@ def get_all_onts():
              command=command,
              data=output
         )
+        print(len(result))
         for ont in result:
             onts.append({
                 "fsp": ont["fsp"],
                 "sn": ont["serial_number"].split()[0],
                 "registered": False
             })
+    print(len(onts))
     return onts
 
 def monitoring_onts():
@@ -133,15 +132,32 @@ def monitoring_onts():
     while True:
         try:
             receive_onts_data.apply_async(
-                ({os.getenv("QUEUE_NAME", 'celery'): get_onts()}),
+                (os.getenv("QUEUE_NAME", 'celery'), get_onts()),
                 queue='master'
             )
         except:
-            notify_olt_not_responding.delay(
+            notify_olt_not_responding.apply_async(
                 (os.getenv("QUEUE_NAME", 'celery'),),
                 queue="master"
             )
             time.sleep(1)
+
+@app.task
+def register_ont(ont):
+    try:
+        with ConnectHandler(**credentials) as conn:
+            conn.enable()
+            conn.config_mode()
+            output = conn.send_command("display ont autofind all")
+            parsed_output = parse_output(platform='huawei_smartax', command='display ont autofind all', data=output)
+            print(parsed_output)
+            for autofind_ont in parsed_output:
+                if ont["sn"] == autofind_ont["serial_number"].split()[0]:
+                    print(f"ONT {ont['sn']} found")
+
+        return True
+    except:
+        return False
 
 @app.task
 def add(x, y):
@@ -154,8 +170,35 @@ def get_gpon_board():
         output = net_connect.send_command(COMMAND)
         parsed_output = parse_output(platform='huawei_smartax', command=COMMAND, data=output)
         return parsed_output
-    
+
+def prepare_olt():
+    time.sleep(5)
+    with ConnectHandler(**credentials) as conn:
+        conn.enable()
+        conn.config_mode()
+        conn.send_command("ont-srvprofile gpon profile-id 500 profile-name new_link", auto_find_prompt=False)
+        conn.find_prompt()
+        conn.send_command("ont-port pots 4 eth 4")
+        output = conn.send_command("port vlan eth1 500")
+        parsed_output = parse_output(platform="huawei_smartax", command="port vlan eth1 500", data=output)
+        if int(parsed_output[0]["failed"]) != 0:
+            raise Exception("Failed to set port vlan")
+        conn.send_command("commit")
+        conn.send_command("quit", auto_find_prompt=False)
+        conn.find_prompt()
+        conn.send_command("ont-lineprofile gpon profile-id 500 profile-name new_link", auto_find_prompt=False)
+        conn.find_prompt()
+        conn.send_command("tcont 4 dba-profile-id 5")
+        conn.send_command("gem add 126 eth tcont 4")
+        conn.send_command("gem mapping 126 0 vlan 500")
+        conn.send_command("commit")
+        conn.send_command("quit", auto_find_prompt=False)
+        conn.find_prompt()
+
+
 if __name__ == '__main__':
+    from master import receive_onts_data, notify_olt_not_responding, notify_all_onts
+    prepare_olt()
     monitoring_thread = threading.Thread(target=monitoring_onts)
     monitoring_thread.start()
     worker = app.Worker(

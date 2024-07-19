@@ -88,7 +88,7 @@ ont_states = [
 
 gpon_boards = {
     'H901XGHDE': 8,
-    'H901OGHK': 48,
+    'H901OGHK': 24,
     'H901NXED': 8,
     'H901OXHD': 8,
     'H902OXHD': 8,

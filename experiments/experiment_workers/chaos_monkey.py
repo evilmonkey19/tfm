@@ -2,6 +2,7 @@ import requests
 import random
 import time
 import logging
+import argparse
 
 # urls = {
 #     f"site_{i}": f"http://localhost:800{i}"
@@ -18,25 +19,48 @@ logging.basicConfig(
     ]
 )
 
+args = argparse.ArgumentParser()
+
+args.add_argument(
+    "--sites",
+    type=int,
+    default=10,
+    help="Number of sites to target"
+)
+
+args.add_argument(
+    "--factor",
+    type=int,
+    default=1,
+    help="Factor to increase the number of sites"
+)
+
+args = args.parse_args()
+
+FACTOR = args.factor
+SITES = args.sites
+
 urls = {
-    "site_2": "http://localhost:8002/api",
+    f"site_{i}": f"http://localhost:800{i}/api"
+    for i in range(1, SITES + 1)
 }
+
 
 
 if __name__ == '__main__':
     while True:
         try:
-            time.sleep(random.randint(1, 10))
+            time.sleep(random.uniform(0, 10))
             site = random.choice(list(urls.keys()))
-            if random.random() < 0.1:
-                host = requests.get(urls[site] + "/hosts", timeout=20).json()["hosts"][0]["R0"]
+            if random.random() < min(0.0000000001*FACTOR, 1):
+                host = requests.get(urls[site] + "/hosts", timeout=20).json()["hosts"][0]["OLT"]
                 if host["running"]:
                     requests.get(urls[site] + "/hosts/OLT/shutdown", timeout=20)
-                    logging.infos(f"Shutting down {host}")
+                    logging.info("Shutting down %s", host)
                 else:
                     requests.get(urls[site] + "/hosts/OLT/start", timeout=20)
                     logging.info("Starting %s", host)
-            elif random.random() < 0.2:
+            elif random.random() < min(0.2*FACTOR, 1):
                 onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
                 registered_onts = [ont for ont in onts if ont["registered"]]
                 ont = random.choice(registered_onts)
