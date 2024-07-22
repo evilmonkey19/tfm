@@ -1,3 +1,4 @@
+from multiprocessing import Process
 import time
 import os
 import threading
@@ -35,6 +36,7 @@ app.conf.update(
     enable_utc=True,
     broker_connection_retry=True,
     broker_connection_retry_on_startup=True,
+    CELERY_LOG_LEVEL='DEBUG',
 )
 
 GPON_BOARDS: dict[str, int] = {
@@ -60,7 +62,7 @@ def get_onts():
              command="display board 0",
              data=output
         )
-        print(parsed_output)
+        # print(parsed_output)
         slot_id, n_ports = [(board["slot_id"], GPON_BOARDS[board["boardname"]])
                                 for board in parsed_output
                                 if board["boardname"] in GPON_BOARDS][0]
@@ -72,7 +74,7 @@ def get_onts():
                  command=command,
                  data=output
                 )
-            print(result)
+            # print(result)
             results.append(result)
     return results
 
@@ -124,7 +126,6 @@ def get_all_onts():
     return onts
 
 def monitoring_onts():
-    time.sleep(30)
     notify_all_onts.apply_async(
         (os.getenv("QUEUE_NAME", 'celery'), get_all_onts()),
         queue='master'
@@ -140,7 +141,16 @@ def monitoring_onts():
                 (os.getenv("QUEUE_NAME", 'celery'),),
                 queue="master"
             )
-            time.sleep(1)
+            while True:
+                try:
+                    with ConnectHandler(**credentials) as conn:
+                        notify_olt_up.apply_async(
+                            (os.getenv("QUEUE_NAME", 'celery'),),
+                            queue="master"
+                        )
+                        break
+                except:
+                    pass
 
 @app.task
 def register_ont(ont):
@@ -150,12 +160,36 @@ def register_ont(ont):
             conn.config_mode()
             output = conn.send_command("display ont autofind all")
             parsed_output = parse_output(platform='huawei_smartax', command='display ont autofind all', data=output)
-            print(parsed_output)
+            logging.info("Autofind ONTs")
+            # print(parsed_output)
             for autofind_ont in parsed_output:
-                if ont["sn"] == autofind_ont["serial_number"].split()[0]:
-                    print(f"ONT {ont['sn']} found")
-
-        return True
+                print(f"Autofind ONT: {autofind_ont['serial_number']} - {ont}")
+                if ont == autofind_ont["serial_number"].split()[0]:
+                    print(f"ONT {autofind_ont} found in autofind")
+                    chassis, slot, port = autofind_ont["fsp"].split("/")
+                    interface_gpon = f"{chassis}/{slot}"
+                    print(f"Registering ONT {ont} in interface {interface_gpon}")
+                    conn.send_command(f"interface gpon {interface_gpon}", auto_find_prompt=False)
+                    conn.find_prompt()
+                    logging.info(f"entered interface {interface_gpon}")
+                    output = conn.send_command(f"ont add {port} sn-auth {ont} omci ont-lineprofile-id 500 ont-srvprofile-id 500 desc {ont}")
+                    parsed_output = parse_output(platform='huawei_smartax', command=f"ont add {interface_gpon[-1]} sn-auth {ont} omci ont-lineprofile-id 500 ont-srvprofile-id 500 desc {ont}", data=output)
+                    print(parsed_output)
+                    if parsed_output[0]["success"] != '1':
+                        print("NO FUNCA")
+                        return False
+                    print("ONT registered")
+                    output= conn.send_command(f"display ont info {port}")
+                    print(output)
+                    parsed_output = parse_output(platform='huawei_smartax', command=f"display ont info {port}", data=output)
+                    print(parsed_output)
+                    for _ont in parsed_output:
+                        print(_ont['serial_number'])
+                        if _ont["serial_number"] == ont:
+                            return True
+                    conn.send_command("quit", auto_find_prompt=False)
+                    conn.find_prompt()
+        return False
     except:
         return False
 
@@ -194,13 +228,14 @@ def prepare_olt():
         conn.send_command("commit")
         conn.send_command("quit", auto_find_prompt=False)
         conn.find_prompt()
-
+    print("OLT Ready!")
 
 if __name__ == '__main__':
-    from master import receive_onts_data, notify_olt_not_responding, notify_all_onts
+    from master import receive_onts_data, notify_olt_not_responding, notify_all_onts, notify_olt_up
     prepare_olt()
-    monitoring_thread = threading.Thread(target=monitoring_onts)
+    monitoring_thread = Process(target=monitoring_onts, daemon=True)
     monitoring_thread.start()
+    logging.info(os.getenv('QUEUE_NAME', 'celery'))
     worker = app.Worker(
         include=['worker'],
         loglevel='INFO',

@@ -9,15 +9,6 @@ import argparse
 #     for i in range(1, 11)
 # }
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
-    handlers=[
-        logging.FileHandler("chaos_monkey.log"),
-        logging.StreamHandler()
-    ]
-)
 
 args = argparse.ArgumentParser()
 
@@ -35,10 +26,31 @@ args.add_argument(
     help="Factor to increase the number of sites"
 )
 
+args.add_argument(
+    "--tried",
+    type=int,
+    default=1,
+    help="Number of times the chaos monkey has been tried"
+)
+
 args = args.parse_args()
 
 FACTOR = args.factor
 SITES = args.sites
+TRY = args.tried
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(message)s",
+    handlers=[
+        logging.FileHandler(f"chaos_monkey_{SITES}_try_{TRY}.log"),
+        logging.StreamHandler()
+    ],
+)
+logging.Formatter(
+    datefmt="%Y-%m-%d %H:%M:%S",
+    fmt='%(asctime)s.%(msecs)03d',
+)
 
 urls = {
     f"site_{i}": f"http://localhost:800{i}/api"
@@ -48,16 +60,17 @@ urls = {
 
 
 if __name__ == '__main__':
+    logging.info("Starting chaos monkey")
     while True:
         try:
             time.sleep(random.uniform(0, 10))
             site = random.choice(list(urls.keys()))
-            if random.random() < min(0.0000000001*FACTOR, 1):
+            if random.random() < min(0.01*FACTOR, 1):
                 host = requests.get(urls[site] + "/hosts", timeout=20).json()["hosts"][0]["OLT"]
                 if host["running"]:
                     requests.get(urls[site] + "/hosts/OLT/shutdown", timeout=20)
                     logging.info("Shutting down %s", host)
-                else:
+                    time.sleep(random.uniform(0, 10))
                     requests.get(urls[site] + "/hosts/OLT/start", timeout=20)
                     logging.info("Starting %s", host)
             elif random.random() < min(0.2*FACTOR, 1):
