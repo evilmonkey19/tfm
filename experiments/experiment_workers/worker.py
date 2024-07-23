@@ -206,7 +206,12 @@ def get_gpon_board():
         return parsed_output
 
 def prepare_olt():
-    time.sleep(5)
+    while True:
+        try:
+            with ConnectHandler(**credentials) as conn:
+                break
+        except:
+            pass
     with ConnectHandler(**credentials) as conn:
         conn.enable()
         conn.config_mode()
