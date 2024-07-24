@@ -1,0 +1,19 @@
+2024-07-24 19:31:20,279 - Chaos monkey started with 6 sites and factor 1. Try 2. Only shutting down: False
+2024-07-24 19:31:20,279 - Starting chaos monkey
+2024-07-24 19:31:29,562 - No action taken for site_4
+2024-07-24 19:31:39,437 - Unregistering KEZSU2KJC2TMCGUN from site_4
+2024-07-24 19:31:39,494 - KEZSU2KJC2TMCGUN successfully unregistered from site_4
+2024-07-24 19:31:47,582 - No action taken for site_3
+2024-07-24 19:31:54,021 - Unregistering X1RD6MIABRB0DDFP from site_6
+2024-07-24 19:31:54,072 - X1RD6MIABRB0DDFP successfully unregistered from site_6
+2024-07-24 19:31:56,667 - No action taken for site_1
+2024-07-24 19:31:59,087 - No action taken for site_1
+2024-07-24 19:32:08,257 - No action taken for site_4
+2024-07-24 19:32:13,802 - Unregistering ZDDTAQPYDCYHE7W9 from site_5
+2024-07-24 19:32:14,055 - ZDDTAQPYDCYHE7W9 successfully unregistered from site_5
+2024-07-24 19:32:23,155 - No action taken for site_6
+2024-07-24 19:32:29,395 - No action taken for site_5
+2024-07-24 19:32:38,782 - No action taken for site_5
+2024-07-24 19:32:39,483 - Unregistering ABBPW2S0470DCFTG from site_5
+2024-07-24 19:32:39,589 - ABBPW2S0470DCFTG successfully unregistered from site_5
+2024-07-24 19:32:43,527 - No action taken for site_6

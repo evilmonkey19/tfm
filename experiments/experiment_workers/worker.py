@@ -126,10 +126,22 @@ def get_all_onts():
     return onts
 
 def monitoring_onts():
-    notify_all_onts.apply_async(
-        (os.getenv("QUEUE_NAME", 'celery'), get_all_onts()),
-        queue='master'
-    )
+    while True:
+        try:
+            notify_all_onts.apply_async(
+                (os.getenv("QUEUE_NAME", 'celery'), get_all_onts()),
+                queue='master',
+                retry=True,
+                retry_policy={
+                    'max_retries': None,
+                    'interval_start': 0,
+                    'interval_step': 1,
+                    'interval_max': 300,
+                }
+            )
+            break
+        except:
+            pass
     while True:
         try:
             receive_onts_data.apply_async(

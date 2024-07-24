@@ -117,6 +117,8 @@ def receive_onts_data(queue, data):
         return
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S,%f")[:-3]
     registered_onts = [ont["serial_number"] for port in data for ont in port]
+    if queue not in registered_network_onts:
+        return
     all_unregistered_onts = [ont for ont in registered_network_onts[queue] if ont not in registered_onts]
     with onts_lock:
         previous_unregistered_onts = []
