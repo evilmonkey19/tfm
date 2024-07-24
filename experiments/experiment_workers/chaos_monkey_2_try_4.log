@@ -1,0 +1,79 @@
+2024-07-23 10:50:00,880 - Starting chaos monkey
+2024-07-23 10:50:08,486 - No action taken for site_1
+2024-07-23 10:50:11,760 - No action taken for site_2
+2024-07-23 10:50:16,825 - No action taken for site_1
+2024-07-23 10:50:18,590 - No action taken for site_2
+2024-07-23 10:50:19,871 - No action taken for site_2
+2024-07-23 10:50:29,524 - No action taken for site_2
+2024-07-23 10:50:37,589 - No action taken for site_2
+2024-07-23 10:50:40,794 - No action taken for site_2
+2024-07-23 10:50:42,326 - No action taken for site_1
+2024-07-23 10:50:49,947 - Unregistering 1SJ1SUW6T9FWUN70 from site_2
+2024-07-23 10:50:50,028 - 1SJ1SUW6T9FWUN70 successfully unregistered from site_2
+2024-07-23 10:50:55,235 - No action taken for site_1
+2024-07-23 10:51:00,774 - Unregistering II2GTC16B0LL6YI0 from site_2
+2024-07-23 10:51:00,856 - II2GTC16B0LL6YI0 successfully unregistered from site_2
+2024-07-23 10:51:03,278 - No action taken for site_2
+2024-07-23 10:51:04,713 - No action taken for site_2
+2024-07-23 10:51:06,645 - No action taken for site_1
+2024-07-23 10:51:16,215 - No action taken for site_2
+2024-07-23 10:51:17,832 - No action taken for site_1
+2024-07-23 10:51:26,673 - No action taken for site_2
+2024-07-23 10:51:36,598 - No action taken for site_1
+2024-07-23 10:51:42,574 - No action taken for site_2
+2024-07-23 10:51:52,060 - No action taken for site_2
+2024-07-23 10:51:53,787 - No action taken for site_2
+2024-07-23 10:52:03,123 - No action taken for site_1
+2024-07-23 10:52:07,247 - No action taken for site_1
+2024-07-23 10:52:09,872 - No action taken for site_1
+2024-07-23 10:52:18,305 - No action taken for site_1
+2024-07-23 10:52:23,122 - No action taken for site_1
+2024-07-23 10:52:25,768 - No action taken for site_2
+2024-07-23 10:52:32,383 - No action taken for site_2
+2024-07-23 10:52:35,106 - No action taken for site_1
+2024-07-23 10:52:39,734 - No action taken for site_1
+2024-07-23 10:52:43,189 - No action taken for site_2
+2024-07-23 10:52:51,402 - Unregistering 1SJ1SUW6T9FWUN70 from site_2
+2024-07-23 10:52:51,483 - 1SJ1SUW6T9FWUN70 successfully unregistered from site_2
+2024-07-23 10:52:53,448 - No action taken for site_1
+2024-07-23 10:52:54,656 - Unregistering QW3QD7BIC0LOK1J7 from site_2
+2024-07-23 10:52:54,724 - QW3QD7BIC0LOK1J7 successfully unregistered from site_2
+2024-07-23 10:52:55,745 - No action taken for site_2
+2024-07-23 10:53:04,961 - No action taken for site_1
+2024-07-23 10:53:07,108 - No action taken for site_2
+2024-07-23 10:53:12,901 - No action taken for site_2
+2024-07-23 10:53:21,293 - Unregistering RPN7TU9LBHVJMK55 from site_2
+2024-07-23 10:53:21,340 - RPN7TU9LBHVJMK55 successfully unregistered from site_2
+2024-07-23 10:53:21,747 - No action taken for site_1
+2024-07-23 10:53:24,247 - No action taken for site_2
+2024-07-23 10:53:28,351 - No action taken for site_1
+2024-07-23 10:53:32,711 - Unregistering DSYPM7DDLQOPDESV from site_1
+2024-07-23 10:53:32,746 - DSYPM7DDLQOPDESV successfully unregistered from site_1
+2024-07-23 10:53:35,048 - Unregistering 41KCJM9EDHV8SJB1 from site_1
+2024-07-23 10:53:35,093 - 41KCJM9EDHV8SJB1 successfully unregistered from site_1
+2024-07-23 10:53:42,384 - No action taken for site_2
+2024-07-23 10:53:48,546 - No action taken for site_2
+2024-07-23 10:53:52,557 - No action taken for site_2
+2024-07-23 10:53:59,109 - No action taken for site_2
+2024-07-23 10:54:04,937 - Unregistering JBUK5MWVFOGCEGFC from site_1
+2024-07-23 10:54:04,972 - JBUK5MWVFOGCEGFC successfully unregistered from site_1
+2024-07-23 10:54:07,254 - No action taken for site_2
+2024-07-23 10:54:09,560 - No action taken for site_2
+2024-07-23 10:54:14,306 - No action taken for site_2
+2024-07-23 10:54:20,983 - No action taken for site_1
+2024-07-23 10:54:21,232 - Unregistering OFLNHYOCV4FQRJL1 from site_1
+2024-07-23 10:54:21,279 - OFLNHYOCV4FQRJL1 successfully unregistered from site_1
+2024-07-23 10:54:31,021 - Unregistering F70L91A96CBHXGK9 from site_1
+2024-07-23 10:54:31,056 - F70L91A96CBHXGK9 successfully unregistered from site_1
+2024-07-23 10:54:40,467 - No action taken for site_2
+2024-07-23 10:54:43,656 - No action taken for site_2
+2024-07-23 10:54:51,061 - Unregistering A6V8NN13KREY6FEH from site_2
+2024-07-23 10:54:51,117 - A6V8NN13KREY6FEH successfully unregistered from site_2
+2024-07-23 10:54:55,644 - Unregistering 0B5R5K6OKIT53YEU from site_1
+2024-07-23 10:54:55,680 - 0B5R5K6OKIT53YEU successfully unregistered from site_1
+2024-07-23 10:54:56,536 - No action taken for site_1
+2024-07-23 10:54:59,530 - No action taken for site_2
+2024-07-23 10:55:02,433 - No action taken for site_1
+2024-07-23 10:55:02,498 - No action taken for site_1
+2024-07-23 10:55:10,816 - No action taken for site_1
+2024-07-23 10:55:14,811 - Exiting chaos monkey

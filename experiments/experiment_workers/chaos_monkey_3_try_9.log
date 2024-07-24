@@ -1,0 +1,83 @@
+2024-07-23 13:16:16,174 - Starting chaos monkey
+2024-07-23 13:16:20,197 - No action taken for site_3
+2024-07-23 13:16:26,143 - Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True}
+2024-07-23 13:16:29,590 - Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True}
+2024-07-23 13:16:39,083 - No action taken for site_1
+2024-07-23 13:16:45,871 - Unregistering IF8NLWHKHLIDT3ZU from site_3
+2024-07-23 13:16:45,905 - IF8NLWHKHLIDT3ZU successfully unregistered from site_3
+2024-07-23 13:16:50,071 - No action taken for site_2
+2024-07-23 13:16:52,915 - No action taken for site_1
+2024-07-23 13:17:00,368 - No action taken for site_2
+2024-07-23 13:17:02,312 - No action taken for site_3
+2024-07-23 13:17:07,054 - No action taken for site_1
+2024-07-23 13:17:14,730 - No action taken for site_1
+2024-07-23 13:17:15,225 - No action taken for site_3
+2024-07-23 13:17:23,772 - No action taken for site_1
+2024-07-23 13:17:30,079 - No action taken for site_1
+2024-07-23 13:17:38,200 - No action taken for site_3
+2024-07-23 13:17:43,542 - No action taken for site_2
+2024-07-23 13:17:51,516 - No action taken for site_3
+2024-07-23 13:17:59,255 - No action taken for site_3
+2024-07-23 13:18:02,889 - Unregistering 5QY0YDPLJHN5DNDR from site_2
+2024-07-23 13:18:02,971 - 5QY0YDPLJHN5DNDR successfully unregistered from site_2
+2024-07-23 13:18:11,768 - No action taken for site_1
+2024-07-23 13:18:19,414 - No action taken for site_2
+2024-07-23 13:18:25,367 - No action taken for site_3
+2024-07-23 13:18:33,385 - No action taken for site_1
+2024-07-23 13:18:39,481 - No action taken for site_2
+2024-07-23 13:18:44,050 - Unregistering NQEOCN2RSBQVKUK2 from site_2
+2024-07-23 13:18:44,102 - NQEOCN2RSBQVKUK2 successfully unregistered from site_2
+2024-07-23 13:18:53,363 - No action taken for site_3
+2024-07-23 13:18:56,166 - No action taken for site_3
+2024-07-23 13:19:03,020 - No action taken for site_1
+2024-07-23 13:19:08,182 - No action taken for site_1
+2024-07-23 13:19:13,981 - No action taken for site_2
+2024-07-23 13:19:23,400 - No action taken for site_3
+2024-07-23 13:19:28,416 - No action taken for site_3
+2024-07-23 13:19:34,767 - No action taken for site_3
+2024-07-23 13:19:39,163 - No action taken for site_2
+2024-07-23 13:19:48,939 - Unregistering 1KEWP163WGHKGY1B from site_2
+2024-07-23 13:19:49,011 - 1KEWP163WGHKGY1B successfully unregistered from site_2
+2024-07-23 13:19:57,569 - No action taken for site_3
+2024-07-23 13:20:07,055 - No action taken for site_3
+2024-07-23 13:20:12,023 - Unregistering W2RH4WIN1PJ1MH1O from site_2
+2024-07-23 13:20:12,079 - W2RH4WIN1PJ1MH1O successfully unregistered from site_2
+2024-07-23 13:20:15,767 - No action taken for site_3
+2024-07-23 13:20:23,272 - No action taken for site_2
+2024-07-23 13:20:28,907 - Unregistering H3YMLKPTK5L85A7N from site_1
+2024-07-23 13:20:28,945 - H3YMLKPTK5L85A7N successfully unregistered from site_1
+2024-07-23 13:20:36,853 - No action taken for site_3
+2024-07-23 13:20:41,777 - No action taken for site_3
+2024-07-23 13:20:51,308 - No action taken for site_3
+2024-07-23 13:20:51,650 - No action taken for site_1
+2024-07-23 13:21:00,592 - Unregistering JXFD0XSPVRVMR22S from site_2
+2024-07-23 13:21:00,652 - JXFD0XSPVRVMR22S successfully unregistered from site_2
+2024-07-23 13:21:09,187 - No action taken for site_3
+2024-07-23 13:21:13,007 - No action taken for site_1
+2024-07-23 13:21:18,297 - No action taken for site_3
+2024-07-23 13:21:32,076 - Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True}
+2024-07-23 13:21:41,824 - Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True}
+2024-07-23 13:21:49,334 - No action taken for site_1
+2024-07-23 13:21:51,929 - No action taken for site_2
+2024-07-23 13:21:56,869 - No action taken for site_1
+2024-07-23 13:22:00,238 - No action taken for site_3
+2024-07-23 13:22:07,515 - Unregistering KXSYCFTCFNDKL1O1 from site_3
+2024-07-23 13:22:07,553 - KXSYCFTCFNDKL1O1 successfully unregistered from site_3
+2024-07-23 13:22:07,890 - No action taken for site_2
+2024-07-23 13:22:10,754 - No action taken for site_1
+2024-07-23 13:22:15,727 - No action taken for site_1
+2024-07-23 13:22:24,975 - No action taken for site_1
+2024-07-23 13:22:26,043 - No action taken for site_2
+2024-07-23 13:22:34,368 - No action taken for site_1
+2024-07-23 13:22:36,641 - No action taken for site_3
+2024-07-23 13:22:36,860 - Unregistering 0HZ1BY6NDT1RIDGX from site_3
+2024-07-23 13:22:36,901 - 0HZ1BY6NDT1RIDGX successfully unregistered from site_3
+2024-07-23 13:22:42,441 - Unregistering PWMAZ8WB4IQEN1C2 from site_3
+2024-07-23 13:22:42,475 - PWMAZ8WB4IQEN1C2 successfully unregistered from site_3
+2024-07-23 13:22:44,575 - No action taken for site_1
+2024-07-23 13:22:53,903 - Unregistering HS0Y7XW4C5IRIKFC from site_3
+2024-07-23 13:22:53,939 - HS0Y7XW4C5IRIKFC successfully unregistered from site_3
+2024-07-23 13:22:59,434 - No action taken for site_1
+2024-07-23 13:22:59,464 - No action taken for site_2
+2024-07-23 13:23:00,151 - No action taken for site_3
+2024-07-23 13:23:00,945 - Exiting chaos monkey
