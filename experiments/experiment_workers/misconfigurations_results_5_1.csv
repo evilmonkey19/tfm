@@ -1,0 +1,32 @@
+site,event,timestamp
+site_4,detected unregistered W7W85KNJEDU35U48,2024-07-23 16:29:02:170
+site_4,detected unregistered W7W85KNJEDU35U48,2024-07-23 16:29:07:764
+site_4,detected unregistered W7W85KNJEDU35U48,2024-07-23 16:29:13:541
+site_4,registered W7W85KNJEDU35U48,2024-07-23 16:29:17:970
+site_4,detected unregistered T83DBDGZ9K6XQAFV,2024-07-23 16:29:24:701
+site_4,detected unregistered T83DBDGZ9K6XQAFV,2024-07-23 16:29:30:260
+site_4,detected unregistered T83DBDGZ9K6XQAFV,2024-07-23 16:29:35:866
+site_4,registered T83DBDGZ9K6XQAFV,2024-07-23 16:29:38:736
+site_3,detected unregistered AHURXZEV2CABQGHY,2024-07-23 16:29:54:633
+site_3,detected unregistered AHURXZEV2CABQGHY,2024-07-23 16:30:00:219
+site_3,registered AHURXZEV2CABQGHY,2024-07-23 16:30:09:350
+site_2,detected unregistered WH5TDIIYHHARAGC7,2024-07-23 16:30:09:432
+site_2,detected unregistered WH5TDIIYHHARAGC7,2024-07-23 16:30:17:844
+site_2,registered WH5TDIIYHHARAGC7,2024-07-23 16:30:24:363
+site_2,detected unregistered 0WN80PR1QAB8C6NY,2024-07-23 16:30:34:928
+site_2,detected unregistered 0WN80PR1QAB8C6NY,2024-07-23 16:30:43:377
+site_2,registered 0WN80PR1QAB8C6NY,2024-07-23 16:30:49:226
+site_4,detected unregistered SZYWMM3GUQZCIV50,2024-07-23 16:30:54:836
+site_4,detected unregistered SZYWMM3GUQZCIV50,2024-07-23 16:31:00:394
+site_4,registered SZYWMM3GUQZCIV50,2024-07-23 16:31:08:907
+site_2,OLT not responding,2024-07-23 16:31:14:431
+site_2,OLT up,2024-07-23 16:31:14:885
+site_1,detected unregistered 7WG0IGJ9ZTHDPUJE,2024-07-23 16:32:39:530
+site_1,detected unregistered 7WG0IGJ9ZTHDPUJE,2024-07-23 16:32:45:190
+site_1,registered 7WG0IGJ9ZTHDPUJE,2024-07-23 16:32:54:337
+site_2,detected unregistered LBX9QHTUQV4EU5IS,2024-07-23 16:33:24:963
+site_2,detected unregistered LBX9QHTUQV4EU5IS,2024-07-23 16:33:33:358
+site_3,detected unregistered NKYTNFBGLSZ0G4RE,2024-07-23 16:33:35:175
+site_2,registered LBX9QHTUQV4EU5IS,2024-07-23 16:33:39:055
+site_3,detected unregistered NKYTNFBGLSZ0G4RE,2024-07-23 16:33:40:824
+site_3,registered NKYTNFBGLSZ0G4RE,2024-07-23 16:33:49:243

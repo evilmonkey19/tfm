@@ -21,6 +21,11 @@ networks:
     ipam:
       config:
       - subnet: 192.168.4.0/24
+  huawei5-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 192.168.5.0/24
   worker1-net:
     driver: bridge
     internal: true
@@ -45,6 +50,12 @@ networks:
     ipam:
       config:
       - subnet: 10.4.0.0/16
+  worker5-net:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+      - subnet: 10.5.0.0/16
 services:
   huawei_smartax-site-1:
     build:
@@ -106,6 +117,21 @@ services:
         ipv4_address: 192.168.4.3
     ports:
     - 8004:8000
+  huawei_smartax-site-5:
+    build:
+      context: .
+      dockerfile: huawei_smartax.Dockerfile
+    command: fastapi run fakenos-web.py
+    depends_on:
+    - worker-site-5
+    environment:
+    - HOSTNAME=huawei_smartax_site_5
+    - CONFIGURATION_FILE=site_5.yaml.j2
+    networks:
+      huawei5-net:
+        ipv4_address: 192.168.5.3
+    ports:
+    - 8005:8000
   rabbitmq:
     image: rabbitmq:management
     networks:
@@ -118,6 +144,8 @@ services:
         ipv4_address: 10.3.0.2
       worker4-net:
         ipv4_address: 10.4.0.2
+      worker5-net:
+        ipv4_address: 10.5.0.2
     ports:
     - 5672:5672
     - 15672:15672
@@ -193,3 +221,21 @@ services:
         ipv4_address: 192.168.4.2
       worker4-net:
         ipv4_address: 10.4.0.3
+  worker-site-5:
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    command: python worker.py
+    depends_on:
+    - rabbitmq
+    environment:
+    - RABBITMQ_IP=10.5.0.2
+    - HUAWEI_SMARTAX_IP=192.168.5.3
+    - HOSTNAME=worker_site_5
+    - QUEUE_NAME=site_5
+    - CONFIGURATION_FILE=site_5.yaml.j2
+    networks:
+      huawei5-net:
+        ipv4_address: 192.168.5.2
+      worker5-net:
+        ipv4_address: 10.5.0.3

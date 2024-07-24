@@ -33,17 +33,34 @@ args.add_argument(
     help="Number of times the chaos monkey has been tried"
 )
 
+args.add_argument(
+    "--only-shutting-down",
+    action="store_true",
+    help="Only shut down the hosts"
+)
+
 args = args.parse_args()
 
-FACTOR = args.factor
+factor_val = args.factor
 SITES = args.sites
 TRY = args.tried
+ONLY_SHUTTING_DOWN = args.only_shutting_down
 
+urls = {
+    f"site_{i}": f"http://localhost:800{i}/api"
+    for i in range(1, SITES + 1)
+}
+
+logging_file = f"chaos_monkey_{SITES}_try_{TRY}.log"
+if ONLY_SHUTTING_DOWN:
+    factor_val = 60
+    logging_file = f"chaos_monkey_{SITES}_try_{TRY}_only_shutting_down.log"
+FACTOR = factor_val
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(message)s",
     handlers=[
-        logging.FileHandler(f"chaos_monkey_{SITES}_try_{TRY}.log"),
+        logging.FileHandler(logging_file),
         logging.StreamHandler()
     ],
 )
@@ -52,12 +69,7 @@ logging.Formatter(
     fmt='%(asctime)s.%(msecs)03d',
 )
 
-urls = {
-    f"site_{i}": f"http://localhost:800{i}/api"
-    for i in range(1, SITES + 1)
-}
-
-
+logging.info(f"Chaos monkey started with {SITES} sites and factor {FACTOR}. Try {TRY}. Only shutting down: {ONLY_SHUTTING_DOWN}")
 
 if __name__ == '__main__':
     logging.info("Starting chaos monkey")
@@ -69,11 +81,11 @@ if __name__ == '__main__':
                 host = requests.get(urls[site] + "/hosts", timeout=20).json()["hosts"][0]["OLT"]
                 if host["running"]:
                     requests.get(urls[site] + "/hosts/OLT/shutdown", timeout=20)
-                    logging.info("Shutting down %s", host)
+                    logging.info("%s: Shutting down %s", site, host)
                     time.sleep(random.uniform(0, 10))
                     requests.get(urls[site] + "/hosts/OLT/start", timeout=20)
-                    logging.info("Starting %s", host)
-            elif random.random() < min(0.2*FACTOR, 1):
+                    logging.info("%s: Starting %s", site, host)
+            elif random.random() < min(0.2*FACTOR, 1) and not ONLY_SHUTTING_DOWN:
                 onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
                 registered_onts = [ont for ont in onts if ont["registered"]]
                 ont = random.choice(registered_onts)
