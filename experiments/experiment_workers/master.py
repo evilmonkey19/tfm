@@ -42,6 +42,7 @@ stop_reregistering = Value('b', False)
 
 onts_lock = Lock()
 
+
 def reregister_onts():
     onts = []
     registered_onts = []

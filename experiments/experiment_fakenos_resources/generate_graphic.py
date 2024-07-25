@@ -67,8 +67,8 @@ for platform in platforms_to_plot:
     df = df[df["Platform"] == platform]
     plt.plot([str(n) for n in n_hosts], df["CPU Usage"], label=platform, marker='o')
 plt.xlabel("Number of Hosts")
-plt.ylabel("Average CPU Usage (%)")
-plt.title("Average CPU Usage for FakeNOS")
+plt.ylabel("Time used in user mode (s)")
+plt.title("Time used in user mode to set up FakeNOS")
 plt.legend(loc=2)
 plt.savefig("graphs/cpu_5.png", dpi=300)
 plt.close()

@@ -1,7 +1,5 @@
 from multiprocessing import Process
-import time
 import os
-import threading
 import logging
 
 from netmiko import ConnectHandler
