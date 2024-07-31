@@ -9,7 +9,7 @@ readme = "README.md"
 python = ">=3.8.1,<3.13"
 ntc-templates = { path = "../ntc-templates", develop=true }
 netmiko = "^4.3.0"
-fakenos = { path = "../fakenos", develop=true}
+fakenos = { path = "../fakenos-tfm", develop=true}
 jinja2 = "^3.1.4"
 pynautobot = "^2.2.0"
 wonderwords = "^2.2.0"

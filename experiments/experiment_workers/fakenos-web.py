@@ -1,4 +1,5 @@
 import os
+import random
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
@@ -74,6 +75,110 @@ async def unregister_ont(host: str, ont_sn: str):
             ont["registered"] = False
             return {"host": host, "ont_sn": ont_sn, "previous_state": previously_registered, "status": "unregistering"}
     return {"host": host, "ont_sn": ont_sn, "status": "not found"}
+
+@app.get("/api/hosts/{host}/change_board_state")
+async def board_failure(host: str):
+    board = net.hosts[host].nos.device.configurations["frames"][0]["slots"][4]
+    if board["status"] == "Standby_active":
+        board["status"] = "Standby_failed"
+    else:
+        board["status"] = "Standby_active"
+    return {"host": host, "board_id": 4, "status": board["status"]}
+
+@app.get("/api/hosts/{host}/ont/{ont_sn}/set_high_voltage")
+async def set_high_voltage(host: str, ont_sn: str):
+    onts = []
+    for port in net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]["ports"]:
+        onts += port
+    ont = next(ont for ont in onts if ont["sn"] == ont_sn)
+    previous_voltage = ont["voltage_v"]
+    ont["voltage_v"] = round(random.uniform(3.6, 3.8), 2)
+    return {"host": host, "ont_sn": ont_sn, "previous_voltage": previous_voltage, "new_voltage": ont["voltage_v"]}
+
+
+@app.get("/api/hosts/{host}/ont/{ont_sn}/set_low_voltage")
+async def set_low_voltage(host: str, ont_sn: str):
+    onts = []
+    for port in net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]["ports"]:
+        onts += port
+    ont = next(ont for ont in onts if ont["sn"] == ont_sn)
+    previous_voltage = ont["voltage_v"]
+    ont["voltage_v"] = round(random.uniform(2.8, 3.0), 2)
+    return {"host": host, "ont_sn": ont_sn, "previous_voltage": previous_voltage, "new_voltage": ont["voltage_v"]}
+
+@app.get("/api/hosts/{host}/ont/{ont_sn}/set_normal_voltage")
+async def set_normal_voltage(host: str, ont_sn: str):
+    onts = []
+    for port in net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]["ports"]:
+        onts += port
+    ont = next(ont for ont in onts if ont["sn"] == ont_sn)
+    previous_voltage = ont["voltage_v"]
+    ont["voltage_v"] = round(random.uniform(3.2, 3.4), 2)
+    return {"host": host, "ont_sn": ont_sn, "previous_voltage": previous_voltage, "new_voltage": ont["voltage_v"]}
+
+@app.get("/api/hosts/{host}/ont/{ont_sn}/set_gemport_0/{gemport}")
+async def set_gemport_0(host: str, ont_sn: str, gemport: int):
+    onts = []
+    for port in net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]["ports"]:
+        onts += port
+    ont = next(ont for ont in onts if ont["sn"] == ont_sn)
+    previous_gemport = ont["gemports"][0]
+    ont["gemports"][0] = gemport
+    return {"host": host, "ont_sn": ont_sn, "previous_gemport": previous_gemport, "new_gemport": ont["gemports"][0]}
+
+@app.get("/api/hosts/{host}/ont/{ont_sn}/port_eth/{port_id}/c__vlan/{vlan}")
+async def set_c_vlan(host: str, ont_sn: str, port_id: int, vlan: int):
+    onts = []
+    for port in net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]["ports"]:
+        onts += port
+    ont = next(ont for ont in onts if ont["sn"] == ont_sn)
+    previous_vlan = ont["ports"]["eth"][port_id]["c__vlan"]
+    ont["ports"]["eth"][port_id]["c__vlan"] = vlan
+    return {"host": host, "ont_sn": ont_sn, "port_id": port_id, "previous_vlan": previous_vlan, "new_vlan": ont["ports"]["eth"][port_id]["c__vlan"]}
+
+@app.get("/api/hosts/{host}/ont/{ont_sn}/port_eth/{port_id}/s__vlan/{vlan}")
+async def set_s_vlan(host: str, ont_sn: str, port_id: int, vlan: int):
+    onts = []
+    for port in net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]["ports"]:
+        onts += port
+    ont = next(ont for ont in onts if ont["sn"] == ont_sn)
+    previous_vlan = ont["ports"]["eth"][port_id]["s__vlan"]
+    ont["ports"]["eth"][port_id]["s__vlan"] = vlan
+    return {"host": host, "ont_sn": ont_sn, "port_id": port_id, "previous_vlan": previous_vlan, "new_vlan": ont["ports"]["eth"][port_id]["s__vlan"]}
+
+@app.get("/api/hosts/{host}/ont/{ont_sn}/port_eth/{port_id}/change_vlan_type")
+async def set_vlan_type(host: str, ont_sn: str, port_id: int):
+    onts = []
+    for port in net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]["ports"]:
+        onts += port
+    ont = next(ont for ont in onts if ont["sn"] == ont_sn)
+    previous_vlan_type = ont["ports"]["eth"][port_id]["vlan_type"]
+    if previous_vlan_type == "QINQ":
+        ont["ports"]["eth"][port_id]["vlan_type"] = "Translation"
+    else:
+        ont["ports"]["eth"][port_id]["vlan_type"] = "QINQ"
+    return {"host": host, "ont_sn": ont_sn, "port_id": port_id, "previous_vlan_type": previous_vlan_type, "new_vlan_type": ont["ports"]["eth"][port_id]["vlan_type"]}
+
+@app.get("/api/hosts/{host}/ont/{ont_sn}/snmp_profile/{profile_id}")
+async def set_snmp_profile(host: str, ont_sn: str, profile_id: int):
+    onts = []
+    for port in net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]["ports"]:
+        onts += port
+    ont = next(ont for ont in onts if ont["sn"] == ont_sn)
+    previous_profile = ont["snmp_profile_id"]
+    ont["snmp_profile_id"] = profile_id
+    ont["snmp_profile_name"] = f"snmp-profile_{profile_id}"
+    return {"host": host, "ont_sn": ont_sn, "previous_profile": previous_profile, "new_profile": ont["snmp_profile_id"]}
+
+@app.get("/api/hosts/{host}/change_service_state/{service_name}")
+async def change_service_state(host: str, service_name: str):
+    service = net.hosts[host].nos.device.configurations["services"][service_name]
+    previous_state = service["state"]
+    if previous_state == "enable":
+        service["state"] = "disable"
+    else:
+        service["state"] = "enable"
+    return {"host": host, "service_name": service_name, "previous_state": previous_state, "new_state": service["state"]}
 
 @app.get("/", response_class=HTMLResponse)
 async def hosts(request: Request):
