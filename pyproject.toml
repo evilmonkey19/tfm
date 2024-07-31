@@ -18,6 +18,7 @@ python-dotenv = "^1.0.1"
 ssh2-python = "^1.0.0"
 scrapli-community = "^2024.1.30"
 asyncssh = "^2.15.0"
+fastapi = "^0.111.1"
 
 
 [build-system]
