@@ -1,30 +1,23 @@
-import requests
+import os
+import re
 import random
+import threading
 import time
 import logging
 import argparse
+from fastapi.concurrency import asynccontextmanager
+import requests
 
-# urls = {
-#     f"site_{i}": f"http://localhost:800{i}"
-#     for i in range(1, 11)
-# }
+import fastapi
+import uvicorn
 
+everything_ready = threading.Event()
+everything_ready.clear()
+
+stop_thread = threading.Event()
+stop_thread.clear()
 
 args = argparse.ArgumentParser()
-
-args.add_argument(
-    "--sites",
-    type=int,
-    default=10,
-    help="Number of sites to target"
-)
-
-args.add_argument(
-    "--tried",
-    type=int,
-    default=1,
-    help="Number of times the chaos monkey has been tried"
-)
 
 args.add_argument(
     "--only",
@@ -34,28 +27,54 @@ args.add_argument(
 
 args = args.parse_args()
 
-SITES = args.sites
-TRY = args.tried
-
-urls = {
-    f"site_{i}": f"http://localhost:800{i}/api"
-    for i in range(1, SITES + 1)
-}
-
 misconfigurations = [
     ("change_gemport", 0.2),
-    ("change_c_vlan", 0.2), 
+    ("change_c_vlan", 0.2),
     ("change_s_vlan", 0.2),
     ("change_vlan_type", 0.2),
     ("change_snmp_profile", 0.2),
     ("unregister_ont", 0.2),
-    ("change_service_state", 0.2) 
+    ("change_service_state", 0.2)
 ]
 errors = [
     ("reboot", 0.01),
     ("change_board_state", 0.1),
     ("ont_change_voltage", 0.1),
 ]
+
+
+pattern = r"^chaos_monkey_(\d+)?_try_(\d+)?"
+filenames = os.listdir()
+highest_try = 0
+highest_sites = 0
+
+for filename in filenames:
+    if match := re.match(pattern, filename):
+        print(filename)
+        sites = int(match.group(1))
+        highest_sites = max(highest_sites, sites)
+        last_try = int(match.group(2))
+        highest_try = max(highest_try, last_try)
+
+print("Highest sites:", highest_sites)
+print("Highest try:", highest_try)
+
+if highest_try == 10:
+    highest_sites += 1
+    highest_try = 0
+TRY = highest_try + 1
+SITES = max(highest_sites, 1)
+print
+
+urls = {
+    f"site_{i}": f"http://localhost:800{i}/api"
+    for i in range(1, SITES + 1)
+}
+
+urls_ready = {
+    f'site_{i}': False for i in range(1, SITES + 1)
+}
+
 
 actions = []
 weights = []
@@ -70,7 +89,7 @@ match args.only:
         weights = [action[1] for action in errors]
         logging_file = f"chaos_monkey_{SITES}_try_{TRY}_only_errors.log"
     case other:
-        if args.only is None:
+        if args.only is None or args.only == "all":
             actions = [action[0] for action in misconfigurations + errors]
             weights = [action[1] for action in misconfigurations + errors]
         else:
@@ -98,12 +117,21 @@ logging.Formatter(
 
 logging.info(f"Chaos monkey started with {SITES} sites. Try {TRY} and options {args.only}.")
 
-if __name__ == '__main__':
-    logging.info("Starting chaos monkey")
+def chaos_monkey():
+    started = False
     while True:
+        if stop_thread.is_set():
+            break
         try:
+            if not everything_ready.is_set():
+                time.sleep(2)
+                logging.info("Waiting for all sites to be ready")
+                continue
+            if not started:
+                logging.info("Starting chaos monkey")
+                started = True
             time.sleep(random.uniform(0, 10))
-            action = random.choice(actions, weights=weights)[0]
+            action = random.choices(actions, weights=weights)[0]
             site = random.choice(list(urls.keys()))
             match action:
                 case "reboot":
@@ -115,10 +143,11 @@ if __name__ == '__main__':
                         requests.get(urls[site] + "/hosts/OLT/start", timeout=20)
                         logging.info("%s: Starting %s", site, host)
                 case "change_board_state":
-                    board = requests.get(urls[site] + "/hosts/OLT/change_board_state", timeout=20)
-                    logging.info("%s: Changing board state to ", site)
+                    status = requests.get(urls[site] + "/hosts/OLT/change_board_state", timeout=20).json()["status"]
+                    logging.info("%s: Changing board state to %s", site, status)
                 case "ont_change_voltage":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
+                    onts = [ont for ont in onts if ont["registered"]]
                     ont = random.choice(onts)
                     current_state = float(ont["voltage_v"])
                     if 3.2 <= current_state <= 3.4:
@@ -127,32 +156,37 @@ if __name__ == '__main__':
                         changing_state = "set_normal_voltage"
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/{changing_state}", timeout=20)
                     logging.info("Changing voltage for %s from %s to %s", ont['sn'], site, changing_state)
-                case "change gemport":
+                case "change_gemport":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
+                    onts = [ont for ont in onts if ont["registered"]]
                     ont = random.choice(onts)
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/set_gemport_0/1", timeout=20)
                     logging.info("Changing gemport for %s from %s", ont['sn'], site)
                 case "change_c_vlan":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
+                    onts = [ont for ont in onts if ont["registered"]]
                     ont = random.choice(onts)
-                    requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/port_eth/{random.randint(1,4)}/set_c_vlan/99", timeout=20)
+                    requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/port_eth/{random.randint(1,4)}/c__vlan/99", timeout=20)
                     logging.info("Changing c vlan for %s from %s", ont['sn'], site)
                 case "change_s_vlan":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
+                    onts = [ont for ont in onts if ont["registered"]]
                     ont = random.choice(onts)
-                    requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/port_eth/{random.randint(1,4)}/set_s_vlan/99", timeout=20)
+                    requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/port_eth/{random.randint(1,4)}/s__vlan/99", timeout=20)
                     logging.info("Changing s vlan for %s from %s", ont['sn'], site)
                 case "change_vlan_type":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
+                    onts = [ont for ont in onts if ont["registered"]]
                     ont = random.choice(onts)
-                    requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/port_eth/{random.randint(1,4)}/change_vlan_type", timeout=20)
+                    requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/port_eth/{random.randint(1,4)}/change_vlan__type", timeout=20)
                     logging.info("Changing vlan type for %s from %s", ont['sn'], site)
                 case "change_snmp_profile":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
+                    onts = [ont for ont in onts if ont["registered"]]
                     ont = random.choice(onts)
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/snmp_profile/{random.randint(2,10)}", timeout=20)
                     logging.info("Changing snmp profile for %s from %s", ont['sn'], site)
-                case "unregister ont":
+                case "unregister_ont":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
                     registered_onts = [ont for ont in onts if ont["registered"]]
                     ont = random.choice(registered_onts)
@@ -165,7 +199,7 @@ if __name__ == '__main__':
                         logging.info("Failed to unregister %s from %s", ont['sn'], site)
                 case "change_service_state":
                     services = requests.get(urls[site] + "/hosts/OLT/services", timeout=20).json()["services"]
-                    service = random.choice(services.keys())
+                    service = random.choice(list(services.keys()))
                     requests.get(urls[site] + f"/hosts/OLT/change_service_state/{service}", timeout=20)
                     logging.info("Changing state of %s from %s", service, site)
                 case other:
@@ -175,5 +209,30 @@ if __name__ == '__main__':
         except requests.exceptions.ConnectionError:
             logging.info("Connection error with %s", site)
         except KeyboardInterrupt:
+            logging.info("Exiting chaos monkey KeyboardInterrupt")
             break
     logging.info("Exiting chaos monkey")
+
+
+@asynccontextmanager
+async def lifespan(app: fastapi.FastAPI):
+    stop_thread.clear()
+    chaos_monkey_task = threading.Thread(target=chaos_monkey)
+    chaos_monkey_task.start()
+    yield
+    stop_thread.set()
+    chaos_monkey_task.join()
+
+
+app = fastapi.FastAPI(lifespan=lifespan)
+
+@app.post("/{site}/ready")
+async def set_ready(site: str):
+    urls_ready[site] = True
+    print(urls_ready)
+    if all(urls_ready.values()):
+        everything_ready.set()
+    return {"status": "ready"}
+
+if __name__ == '__main__':
+    uvicorn.run(app, port=3500)

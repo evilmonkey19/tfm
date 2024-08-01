@@ -2,9 +2,17 @@ import yaml
 import sys
 
 i = int(sys.argv[1])+1
+errors_type = sys.argv[2]
 
 docker_compose = {
     "services": {
+        "chaos_monkey": {
+            "build": {
+                "context": ".",
+                "dockerfile": "chaos_monkey.Dockerfile",
+            },
+            "command": f"python chaos_monkey.py --only ${errors_type}",
+        },
         "rabbitmq": {
             "image": "rabbitmq:management",
             "ports": ["5672:5672", "15672:15672"],
@@ -55,7 +63,6 @@ docker_compose["networks"] = {
     },
     **{f"worker{worker_site}-net": {
         "driver": "bridge",
-        "internal": True,
         "ipam": {
             "config": [
                 {"subnet": f"10.{worker_site}.0.0/16"}

@@ -1,10 +1,12 @@
 from multiprocessing import Process
 import os
 import logging
+import time
 
 from netmiko import ConnectHandler
 from ntc_templates.parse import parse_output
 import celery
+import requests
 
 logging.basicConfig(level=logging.INFO)
 
@@ -76,36 +78,76 @@ def get_onts():
             results.append(result)
     return results
 
-def get_all_onts():
-    onts = []
+def get_all_info():
+    info = {
+        "boards" : None,
+        "services": None,
+        "onts": [],
+    }
     with ConnectHandler(**credentials) as conn:
+        conn.enable()
+        output = conn.send_command("display sysman service state")
+        parsed_output = parse_output(
+                platform="huawei_smartax",
+                command="display sysman service state",
+                data=output
+            )
+        info["services"] = parsed_output
         output = conn.send_command("display board 0")
         parsed_output = parse_output(
              platform="huawei_smartax",
              command="display board 0",
              data=output
         )
-        slot_id, n_ports = [(board["slot_id"], GPON_BOARDS[board["boardname"]])
+        info['boards'] = parsed_output
+        _, n_ports = [(board["slot_id"], GPON_BOARDS[board["boardname"]])
                                 for board in parsed_output
                                 if board["boardname"] in GPON_BOARDS][0]
+        conn.config_mode()
+        conn.send_command("interface gpon 0/0", auto_find_prompt=False)
+        conn.find_prompt()
         for i in range(n_ports):
-            command = f"display ont info 0 {slot_id} {i}"
+            command = f"display ont info {i}"
             output = conn.send_command(command)
             result = parse_output(
                  platform="huawei_smartax",
                  command=command,
                  data=output
                 )
-            print(len(result))
             for ont in result:
-                onts.append({
-                    "fsp": ont["fsp"],
+                time.sleep(0.01)
+                raw_output = conn.send_command(f"display ont gemport {i} ontid {ont['ont_id']}")
+                gem_output = parse_output(
+                        platform="huawei_smartax",
+                        command=f"display ont gemport {i} ontid {ont['ont_id']}",
+                        data=raw_output
+                )
+                vlan_output = []
+                time.sleep(0.01)
+                for j in range(1,5):
+                    raw_output = conn.send_command(f"display ont port vlan {i} {ont['ont_id']} byport eth {j}")
+                    vlan_output += parse_output(
+                        platform="huawei_smartax",
+                        command=f"display ont port vlan {i} {ont['ont_id']} byport eth {j}",
+                        data=raw_output
+                    )
+                time.sleep(0.01)
+                raw_output = conn.send_command(f"display ont snmp-profile {i} all")
+                snmp_output = parse_output(
+                        platform="huawei_smartax",
+                        command=f"display ont snmp-profile {i} all",
+                        data=raw_output
+                )
+                info['onts'].append({
+                    "fsp": f"0/0/{i}",
+                    "ont": ont["ont_id"],
                     "sn": ont["serial_number"],
+                    "gem": gem_output,
+                    "vlan": vlan_output,
+                    "snmp": snmp_output,
                     "registered": True
                 })
 
-        conn.enable()
-        conn.config_mode()
         command = "display ont autofind all"
         output = conn.send_command(command)
         result = parse_output(
@@ -113,54 +155,52 @@ def get_all_onts():
              command=command,
              data=output
         )
-        print(len(result))
         for ont in result:
-            onts.append({
+            info["onts"].append({
                 "fsp": ont["fsp"],
                 "sn": ont["serial_number"].split()[0],
                 "registered": False
             })
-    print(len(onts))
-    return onts
+    return info
 
-def monitoring_onts():
+def monitoring_tasks():
+    notify_all_info.apply_async(
+        (os.getenv("QUEUE_NAME", 'site_1'), get_all_info()),
+        queue='master',
+        retry=True,
+        retry_policy={
+            'max_retries': None,
+            'interval_start': 0,
+            'interval_step': 1,
+            'interval_max': 300,
+        }
+    )
+    requests.post("http://localhost:3500/site_1/ready", timeout=20)
     while True:
         try:
-            notify_all_onts.apply_async(
-                (os.getenv("QUEUE_NAME", 'celery'), get_all_onts()),
-                queue='master',
-                retry=True,
-                retry_policy={
-                    'max_retries': None,
-                    'interval_start': 0,
-                    'interval_step': 1,
-                    'interval_max': 300,
-                }
-            )
-            break
-        except:
-            pass
-    while True:
-        try:
-            receive_onts_data.apply_async(
-                (os.getenv("QUEUE_NAME", 'celery'), get_onts()),
+            info = get_boards_and_services()
+            notify_boards_and_services.apply_async(
+                (os.getenv("QUEUE_NAME", 'site_1'), info),
                 queue='master'
             )
+            # info["boards"][0]["boardname"]
+            # 4 workers
+            # notify_onts_by_port.apply_async(
+            #     (os.getenv("QUEUE_NAME", 'site_1'), get_onts()),
+            #     queue='master'
+            # )
+        except KeyboardInterrupt:
+            break
         except:
-            notify_olt_not_responding.apply_async(
-                (os.getenv("QUEUE_NAME", 'celery'),),
+            notify_olt.apply_async(
+                (os.getenv("QUEUE_NAME", 'site_1'),"down"),
                 queue="master"
             )
-            while True:
-                try:
-                    with ConnectHandler(**credentials) as conn:
-                        notify_olt_up.apply_async(
-                            (os.getenv("QUEUE_NAME", 'celery'),),
-                            queue="master"
-                        )
-                        break
-                except:
-                    pass
+            wait_olt_ready()
+            notify_olt.apply_async(
+                (os.getenv("QUEUE_NAME", 'site_1'),"up"),
+                queue="master"
+            )
 
 @app.task
 def register_ont(ont):
@@ -200,62 +240,55 @@ def register_ont(ont):
                     conn.send_command("quit", auto_find_prompt=False)
                     conn.find_prompt()
         return False
-    except:
+    except Exception:
         return False
 
-@app.task
-def add(x, y):
-    return x + y
 
 @app.task
-def get_gpon_board():
-    COMMAND = 'display board 0'
+def get_boards_and_services():
+    info = {
+        "boards": None,
+        "services": None
+    }
     with ConnectHandler(**credentials) as net_connect:
-        output = net_connect.send_command(COMMAND)
-        parsed_output = parse_output(platform='huawei_smartax', command=COMMAND, data=output)
-        return parsed_output
+        output = net_connect.send_command("display board 0")
+        parsed_output = parse_output(
+            platform='huawei_smartax',
+            command="display board 0",
+            data=output
+        )
+        info["boards"] = parsed_output
+        output = net_connect.send_command("display sysman service state")
+        parsed_output = parse_output(
+            platform='huawei_smartax',
+            command="display sysman service state",
+            data=output
+        )
+        info["services"] = parsed_output
+    return info
 
-def prepare_olt():
+def wait_olt_ready():
     while True:
         try:
-            with ConnectHandler(**credentials) as conn:
+            with ConnectHandler(**credentials):
                 break
+        except KeyboardInterrupt:
+            break
         except:
             pass
-    with ConnectHandler(**credentials) as conn:
-        conn.enable()
-        conn.config_mode()
-        conn.send_command("ont-srvprofile gpon profile-id 500 profile-name new_link", auto_find_prompt=False)
-        conn.find_prompt()
-        conn.send_command("ont-port pots 4 eth 4")
-        output = conn.send_command("port vlan eth1 500")
-        parsed_output = parse_output(platform="huawei_smartax", command="port vlan eth1 500", data=output)
-        if int(parsed_output[0]["failed"]) != 0:
-            raise Exception("Failed to set port vlan")
-        conn.send_command("commit")
-        conn.send_command("quit", auto_find_prompt=False)
-        conn.find_prompt()
-        conn.send_command("ont-lineprofile gpon profile-id 500 profile-name new_link", auto_find_prompt=False)
-        conn.find_prompt()
-        conn.send_command("tcont 4 dba-profile-id 5")
-        conn.send_command("gem add 126 eth tcont 4")
-        conn.send_command("gem mapping 126 0 vlan 500")
-        conn.send_command("commit")
-        conn.send_command("quit", auto_find_prompt=False)
-        conn.find_prompt()
-    print("OLT Ready!")
+
 
 if __name__ == '__main__':
-    from master import receive_onts_data, notify_olt_not_responding, notify_all_onts, notify_olt_up
-    prepare_olt()
-    monitoring_thread = Process(target=monitoring_onts, daemon=True)
+    from master import notify_all_info, notify_olt, notify_boards_and_services
+    wait_olt_ready()
+    monitoring_thread = Process(target=monitoring_tasks, daemon=True)
     monitoring_thread.start()
-    logging.info(os.getenv('QUEUE_NAME', 'celery'))
+    logging.info(os.getenv('QUEUE_NAME', 'site_1'))
     worker = app.Worker(
         include=['worker'],
         loglevel='INFO',
-        hostname=os.getenv('HOSTNAME', 'worker'),
-        queues=[os.getenv('QUEUE_NAME', 'celery')]
+        hostname=os.getenv('HOSTNAME', 'worker_site_1'),
+        queues=[os.getenv('QUEUE_NAME', 'site_1')]
     )
     worker.start()
     logging.info('Worker started')

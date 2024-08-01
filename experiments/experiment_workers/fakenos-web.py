@@ -14,7 +14,7 @@ inventory = {
             "password": "admin",
             "port": 9000,
             "platform": "huawei_smartax",
-            "configuration_file": os.environ.get("CONFIGURATION_FILE", "configuration.yaml.j2")
+            "configuration_file": os.environ.get("CONFIGURATION_FILE", "site_1.yaml.j2")
         }
     }
 }
@@ -146,18 +146,18 @@ async def set_s_vlan(host: str, ont_sn: str, port_id: int, vlan: int):
     ont["ports"]["eth"][port_id]["s__vlan"] = vlan
     return {"host": host, "ont_sn": ont_sn, "port_id": port_id, "previous_vlan": previous_vlan, "new_vlan": ont["ports"]["eth"][port_id]["s__vlan"]}
 
-@app.get("/api/hosts/{host}/ont/{ont_sn}/port_eth/{port_id}/change_vlan_type")
+@app.get("/api/hosts/{host}/ont/{ont_sn}/port_eth/{port_id}/change_vlan__type")
 async def set_vlan_type(host: str, ont_sn: str, port_id: int):
     onts = []
     for port in net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]["ports"]:
         onts += port
     ont = next(ont for ont in onts if ont["sn"] == ont_sn)
-    previous_vlan_type = ont["ports"]["eth"][port_id]["vlan_type"]
+    previous_vlan_type = ont["ports"]["eth"][port_id]["vlan__type"]
     if previous_vlan_type == "QINQ":
-        ont["ports"]["eth"][port_id]["vlan_type"] = "Translation"
+        ont["ports"]["eth"][port_id]["vlan__type"] = "Translation"
     else:
-        ont["ports"]["eth"][port_id]["vlan_type"] = "QINQ"
-    return {"host": host, "ont_sn": ont_sn, "port_id": port_id, "previous_vlan_type": previous_vlan_type, "new_vlan_type": ont["ports"]["eth"][port_id]["vlan_type"]}
+        ont["ports"]["eth"][port_id]["vlan__type"] = "QINQ"
+    return {"host": host, "ont_sn": ont_sn, "port_id": port_id, "previous_vlan_type": previous_vlan_type, "new_vlan_type": ont["ports"]["eth"][port_id]["vlan__type"]}
 
 @app.get("/api/hosts/{host}/ont/{ont_sn}/snmp_profile/{profile_id}")
 async def set_snmp_profile(host: str, ont_sn: str, profile_id: int):
