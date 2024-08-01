@@ -1,3 +1,4 @@
+from concurrent.futures import ThreadPoolExecutor
 from multiprocessing import Process
 import os
 import logging
@@ -52,31 +53,75 @@ GPON_BOARDS: dict[str, int] = {
     'H902GPHFE': 16,
 }
 
-def get_onts():
-    results = []
-    print("Connecting to the device")
+def get_onts(port: int):
+    results = None
     with ConnectHandler(**credentials) as conn:
-        output = conn.send_command("display board 0")
+        conn.enable()
+        conn.config_mode()
+        conn.send_command(f"interface gpon 0/0/{port}", auto_find_prompt=False)
+        conn.find_prompt()
+        output = conn.send_command("display ont info 0")
         parsed_output = parse_output(
-             platform="huawei_smartax",
-             command="display board 0",
-             data=output
+            platform='huawei_smartax',
+            command="display ont info 0",
+            data=output
         )
-        # print(parsed_output)
-        slot_id, n_ports = [(board["slot_id"], GPON_BOARDS[board["boardname"]])
-                                for board in parsed_output
-                                if board["boardname"] in GPON_BOARDS][0]
-        for i in range(n_ports):
-            command = f"display ont info 0 {slot_id} {i}"
-            output = conn.send_command(command)
-            result = parse_output(
-                 platform="huawei_smartax",
-                 command=command,
-                 data=output
+        for ont in parsed_output:
+            time.sleep(0.01)
+            raw_output = conn.send_command(f"display ont gemport {port} ontid {ont['ont_id']}")
+            gem_output = parse_output(
+                platform='huawei_smartax',
+                command=f"display ont gemport {port} ontid {ont['ont_id']}",
+                data=raw_output
+            )
+            vlan_output = []
+            time.sleep(0.01)
+            for j in range(1, 5):
+                raw_output = conn.send_command(f"display ont port vlan {port} {ont['ont_id']} byport eth {j}")
+                vlan_output += parse_output(
+                    platform='huawei_smartax',
+                    command=f"display ont port vlan {port} {ont['ont_id']} byport eth {j}",
+                    data=raw_output
                 )
-            # print(result)
-            results.append(result)
+            time.sleep(0.01)
+            raw_output = conn.send_command(f"display ont snmp-profile {port} all")
+            snmp_output = parse_output(
+                platform='huawei_smartax',
+                command=f"display ont snmp-profile {port} all",
+                data=raw_output
+            )
+            results.append({
+                "fsp": f"0/0/{port}",
+                "ont": ont["ont_id"],
+                "sn": ont["serial_number"],
+                "gem": gem_output,
+                "vlan": vlan_output,
+                "snmp": snmp_output,
+                "registered": True
+            })
     return results
+
+def get_boards_and_services():
+    info = {
+        "boards": None,
+        "services": None
+    }
+    with ConnectHandler(**credentials) as net_connect:
+        output = net_connect.send_command("display board 0")
+        parsed_output = parse_output(
+            platform='huawei_smartax',
+            command="display board 0",
+            data=output
+        )
+        info["boards"] = parsed_output
+        output = net_connect.send_command("display sysman service state")
+        parsed_output = parse_output(
+            platform='huawei_smartax',
+            command="display sysman service state",
+            data=output
+        )
+        info["services"] = parsed_output
+    return info
 
 def get_all_info():
     info = {
@@ -84,6 +129,7 @@ def get_all_info():
         "services": None,
         "onts": [],
     }
+    n_ports = 0
     with ConnectHandler(**credentials) as conn:
         conn.enable()
         output = conn.send_command("display sysman service state")
@@ -103,6 +149,12 @@ def get_all_info():
         _, n_ports = [(board["slot_id"], GPON_BOARDS[board["boardname"]])
                                 for board in parsed_output
                                 if board["boardname"] in GPON_BOARDS][0]
+    with ThreadPoolExecutor() as executor:
+        results = executor.map(get_onts, range(n_ports))
+        for result in results:
+            info["onts"] += result
+    
+def get_onts():
         conn.config_mode()
         conn.send_command("interface gpon 0/0", auto_find_prompt=False)
         conn.find_prompt()
@@ -244,28 +296,7 @@ def register_ont(ont):
         return False
 
 
-@app.task
-def get_boards_and_services():
-    info = {
-        "boards": None,
-        "services": None
-    }
-    with ConnectHandler(**credentials) as net_connect:
-        output = net_connect.send_command("display board 0")
-        parsed_output = parse_output(
-            platform='huawei_smartax',
-            command="display board 0",
-            data=output
-        )
-        info["boards"] = parsed_output
-        output = net_connect.send_command("display sysman service state")
-        parsed_output = parse_output(
-            platform='huawei_smartax',
-            command="display sysman service state",
-            data=output
-        )
-        info["services"] = parsed_output
-    return info
+
 
 def wait_olt_ready():
     while True:
