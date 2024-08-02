@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import re
 import random
@@ -43,7 +44,7 @@ errors = [
 ]
 
 
-pattern = r"^chaos_monkey_(\d+)?_try_(\d+)?"
+pattern = r"^chaos_monkey_(\d+)?_try_(\d+)?.*\.csv$"
 filenames = os.listdir()
 highest_try = 0
 highest_sites = 0
@@ -78,16 +79,16 @@ urls_ready = {
 
 actions = []
 weights = []
-logging_file = f"chaos_monkey_{SITES}_try_{TRY}.log"
+logging_file = f"chaos_monkey_{SITES}_try_{TRY}.csv"
 match args.only:
     case "misconfigurations":
         actions = [action[0] for action in misconfigurations]
         weights = [action[1] for action in misconfigurations]
-        logging_file = f"chaos_monkey_{SITES}_try_{TRY}_only_misconfigurations.log"
+        logging_file = f"chaos_monkey_{SITES}_try_{TRY}_only_misconfigurations.csv"
     case "errors":
         actions = [action[0] for action in errors]
         weights = [action[1] for action in errors]
-        logging_file = f"chaos_monkey_{SITES}_try_{TRY}_only_errors.log"
+        logging_file = f"chaos_monkey_{SITES}_try_{TRY}_only_errors.csv"
     case other:
         if args.only is None or args.only == "all":
             actions = [action[0] for action in misconfigurations + errors]
@@ -99,14 +100,13 @@ match args.only:
             else:
                 actions = ["no_action"]
                 weights = [1]
-            logging_file = f"chaos_monkey_{SITES}_try_{TRY}_only_{args.only}.log"
+            logging_file = f"chaos_monkey_{SITES}_try_{TRY}_only_{args.only}.csv"
 
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(message)s",
     handlers=[
-        logging.FileHandler(logging_file),
         logging.StreamHandler()
     ],
 )
@@ -117,8 +117,13 @@ logging.Formatter(
 
 logging.info(f"Chaos monkey started with {SITES} sites. Try {TRY} and options {args.only}.")
 
+def register_event(site, event):
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S_%f")[:-3]
+    return (f"{site},{event},{timestamp}")
+
 def chaos_monkey():
     started = False
+    events = []
     while True:
         if stop_thread.is_set():
             break
@@ -129,6 +134,7 @@ def chaos_monkey():
                 continue
             if not started:
                 logging.info("Starting chaos monkey")
+                events.append("_", "Starting chaos monkey")
                 started = True
             time.sleep(random.uniform(0, 10))
             action = random.choices(actions, weights=weights)[0]
@@ -139,12 +145,15 @@ def chaos_monkey():
                     if host["running"]:
                         requests.get(urls[site] + "/hosts/OLT/shutdown", timeout=20)
                         logging.info("%s: Shutting down %s", site, host)
+                        events.append(register_event(site, f"Shutting down {host}"))
                         time.sleep(random.uniform(0, 10))
                         requests.get(urls[site] + "/hosts/OLT/start", timeout=20)
                         logging.info("%s: Starting %s", site, host)
+                        events.append(register_event(site, f"Starting {host}"))
                 case "change_board_state":
                     status = requests.get(urls[site] + "/hosts/OLT/change_board_state", timeout=20).json()["status"]
                     logging.info("%s: Changing board state to %s", site, status)
+                    events.append(register_event(site, f"Changing board state to {status}"))
                 case "ont_change_voltage":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
                     onts = [ont for ont in onts if ont["registered"]]
@@ -156,36 +165,42 @@ def chaos_monkey():
                         changing_state = "set_normal_voltage"
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/{changing_state}", timeout=20)
                     logging.info("Changing voltage for %s from %s to %s", ont['sn'], site, changing_state)
+                    events.append(register_event(site, f"Changing voltage for {ont['sn']} from {site} to {changing_state}"))
                 case "change_gemport":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
                     onts = [ont for ont in onts if ont["registered"]]
                     ont = random.choice(onts)
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/set_gemport_0/1", timeout=20)
                     logging.info("Changing gemport for %s from %s", ont['sn'], site)
+                    events.append(register_event(site, f"Changing gemport for {ont['sn']} from {site}"))
                 case "change_c_vlan":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
                     onts = [ont for ont in onts if ont["registered"]]
                     ont = random.choice(onts)
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/port_eth/{random.randint(1,4)}/c__vlan/99", timeout=20)
                     logging.info("Changing c vlan for %s from %s", ont['sn'], site)
+                    events.append(register_event(site, f"Changing c vlan for {ont['sn']} from {site}"))
                 case "change_s_vlan":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
                     onts = [ont for ont in onts if ont["registered"]]
                     ont = random.choice(onts)
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/port_eth/{random.randint(1,4)}/s__vlan/99", timeout=20)
                     logging.info("Changing s vlan for %s from %s", ont['sn'], site)
+                    events.append(register_event(site, f"Changing s vlan for {ont['sn']} from {site}"))
                 case "change_vlan_type":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
                     onts = [ont for ont in onts if ont["registered"]]
                     ont = random.choice(onts)
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/port_eth/{random.randint(1,4)}/change_vlan__type", timeout=20)
                     logging.info("Changing vlan type for %s from %s", ont['sn'], site)
+                    events.append(register_event(site, f"Changing vlan type for {ont['sn']} from {site}"))
                 case "change_snmp_profile":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
                     onts = [ont for ont in onts if ont["registered"]]
                     ont = random.choice(onts)
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/snmp_profile/{random.randint(2,10)}", timeout=20)
                     logging.info("Changing snmp profile for %s from %s", ont['sn'], site)
+                    events.append(register_event(site, f"Changing snmp profile for {ont['sn']} from {site}"))
                 case "unregister_ont":
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
                     registered_onts = [ont for ont in onts if ont["registered"]]
@@ -195,23 +210,34 @@ def chaos_monkey():
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
                     if ont['sn'] not in [ont['sn'] for ont in onts if ont['registered']]:
                         logging.info("%s successfully unregistered from %s", ont['sn'], site)
+                        events.append(register_event(site, f"Unregistering {ont['sn']} from {site}"))
                     else:
                         logging.info("Failed to unregister %s from %s", ont['sn'], site)
+                        events.append(register_event(site, f"Failed to unregister {ont['sn']} from {site}"))
                 case "change_service_state":
                     services = requests.get(urls[site] + "/hosts/OLT/services", timeout=20).json()["services"]
                     service = random.choice(list(services.keys()))
                     requests.get(urls[site] + f"/hosts/OLT/change_service_state/{service}", timeout=20)
                     logging.info("Changing state of %s from %s", service, site)
+                    events.append(register_event(site, f"Changing state of {service} from {site}"))
                 case other:
                     logging.info("No action taken for %s", site)
+                    events.append(register_event(site, "No action taken"))
         except requests.exceptions.Timeout:
             logging.info("Timeout error with %s", site)
+            events.append(register_event(site, "Timeout error"))
         except requests.exceptions.ConnectionError:
             logging.info("Connection error with %s", site)
+            events.append(register_event(site, "Connection error"))
         except KeyboardInterrupt:
             logging.info("Exiting chaos monkey KeyboardInterrupt")
+            events.append(register_event(site, "Exiting chaos monkey KeyboardInterrupt"))
             break
     logging.info("Exiting chaos monkey")
+    events.append(register_event(site, "Exiting chaos monkey"))
+    with open(logging_file, "w") as f:
+        for event in events:
+            f.write(event + "\n")
 
 
 @asynccontextmanager

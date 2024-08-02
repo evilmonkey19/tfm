@@ -1,40 +1,28 @@
-site_1,OLT down,2024-08-01 17:34:52,209
-site_1,OLT up,2024-08-01 17:34:54,884
-site_1,OLT down,2024-08-01 17:34:58,344
-site_1,OLT up,2024-08-01 17:35:01,038
-site_1,OLT down,2024-08-01 17:35:04,361
-site_1,OLT up,2024-08-01 17:35:07,017
-site_1,OLT down,2024-08-01 17:35:10,422
-site_1,OLT up,2024-08-01 17:35:13,083
-site_1,OLT down,2024-08-01 17:35:16,484
-site_1,OLT up,2024-08-01 17:35:19,170
-site_1,OLT down,2024-08-01 17:35:22,554
-site_1,OLT up,2024-08-01 17:35:25,233
-site_1,OLT down,2024-08-01 17:35:28,589
-site_1,OLT up,2024-08-01 17:35:31,325
-site_1,OLT down,2024-08-01 17:35:34,684
-site_1,OLT up,2024-08-01 17:35:37,409
-site_1,OLT down,2024-08-01 17:35:40,817
-site_1,OLT up,2024-08-01 17:35:43,500
-site_1,OLT down,2024-08-01 17:35:46,890
-site_1,OLT up,2024-08-01 17:35:49,557
-site_1,OLT down,2024-08-01 17:35:52,925
-site_1,OLT up,2024-08-01 17:35:55,610
-site_1,OLT down,2024-08-01 17:35:58,985
-site_1,OLT up,2024-08-01 17:36:01,709
-site_1,OLT down,2024-08-01 17:36:05,070
-site_1,OLT up,2024-08-01 17:36:07,781
-site_1,OLT down,2024-08-01 17:36:11,142
-site_1,OLT up,2024-08-01 17:36:13,815
-site_1,OLT down,2024-08-01 17:36:17,185
-site_1,OLT up,2024-08-01 17:36:19,856
-site_1,OLT down,2024-08-01 17:36:23,230
-site_1,OLT up,2024-08-01 17:36:25,911
-site_1,OLT down,2024-08-01 17:36:29,259
-site_1,OLT up,2024-08-01 17:36:31,938
-site_1,OLT down,2024-08-01 17:36:35,255
-site_1,OLT up,2024-08-01 17:36:37,897
-site_1,OLT down,2024-08-01 17:36:41,255
-site_1,OLT up,2024-08-01 17:36:43,941
-site_1,OLT down,2024-08-01 17:36:47,352
-site_1,OLT up,2024-08-01 17:36:48,143
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 13:51:39_454
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:00:43_361
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:02:03_584
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:03:23_948
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:07:28_757
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:11:21_823
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:12:42_546
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:14:02_889
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:15:23_148
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:16:43_563
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:18:03_957
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:19:24_540
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:20:45_365
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:22:06_197
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:26:27_338
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:30:45_953
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:33:22_949
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:36:01_270
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:39:13_850
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:40:34_444
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:44:19_766
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:50:00_184
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:51:21_382
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:57:33_373
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 14:59:48_800
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 15:01:09_403
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 15:03:12_865
+site_1,service {'network_service': 'capwap', 'port': '5246', 'state': 'enable'} is enable,2024-08-02 15:04:33_452

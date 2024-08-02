@@ -174,6 +174,7 @@ async def set_snmp_profile(host: str, ont_sn: str, profile_id: int):
 async def list_services(host: str):
     services = net.hosts[host].nos.device.configurations["services"]
     return {"host": host, "services": services}
+
 @app.get("/api/hosts/{host}/change_service_state/{service_name}")
 async def change_service_state(host: str, service_name: str):
     service = net.hosts[host].nos.device.configurations["services"][service_name]
