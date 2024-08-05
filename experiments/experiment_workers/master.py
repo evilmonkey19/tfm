@@ -4,9 +4,10 @@ import os
 import sys
 import time
 from datetime import datetime
-from multiprocessing import Manager
+from threading import Lock, Event
 import subprocess
 import threading
+import uuid
 
 import celery
 import yaml
@@ -19,7 +20,7 @@ print(f'Connecting to RabbitMQ at {RABBITMQ_IP}')
 
 app = celery.Celery(
     'master',
-    backend=f'rpc://guest@{RABBITMQ_IP}//',
+    backend='redis://localhost:6379/1',
     broker=f'pyamqp://guest@{RABBITMQ_IP}//',
 )
 
@@ -31,68 +32,76 @@ app.conf.update(
     enable_utc=True,
     broker_connection_retry=True,
     broker_connection_retry_on_startup=True,
+    worker_pool='solo',
 )
 
 
 @dataclass
 class FixObject:
+    uuid = uuid.uuid4()
     site: str
     is_ont: bool
     error_type: str
     ont_or_service: dict
     result = None
 
-manag = Manager()
-original_all_info = manag.dict()
-all_info = manag.dict()
-events = manag.list()
-to_fix = manag.list()
-olt_down = manag.Event()
+general_lock = Lock()
+original_all_info = dict()
+all_info = dict()
+events = list()
+to_fix = list()
+olt_down = Event()
 
-end_thread = threading.Event()
-
-
+end_thread = Event()
 
 
-def register_event(site, event):
+def register_event(site = None, event = None, fix = None):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S_%f")[:-3]
-    events.append(f"{site},{event},{timestamp}")
+    if site is not None and event is not None:
+        events.append(f"{timestamp},,{site},error,{event}")
+        return
+    if fix.result is None:
+        events.append(f"{timestamp},{fix.uuid},{fix.site},detected,{fix.error_type}")
+        return
+    events.append(f"{timestamp},{fix.uuid},{fix.site},fixed,{fix.error_type}")
 
 def add_to_fix(site, ont_or_service, error_type):
     is_ont = "ont_id" in ont_or_service
-    fix = FixObject(site, is_ont, error_type, ont_or_service)
-    if fix not in list(to_fix):
+    fix = FixObject(
+        site=site,
+        is_ont=is_ont,
+        error_type=error_type,
+        ont_or_service=ont_or_service
+    )
+    with general_lock:
+        if any(fix.site == f.site and fix.ont_or_service == f.ont_or_service for f in to_fix):
+            return
         to_fix.append(fix)
+        register_event(fix=fix)
 
 def fixer():
-    while True:
-        if end_thread.is_set():
-            break
-        if list(to_fix):
-            # pylint: disable=consider-using-enumerate
-            for i in range(len(to_fix)):
-                fix = to_fix[i]
+    while not end_thread.is_set():
+        time.sleep(1)
+        with general_lock:
+            print(to_fix)
+            for fix in to_fix:
                 if fix.result is not None:
-                    print(f"Fixed {fix.result.status}")
                     if fix.result.ready():
-                        if fix.result.failed():
-                            register_event(fix.site, f"failed to fix {fix.ont_or_service} with problem {fix.error_type}")
+                        print(f"Fixing {fix.error_type} in site {fix.site} finished")
+                        if fix.is_ont:
+                            print([all_info[fix.site]["onts"] for ont in all_info[fix.site]["onts"] if ont["fsp"] == fix.ont_or_service["fsp"]])
                         else:
-                            register_event(fix.site, f"fixed {fix.ont_or_service} with problem {fix.error_type}")
-                        to_fix.pop(i)
+                            register_event(fix=fix)
+                        to_fix.remove(fix)
                 elif fix.is_ont:
-                    # register_ont.apply_async(args=(fix_object.site, fix_object.ont_or_service["ont_id"]), queue=fix_object.site)
-                    pass
+                    print("HOLAAAAAAA")
+                    # register_ont.apply_async(args=(fix.site, fix.ont_or_service["ont_id"]), queue=fix.site)
                 elif not fix.is_ont:
                     fix.result = fix_service.apply_async(
                         args=(fix.ont_or_service,),
                         queue=fix.site
                     )
-                    to_fix[i] = fix  # Update the fix object in the list
-                else:
-                    continue
-            time.sleep(1)
-
+                    print(f"Fixing service {fix.ont_or_service['network_service']} in site {fix.site}: {fix.uuid}")
 
 @app.task
 def notify_all_info(site_name: str, info: dict):
@@ -117,10 +126,9 @@ def notify_all_info(site_name: str, info: dict):
     
     
     info["onts"] = [ont for ont in info["onts"] if ont["registered"]]
-    for ont in info["onts"]:
-        del ont["voltage"]
-    all_info[site_name] = info
-    original_all_info[site_name] = info
+    with general_lock:
+        all_info[site_name] = info
+        original_all_info[site_name] = info
 
 # ### TO FIX ###
 # @app.task
@@ -157,42 +165,72 @@ def notify_all_info(site_name: str, info: dict):
 
 @app.task
 def notify_olt(queue, status: str):
-    register_event(queue, f"OLT is {status}")
+    register_event(site=queue, event=f"OLT is {status}")
     if status == "down":
         olt_down.set()
     else:
         olt_down.clear()
-        all_info[queue] = original_all_info[queue]
+        with general_lock:
+            all_info[queue] = original_all_info[queue]
 
 @app.task
 def notify_boards_and_services(queue, boards: list, services: list):
     if not boards == all_info[queue]["boards"]:
-        register_event(queue, f"board 4 is {boards[4]['status']}")
+        register_event(site=queue, event=f"Boards: board 4 is {boards[4]['status']}")
         all_info[queue]["boards"] = boards
-    if not services == all_info[queue]["services"]:
-        print(all_info[queue]["services"])
-        changed_service = None
-        for service in services:
-            for service2 in all_info[queue]["services"]:
-                if service["network_service"] == service2["network_service"]:
-                    if service["state"] != service2["state"]:
-                        changed_service = service
-                        break
-        changed_service = next((service for service in services for service2 in all_info[queue]["services"] if service["state"] != service2["state"]), None)
-        register_event(queue, f"service {changed_service} is {changed_service['state']}")
-        all_info[queue]["services"] = services
+
+    if not services == original_all_info[queue]["services"]:
+        changed_service = next((s for s in services for s2 in all_info[queue]["services"] 
+                                 if s["network_service"] == s2["network_service"] and s["state"] != s2["state"]), None)
         add_to_fix(queue, changed_service, "service changed")
+
+def move_onts(queue, sn: str):
+    onts: list = all_info[queue]["onts"]
+    ont = next((ont for ont in onts if ont["sn"] == sn), None)
+    onts.remove(ont)
+    onts = [_ont for _ont in onts if ont["fsp"] == _ont["fsp"] and _ont["ont"] > ont["ont"]]
+    for ont in onts:
+        ont["ont"] -= 1
+
+
 
 @app.task
 def notify_onts(queue, onts: list):
-    _onts = copy.deepcopy(onts)
-    _onts = [{k: v for k, v in ont.items() if k != "voltage"} for ont in _onts]
-    if _onts == all_info[queue]["onts"]:
-        return
+    # _onts = copy.deepcopy(onts)
+    # _onts = [{k: v for k, v in ont.items() if k != "voltage"} for ont in _onts]
+    # if _onts == all_info[queue]["onts"]:
+    #     return
+    print("ONTS", onts)
+    if len(onts) != len(all_info[queue]["onts"]) or \
+        not all(v for ont in onts for v in ont.values()):
+        all_info_sn = [ont["sn"] for ont in all_info[queue]["onts"]]
+        onts_sn = [ont["sn"] for ont in onts]
+        sn = next((sn for sn in onts_sn if sn not in all_info_sn), None)
+        if sn is not None:
+            ont = next((ont for ont in all_info[queue]["onts"] if ont["sn"] == sn), None)
+            move_onts(queue, sn)
+            add_to_fix(queue, ont, "unregistered")
+
+    return
     for ont in onts:
+        all_info_ont = next((_ont for _ont in all_info[queue]["onts"] if _ont["sn"] == ont["sn"]), None)
+        ont_index = all_info[queue]["onts"].index(all_info_ont)
+        print(ont)
+            
+        # Voltage
+        if ont["voltage"] != all_info_ont["voltage"]:
+            voltage_value = float(ont["voltage"])
+            print(voltage_value)
+            if 3.6 < voltage_value < 3.8:
+                register_event(site=queue, event=f"ONT {ont['sn']} has high voltage")
+            elif 2.8 < voltage_value < 3.0:
+                register_event(site=queue, event=f"ONT {ont['sn']} has low voltage")
+            elif 3.2 < voltage_value < 3.4:
+                register_event(site=queue, event=f"ONT {ont['sn']} has normal voltage")
+            all_info[queue]["onts"][ont_index] = ont
+        
         original_ont = next((ont for ont in all_info[queue]["onts"] if ont["ont_id"] == ont["ont_id"]), None)
         if original_ont is None:
-            register_event(queue, f"ONT {ont['ont_id']} is unregistered")
             add_to_fix(queue, ont, "unregistered")
             return
         if ont == original_ont:

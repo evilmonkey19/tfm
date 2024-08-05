@@ -13,6 +13,11 @@ docker_compose = {
             },
             "command": f"python chaos_monkey.py --only ${errors_type}",
         },
+        "redis": {
+            "image": "redis",
+            "ports": ["6379:6379"],
+            "networks": {f"worker{j}-net": {"ipv4_address": f"10.{j}.0.4"} for j in range(1,i)},
+        },
         "rabbitmq": {
             "image": "rabbitmq:management",
             "ports": ["5672:5672", "15672:15672"],

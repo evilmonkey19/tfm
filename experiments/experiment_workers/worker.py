@@ -25,7 +25,7 @@ credentials = {
 
 app = celery.Celery(
     'worker',
-    backend=f'rpc://guest@{RABBITMQ_IP}//',
+    backend='redis://localhost:6379/1',
     broker=f'pyamqp://guest@{RABBITMQ_IP}//'
 )
 
@@ -172,14 +172,23 @@ def get_all_info():
     _, n_ports = [(board["slot_id"], GPON_BOARDS[board["boardname"]])
                     for board in boards
                     if board["boardname"] in GPON_BOARDS][0]
-    onts = get_onts(n_ports, autofind=True)
+    onts = get_onts(n_ports, autofind=False)
     info["onts"] = onts
+    with open('info.json', 'w') as f:
+        import json
+        # info = json.load(f)
+        json.dump(info, f)
     return info
 
 
 def monitoring_tasks():
+    # print("HOLAAAA")
+    with open('info.json', 'r') as f:
+        import json
+        info = json.load(f)
     notify_all_info.apply_async(
-        (os.getenv("QUEUE_NAME", 'site_1'), get_all_info()),
+        (os.getenv("QUEUE_NAME", 'site_1'), info),
+        # (os.getenv("QUEUE_NAME", 'site_1'), get_all_info()),
         queue='master',
         retry=True,
         retry_policy={
@@ -190,7 +199,7 @@ def monitoring_tasks():
         }
     )
     try:
-        requests.post("http://localhost:3500/site_1/ready", timeout=20)
+        requests.post("http://localhost:3500/site_1/ready", timeout=2)
     except requests.exceptions.RequestException:
         pass
     while True:
@@ -203,7 +212,7 @@ def monitoring_tasks():
             _, n_ports = [(board["slot_id"], GPON_BOARDS[board["boardname"]])
                 for board in boards
                 if board["boardname"] in GPON_BOARDS][0]
-            onts = get_onts(n_ports)
+            onts = get_onts(2)
             notify_onts.apply_async(
                 (os.getenv("QUEUE_NAME", 'site_1'), onts),
                 queue='master'
@@ -264,12 +273,21 @@ def register_ont(ont):
 
 @app.task
 def fix_service(service: dict):
-    print(service)
-    return
-    # with ConnectHandler(**credentials) as conn:
-    #     conn.enable()
-    #     conn.config_mode()
-
+    update_service = service
+    update_service['state'] = 'enable' if service['state'] == 'disable' else 'disable'
+    result = False
+    with ConnectHandler(**credentials) as conn:
+        conn.enable()
+        conn.config_mode()
+        conn.send_command(f"sysman service {update_service['network_service']} {update_service['state']}")
+        output = conn.send_command("display sysman service state")
+        parsed_output = parse_output(
+            platform='huawei_smartax',
+            command="display sysman service state",
+            data=output
+        )
+        result = update_service in parsed_output
+    return result
 
 
 def wait_olt_ready():
