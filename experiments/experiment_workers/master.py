@@ -66,7 +66,7 @@ def register_event(site = None, event = None, fix = None):
     events.append(f"{timestamp},{fix.uuid},{fix.site},fixed,{fix.error_type}")
 
 def add_to_fix(site, ont_or_service, error_type):
-    is_ont = "ont_id" in ont_or_service
+    is_ont = "ont" in ont_or_service
     fix = FixObject(
         site=site,
         is_ont=is_ont,
@@ -76,6 +76,7 @@ def add_to_fix(site, ont_or_service, error_type):
     with general_lock:
         if any(fix.site == f.site and fix.ont_or_service == f.ont_or_service for f in to_fix):
             return
+        print(to_fix)
         to_fix.append(fix)
         register_event(fix=fix)
 
@@ -89,13 +90,15 @@ def fixer():
                     if fix.result.ready():
                         print(f"Fixing {fix.error_type} in site {fix.site} finished")
                         if fix.is_ont:
-                            print([all_info[fix.site]["onts"] for ont in all_info[fix.site]["onts"] if ont["fsp"] == fix.ont_or_service["fsp"]])
+                            result = fix.result.get()
+                            print(result)
+                            register_event(fix=fix)
+                            # print([all_info[fix.site]["onts"] for ont in all_info[fix.site]["onts"] if ont["fsp"] == fix.ont_or_service["fsp"]])
                         else:
                             register_event(fix=fix)
                         to_fix.remove(fix)
                 elif fix.is_ont:
-                    print("HOLAAAAAAA")
-                    # register_ont.apply_async(args=(fix.site, fix.ont_or_service["ont_id"]), queue=fix.site)
+                    register_ont.apply_async(args=(fix.ont_or_service,), queue=fix.site)
                 elif not fix.is_ont:
                     fix.result = fix_service.apply_async(
                         args=(fix.ont_or_service,),
@@ -130,33 +133,6 @@ def notify_all_info(site_name: str, info: dict):
         all_info[site_name] = info
         original_all_info[site_name] = info
 
-# ### TO FIX ###
-# @app.task
-# def receive_onts_data(queue, data):
-#     if not registered_network_onts:
-#         return
-#     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S,%f")[:-3]
-#     registered_onts = [ont["serial_number"] for port in data for ont in port]
-#     if queue not in registered_network_onts:
-#         return
-#     all_unregistered_onts = [ont for ont in registered_network_onts[queue] if ont not in registered_onts]
-#     with onts_lock:
-#         previous_unregistered_onts = []
-#         while not onts_queue.empty():
-#             previous_unregistered_onts.append(onts_queue.get())
-#         print(f"Previous unregistered ONTs: {previous_unregistered_onts}")
-#         print(f"All unregistered ONTs: {all_unregistered_onts}")
-#         new_unregistered_onts = [(queue, ont) for ont in all_unregistered_onts if ont[1] not in previous_unregistered_onts]
-#         print(f"New unregistered ONTs: {new_unregistered_onts}")
-#         # print(f"Unregistered ONTs: {new_unregistered_onts}")
-#         for ont in previous_unregistered_onts + new_unregistered_onts:
-#             onts_queue.put(ont)
-#     with open('events_log.csv', 'a') as f:
-#         for ont in new_unregistered_onts:
-#             f.write(f"{queue},unregistered {ont[1]},{timestamp}\n")
-#     print(f"ONTs {new_unregistered_onts} are not registered in OLT {queue}")
-
-
 ##############################################
 ##                                          ##
 ##               TASKS                      ##
@@ -186,11 +162,12 @@ def notify_boards_and_services(queue, boards: list, services: list):
 
 def move_onts(queue, sn: str):
     onts: list = all_info[queue]["onts"]
+    # print(onts)
     ont = next((ont for ont in onts if ont["sn"] == sn), None)
     onts.remove(ont)
     onts = [_ont for _ont in onts if ont["fsp"] == _ont["fsp"] and _ont["ont"] > ont["ont"]]
-    for ont in onts:
-        ont["ont"] -= 1
+    for _ont in onts:
+        _ont["ont"] = str(int(_ont["ont"]) - 1)
 
 
 
@@ -200,12 +177,13 @@ def notify_onts(queue, onts: list):
     # _onts = [{k: v for k, v in ont.items() if k != "voltage"} for ont in _onts]
     # if _onts == all_info[queue]["onts"]:
     #     return
-    print("ONTS", onts)
+    # print("ONTS", onts)
     if len(onts) != len(all_info[queue]["onts"]) or \
         not all(v for ont in onts for v in ont.values()):
         all_info_sn = [ont["sn"] for ont in all_info[queue]["onts"]]
         onts_sn = [ont["sn"] for ont in onts]
-        sn = next((sn for sn in onts_sn if sn not in all_info_sn), None)
+        print(all_info_sn, onts_sn)
+        sn = next((sn for sn in all_info_sn if sn not in onts_sn), None)
         if sn is not None:
             ont = next((ont for ont in all_info[queue]["onts"] if ont["sn"] == sn), None)
             move_onts(queue, sn)

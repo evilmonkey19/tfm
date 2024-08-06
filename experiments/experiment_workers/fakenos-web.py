@@ -66,15 +66,18 @@ async def list_onts(host: str):
 
 @app.get("/api/hosts/{host}/unregister_ont/{ont_sn}")
 async def unregister_ont(host: str, ont_sn: str):
-    onts = []
-    for port in net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]["ports"]:
-        onts += port
-    for ont in onts:
-        if ont["sn"] == ont_sn:
-            previously_registered = ont["registered"]
-            ont["registered"] = False
-            return {"host": host, "ont_sn": ont_sn, "previous_state": previously_registered, "status": "unregistering"}
-    return {"host": host, "ont_sn": ont_sn, "status": "not found"}
+    try:
+        onts = []
+        for port in net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]["ports"]:
+            onts += port
+        ont_to_unregister = next(ont for ont in onts if ont["sn"] == ont_sn)
+        ont_to_unregister["registered"] = False
+        move_onts = [ont for ont in onts if ont["fsp"] == ont_to_unregister["fsp"] and ont["ont"] > ont_to_unregister["ont"]]
+        for ont in move_onts:
+            ont["ont"] = str(int(ont["ont"]) - 1)
+        return {"host": host, "ont_sn": ont_sn, "status": "unregistering"}
+    except:
+        return {"host": host, "ont_sn": ont_sn, "status": "not found"}
 
 @app.get("/api/hosts/{host}/change_board_state")
 async def board_failure(host: str):

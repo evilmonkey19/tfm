@@ -9,4 +9,29 @@
 2024-08-05 16:42:25_909,,site_1,error,OLT is down
 2024-08-05 16:42:37_645,,site_1,error,OLT is up
 2024-08-05 16:42:41_102,3eaed6d8-61bd-4119-98e6-cb044495e28b,site_1,detected,service changed
-2024-08-05 16:42:54_342,3eaed6d8-61bd-4119-98e6-cb044495e28b,site_1,fixed,service changed
+2024-08-05 16:42:54_342,3eaed6d8-61bd-4119-98e6-cb044495e28b,site_1,fixed,service changed2024-08-06 17:23:51_101,,site_1,error,OLT is down
+2024-08-06 17:23:53_776,,site_1,error,OLT is up
+2024-08-06 17:23:56_756,,site_1,error,OLT is down
+2024-08-06 17:23:59_474,,site_1,error,OLT is up
+2024-08-06 17:24:02_445,,site_1,error,OLT is down
+2024-08-06 17:24:05_104,,site_1,error,OLT is up
+2024-08-06 17:24:08_052,,site_1,error,OLT is down
+2024-08-06 17:24:08_973,,site_1,error,OLT is up
+2024-08-06 17:24:11_897,,site_1,error,OLT is down
+2024-08-06 17:26:17_025,,site_1,error,OLT is up
+2024-08-06 17:26:19_582,,site_1,error,OLT is down
+2024-08-06 17:26:22_249,,site_1,error,OLT is up
+2024-08-06 17:26:25_146,,site_1,error,OLT is down
+2024-08-06 17:26:27_818,,site_1,error,OLT is up
+2024-08-06 17:26:27_819,,site_1,error,OLT is down
+2024-08-06 17:26:28_625,,site_1,error,OLT is up
+2024-08-06 17:26:28_627,,site_1,error,OLT is down
+2024-08-06 17:27:01_565,,site_1,error,OLT is up
+2024-08-06 17:27:01_572,,site_1,error,OLT is down
+2024-08-06 17:27:01_574,,site_1,error,OLT is up
+2024-08-06 17:27:09_168,ba6a13ec-045b-45a0-8539-f19ebf54ea1b,site_1,detected,service changed
+2024-08-06 17:27:22_434,ba6a13ec-045b-45a0-8539-f19ebf54ea1b,site_1,fixed,service changed
+2024-08-06 18:47:51_937,e1c58b9d-11a5-4b61-be34-73623bdae0de,site_1,detected,unregistered
+2024-08-06 18:49:17_715,57b2b634-2ffb-42b0-a97e-67aee996a4e3,site_1,detected,unregistered
+2024-08-06 18:58:39_970,61878185-6e4d-4c97-8bdb-69ef10e33b38,site_1,detected,unregistered
+2024-08-06 19:06:34_369,8f3b307f-6b93-46f4-aee8-d5cefd57f33d,site_1,detected,unregistered

@@ -172,17 +172,16 @@ def get_all_info():
     _, n_ports = [(board["slot_id"], GPON_BOARDS[board["boardname"]])
                     for board in boards
                     if board["boardname"] in GPON_BOARDS][0]
-    onts = get_onts(n_ports, autofind=False)
+    onts = get_onts(2, autofind=False)
     info["onts"] = onts
-    with open('info.json', 'w') as f:
-        import json
-        # info = json.load(f)
-        json.dump(info, f)
+    # with open('info.json', 'w') as f:
+    #     import json
+    #     # info = json.load(f)
+    #     json.dump(info, f)
     return info
 
 
 def monitoring_tasks():
-    # print("HOLAAAA")
     with open('info.json', 'r') as f:
         import json
         info = json.load(f)
@@ -232,44 +231,48 @@ def monitoring_tasks():
 
 @app.task
 def register_ont(ont):
-    try:
-        with ConnectHandler(**credentials) as conn:
-            conn.enable()
-            conn.config_mode()
-            output = conn.send_command("display ont autofind all")
+    new_ont = {}
+    with ConnectHandler(**credentials) as conn:
+        conn.enable()
+        conn.config_mode()
+        output = conn.send_command("display ont autofind all")
+        parsed_output = parse_output(platform='huawei_smartax', command='display ont autofind all', data=output)
+        autofind_ont = next((ont for ont in parsed_output if ont["serial_number"].split()[0] == ont), None)
+        if not autofind_ont:
+            chassis, slot, port = ont["fsp"].split("/")
+            interface_gpon = f"{chassis}/{slot}"
+            conn.send_command(f"interface gpon {ont['fsp'].rsplit('/', 1)[0]}", auto_find_prompt=False)
+            conn.find_prompt()
+            conn.send_command(f"ont delete {ont['fsp'].rsplit('/', 1)[1]} {ont['ont']}")
+            conn.send_command("display ont autofind all")
             parsed_output = parse_output(platform='huawei_smartax', command='display ont autofind all', data=output)
-            logging.info("Autofind ONTs")
-            # print(parsed_output)
-            for autofind_ont in parsed_output:
-                print(f"Autofind ONT: {autofind_ont['serial_number']} - {ont}")
-                if ont == autofind_ont["serial_number"].split()[0]:
-                    print(f"ONT {autofind_ont} found in autofind")
-                    chassis, slot, port = autofind_ont["fsp"].split("/")
-                    interface_gpon = f"{chassis}/{slot}"
-                    print(f"Registering ONT {ont} in interface {interface_gpon}")
-                    conn.send_command(f"interface gpon {interface_gpon}", auto_find_prompt=False)
-                    conn.find_prompt()
-                    logging.info(f"entered interface {interface_gpon}")
-                    output = conn.send_command(f"ont add {port} sn-auth {ont} omci ont-lineprofile-id 500 ont-srvprofile-id 500 desc {ont}")
-                    parsed_output = parse_output(platform='huawei_smartax', command=f"ont add {interface_gpon[-1]} sn-auth {ont} omci ont-lineprofile-id 500 ont-srvprofile-id 500 desc {ont}", data=output)
-                    print(parsed_output)
-                    if parsed_output[0]["success"] != '1':
-                        print("NO FUNCA")
-                        return False
-                    print("ONT registered")
-                    output= conn.send_command(f"display ont info {port}")
-                    print(output)
-                    parsed_output = parse_output(platform='huawei_smartax', command=f"display ont info {port}", data=output)
-                    print(parsed_output)
-                    for _ont in parsed_output:
-                        print(_ont['serial_number'])
-                        if _ont["serial_number"] == ont:
-                            return True
-                    conn.send_command("quit", auto_find_prompt=False)
-                    conn.find_prompt()
-        return False
-    except Exception:
-        return False
+            autofind_ont = next((ont for ont in parsed_output if ont["serial_number"].split()[0] == ont), None)
+            print(autofind_ont)
+        else:
+            chassis, slot, port = autofind_ont["fsp"].split("/")
+            interface_gpon = f"{chassis}/{slot}"
+            conn.send_command(f"interface gpon {interface_gpon}", auto_find_prompt=False)
+            conn.find_prompt()
+        output = conn.send_command(f"ont add {port} sn-auth {ont['sn']} omci ont-lineprofile-id 500 ont-srvprofile-id 500 desc {ont['sn']}")
+        parsed_output = parse_output(platform='huawei_smartax', command=f"ont add {interface_gpon[-1]} sn-auth {ont['sn']} omci ont-lineprofile-id 500 ont-srvprofile-id 500 desc {ont['sn']}", data=output)
+        if parsed_output[0]["success"] != '1':
+            raise Exception("ONT not registered")
+        output= conn.send_command(f"display ont info {port}")
+        parsed_output = parse_output(platform='huawei_smartax', command=f"display ont info {port}", data=output)
+        found_ont = next((ont for ont in parsed_output if ont["serial_number"] == ont), None)
+        print(found_ont)
+        new_ont = {
+            "fsp": ont["fsp"],
+            "ont": ont["ont"],
+            "sn": ont["sn"],
+            "gem": [],
+            "vlan": [],
+            "snmp": [],
+            "registered": True
+        }
+        conn.send_command("quit", auto_find_prompt=False)
+        conn.find_prompt()
+    return new_ont
 
 @app.task
 def fix_service(service: dict):
