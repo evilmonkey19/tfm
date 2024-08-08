@@ -68,13 +68,19 @@ async def list_onts(host: str):
 async def unregister_ont(host: str, ont_sn: str):
     try:
         onts = []
-        for port in net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]["ports"]:
-            onts += port
-        ont_to_unregister = next(ont for ont in onts if ont["sn"] == ont_sn)
+        ont_to_unregister = None
+        for port_index, port in enumerate(net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]["ports"]):
+            ont_to_unregister = next((ont for ont in port if ont["sn"] == ont_sn), None)
+            if not ont_to_unregister:
+                continue
+            for ont in port:
+                ont["fsp"] = f"0/0/{port_index}"
+                onts.append(ont)
+            break
         ont_to_unregister["registered"] = False
-        move_onts = [ont for ont in onts if ont["fsp"] == ont_to_unregister["fsp"] and ont["ont"] > ont_to_unregister["ont"]]
+        move_onts = [ont for ont in onts if ont["registered"] and int(ont["ont_id"]) > int(ont_to_unregister["ont_id"])]
         for ont in move_onts:
-            ont["ont"] = str(int(ont["ont"]) - 1)
+            ont["ont_id"] = int(ont["ont_id"]) - 1
         return {"host": host, "ont_sn": ont_sn, "status": "unregistering"}
     except:
         return {"host": host, "ont_sn": ont_sn, "status": "not found"}
@@ -127,6 +133,7 @@ async def set_gemport_0(host: str, ont_sn: str, gemport: int):
     ont = next(ont for ont in onts if ont["sn"] == ont_sn)
     previous_gemport = ont["gemports"][0]
     ont["gemports"][0] = gemport
+    print(ont)
     return {"host": host, "ont_sn": ont_sn, "previous_gemport": previous_gemport, "new_gemport": ont["gemports"][0]}
 
 @app.get("/api/hosts/{host}/ont/{ont_sn}/port_eth/{port_id}/c__vlan/{vlan}")

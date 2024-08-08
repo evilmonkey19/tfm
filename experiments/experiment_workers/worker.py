@@ -230,23 +230,24 @@ def monitoring_tasks():
             )
 
 @app.task
-def register_ont(ont):
+def register_ont(ont: dict):
     new_ont = {}
     with ConnectHandler(**credentials) as conn:
         conn.enable()
         conn.config_mode()
         output = conn.send_command("display ont autofind all")
         parsed_output = parse_output(platform='huawei_smartax', command='display ont autofind all', data=output)
-        autofind_ont = next((ont for ont in parsed_output if ont["serial_number"].split()[0] == ont), None)
+        autofind_ont = next((_ont for _ont in parsed_output if _ont["serial_number"].split()[0] == ont["sn"]), None)
+        print(autofind_ont)
         if not autofind_ont:
             chassis, slot, port = ont["fsp"].split("/")
             interface_gpon = f"{chassis}/{slot}"
             conn.send_command(f"interface gpon {ont['fsp'].rsplit('/', 1)[0]}", auto_find_prompt=False)
             conn.find_prompt()
             conn.send_command(f"ont delete {ont['fsp'].rsplit('/', 1)[1]} {ont['ont']}")
-            conn.send_command("display ont autofind all")
+            output = conn.send_command("display ont autofind all")
             parsed_output = parse_output(platform='huawei_smartax', command='display ont autofind all', data=output)
-            autofind_ont = next((ont for ont in parsed_output if ont["serial_number"].split()[0] == ont), None)
+            autofind_ont = next((_ont for _ont in parsed_output if _ont["serial_number"].split()[0] == ont["sn"]), None)
             print(autofind_ont)
         else:
             chassis, slot, port = autofind_ont["fsp"].split("/")
@@ -255,21 +256,49 @@ def register_ont(ont):
             conn.find_prompt()
         output = conn.send_command(f"ont add {port} sn-auth {ont['sn']} omci ont-lineprofile-id 500 ont-srvprofile-id 500 desc {ont['sn']}")
         parsed_output = parse_output(platform='huawei_smartax', command=f"ont add {interface_gpon[-1]} sn-auth {ont['sn']} omci ont-lineprofile-id 500 ont-srvprofile-id 500 desc {ont['sn']}", data=output)
+        print(output)
         if parsed_output[0]["success"] != '1':
             raise Exception("ONT not registered")
         output= conn.send_command(f"display ont info {port}")
         parsed_output = parse_output(platform='huawei_smartax', command=f"display ont info {port}", data=output)
-        found_ont = next((ont for ont in parsed_output if ont["serial_number"] == ont), None)
-        print(found_ont)
+        found_ont = next((_ont for _ont in parsed_output if _ont["serial_number"] == ont["sn"]), None)
+        raw_output = conn.send_command(f"display ont optical-info {port} all")
+        optical_output = parse_output(
+            platform='huawei_smartax',
+            command=f"display ont optical-info {port} all",
+            data=raw_output
+        )
+        voltage = next((item for item in optical_output if item["ont_id"] == found_ont["ont_id"]), None)
+        raw_output = conn.send_command(f"display ont gemport {port} ontid {found_ont['ont_id']}")
+        gem_output = parse_output(
+            platform='huawei_smartax',
+            command=f"display ont gemport {port} ontid {found_ont['ont_id']}",
+            data=raw_output
+        )
+        vlan_output = []
+        for j in range(1, 5):
+            raw_output = conn.send_command(f"display ont port vlan {port} {found_ont['ont_id']} byport eth {j}")
+            vlan_output += parse_output(
+                platform='huawei_smartax',
+                command=f"display ont port vlan {port} {found_ont['ont_id']} byport eth {j}",
+                data=raw_output
+            )
+        raw_output = conn.send_command(f"display ont snmp-profile {port} all")
+        snmp_output = parse_output(
+            platform='huawei_smartax',
+            command=f"display ont snmp-profile {port} all",
+            data=raw_output
+        )
         new_ont = {
-            "fsp": ont["fsp"],
-            "ont": ont["ont"],
-            "sn": ont["sn"],
-            "gem": [],
-            "vlan": [],
-            "snmp": [],
-            "registered": True
-        }
+                "fsp": f"0/0/{port}",
+                "ont": found_ont["ont_id"],
+                "sn": found_ont["serial_number"],
+                "gem": gem_output,
+                "vlan": vlan_output,
+                "snmp": snmp_output,
+                "registered": True,
+                "voltage": voltage["voltage"]
+            }
         conn.send_command("quit", auto_find_prompt=False)
         conn.find_prompt()
     return new_ont

@@ -385,7 +385,7 @@ configurations['t_conts'] = [
     {
         'tcont_id': 1,
         'dba_profile_id': 2,
-        'gems': [],
+        'gems': [1],
     },
     {
         'tcont_id': 4,
@@ -642,6 +642,14 @@ configurations['frames'][0]['slots'] = [
         'subtype1': '',
     },
     {
+        'boardname': '',
+        'online_offline': '',
+        'slotid': 2,
+        'status': '',
+        'subtype0': '',
+        'subtype1': '',
+    },
+    {
         'boardname': random.choice(["H901PILA", "H901PISA", "H901PISB", "H902PISB"]),
         'online_offline': '',
         'slotid': 2,
@@ -650,7 +658,7 @@ configurations['frames'][0]['slots'] = [
         'subtype1': '',
     },
     {
-        'boardname': 'H902MPLAE',
+        'boardname': random.choice(['H902MPLAE', 'H901MPSCE']),
         'online_offline': '',
         'slotid': 3,
         'status': 'Normal',
@@ -658,10 +666,10 @@ configurations['frames'][0]['slots'] = [
         'subtype1': '',
     },
     {
-        'boardname': 'H902MPLAE',
+        'boardname': random.choice(['H901MPSCE', 'H902MPLAE']),
         'online_offline': 'Offline',
         'slotid': 4,
-        'status': 'Standby_active',
+        'status': 'Standby_failed',
         'subtype0': 'CPCF',
         'subtype1': '',
     },
@@ -836,11 +844,7 @@ for i in range(gpon_boards[gpon_board]):
     configurations['frames'][0]['slots'][0]['ports'].append(onts)
 
 
-def generate_config(path: str = 'huawei_smartax.yaml.j2'):
-    with open (path, 'w', encoding='utf-8') as f:
-        f.write(yaml.dump(configurations))
-    return configurations
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     import sys
-    generate_config(sys.argv[1] if len(sys.argv) > 1 else 'huawei_smartax.yaml.j2')
+    with open(sys.argv[1], 'w', encoding='utf-8') as f:
+        f.write(yaml.dump(configurations))
