@@ -1,5 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor
-from multiprocessing import Process
+from multiprocessing import Lock, Process
 import os
 import logging
 import time
@@ -23,10 +23,12 @@ credentials = {
     'device_type': 'huawei_smartax',
 }
 
+REDIS_IP = os.environ.get('REDIS_IP', 'localhost')
+
 app = celery.Celery(
     'worker',
-    backend='redis://localhost:6379/1',
-    broker=f'pyamqp://guest@{RABBITMQ_IP}//'
+    backend=f'redis://{REDIS_IP}:6379/1',
+    broker=f'pyamqp://guest@{RABBITMQ_IP}//',
 )
 
 app.conf.update(
@@ -53,7 +55,8 @@ GPON_BOARDS: dict[str, int] = {
     'H902GPHFE': 16,
 }
 
-def get_onts(n_ports: int, autofind:bool = False):
+
+def get_onts(n_ports: int, autofind: bool = False):
     onts = []
     with ThreadPoolExecutor() as executor:
         results = executor.map(get_onts_by_port, range(n_ports))
@@ -65,13 +68,18 @@ def get_onts(n_ports: int, autofind:bool = False):
         onts.extend(autofind_onts)
     return onts
 
+
 def get_autofind_onts():
     onts = []
     with ConnectHandler(**credentials) as conn:
         conn.enable()
         conn.config_mode()
         output = conn.send_command("display ont autofind all")
-        parsed_output = parse_output(platform='huawei_smartax', command='display ont autofind all', data=output)
+        parsed_output = parse_output(
+            platform='huawei_smartax',
+            command='display ont autofind all',
+            data=output
+        )
         for ont in parsed_output:
             onts.append({
                 "fsp": ont["fsp"],
@@ -83,11 +91,14 @@ def get_autofind_onts():
             })
     return onts
 
+
 def get_onts_by_port(port: int):
     results = []
     with ConnectHandler(**credentials) as conn:
         conn.enable()
-        conn.config_mode()
+        print("Looking for onts in port", port)
+        conn.send_command("config", auto_find_prompt=False)
+        conn.find_prompt()
         conn.send_command("interface gpon 0/0", auto_find_prompt=False)
         conn.find_prompt()
         output = conn.send_command(f"display ont info {port}")
@@ -103,8 +114,11 @@ def get_onts_by_port(port: int):
             data=raw_output
         )
         for ont in parsed_output:
+            print("Looking for ont in port", port)
             time.sleep(0.01)
-            raw_output = conn.send_command(f"display ont gemport {port} ontid {ont['ont_id']}")
+            raw_output = conn.send_command(
+                f"display ont gemport {port} ontid {ont['ont_id']}"
+            )
             gem_output = parse_output(
                 platform='huawei_smartax',
                 command=f"display ont gemport {port} ontid {ont['ont_id']}",
@@ -113,20 +127,32 @@ def get_onts_by_port(port: int):
             vlan_output = []
             time.sleep(0.01)
             for j in range(1, 5):
-                raw_output = conn.send_command(f"display ont port vlan {port} {ont['ont_id']} byport eth {j}")
+                raw_output = conn.send_command(
+                    f"display ont port vlan {port} {ont['ont_id']} byport eth {j}" # noqa
+                )
                 vlan_output += parse_output(
                     platform='huawei_smartax',
-                    command=f"display ont port vlan {port} {ont['ont_id']} byport eth {j}",
+                    command=f"display ont port vlan {port} {ont['ont_id']} byport eth {j}", # noqa
                     data=raw_output
                 )
             time.sleep(0.01)
-            raw_output = conn.send_command(f"display ont snmp-profile {port} all")
+            raw_output = conn.send_command(
+                f"display ont snmp-profile {port} all"
+            )
             snmp_output = parse_output(
                 platform='huawei_smartax',
                 command=f"display ont snmp-profile {port} all",
                 data=raw_output
             )
-            voltage = next((item for item in optical_output if item["ont_id"] == ont["ont_id"]), None)
+            snmp_output = next(
+                (snmp for snmp in snmp_output
+                    if snmp["ont_id"] == ont["ont_id"]),
+                None
+            )
+            voltage = next(
+                (item for item in optical_output
+                 if item["ont_id"] == ont["ont_id"]),
+                None)
             results.append({
                 "fsp": f"0/0/{port}",
                 "ont": ont["ont_id"],
@@ -137,7 +163,10 @@ def get_onts_by_port(port: int):
                 "registered": True,
                 "voltage": voltage["voltage"]
             })
+        conn.send_command("quit", auto_find_prompt=False)
+        conn.find_prompt()
     return results
+
 
 def get_boards_and_services():
     boards = None
@@ -159,35 +188,39 @@ def get_boards_and_services():
         services = parsed_output
     return boards, services
 
+
 def get_all_info():
     info = {
-        "boards" : None,
+        "boards": None,
         "services": None,
         "onts": None,
     }
-    n_ports = 0
     boards, services = get_boards_and_services()
     info["boards"] = boards
     info["services"] = services
-    _, n_ports = [(board["slot_id"], GPON_BOARDS[board["boardname"]])
-                    for board in boards
-                    if board["boardname"] in GPON_BOARDS][0]
-    onts = get_onts(2, autofind=False)
+    _, n_ports = [
+        (board["slot_id"], GPON_BOARDS[board["boardname"]])
+        for board in boards
+        if board["boardname"] in GPON_BOARDS
+    ][0]
+    # onts = get_onts(2, autofind=False)
+    onts = get_onts(n_ports, autofind=True)
     info["onts"] = onts
     # with open('info.json', 'w') as f:
     #     import json
     #     # info = json.load(f)
     #     json.dump(info, f)
+    print("Notifying all info")
     return info
 
 
 def monitoring_tasks():
-    with open('info.json', 'r') as f:
-        import json
-        info = json.load(f)
+    # with open('info.json', 'r') as f:
+    #     import json
+    #     info = json.load(f)
     notify_all_info.apply_async(
-        (os.getenv("QUEUE_NAME", 'site_1'), info),
-        # (os.getenv("QUEUE_NAME", 'site_1'), get_all_info()),
+        # (os.getenv("QUEUE_NAME", 'site_1'), info),
+        (os.getenv("QUEUE_NAME", 'site_1'), get_all_info()),
         queue='master',
         retry=True,
         retry_policy={
@@ -198,7 +231,9 @@ def monitoring_tasks():
         }
     )
     try:
-        requests.post("http://localhost:3500/site_1/ready", timeout=2)
+        CHAOS_MONKEY_IP = os.environ.get('CHAOS_MONKEY_IP', 'localhost')
+        QUEUE_NAME = os.getenv("QUEUE_NAME", 'site_1')
+        requests.post(f"http://{CHAOS_MONKEY_IP}:3500/{QUEUE_NAME}/ready", timeout=2)
     except requests.exceptions.RequestException:
         pass
     while True:
@@ -208,86 +243,138 @@ def monitoring_tasks():
                 (os.getenv("QUEUE_NAME", 'site_1'), boards, services),
                 queue='master'
             )
-            _, n_ports = [(board["slot_id"], GPON_BOARDS[board["boardname"]])
+            _, n_ports = [
+                (board["slot_id"], GPON_BOARDS[board["boardname"]])
                 for board in boards
-                if board["boardname"] in GPON_BOARDS][0]
-            onts = get_onts(2)
+                if board["boardname"] in GPON_BOARDS
+            ][0]
+            # onts = get_onts(2)
+            onts = get_onts(n_ports)
             notify_onts.apply_async(
                 (os.getenv("QUEUE_NAME", 'site_1'), onts),
                 queue='master'
             )
         except KeyboardInterrupt:
             break
-        except:
+        except (Exception,):
             notify_olt.apply_async(
-                (os.getenv("QUEUE_NAME", 'site_1'),"down"),
+                (os.getenv("QUEUE_NAME", 'site_1'), "down"),
                 queue="master"
             )
             wait_olt_ready()
             notify_olt.apply_async(
-                (os.getenv("QUEUE_NAME", 'site_1'),"up"),
+                (os.getenv("QUEUE_NAME", 'site_1'), "up"),
                 queue="master"
             )
 
+
+register_lock = Lock()
+
+
 @app.task
-def register_ont(ont: dict):
+def register_ont(fsp: str, sn: str):
     new_ont = {}
     with ConnectHandler(**credentials) as conn:
         conn.enable()
-        conn.config_mode()
-        output = conn.send_command("display ont autofind all")
-        parsed_output = parse_output(platform='huawei_smartax', command='display ont autofind all', data=output)
-        autofind_ont = next((_ont for _ont in parsed_output if _ont["serial_number"].split()[0] == ont["sn"]), None)
-        print(autofind_ont)
+        conn.send_command("config", auto_find_prompt=False)
+        conn.find_prompt()
+        register_lock.acquire()
+        parsed_output = conn.send_command(
+            "display ont autofind all",
+            use_textfsm=True
+        )
+        autofind_ont = next(
+            (_ont for _ont in parsed_output
+             if _ont["serial_number"].split()[0] == sn),
+            None)
         if not autofind_ont:
-            chassis, slot, port = ont["fsp"].split("/")
-            interface_gpon = f"{chassis}/{slot}"
-            conn.send_command(f"interface gpon {ont['fsp'].rsplit('/', 1)[0]}", auto_find_prompt=False)
+            chassis, slot, port = fsp.split("/")
+            parsed_output = conn.send_command(
+                f"display ont info {chassis} {slot} {port}",
+                use_textfsm=True
+            )
+            print(f"display ont info {chassis} {slot} {port}")
+            prev_id = next(
+                (_ont["ont_id"] for _ont in parsed_output
+                 if _ont["serial_number"] == sn),
+                None
+            )
+            print(prev_id)
+            print(f"interface gpon {chassis}/{slot}")
+            conn.send_command(
+                f"interface gpon {chassis}/{slot}",
+                auto_find_prompt=False
+            )
             conn.find_prompt()
-            conn.send_command(f"ont delete {ont['fsp'].rsplit('/', 1)[1]} {ont['ont']}")
-            output = conn.send_command("display ont autofind all")
-            parsed_output = parse_output(platform='huawei_smartax', command='display ont autofind all', data=output)
-            autofind_ont = next((_ont for _ont in parsed_output if _ont["serial_number"].split()[0] == ont["sn"]), None)
+            print(f"ont delete {port} {prev_id}")
+            conn.send_command(
+                f"ont delete {port} {prev_id}"
+            )
+            print("display ont autofind {port}")
+            parsed_output = conn.send_command(
+                "display ont autofind {port}",
+                use_textfsm=True
+            )
+            autofind_ont = next(
+                (_ont for _ont in parsed_output
+                 if _ont["serial_number"].split()[0] == sn),
+                None)
             print(autofind_ont)
         else:
             chassis, slot, port = autofind_ont["fsp"].split("/")
-            interface_gpon = f"{chassis}/{slot}"
-            conn.send_command(f"interface gpon {interface_gpon}", auto_find_prompt=False)
+            conn.send_command(
+                f"interface gpon {chassis}/{slot}",
+                auto_find_prompt=False
+            )
             conn.find_prompt()
-        output = conn.send_command(f"ont add {port} sn-auth {ont['sn']} omci ont-lineprofile-id 500 ont-srvprofile-id 500 desc {ont['sn']}")
-        parsed_output = parse_output(platform='huawei_smartax', command=f"ont add {interface_gpon[-1]} sn-auth {ont['sn']} omci ont-lineprofile-id 500 ont-srvprofile-id 500 desc {ont['sn']}", data=output)
-        print(output)
+        parsed_output = conn.send_command(
+            f"ont add {port} sn-auth {sn} omci ont-lineprofile-id 500 ont-srvprofile-id 500 desc {sn}", # noqa
+            use_textfsm=True
+        )
+        print(parsed_output)
         if parsed_output[0]["success"] != '1':
             raise Exception("ONT not registered")
-        output= conn.send_command(f"display ont info {port}")
-        parsed_output = parse_output(platform='huawei_smartax', command=f"display ont info {port}", data=output)
-        found_ont = next((_ont for _ont in parsed_output if _ont["serial_number"] == ont["sn"]), None)
-        raw_output = conn.send_command(f"display ont optical-info {port} all")
-        optical_output = parse_output(
-            platform='huawei_smartax',
-            command=f"display ont optical-info {port} all",
-            data=raw_output
+        register_lock.release()
+        parsed_output = conn.send_command(
+            f"display ont info {port}",
+            use_textfsm=True
         )
-        voltage = next((item for item in optical_output if item["ont_id"] == found_ont["ont_id"]), None)
-        raw_output = conn.send_command(f"display ont gemport {port} ontid {found_ont['ont_id']}")
-        gem_output = parse_output(
-            platform='huawei_smartax',
-            command=f"display ont gemport {port} ontid {found_ont['ont_id']}",
-            data=raw_output
+        print(parsed_output)
+        found_ont = next(
+            (_ont for _ont in parsed_output
+             if _ont["serial_number"] == sn),
+            None)
+        optical_output = conn.send_command(
+            f"display ont optical-info {port} all",
+            use_textfsm=True,
         )
+        print(optical_output)
+        voltage = next(
+            (item for item in optical_output
+             if item["ont_id"] == found_ont["ont_id"]),
+            None)
+        print(voltage)
+        gem_output = conn.send_command(
+            f"display ont gemport {port} ontid {found_ont['ont_id']}",
+            use_textfsm=True,
+        )
+        print(gem_output)
         vlan_output = []
         for j in range(1, 5):
-            raw_output = conn.send_command(f"display ont port vlan {port} {found_ont['ont_id']} byport eth {j}")
-            vlan_output += parse_output(
-                platform='huawei_smartax',
-                command=f"display ont port vlan {port} {found_ont['ont_id']} byport eth {j}",
-                data=raw_output
+            vlan_output = conn.send_command(
+                f"display ont port vlan {port} {found_ont['ont_id']} byport eth {j}", # noqa
+                use_textfsm=True
             )
-        raw_output = conn.send_command(f"display ont snmp-profile {port} all")
-        snmp_output = parse_output(
-            platform='huawei_smartax',
-            command=f"display ont snmp-profile {port} all",
-            data=raw_output
+            print(vlan_output)
+        snmp_output = conn.send_command(
+            f"display ont snmp-profile {port} all",
+            use_textfsm=True
+        )
+        print(snmp_output)
+        snmp_output = next(
+            (snmp for snmp in snmp_output
+                if snmp["ont_id"] == found_ont["ont_id"]),
+            None
         )
         new_ont = {
                 "fsp": f"0/0/{port}",
@@ -303,15 +390,20 @@ def register_ont(ont: dict):
         conn.find_prompt()
     return new_ont
 
+
 @app.task
 def fix_service(service: dict):
     update_service = service
-    update_service['state'] = 'enable' if service['state'] == 'disable' else 'disable'
+    update_service['state'] = (
+        'enable' if service['state'] == 'disable' else 'disable'
+    )
     result = False
     with ConnectHandler(**credentials) as conn:
         conn.enable()
         conn.config_mode()
-        conn.send_command(f"sysman service {update_service['network_service']} {update_service['state']}")
+        conn.send_command(
+            f"sysman service {update_service['network_service']} {update_service['state']}"  # noqa
+        )
         output = conn.send_command("display sysman service state")
         parsed_output = parse_output(
             platform='huawei_smartax',
@@ -329,12 +421,14 @@ def wait_olt_ready():
                 break
         except KeyboardInterrupt:
             break
-        except:
+        except (Exception,):
             pass
 
 
 if __name__ == '__main__':
-    from master import notify_all_info, notify_olt, notify_boards_and_services, notify_onts
+    from master import (
+        notify_all_info, notify_olt, notify_boards_and_services, notify_onts
+    )
     wait_olt_ready()
     monitoring_thread = Process(target=monitoring_tasks, daemon=True)
     monitoring_thread.start()
@@ -348,5 +442,3 @@ if __name__ == '__main__':
     worker.start()
     logging.info('Worker started')
     monitoring_thread.join()
-    
-

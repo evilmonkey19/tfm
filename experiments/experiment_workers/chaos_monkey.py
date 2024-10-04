@@ -1,3 +1,4 @@
+import atexit
 from datetime import datetime
 import os
 import re
@@ -23,7 +24,7 @@ args = argparse.ArgumentParser()
 args.add_argument(
     "--only",
     type=str,
-    help="only one action to perform",
+    help="only one action to perform [misconfigurations, errors, all, nothing]",
 )
 
 args = args.parse_args()
@@ -65,10 +66,9 @@ if highest_try == 10:
     highest_try = 0
 TRY = highest_try + 1
 SITES = max(highest_sites, 1)
-print
 
 urls = {
-    f"site_{i}": f"http://localhost:800{i}/api"
+    f"site_{i}": f"http://192.168.{i}.3:8000/api"
     for i in range(1, SITES + 1)
 }
 
@@ -76,7 +76,7 @@ urls_ready = {
     f'site_{i}': False for i in range(1, SITES + 1)
 }
 
-
+events = []
 actions = []
 weights = []
 logging_file = f"chaos_monkey_{SITES}_try_{TRY}.csv"
@@ -117,13 +117,37 @@ logging.Formatter(
 
 logging.info(f"Chaos monkey started with {SITES} sites. Try {TRY} and options {args.only}.")
 
+
 def register_event(site, event):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S_%f")[:-3]
     return (f"{site},{event},{timestamp}")
 
+
+recent_onts = {
+    site: [] for site in urls.keys()
+}
+
+def pick_random_ont(site):
+    for site, onts in recent_onts.items():
+        recent_onts[site] = [ont for ont in onts if time.time() - list(ont.values())[0] < 600]
+    onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
+    onts = [ont for ont in onts if ont["registered"]]
+    onts = [ont for ont in onts if ont not in recent_onts[site]]
+    ont = random.choice(onts)
+    recent_onts[site].append({ont["sn"]: time.time()})
+    return ont
+
+def on_exit():
+    logging.info("Exiting chaos monkey")
+    events.append(register_event("_", "Exiting chaos monkey"))
+    with open(logging_file, "w") as f:
+        for event in events:
+            f.write(event + "\n")
+
+atexit.register(on_exit)
+
 def chaos_monkey():
     started = False
-    events = []
     while True:
         if stop_thread.is_set():
             break
@@ -134,11 +158,13 @@ def chaos_monkey():
                 continue
             if not started:
                 logging.info("Starting chaos monkey")
-                events.append("_", "Starting chaos monkey")
+                events.append(register_event("_", "Starting chaos monkey"))
                 started = True
-            time.sleep(random.uniform(0, 10))
+            time.sleep(random.uniform(0, 40//SITES))
             action = random.choices(actions, weights=weights)[0]
             site = random.choice(list(urls.keys()))
+            if random.random() < 0.7:
+                continue
             match action:
                 case "reboot":
                     host = requests.get(urls[site] + "/hosts", timeout=20).json()["hosts"][0]["OLT"]
@@ -155,9 +181,7 @@ def chaos_monkey():
                     logging.info("%s: Changing board state to %s", site, status)
                     events.append(register_event(site, f"Changing board state to {status}"))
                 case "ont_change_voltage":
-                    onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
-                    onts = [ont for ont in onts if ont["registered"]]
-                    ont = random.choice(onts)
+                    ont = pick_random_ont(site)
                     current_state = float(ont["voltage_v"])
                     if 3.2 <= current_state <= 3.4:
                         changing_state = random.choice(["set_low_voltage", "set_high_voltage"])
@@ -167,44 +191,32 @@ def chaos_monkey():
                     logging.info("Changing voltage for %s from %s to %s", ont['sn'], site, changing_state)
                     events.append(register_event(site, f"Changing voltage for {ont['sn']} from {site} to {changing_state}"))
                 case "change_gemport":
-                    onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
-                    onts = [ont for ont in onts if ont["registered"]]
-                    ont = random.choice(onts)
+                    ont = pick_random_ont(site)
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/set_gemport_0/1", timeout=20)
                     logging.info("Changing gemport for %s from %s", ont['sn'], site)
                     events.append(register_event(site, f"Changing gemport for {ont['sn']} from {site}"))
                 case "change_c_vlan":
-                    onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
-                    onts = [ont for ont in onts if ont["registered"]]
-                    ont = random.choice(onts)
+                    ont = pick_random_ont(site)
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/port_eth/{random.randint(1,4)}/c__vlan/99", timeout=20)
                     logging.info("Changing c vlan for %s from %s", ont['sn'], site)
                     events.append(register_event(site, f"Changing c vlan for {ont['sn']} from {site}"))
                 case "change_s_vlan":
-                    onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
-                    onts = [ont for ont in onts if ont["registered"]]
-                    ont = random.choice(onts)
+                    ont = pick_random_ont(site)
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/port_eth/{random.randint(1,4)}/s__vlan/99", timeout=20)
                     logging.info("Changing s vlan for %s from %s", ont['sn'], site)
                     events.append(register_event(site, f"Changing s vlan for {ont['sn']} from {site}"))
                 case "change_vlan_type":
-                    onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
-                    onts = [ont for ont in onts if ont["registered"]]
-                    ont = random.choice(onts)
+                    ont = pick_random_ont(site)
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/port_eth/{random.randint(1,4)}/change_vlan__type", timeout=20)
                     logging.info("Changing vlan type for %s from %s", ont['sn'], site)
                     events.append(register_event(site, f"Changing vlan type for {ont['sn']} from {site}"))
                 case "change_snmp_profile":
-                    onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
-                    onts = [ont for ont in onts if ont["registered"]]
-                    ont = random.choice(onts)
+                    ont = pick_random_ont(site)
                     requests.get(urls[site] + f"/hosts/OLT/ont/{ont['sn']}/snmp_profile/{random.randint(2,10)}", timeout=20)
                     logging.info("Changing snmp profile for %s from %s", ont['sn'], site)
                     events.append(register_event(site, f"Changing snmp profile for {ont['sn']} from {site}"))
                 case "unregister_ont":
-                    onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
-                    registered_onts = [ont for ont in onts if ont["registered"]]
-                    ont = random.choice(registered_onts)
+                    ont = pick_random_ont(site)
                     logging.info("Unregistering %s from %s", ont['sn'], site)
                     requests.get(urls[site] + f"/hosts/OLT/unregister_ont/{ont['sn']}", timeout=20)
                     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
@@ -233,11 +245,6 @@ def chaos_monkey():
             logging.info("Exiting chaos monkey KeyboardInterrupt")
             events.append(register_event(site, "Exiting chaos monkey KeyboardInterrupt"))
             break
-    logging.info("Exiting chaos monkey")
-    events.append(register_event(site, "Exiting chaos monkey"))
-    with open(logging_file, "w") as f:
-        for event in events:
-            f.write(event + "\n")
 
 
 @asynccontextmanager
@@ -261,4 +268,4 @@ async def set_ready(site: str):
     return {"status": "ready"}
 
 if __name__ == '__main__':
-    uvicorn.run(app, port=3500)
+    uvicorn.run(app, port=3500, host="0.0.0.0")

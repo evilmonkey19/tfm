@@ -1,6 +1,10 @@
 # Use the official Python base image
 FROM python:3.11.9-slim
 
+
+RUN pip install fastapi[standard] requests
+
+
 # Set the working directory inside the container
 WORKDIR /app
 

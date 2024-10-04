@@ -4,9 +4,9 @@ ARG HOSTNAME=generic_hostname
 
 RUN apt-get update && apt-get install -y git
 
-RUN pip install jinja2 fastapi
+RUN pip install jinja2 fastapi[standard]
 
-RUN pip install git+https://github.com/fakenos/fakenos.git@road_to_thesis
+RUN pip install git+https://github.com/evilmonkey19/fakenos-tfm.git@road_to_thesis
 
 WORKDIR /app
 

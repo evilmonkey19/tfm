@@ -1,8 +1,13 @@
 import yaml
-import sys
+import argparse
 
-i = int(sys.argv[1])+1
-errors_type = sys.argv[2]
+parser = argparse.ArgumentParser(description='Generate a scenario with a given number of workers and errors type')
+parser.add_argument('workers', type=int, help='Number of workers')
+parser.add_argument('errors', type=str, help='Type of errorsn [misconfigurations, errors, all, nothing]')
+args = parser.parse_args()
+
+i = args.workers+1
+errors_type = args.errors
 
 docker_compose = {
     "services": {
@@ -11,12 +16,21 @@ docker_compose = {
                 "context": ".",
                 "dockerfile": "chaos_monkey.Dockerfile",
             },
-            "command": f"python chaos_monkey.py --only ${errors_type}",
+            "ports": ["3500:3500"],
+            "networks": {
+                **{f"worker{j}-net": {"ipv4_address": f"10.{j}.0.4"} for j in range(1,i)},
+                **{f"huawei{j}-net": {"ipv4_address": f"192.168.{j}.4"} for j in range(1,i)},
+            },
+            "command": f"python chaos_monkey.py --only {errors_type}",
+            "volumes":
+                [
+                    "/home/enric/tfm/experiments/experiment_workers:/app:rw",
+                ]
         },
         "redis": {
             "image": "redis",
             "ports": ["6379:6379"],
-            "networks": {f"worker{j}-net": {"ipv4_address": f"10.{j}.0.4"} for j in range(1,i)},
+            "networks": {f"worker{j}-net": {"ipv4_address": f"10.{j}.0.3"} for j in range(1,i)},
         },
         "rabbitmq": {
             "image": "rabbitmq:management",
@@ -31,6 +45,8 @@ docker_compose = {
             "command": "python worker.py",
             "environment": [
                 f"RABBITMQ_IP=10.{worker_site}.0.2",
+                f"REDIS_IP=10.{worker_site}.0.3",
+                f"CHAOS_MONKEY_IP=10.{worker_site}.0.4",
                 f"HUAWEI_SMARTAX_IP=192.168.{worker_site}.3",
                 f"HOSTNAME=worker_site_{worker_site}",
                 f"QUEUE_NAME=site_{worker_site}",
@@ -38,9 +54,13 @@ docker_compose = {
             ],
             "depends_on": ["rabbitmq"],
             "networks": {
-                f"worker{worker_site}-net": {"ipv4_address": f"10.{worker_site}.0.3"},
+                f"worker{worker_site}-net": {"ipv4_address": f"10.{worker_site}.0.10"},
                 f"huawei{worker_site}-net": {"ipv4_address": f"192.168.{worker_site}.2"},
             },
+            "volumes":
+                [
+                    "/home/enric/tfm/experiments/experiment_workers:/app:rw",
+                ]
         } for worker_site in range(1,i)},
         **{f"huawei_smartax-site-{worker_site}":{
             "build": {
@@ -55,7 +75,6 @@ docker_compose = {
                     "ipv4_address": f"192.168.{worker_site}.3"
                 }
             },
-            "ports": [f"800{worker_site}:8000"],
         } for worker_site in range(1,i)},
     }
 }

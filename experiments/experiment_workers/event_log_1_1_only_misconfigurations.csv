@@ -1,0 +1,51 @@
+time,site,event,timestamp
+2024-10-04 08:23:41_274,b46f2e2a-74f2-4053-9afc-56a4d2c76990,site_1,detected,s_vlan
+2024-10-04 08:23:44_586,0c1236fe-8669-41ae-8553-ab6eec56b8df,site_1,detected,service changed
+2024-10-04 08:23:59_226,b46f2e2a-74f2-4053-9afc-56a4d2c76990,site_1,fixed,s_vlan
+2024-10-04 08:24:00_228,0c1236fe-8669-41ae-8553-ab6eec56b8df,site_1,fixed,service changed
+2024-10-04 08:25:47_343,34ba3259-99cd-46c3-8c7d-f26458455fe4,site_1,detected,gemport
+2024-10-04 08:25:47_413,0830e175-6673-45c1-8cb1-b0f03634572c,site_1,detected,snmp_profile
+2024-10-04 08:26:05_299,0830e175-6673-45c1-8cb1-b0f03634572c,site_1,fixed,snmp_profile
+2024-10-04 08:26:08_304,34ba3259-99cd-46c3-8c7d-f26458455fe4,site_1,fixed,gemport
+2024-10-04 08:27:53_400,c933b360-83d3-4884-8190-c64222397c4e,site_1,detected,gemport
+2024-10-04 08:27:53_401,95404a95-8628-48ef-ae1d-af0a5e809b12,site_1,detected,gemport
+2024-10-04 08:27:53_419,ba9905c9-4552-4ce3-9132-435701aa65f3,site_1,detected,c_vlan
+2024-10-04 08:27:53_492,8493d191-e3f4-47d5-9591-0d79377ada25,site_1,detected,snmp_profile
+2024-10-04 08:28:09_393,95404a95-8628-48ef-ae1d-af0a5e809b12,site_1,fixed,gemport
+2024-10-04 08:28:13_402,c933b360-83d3-4884-8190-c64222397c4e,site_1,fixed,gemport
+2024-10-04 08:28:17_411,ba9905c9-4552-4ce3-9132-435701aa65f3,site_1,fixed,c_vlan
+2024-10-04 08:28:21_416,8493d191-e3f4-47d5-9591-0d79377ada25,site_1,fixed,snmp_profile
+2024-10-04 08:30:00_585,cc7f0dfb-0ea2-4b12-8dd1-c82d2c1460a9,site_1,detected,c_vlan
+2024-10-04 08:30:00_586,10394d9c-7748-4042-9f91-9654e7db8796,site_1,detected,c_vlan
+2024-10-04 08:30:00_620,c1af6422-7ef8-42ab-a7d5-3262c6795270,site_1,detected,vlan_type
+2024-10-04 08:30:00_620,4514ead1-26af-42d3-95aa-158c9f89da7e,site_1,detected,vlan_type
+2024-10-04 08:30:00_636,e160a3f2-812b-46c4-9865-27557d60bbd3,site_1,detected,snmp_profile
+2024-10-04 08:30:18_514,c1af6422-7ef8-42ab-a7d5-3262c6795270,site_1,fixed,vlan_type
+2024-10-04 08:30:21_523,4514ead1-26af-42d3-95aa-158c9f89da7e,site_1,fixed,vlan_type
+2024-10-04 08:30:25_533,cc7f0dfb-0ea2-4b12-8dd1-c82d2c1460a9,site_1,fixed,c_vlan
+2024-10-04 08:30:29_540,10394d9c-7748-4042-9f91-9654e7db8796,site_1,fixed,c_vlan
+2024-10-04 08:30:32_545,e160a3f2-812b-46c4-9865-27557d60bbd3,site_1,fixed,snmp_profile
+2024-10-04 08:32:08_224,02ad69df-ee5a-40bd-babe-536eb104228a,site_1,detected,c_vlan
+2024-10-04 08:32:08_225,aada652f-3f2f-46bf-be3e-2a7f46179fb9,site_1,detected,c_vlan
+2024-10-04 08:32:08_225,8d6a9f1b-367b-4e4a-8ac4-8afca1828d92,site_1,detected,c_vlan
+2024-10-04 08:32:08_226,e14b5111-df59-4421-81b7-1dc4f3c639b3,site_1,detected,c_vlan
+2024-10-04 08:32:08_226,1c86318e-d395-4ae7-8c33-5e12f96d4bec,site_1,detected,c_vlan
+2024-10-04 08:32:08_243,0f67c2a0-1673-4e95-b380-6200ff23c429,site_1,detected,s_vlan
+2024-10-04 08:32:08_275,e4543be8-2329-4c1a-b125-9e1dbcad626c,site_1,detected,snmp_profile
+2024-10-04 08:32:25_678,aada652f-3f2f-46bf-be3e-2a7f46179fb9,site_1,fixed,c_vlan
+2024-10-04 08:32:28_691,02ad69df-ee5a-40bd-babe-536eb104228a,site_1,fixed,c_vlan
+2024-10-04 08:32:32_709,e4543be8-2329-4c1a-b125-9e1dbcad626c,site_1,fixed,snmp_profile
+2024-10-04 08:32:36_720,8d6a9f1b-367b-4e4a-8ac4-8afca1828d92,site_1,fixed,c_vlan
+2024-10-04 08:32:40_730,1c86318e-d395-4ae7-8c33-5e12f96d4bec,site_1,fixed,c_vlan
+2024-10-04 08:32:43_735,e14b5111-df59-4421-81b7-1dc4f3c639b3,site_1,fixed,c_vlan
+2024-10-04 08:32:47_740,0f67c2a0-1673-4e95-b380-6200ff23c429,site_1,fixed,s_vlan
+2024-10-04 08:34:16_113,1a632d1a-2587-4dcc-95e8-9fed1146defe,site_1,detected,gemport
+2024-10-04 08:34:16_131,e2c724d3-9c2f-4d8c-bd00-11ec45eaac83,site_1,detected,c_vlan
+2024-10-04 08:34:16_131,68ea241d-222f-4dfb-a212-4717833d6d28,site_1,detected,c_vlan
+2024-10-04 08:34:16_132,c041e0f7-ad2e-4dc8-a066-54d6cd51d129,site_1,detected,c_vlan
+2024-10-04 08:34:16_132,9f5421cb-971f-4fb6-8e30-68e248bae99c,site_1,detected,c_vlan
+2024-10-04 08:34:16_133,8f54d96e-8c20-4aca-a640-8f82798571f5,site_1,detected,c_vlan
+2024-10-04 08:34:16_183,d166462b-43a3-4554-9e4f-b726762d928e,site_1,detected,snmp_profile
+2024-10-04 08:34:19_489,e3d6626a-6d9a-4ae3-b5cb-eb8f2d1e41d4,site_1,detected,service changed
+2024-10-04 08:34:32_861,e3d6626a-6d9a-4ae3-b5cb-eb8f2d1e41d4,site_1,fixed,service changed
+2024-10-04 08:34:33_863,68ea241d-222f-4dfb-a212-4717833d6d28,site_1,fixed,c_vlan
