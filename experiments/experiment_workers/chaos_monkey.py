@@ -24,7 +24,7 @@ args = argparse.ArgumentParser()
 args.add_argument(
     "--only",
     type=str,
-    help="only one action to perform [misconfigurations, errors, all, nothing]",
+    help="only one action to perform [misconfigurations, errors, all, nothing]"
 )
 
 args = args.parse_args()
@@ -69,6 +69,7 @@ SITES = max(highest_sites, 1)
 
 urls = {
     f"site_{i}": f"http://192.168.{i}.3:8000/api"
+    # "site_1": "http://localhost:8000/api"
     for i in range(1, SITES + 1)
 }
 
@@ -127,15 +128,18 @@ recent_onts = {
     site: [] for site in urls.keys()
 }
 
+
 def pick_random_ont(site):
     for site, onts in recent_onts.items():
         recent_onts[site] = [ont for ont in onts if time.time() - list(ont.values())[0] < 600]
     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
     onts = [ont for ont in onts if ont["registered"]]
     onts = [ont for ont in onts if ont not in recent_onts[site]]
+    # onts = [ont for ont in onts if ont["fsp"] in ["0/0/0", "0/0/1"]]
     ont = random.choice(onts)
     recent_onts[site].append({ont["sn"]: time.time()})
     return ont
+
 
 def on_exit():
     logging.info("Exiting chaos monkey")
@@ -144,7 +148,9 @@ def on_exit():
         for event in events:
             f.write(event + "\n")
 
+
 atexit.register(on_exit)
+
 
 def chaos_monkey():
     started = False
@@ -160,7 +166,7 @@ def chaos_monkey():
                 logging.info("Starting chaos monkey")
                 events.append(register_event("_", "Starting chaos monkey"))
                 started = True
-            time.sleep(random.uniform(0, 40//SITES))
+            time.sleep(random.uniform(0, 20//SITES))
             action = random.choices(actions, weights=weights)[0]
             site = random.choice(list(urls.keys()))
             if random.random() < 0.7:

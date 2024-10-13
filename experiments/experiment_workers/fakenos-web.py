@@ -66,11 +66,13 @@ async def shutdown(host: str):
 @app.get("/api/hosts/{host}/list_onts")
 async def list_onts(host: str):
     onts = []
-    for port in (
+    for n_port, port in enumerate(
         net.hosts[host].nos.device.configurations["frames"][0]["slots"][0]
         ["ports"]
     ):
-        onts += port
+        for ont in port:
+            ont["fsp"] = f"0/0/{n_port}"
+            onts.append(ont)
     return {"onts": onts}
 
 

@@ -92,8 +92,90 @@ def get_autofind_onts():
     return onts
 
 
+def reget_onts_by_port(port: int, onts: list[dict], conn: ConnectHandler):
+    _onts = conn.send_command(f'display ont info {port}', use_textfsm=True)
+    _onts_sn = [ont["serial_number"] for ont in _onts]
+    onts = [ont for ont in onts
+            if ont["serial_number"] in _onts_sn]
+    for ont in onts:
+        for _ont in _onts:
+            if ont["serial_number"] == _ont["serial_number"]:
+                ont["ont_id"] = _ont["ont_id"]
+    return onts
+
+
+def add_optical_info_to_onts(port: int, onts: list[dict], conn: ConnectHandler):
+    optical_output = conn.send_command(
+        f"display ont optical-info {port} all",
+        use_textfsm=True
+    )
+    if len(optical_output) != len(onts):
+        onts = reget_onts_by_port(port, onts, conn)
+    for ont in onts:
+        voltage = next(
+            (item for item in optical_output
+             if item["ont_id"] == ont["ont_id"]),
+            None)
+        ont["voltage"] = voltage["voltage"]
+    return onts
+
+
+def add_gemport_to_onts(port: int, onts: list[dict], conn: ConnectHandler):
+    for ont in onts:
+        _onts = conn.send_command(f'display ont info {port}', use_textfsm=True)
+        if len(_onts) != len(onts):
+            onts = reget_onts_by_port(port, onts, conn)
+        gem_output = conn.send_command(
+            f"display ont gemport {port} ontid {ont['ont_id']}",
+            use_textfsm=True,
+        )
+        ont["gem"] = gem_output
+    return onts
+
+
+def add_vlan_to_onts(port: int, onts: list[dict], conn: ConnectHandler):
+    for ont in onts:
+        ont["vlan"] = []
+        for j in range(1, 5):
+            _onts = conn.send_command(f'display ont info {port}', use_textfsm=True)
+            if len(_onts) != len(onts):
+                onts = reget_onts_by_port(port, onts, conn)
+            if ont not in onts:
+                break
+            vlan_output = conn.send_command(
+                f"display ont port vlan {port} {ont['ont_id']} byport eth {j}", # noqa
+                use_textfsm=True
+            )
+            ont["vlan"].append(vlan_output)
+    return onts
+
+
+def add_snmp_to_onts(port: int, onts: list[dict], conn: ConnectHandler):
+    for ont in onts:
+        _onts = conn.send_command(f'display ont info {port}', use_textfsm=True)
+        if len(_onts) != len(onts):
+            onts = reget_onts_by_port(port, onts, conn)
+        snmp_output = conn.send_command(
+            f"display ont snmp-profile {port} all",
+            use_textfsm=True
+        )
+        snmp_output = next(
+            (snmp for snmp in snmp_output
+                if snmp["ont_id"] == ont["ont_id"]),
+            None
+        )
+        if snmp_output:
+            ont["snmp"] = {
+                'snmp_profile_id': snmp_output["snmp_profile_id"],
+                'snmp_profile_name': snmp_output["snmp_profile_name"],
+            }
+        else:
+            ont["snmp"] = {}
+    return onts
+
+
 def get_onts_by_port(port: int):
-    results = []
+    onts = []
     with ConnectHandler(**credentials) as conn:
         conn.enable()
         print("Looking for onts in port", port)
@@ -101,91 +183,35 @@ def get_onts_by_port(port: int):
         conn.find_prompt()
         conn.send_command("interface gpon 0/0", auto_find_prompt=False)
         conn.find_prompt()
-        output = conn.send_command(f"display ont info {port}")
-        parsed_output = parse_output(
-            platform='huawei_smartax',
-            command=f"display ont info {port}",
-            data=output
-        )
-        raw_output = conn.send_command(f"display ont optical-info {port} all")
-        optical_output = parse_output(
-            platform='huawei_smartax',
-            command=f"display ont optical-info {port} all",
-            data=raw_output
-        )
-        for ont in parsed_output:
-            print("Looking for ont in port", port)
-            time.sleep(0.01)
-            raw_output = conn.send_command(
-                f"display ont gemport {port} ontid {ont['ont_id']}"
-            )
-            gem_output = parse_output(
-                platform='huawei_smartax',
-                command=f"display ont gemport {port} ontid {ont['ont_id']}",
-                data=raw_output
-            )
-            vlan_output = []
-            time.sleep(0.01)
-            for j in range(1, 5):
-                raw_output = conn.send_command(
-                    f"display ont port vlan {port} {ont['ont_id']} byport eth {j}" # noqa
-                )
-                vlan_output += parse_output(
-                    platform='huawei_smartax',
-                    command=f"display ont port vlan {port} {ont['ont_id']} byport eth {j}", # noqa
-                    data=raw_output
-                )
-            time.sleep(0.01)
-            raw_output = conn.send_command(
-                f"display ont snmp-profile {port} all"
-            )
-            snmp_output = parse_output(
-                platform='huawei_smartax',
-                command=f"display ont snmp-profile {port} all",
-                data=raw_output
-            )
-            snmp_output = next(
-                (snmp for snmp in snmp_output
-                    if snmp["ont_id"] == ont["ont_id"]),
-                None
-            )
-            voltage = next(
-                (item for item in optical_output
-                 if item["ont_id"] == ont["ont_id"]),
-                None)
-            results.append({
+        onts = conn.send_command(f"display ont info {port}", use_textfsm=True)
+        onts = add_optical_info_to_onts(port, onts, conn)
+        onts = add_gemport_to_onts(port, onts, conn)
+        onts = add_vlan_to_onts(port, onts, conn)
+        onts = add_snmp_to_onts(port, onts, conn)
+        conn.send_command("quit", auto_find_prompt=False)
+        conn.find_prompt()
+        onts = [
+            {
                 "fsp": f"0/0/{port}",
                 "ont": ont["ont_id"],
                 "sn": ont["serial_number"],
-                "gem": gem_output,
-                "vlan": vlan_output,
-                "snmp": snmp_output,
+                "gem": ont["gem"],
+                "vlan": ont["vlan"],
+                "snmp": ont["snmp"],
                 "registered": True,
-                "voltage": voltage["voltage"]
-            })
-        conn.send_command("quit", auto_find_prompt=False)
-        conn.find_prompt()
-    return results
+                "voltage": ont["voltage"]
+            }
+            for ont in onts
+        ]
+    return onts
 
 
 def get_boards_and_services():
     boards = None
     services = None
     with ConnectHandler(**credentials) as net_connect:
-        output = net_connect.send_command("display board 0")
-        parsed_output = parse_output(
-            platform='huawei_smartax',
-            command="display board 0",
-            data=output
-        )
-        boards = parsed_output
-        output = net_connect.send_command("display sysman service state")
-        parsed_output = parse_output(
-            platform='huawei_smartax',
-            command="display sysman service state",
-            data=output
-        )
-        services = parsed_output
+        boards = net_connect.send_command("display board 0", use_textfsm=True)
+        services = net_connect.send_command("display sysman service state", use_textfsm=True)  # noqa
     return boards, services
 
 
@@ -288,29 +314,22 @@ def register_ont(fsp: str, sn: str):
              if _ont["serial_number"].split()[0] == sn),
             None)
         if not autofind_ont:
-            chassis, slot, port = fsp.split("/")
+            chassis, slot, port = fsp.replace(" ", "").split("/")
             parsed_output = conn.send_command(
                 f"display ont info {chassis} {slot} {port}",
                 use_textfsm=True
             )
-            print(f"display ont info {chassis} {slot} {port}")
             prev_id = next(
                 (_ont["ont_id"] for _ont in parsed_output
                  if _ont["serial_number"] == sn),
                 None
             )
-            print(prev_id)
-            print(f"interface gpon {chassis}/{slot}")
             conn.send_command(
                 f"interface gpon {chassis}/{slot}",
                 auto_find_prompt=False
             )
             conn.find_prompt()
-            print(f"ont delete {port} {prev_id}")
-            conn.send_command(
-                f"ont delete {port} {prev_id}"
-            )
-            print("display ont autofind {port}")
+            conn.send_command(f"ont delete {port} {prev_id}")
             parsed_output = conn.send_command(
                 "display ont autofind {port}",
                 use_textfsm=True
@@ -319,9 +338,8 @@ def register_ont(fsp: str, sn: str):
                 (_ont for _ont in parsed_output
                  if _ont["serial_number"].split()[0] == sn),
                 None)
-            print(autofind_ont)
         else:
-            chassis, slot, port = autofind_ont["fsp"].split("/")
+            chassis, slot, port = autofind_ont["fsp"].replace(" ", "").split("/")
             conn.send_command(
                 f"interface gpon {chassis}/{slot}",
                 auto_find_prompt=False
@@ -331,63 +349,13 @@ def register_ont(fsp: str, sn: str):
             f"ont add {port} sn-auth {sn} omci ont-lineprofile-id 500 ont-srvprofile-id 500 desc {sn}", # noqa
             use_textfsm=True
         )
-        print(parsed_output)
         if parsed_output[0]["success"] != '1':
             raise Exception("ONT not registered")
         register_lock.release()
-        parsed_output = conn.send_command(
-            f"display ont info {port}",
-            use_textfsm=True
-        )
-        print(parsed_output)
-        found_ont = next(
-            (_ont for _ont in parsed_output
-             if _ont["serial_number"] == sn),
-            None)
-        optical_output = conn.send_command(
-            f"display ont optical-info {port} all",
-            use_textfsm=True,
-        )
-        print(optical_output)
-        voltage = next(
-            (item for item in optical_output
-             if item["ont_id"] == found_ont["ont_id"]),
-            None)
-        print(voltage)
-        gem_output = conn.send_command(
-            f"display ont gemport {port} ontid {found_ont['ont_id']}",
-            use_textfsm=True,
-        )
-        print(gem_output)
-        vlan_output = []
-        for j in range(1, 5):
-            vlan_output = conn.send_command(
-                f"display ont port vlan {port} {found_ont['ont_id']} byport eth {j}", # noqa
-                use_textfsm=True
-            )
-            print(vlan_output)
-        snmp_output = conn.send_command(
-            f"display ont snmp-profile {port} all",
-            use_textfsm=True
-        )
-        print(snmp_output)
-        snmp_output = next(
-            (snmp for snmp in snmp_output
-                if snmp["ont_id"] == found_ont["ont_id"]),
-            None
-        )
-        new_ont = {
-                "fsp": f"0/0/{port}",
-                "ont": found_ont["ont_id"],
-                "sn": found_ont["serial_number"],
-                "gem": gem_output,
-                "vlan": vlan_output,
-                "snmp": snmp_output,
-                "registered": True,
-                "voltage": voltage["voltage"]
-            }
         conn.send_command("quit", auto_find_prompt=False)
         conn.find_prompt()
+    onts = get_onts_by_port(int(port))
+    new_ont = next((ont for ont in onts if ont["sn"] == sn), None)
     return new_ont
 
 

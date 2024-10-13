@@ -57,6 +57,8 @@ to_fix = list()
 recently_fixed = dict()
 olt_down = Event()
 end_thread = Event()
+start_running = Event()
+round_finished = Event()
 
 
 def register_event(site=None, event=None, fix=None):
@@ -65,12 +67,23 @@ def register_event(site=None, event=None, fix=None):
         events.append(f"{timestamp},,{site},error,{event}")
         return
     if fix.result is None:
-        events.append(
-            f"{timestamp},{fix.uuid},{fix.site},detected,{fix.error_type}"
-        )
+        if fix.is_ont:
+            events.append(
+                f"{timestamp},{fix.uuid},{fix.site},detected,{fix.error_type},{fix.ont_or_service['sn']}"
+            )
+        else:
+            events.append(
+                f"{timestamp},{fix.uuid},{fix.site},detected,{fix.error_type},{fix.ont_or_service['network_service']}"
+            )
         return
-    events.append(f"{timestamp},{fix.uuid},{fix.site},fixed,{fix.error_type}")
-
+    if fix.is_ont:
+        events.append(
+            f"{timestamp},{fix.uuid},{fix.site},fixed,{fix.error_type},{fix.ont_or_service['sn']}"
+        )
+    else:
+        events.append(
+            f"{timestamp},{fix.uuid},{fix.site},fixed,{fix.error_type},{fix.ont_or_service['network_service']}"
+        )
 
 def add_to_fix(site, ont_or_service, error_type):
     is_ont = "ont" in ont_or_service
@@ -170,6 +183,7 @@ def notify_all_info(site_name: str, info: dict):
         original_all_info[site_name] = info
         recently_fixed[site_name] = []
     print("All info received!")
+    start_running.set()
     # with open('testing.json', 'w') as f:
     #     import json
     #     json.dump(info, f)
@@ -205,13 +219,13 @@ def notify_boards_and_services(queue, boards: list, services: list):
         print("Board 4 is down")
 
     if not services == original_all_info[queue]["services"]:
-        changed_service = next((
+        changed_service = [
             s for s in services for s2 in all_info[queue]["services"]
             if s["network_service"] == s2["network_service"]
-            and s["state"] != s2["state"]),
-            None)
-        add_to_fix(queue, changed_service, "service changed")
-        print("Service changed")
+            and s["state"] != s2["state"]]
+        if changed_service:
+            for service in changed_service:
+                add_to_fix(queue, service, "service changed")
 
 
 def move_onts(queue, sn: str):
@@ -244,6 +258,7 @@ def notify_onts(queue, onts: list):
         check_snmp_profile_misconfigurations(queue, onts)
         check_onts_voltage(queue, onts)
         recently_fixed[queue] = []
+        round_finished.set()
 
 
 def check_unregistered_onts(queue, onts: list):
@@ -251,15 +266,11 @@ def check_unregistered_onts(queue, onts: list):
     onts_to_look = [ont for ont in onts_to_look
                     if ont["sn"] not in recently_fixed[queue]]
     onts = [ont for ont in onts if ont["sn"] not in recently_fixed[queue]]
-    if len(onts) != len(onts_to_look):
-        unregistered_onts = ([
-            ont for ont in onts
-            if ont["sn"] not in [ont_to_look["sn"] for ont_to_look in onts_to_look]
-        ])
-        for ont in unregistered_onts:
-            move_onts(queue, ont["sn"])
-            print(f"Unregistered ONT found: {ont['sn']}")
-            add_to_fix(queue, ont, "unregistered")
+    for ont_to_look in onts_to_look:
+        if ont_to_look["sn"] not in [ont["sn"] for ont in onts]:
+            move_onts(queue, ont_to_look["sn"])
+            print(f"Unregistered ONT found: {ont_to_look['sn']}")
+            add_to_fix(queue, ont_to_look, "unregistered")
 
 
 def check_gemport_misconfigurations(queue, onts: list):
@@ -294,10 +305,11 @@ def check_c__vlan_misconfigurations(queue, onts: list):
                 (_ont for _ont in onts
                     if _ont["sn"] == ont_to_look["sn"]),
                     None)
-            for port in range(4):
-                if ont["vlan"][port]["c_vlan"] != ont_to_look["vlan"][port]["c_vlan"]:
-                    incorrect_c__vlan_onts.append(ont_to_look)
-                    break
+            if any(
+                ont["vlan"][port][0]['c_vlan'] != ont_to_look["vlan"][port][0]['c_vlan']
+                for port in range(4)
+            ):
+                incorrect_c__vlan_onts.append(ont_to_look)
         except (Exception,):
             incorrect_c__vlan_onts.append(ont_to_look)
     for ont in incorrect_c__vlan_onts:
@@ -317,10 +329,12 @@ def check_s__vlan_misconfigurations(queue, onts: list):
                 (_ont for _ont in onts
                     if _ont["sn"] == ont_to_look["sn"]),
                     None)
-            for port in range(4):
-                if ont["vlan"][port]["s_vlan"] != ont_to_look["vlan"][port]["s_vlan"]:
-                    incorrect_s__vlan_onts.append(ont_to_look)
-                    break
+            if any(
+                    ont["vlan"][port][0]['s_vlan'] != ont_to_look["vlan"][port][0]['s_vlan']
+                    for port in range(4)
+                ):
+                incorrect_s__vlan_onts.append(ont_to_look)
+                break
         except (Exception,):
             incorrect_s__vlan_onts.append(ont_to_look)
     for ont in incorrect_s__vlan_onts:
@@ -340,10 +354,12 @@ def check_vlan_type_misconfigurations(queue, onts: list):
                 (_ont for _ont in onts
                     if _ont["sn"] == ont_to_look["sn"]),
                 None)
-            for port in range(4):
-                if ont["vlan"][port]["vlan_type"] != ont_to_look["vlan"][port]["vlan_type"]:
-                    incorrect_vlan_type_onts.append(ont_to_look)
-                    break
+            if any(
+                    ont["vlan"][port][0]['vlan_type'] != ont_to_look["vlan"][port][0]['vlan_type']
+                    for port in range(4)
+                ):
+                incorrect_vlan_type_onts.append(ont_to_look)
+                break
         except (Exception,):
             incorrect_vlan_type_onts.append(ont_to_look)
     for ont in incorrect_vlan_type_onts:
@@ -408,7 +424,15 @@ def check_onts_voltage(queue, onts: list):
 
 
 def timer(task, worker):
-    time.sleep(15*60+30)
+    rounds = 0
+    while not start_running.is_set():
+        time.sleep(1)
+    while rounds < 5:
+        while not round_finished.is_set():
+            time.sleep(1)
+        round_finished.clear()
+        rounds += 1
+    time.sleep(60)
     worker.stop()
     task.join()
 
@@ -437,4 +461,6 @@ if __name__ == '__main__':
         for event in events:
             f.write(f"{event}\n")
     if len(sys.argv) == 1 or not sys.argv[1] == 'local':
-        subprocess.run(["docker", "compose", "down"])
+        subprocess.run(["docker", "compose", "stop"])
+        time.sleep(2)
+        # subprocess.run(["docker", "compose", "down"])

@@ -16,7 +16,7 @@ services:
     build:
       context: .
       dockerfile: chaos_monkey.Dockerfile
-    command: python chaos_monkey.py --only errors
+    command: python chaos_monkey.py --only misconfigurations
     networks:
       huawei1-net:
         ipv4_address: 192.168.1.4
