@@ -1,0 +1,23 @@
+time,site,event,timestamp
+2024-11-02 22:33:52_158,ca45a808-54fe-4209-ab57-e9caff47e7ed,site_2,detected,unregistered,IT5328J2PD05OD23
+2024-11-02 22:33:52_173,65ec3b93-6a5f-4704-978a-8b9d9c93bd7e,site_2,detected,gemport,9NK75X66XCHJZC7U
+2024-11-02 22:33:52_200,6cf85f28-1e8b-4c6e-a83e-611eaadc78fe,site_2,detected,s_vlan,D9NWVYIWCTCVS029
+2024-11-02 22:33:52_213,c1add652-7d75-4954-b0b9-27c273b2b7d2,site_2,detected,vlan_type,ZS4EIS52EFPQ0CNO
+2024-11-02 22:33:52_226,a0bd439d-c363-48d1-9c67-e1bc4a8d1bcc,site_2,detected,snmp_profile,RFOLIJ8LYBY3DFKQ
+2024-11-02 22:33:55_539,4eab93a1-1301-4b48-8afb-77817e7396b4,site_2,detected,service changed,telnetv6
+2024-11-02 22:34:09_653,4eab93a1-1301-4b48-8afb-77817e7396b4,site_2,fixed,service changed,telnetv6
+2024-11-02 22:36:06_091,6cf85f28-1e8b-4c6e-a83e-611eaadc78fe,site_2,fixed,s_vlan,D9NWVYIWCTCVS029
+2024-11-02 22:37:14_324,c1add652-7d75-4954-b0b9-27c273b2b7d2,site_2,fixed,vlan_type,ZS4EIS52EFPQ0CNO
+2024-11-02 22:37:17_330,ca45a808-54fe-4209-ab57-e9caff47e7ed,site_2,fixed,unregistered,IT5328J2PD05OD23
+2024-11-02 22:37:50_396,65ec3b93-6a5f-4704-978a-8b9d9c93bd7e,site_2,fixed,gemport,9NK75X66XCHJZC7U
+2024-11-02 22:37:51_398,a0bd439d-c363-48d1-9c67-e1bc4a8d1bcc,site_2,fixed,snmp_profile,RFOLIJ8LYBY3DFKQ
+2024-11-02 22:38:11_096,8a4e19d9-e323-49fe-8ea7-d57d56b0f56c,site_2,detected,unregistered,GY2Q3TGUGRCJ2D37
+2024-11-02 22:38:11_116,10f2df21-53c5-437a-8dc8-d9077cb3224b,site_2,detected,gemport,GV5DSE2SYI83MPTM
+2024-11-02 22:38:11_133,0240b63b-f021-4fe4-bffe-f975497b0c6d,site_2,detected,c_vlan,INIBVTXPYG2W5SNP
+2024-11-02 22:38:11_161,cdd6a906-9b27-43ce-9457-c0b14c7603ff,site_2,detected,vlan_type,61ND32TOUL0LI451
+2024-11-02 22:38:14_425,af4d14a8-6561-46a5-857d-4b705321069b,site_2,detected,service changed,mqtt
+2024-11-02 22:38:14_425,9bff520e-4777-4b7c-b416-906a37ffc4a6,site_2,detected,service changed,radius
+2024-11-02 22:38:30_485,af4d14a8-6561-46a5-857d-4b705321069b,site_2,fixed,service changed,mqtt
+2024-11-02 22:38:31_489,9bff520e-4777-4b7c-b416-906a37ffc4a6,site_2,fixed,service changed,radius
+2024-11-02 22:41:31_310,0240b63b-f021-4fe4-bffe-f975497b0c6d,site_2,fixed,c_vlan,INIBVTXPYG2W5SNP
+2024-11-02 22:41:38_076,cdd6a906-9b27-43ce-9457-c0b14c7603ff,site_2,fixed,vlan_type,61ND32TOUL0LI451

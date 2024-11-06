@@ -1,0 +1,42 @@
+_,Starting chaos monkey,2024-11-02 23:29:37_688
+site_2,Changing state of portal from site_2,2024-11-02 23:29:38_252
+site_1,Changing vlan type for FC9A7V2ZPN47LIT2 from site_1,2024-11-02 23:29:49_303
+site_1,Unregistering PG6I7ACS0DHW9I36 from site_1,2024-11-02 23:30:03_785
+site_2,Changing snmp profile for HQVB0UYP6G40TITL from site_2,2024-11-02 23:30:05_478
+site_2,Changing state of radius from site_2,2024-11-02 23:30:46_338
+site_2,Unregistering 79QHJ9QDEU9X5PDY from site_2,2024-11-02 23:30:53_875
+site_2,Changing snmp profile for NURN7JUG2QQMD3BL from site_2,2024-11-02 23:31:12_727
+site_1,Changing vlan type for 3FPF70EFU69ASXZ1 from site_1,2024-11-02 23:31:21_139
+site_2,Unregistering AAZO5X3O1FOJT7MD from site_2,2024-11-02 23:31:25_670
+site_1,Changing s vlan for LUL2OWS12OXK8YR0 from site_1,2024-11-02 23:31:35_084
+site_2,Changing s vlan for C0QXCW3N449154EC from site_2,2024-11-02 23:31:37_958
+site_2,Unregistering 3GT6VEII49LJQ5EZ from site_2,2024-11-02 23:31:43_136
+site_1,Changing s vlan for HBQ5VUTD92B7NZAJ from site_1,2024-11-02 23:32:11_804
+site_2,Unregistering RFOLIJ8LYBY3DFKQ from site_2,2024-11-02 23:32:21_096
+site_2,Changing c vlan for V0CB35FYMWEVE1O9 from site_2,2024-11-02 23:32:25_004
+site_2,Unregistering VUYY3C1XNQABNZFR from site_2,2024-11-02 23:33:35_810
+site_1,Changing state of dhcp-relay from site_1,2024-11-02 23:33:36_858
+site_1,Unregistering B2FIWWDZOTZDPR3G from site_1,2024-11-02 23:34:04_533
+site_1,Changing c vlan for VFNOF44G8IXMIX9D from site_1,2024-11-02 23:34:06_871
+site_2,Changing gemport for XY33IL64XIW3YD66 from site_2,2024-11-02 23:34:36_320
+site_2,Unregistering 88YE1G4RNP34MZ9B from site_2,2024-11-02 23:35:11_397
+site_1,Changing vlan type for V0CB35FYMWEVE1O9 from site_1,2024-11-02 23:35:56_779
+site_1,Unregistering X7G28TCQCZCUC9WU from site_1,2024-11-02 23:36:47_764
+site_2,Changing snmp profile for MVCWL80I54NNGUPJ from site_2,2024-11-02 23:36:53_868
+site_1,Changing s vlan for NOVFI56K3SS9U3SJ from site_1,2024-11-02 23:37:33_046
+site_1,Changing s vlan for K1BJC05LVQHSC6O5 from site_1,2024-11-02 23:37:41_092
+site_2,Changing s vlan for JZOYVDAETVXVTNHF from site_2,2024-11-02 23:37:56_144
+site_2,Changing c vlan for 0B81QUYX5SJYHGPU from site_2,2024-11-02 23:38:18_758
+site_2,Changing state of sshv6 from site_2,2024-11-02 23:38:22_761
+site_1,Changing state of ipdr from site_1,2024-11-02 23:38:32_740
+site_1,Changing s vlan for NXA3YJ40W9G4RIXE from site_1,2024-11-02 23:38:49_745
+site_2,Changing s vlan for NOVFI56K3SS9U3SJ from site_2,2024-11-02 23:38:51_025
+site_1,Changing vlan type for 6HF1NZ5CNWJCH265 from site_1,2024-11-02 23:38:55_567
+site_1,Unregistering 0B81QUYX5SJYHGPU from site_1,2024-11-02 23:39:12_855
+site_2,Changing state of trace from site_2,2024-11-02 23:39:25_469
+site_2,Changing c vlan for 7N6QKIXAILUOT6A6 from site_2,2024-11-02 23:40:14_462
+site_2,Changing c vlan for F6UZX9C32MYFACLX from site_2,2024-11-02 23:40:34_146
+site_2,Changing c vlan for M4PSMFU3JJQ0G2RR from site_2,2024-11-02 23:41:17_805
+site_2,Changing c vlan for 0EWPN8YO2CG2L6KI from site_2,2024-11-02 23:41:20_299
+site_2,Changing snmp profile for 7N6QKIXAILUOT6A6 from site_2,2024-11-02 23:41:27_164
+_,Exiting chaos monkey,2024-11-02 23:42:05_099

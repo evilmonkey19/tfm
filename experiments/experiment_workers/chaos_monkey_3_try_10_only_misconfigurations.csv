@@ -1,0 +1,148 @@
+_,Starting chaos monkey,2024-11-05 23:08:18_051
+site_1,Changing gemport for I9IKDWMASL758YFN from site_1,2024-11-05 23:08:26_345
+site_2,Unregistering ZJZL266D3LOPY67S from site_2,2024-11-05 23:08:27_869
+site_3,Changing gemport for SHSCDNLTFPYMWOYT from site_3,2024-11-05 23:08:31_680
+site_2,Changing state of netconf from site_2,2024-11-05 23:08:38_692
+site_1,Changing state of ipdr from site_1,2024-11-05 23:08:38_836
+site_2,Changing state of ntp from site_2,2024-11-05 23:09:02_387
+site_3,Changing c vlan for BWB0RWDRLTU731H8 from site_3,2024-11-05 23:09:25_715
+site_1,Changing s vlan for 2FBRAG6TBOME5JIF from site_1,2024-11-05 23:09:28_777
+site_1,Changing state of snmp from site_1,2024-11-05 23:09:43_915
+site_2,Changing state of ntp6 from site_2,2024-11-05 23:09:46_352
+site_1,Unregistering 0UI9O0ORV0FYCLTY from site_1,2024-11-05 23:09:58_881
+site_2,Changing gemport for CE63MEPGAWKTA4RU from site_2,2024-11-05 23:10:06_571
+site_3,Unregistering 5HX753WV40TDNA8Q from site_3,2024-11-05 23:10:10_195
+site_3,Changing snmp profile for M12RHR9JZXPHKWDD from site_3,2024-11-05 23:10:15_680
+site_1,Changing snmp profile for LNK584GES7ESPYV6 from site_1,2024-11-05 23:10:22_007
+site_1,Changing vlan type for 9FSPEELL4RQC9576 from site_1,2024-11-05 23:10:23_433
+site_2,Changing snmp profile for L81FEZUOFQOUGRT8 from site_2,2024-11-05 23:10:31_479
+site_1,Changing vlan type for 2DKDNPDQGHF3AESV from site_1,2024-11-05 23:10:31_978
+site_2,Changing vlan type for S3N9IGFNU4INN35M from site_2,2024-11-05 23:10:40_234
+site_2,Changing state of ssh from site_2,2024-11-05 23:11:11_377
+site_2,Changing gemport for 0TSKDSYB28DLR46F from site_2,2024-11-05 23:11:13_061
+site_2,Unregistering ZJZL266D3LOPY67S from site_2,2024-11-05 23:11:24_222
+site_2,Changing c vlan for 86DI0Z5I4RBNWQYZ from site_2,2024-11-05 23:11:35_200
+site_2,Changing c vlan for SZU56ML50KHJHX72 from site_2,2024-11-05 23:11:39_751
+site_1,Changing c vlan for 8VKV127F5FX4C3PC from site_1,2024-11-05 23:11:49_420
+site_2,Changing gemport for CSF2HQE2IHE6C904 from site_2,2024-11-05 23:12:04_860
+site_3,Changing state of ipdr from site_3,2024-11-05 23:12:15_434
+site_3,Unregistering LO3KVIM41FP55D3J from site_3,2024-11-05 23:12:39_933
+site_3,Changing s vlan for YQRODZXX0EVN9KBX from site_3,2024-11-05 23:12:44_921
+site_3,Unregistering 66X32LBS6T3JH6RM from site_3,2024-11-05 23:13:01_089
+site_2,Changing snmp profile for 398E2JF8ANZ5ZXD9 from site_2,2024-11-05 23:13:12_345
+site_1,Changing vlan type for ADDE1L4R0121OYPA from site_1,2024-11-05 23:13:19_441
+site_2,Changing state of ssh from site_2,2024-11-05 23:13:40_455
+site_3,Unregistering WXNOBAYC73VUR8J3 from site_3,2024-11-05 23:13:50_943
+site_2,Changing c vlan for 61RLK0PJNV7ZM67O from site_2,2024-11-05 23:13:52_058
+site_1,Changing c vlan for ADDE1L4R0121OYPA from site_1,2024-11-05 23:13:56_358
+site_3,Changing gemport for WW5HJALRALM53D8O from site_3,2024-11-05 23:14:05_667
+site_2,Changing vlan type for W36PNDZSE2MPCO0J from site_2,2024-11-05 23:14:08_975
+site_3,Changing gemport for WACMZ3XCWDP06LMY from site_3,2024-11-05 23:14:24_960
+site_3,Changing gemport for YI5PRLUA46Y63DWY from site_3,2024-11-05 23:14:32_456
+site_2,Changing vlan type for FMTYAG86R4VQLB17 from site_2,2024-11-05 23:14:44_160
+site_1,Changing snmp profile for TVXDRT5MQ4EIHMNF from site_1,2024-11-05 23:14:56_648
+site_1,Changing gemport for NCS8QXIOTCG67XGA from site_1,2024-11-05 23:15:12_355
+site_3,Changing c vlan for MQKRT5E4BNGOWXIC from site_3,2024-11-05 23:15:15_732
+site_2,Changing gemport for MGRQOO34TSEOCCHT from site_2,2024-11-05 23:15:29_355
+site_1,Changing s vlan for 8X557RCRZ6MCML71 from site_1,2024-11-05 23:15:54_265
+site_3,Changing c vlan for 0TSKDSYB28DLR46F from site_3,2024-11-05 23:16:05_349
+site_2,Changing c vlan for M4ZYEVV6JQNZJ0TR from site_2,2024-11-05 23:17:05_669
+site_3,Changing snmp profile for HF0095G5ZSE71LPW from site_3,2024-11-05 23:17:20_851
+site_1,Unregistering REZLNAR2EM1UNH7O from site_1,2024-11-05 23:17:23_402
+site_2,Changing snmp profile for LNK584GES7ESPYV6 from site_2,2024-11-05 23:17:31_512
+site_2,Changing state of ssh from site_2,2024-11-05 23:17:42_991
+site_2,Changing gemport for 2EK6ISG6650DQLXB from site_2,2024-11-05 23:18:26_048
+site_2,Changing gemport for YQRODZXX0EVN9KBX from site_2,2024-11-05 23:18:27_138
+site_1,Changing gemport for ADDE1L4R0121OYPA from site_1,2024-11-05 23:18:34_031
+site_3,Changing state of sftp-client from site_3,2024-11-05 23:18:47_005
+site_2,Changing state of telnet from site_2,2024-11-05 23:19:00_540
+site_1,Unregistering 0TSKDSYB28DLR46F from site_1,2024-11-05 23:19:01_945
+site_3,Changing gemport for 61RLK0PJNV7ZM67O from site_3,2024-11-05 23:19:08_887
+site_3,Unregistering 4CIOVOVI78XBZBPP from site_3,2024-11-05 23:19:14_133
+site_1,Changing snmp profile for REU9719PD6GQWACS from site_1,2024-11-05 23:19:18_468
+site_1,Unregistering PZU7PI6ZVMISBJ5R from site_1,2024-11-05 23:19:24_770
+site_3,Unregistering REZLNAR2EM1UNH7O from site_3,2024-11-05 23:19:43_442
+site_3,Unregistering SS5YZD1TTAOL3PPH from site_3,2024-11-05 23:19:45_831
+site_1,Unregistering HVXCABQRDFALBYKI from site_1,2024-11-05 23:19:51_700
+site_1,Changing snmp profile for 3M7XYS5PY7OD93G4 from site_1,2024-11-05 23:20:11_936
+site_3,Unregistering 52PHXLBHH17W9RZM from site_3,2024-11-05 23:20:21_092
+site_1,Changing gemport for W70QKF62W88YRJQP from site_1,2024-11-05 23:20:24_772
+site_2,Changing gemport for UOFVUQ5RMRBSOOVS from site_2,2024-11-05 23:20:34_950
+site_1,Changing c vlan for 0LVPKOTQVJL6F8M3 from site_1,2024-11-05 23:20:42_117
+site_3,Changing gemport for UOFVUQ5RMRBSOOVS from site_3,2024-11-05 23:20:48_060
+site_2,Changing gemport for I2UF2QQ2XXVKQ6YC from site_2,2024-11-05 23:20:50_602
+site_1,Changing snmp profile for 28AQ7ZAD92ZNRRBF from site_1,2024-11-05 23:21:14_269
+site_3,Unregistering NCS8QXIOTCG67XGA from site_3,2024-11-05 23:21:24_044
+site_1,Changing state of telnetv6 from site_1,2024-11-05 23:21:28_474
+site_2,Changing snmp profile for OKRX0LP02VMCEVRQ from site_2,2024-11-05 23:21:30_669
+site_2,Changing gemport for CSF2HQE2IHE6C904 from site_2,2024-11-05 23:21:33_037
+site_3,Changing state of dhcp-relay from site_3,2024-11-05 23:21:38_272
+site_2,Unregistering 9WNIMQ7BG4OZL22S from site_2,2024-11-05 23:21:55_718
+site_3,Changing s vlan for 98CD1ND3ZTIYEDK4 from site_3,2024-11-05 23:22:07_140
+site_2,Changing vlan type for CSF2HQE2IHE6C904 from site_2,2024-11-05 23:22:17_258
+site_3,Unregistering MI9VKRR4L3IUETKF from site_3,2024-11-05 23:22:24_474
+site_2,Changing s vlan for OQDLLBG1122HJ4B4 from site_2,2024-11-05 23:22:28_818
+site_3,Changing gemport for YI5PRLUA46Y63DWY from site_3,2024-11-05 23:22:44_449
+site_1,Changing gemport for UCVN0JNS1GN3DZZN from site_1,2024-11-05 23:22:48_122
+site_2,Changing snmp profile for VZ4L619QAPX55CIU from site_2,2024-11-05 23:22:56_035
+site_3,Changing gemport for HVXCABQRDFALBYKI from site_3,2024-11-05 23:23:25_805
+site_2,Changing c vlan for I2UF2QQ2XXVKQ6YC from site_2,2024-11-05 23:23:32_570
+site_2,Changing s vlan for E8DUW008JYR9NTXL from site_2,2024-11-05 23:23:41_432
+site_3,Changing snmp profile for OQHNIXZ90862PJUM from site_3,2024-11-05 23:23:46_827
+site_2,Changing c vlan for HHE56C3K7XV96603 from site_2,2024-11-05 23:23:55_855
+site_3,Changing snmp profile for G7RLYTWSIKUL0B2S from site_3,2024-11-05 23:23:58_764
+site_1,Changing c vlan for JPGKUT7A5X12VNST from site_1,2024-11-05 23:24:00_509
+site_3,Unregistering NCU6LKJUWTI6MJ44 from site_3,2024-11-05 23:24:11_201
+site_2,Unregistering UBIS282GY7TAFAXG from site_2,2024-11-05 23:24:14_227
+site_1,Changing state of netconf from site_1,2024-11-05 23:24:16_366
+site_3,Changing s vlan for X5HI9D7M07FW0T0M from site_3,2024-11-05 23:24:22_452
+site_2,Changing c vlan for REU9719PD6GQWACS from site_2,2024-11-05 23:24:48_495
+site_1,Changing s vlan for I2OUH8807W0FOKYC from site_1,2024-11-05 23:24:51_917
+site_1,Changing snmp profile for 8NDVAM0MCEKBV79S from site_1,2024-11-05 23:24:54_338
+site_3,Changing snmp profile for 8NDVAM0MCEKBV79S from site_3,2024-11-05 23:24:58_503
+site_3,Changing state of ipdr from site_3,2024-11-05 23:25:23_284
+site_1,Changing vlan type for 3M7XYS5PY7OD93G4 from site_1,2024-11-05 23:25:30_211
+site_3,Changing s vlan for 8VKV127F5FX4C3PC from site_3,2024-11-05 23:25:48_648
+site_1,Changing gemport for FZN7PNIIWXJKXBB5 from site_1,2024-11-05 23:26:07_685
+site_3,Changing vlan type for JLMYOID07M8I7DGX from site_3,2024-11-05 23:26:14_706
+site_1,Changing gemport for 3X4TSFSFKU71LTEZ from site_1,2024-11-05 23:26:25_948
+site_1,Changing snmp profile for ILUMB0OO54XQZVKS from site_1,2024-11-05 23:26:27_789
+site_2,Changing c vlan for BDNRQT6YZ9E9GGJV from site_2,2024-11-05 23:26:37_923
+site_1,Changing gemport for 16HSJ3V77KPYDZ67 from site_1,2024-11-05 23:26:44_528
+site_2,Changing c vlan for WSRTQSC3C8S7M53H from site_2,2024-11-05 23:26:50_858
+site_3,Changing vlan type for GLHW2G6N8ICD62ZA from site_3,2024-11-05 23:26:55_817
+site_1,Changing vlan type for JLMYOID07M8I7DGX from site_1,2024-11-05 23:27:00_857
+site_3,Changing c vlan for UZ91B3OJQLBGR3RP from site_3,2024-11-05 23:27:07_685
+site_3,Changing c vlan for DS4RETILYFFPFDFL from site_3,2024-11-05 23:27:12_338
+site_1,Changing state of netconf from site_1,2024-11-05 23:27:23_862
+site_2,Changing snmp profile for 2DKDNPDQGHF3AESV from site_2,2024-11-05 23:27:37_970
+site_1,Changing vlan type for A8NVUCC419LE6DAP from site_1,2024-11-05 23:27:38_597
+site_1,Unregistering 43FZIAFB5M3PUM5V from site_1,2024-11-05 23:27:53_607
+site_1,Unregistering 7WBQ7ODE28T01I56 from site_1,2024-11-05 23:27:58_528
+site_1,Changing c vlan for 5LCTANDG6XOV9PDL from site_1,2024-11-05 23:28:34_479
+site_2,Changing s vlan for BMLNGP9ZKY5TQJQ2 from site_2,2024-11-05 23:28:57_368
+site_2,Changing state of sshv6 from site_2,2024-11-05 23:29:03_971
+site_1,Unregistering ASTTG7EK1RSGWME0 from site_1,2024-11-05 23:29:28_190
+site_2,Changing vlan type for 6VXRFNQMF64GE8TG from site_2,2024-11-05 23:29:31_932
+site_1,Changing gemport for PI6PZOOG34FRACEA from site_1,2024-11-05 23:29:34_502
+site_2,Changing s vlan for 4FEWV2PWSMF8MD8F from site_2,2024-11-05 23:29:53_535
+site_2,Changing snmp profile for 9VWNYC903A2P8EAM from site_2,2024-11-05 23:29:57_249
+site_1,Changing gemport for 95AFJB2F9QHY6X2V from site_1,2024-11-05 23:30:02_315
+site_1,Changing state of trace from site_1,2024-11-05 23:30:05_675
+site_3,Changing gemport for 7TQI1C3MRLS2K1ZH from site_3,2024-11-05 23:30:27_743
+site_1,Changing c vlan for W345SYFB8NX8CJN4 from site_1,2024-11-05 23:30:49_382
+site_2,Changing vlan type for CAWAXALY9QR6DGBN from site_2,2024-11-05 23:30:52_499
+site_2,Changing vlan type for 95AFJB2F9QHY6X2V from site_2,2024-11-05 23:31:02_015
+site_1,Changing state of snmpv6 from site_1,2024-11-05 23:31:15_792
+site_2,Changing c vlan for 6OS0LSFUYZJ6HXGH from site_2,2024-11-05 23:31:31_687
+site_3,Changing c vlan for 3NQ07837SZPO4QMY from site_3,2024-11-05 23:31:33_981
+site_2,Changing gemport for 2YIP6ZN3IOLCXR63 from site_2,2024-11-05 23:31:45_026
+site_1,Unregistering D4H16HHYUX16SKY2 from site_1,2024-11-05 23:31:53_564
+site_3,Changing snmp profile for REU9719PD6GQWACS from site_3,2024-11-05 23:31:57_503
+site_2,Changing snmp profile for 43FZIAFB5M3PUM5V from site_2,2024-11-05 23:32:06_365
+site_1,Changing c vlan for JRZL4Z1CGYQY86I2 from site_1,2024-11-05 23:32:08_761
+site_2,Changing state of snmp from site_2,2024-11-05 23:32:44_894
+site_1,Changing state of telnetv6 from site_1,2024-11-05 23:32:45_478
+site_3,Changing c vlan for S5XHGFH32A6E1VNJ from site_3,2024-11-05 23:32:50_570
+site_1,Changing vlan type for Q1ZVO5Y2XIDYU7WK from site_1,2024-11-05 23:32:56_453
+_,Exiting chaos monkey,2024-11-05 23:33:07_339

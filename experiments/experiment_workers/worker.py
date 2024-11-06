@@ -3,11 +3,20 @@ from multiprocessing import Lock, Process
 import os
 import logging
 import time
+import argparse
 
 from netmiko import ConnectHandler
 from ntc_templates.parse import parse_output
 import celery
 import requests
+
+arg_parser = argparse.ArgumentParser()
+arg_parser.add_argument(
+    '--local',
+    action='store_true',
+    help='An optional boolean argument'
+)
+args = arg_parser.parse_args()
 
 logging.basicConfig(level=logging.INFO)
 
@@ -229,23 +238,14 @@ def get_all_info():
         for board in boards
         if board["boardname"] in GPON_BOARDS
     ][0]
-    # onts = get_onts(2, autofind=False)
-    onts = get_onts(n_ports, autofind=True)
+    onts = get_onts(n_ports, autofind=True) if not args.local else get_onts(2)
     info["onts"] = onts
-    # with open('info.json', 'w') as f:
-    #     import json
-    #     # info = json.load(f)
-    #     json.dump(info, f)
     print("Notifying all info")
     return info
 
 
 def monitoring_tasks():
-    # with open('info.json', 'r') as f:
-    #     import json
-    #     info = json.load(f)
     notify_all_info.apply_async(
-        # (os.getenv("QUEUE_NAME", 'site_1'), info),
         (os.getenv("QUEUE_NAME", 'site_1'), get_all_info()),
         queue='master',
         retry=True,
@@ -274,8 +274,7 @@ def monitoring_tasks():
                 for board in boards
                 if board["boardname"] in GPON_BOARDS
             ][0]
-            # onts = get_onts(2)
-            onts = get_onts(n_ports)
+            onts = get_onts(n_ports) if not args.local else get_onts(2)
             notify_onts.apply_async(
                 (os.getenv("QUEUE_NAME", 'site_1'), onts),
                 queue='master'

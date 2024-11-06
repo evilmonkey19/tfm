@@ -1,0 +1,22 @@
+time,site,event,timestamp
+2024-11-02 21:54:43_580,f17cd429-3ed2-45f4-a157-b462414a5d8b,site_2,detected,service changed,netconf
+2024-11-02 21:54:57_622,f17cd429-3ed2-45f4-a157-b462414a5d8b,site_2,fixed,service changed,netconf
+2024-11-02 21:58:18_284,7c0962e3-1f82-494e-a3c2-3fbc1baf10b8,site_2,detected,unregistered,PG6I7ACS0DHW9I36
+2024-11-02 21:58:18_332,dd22b938-fedc-4761-8896-7379bc779835,site_2,detected,s_vlan,BKOIIS7CVD0JSHQL
+2024-11-02 21:58:18_362,0d8656a0-215a-4732-9046-45d78dbc7557,site_2,detected,snmp_profile,QU1RJ2Q9IVSWOFK8
+2024-11-02 21:58:18_363,291d7856-e601-4c23-b1af-f04b5ab51842,site_2,detected,snmp_profile,E06EY6KE01TPQ5S7
+2024-11-02 21:58:18_363,5ad6eff7-697d-4690-a783-fc7295909e4f,site_2,detected,snmp_profile,JIQEJK0EEERYOP32
+2024-11-02 21:58:21_609,cd1727f6-7e9c-4df5-bd8d-6786f7664ed4,site_2,detected,service changed,radius
+2024-11-02 21:58:21_609,40caefac-dc01-42ce-8d29-c55ff0157ad8,site_2,detected,service changed,telnetv6
+2024-11-02 21:58:35_783,cd1727f6-7e9c-4df5-bd8d-6786f7664ed4,site_2,fixed,service changed,radius
+2024-11-02 21:58:36_787,40caefac-dc01-42ce-8d29-c55ff0157ad8,site_2,fixed,service changed,telnetv6
+2024-11-02 22:00:58_318,0d8656a0-215a-4732-9046-45d78dbc7557,site_2,fixed,snmp_profile,QU1RJ2Q9IVSWOFK8
+2024-11-02 22:01:27_415,291d7856-e601-4c23-b1af-f04b5ab51842,site_2,fixed,snmp_profile,E06EY6KE01TPQ5S7
+2024-11-02 22:01:42_103,48332e55-605f-4500-8fff-6d6e09546a41,site_1,detected,service changed,telnetv6
+2024-11-02 22:01:57_507,48332e55-605f-4500-8fff-6d6e09546a41,site_1,fixed,service changed,telnetv6
+2024-11-02 22:02:12_546,5ad6eff7-697d-4690-a783-fc7295909e4f,site_2,fixed,snmp_profile,JIQEJK0EEERYOP32
+2024-11-02 22:02:15_553,dd22b938-fedc-4761-8896-7379bc779835,site_2,fixed,s_vlan,BKOIIS7CVD0JSHQL
+2024-11-02 22:02:42_586,7c0962e3-1f82-494e-a3c2-3fbc1baf10b8,site_2,fixed,unregistered,PG6I7ACS0DHW9I36
+2024-11-02 22:02:46_015,6b91abba-cd20-411a-b9f7-af7a686fa652,site_2,detected,unregistered,0B81QUYX5SJYHGPU
+2024-11-02 22:02:46_103,c28f1a0e-4b1e-4528-9f65-65b3283604b6,site_2,detected,snmp_profile,IB43JRCJ6VGEHQPP
+2024-11-02 22:02:46_104,4896326c-2ab1-496f-859e-48b0b7e6c095,site_2,detected,snmp_profile,FJON8FLW2N2WLBIZ

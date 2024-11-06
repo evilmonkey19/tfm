@@ -1,4 +1,3 @@
-import atexit
 from datetime import datetime
 import os
 import re
@@ -26,7 +25,11 @@ args.add_argument(
     type=str,
     help="only one action to perform [misconfigurations, errors, all, nothing]"
 )
-
+args.add_argument(
+    "--local",
+    action="store_true",
+    help="run chaos monkey locally"
+)
 args = args.parse_args()
 
 misconfigurations = [
@@ -47,29 +50,23 @@ errors = [
 
 pattern = r"^chaos_monkey_(\d+)?_try_(\d+)?.*\.csv$"
 filenames = os.listdir()
-highest_try = 0
-highest_sites = 0
+max_sites_try = (0, 0)
 
 for filename in filenames:
     if match := re.match(pattern, filename):
-        print(filename)
-        sites = int(match.group(1))
-        highest_sites = max(highest_sites, sites)
-        last_try = int(match.group(2))
-        highest_try = max(highest_try, last_try)
+        sites_try = (int(match.group(1)), int(match.group(2)))
+        if sites_try[0] > max_sites_try[0] or \
+            (sites_try[0] == max_sites_try[0] and sites_try[1] > max_sites_try[1]):
+            max_sites_try = sites_try
 
-print("Highest sites:", highest_sites)
-print("Highest try:", highest_try)
-
-if highest_try == 10:
-    highest_sites += 1
-    highest_try = 0
-TRY = highest_try + 1
-SITES = max(highest_sites, 1)
+if max_sites_try[1] == 10:
+    max_sites_try = (max_sites_try[0] + 1, 0)
+max_sites_try = (max_sites_try[0], max_sites_try[1] + 1)
+SITES = max_sites_try[0]
+TRY = max_sites_try[1]
 
 urls = {
-    f"site_{i}": f"http://192.168.{i}.3:8000/api"
-    # "site_1": "http://localhost:8000/api"
+    f"site_{i}": f"http://192.168.{i}.3:8000/api" if not args.local else f"http://localhost:8000/api"
     for i in range(1, SITES + 1)
 }
 
@@ -135,7 +132,8 @@ def pick_random_ont(site):
     onts = requests.get(urls[site] + "/hosts/OLT/list_onts", timeout=20).json()["onts"]
     onts = [ont for ont in onts if ont["registered"]]
     onts = [ont for ont in onts if ont not in recent_onts[site]]
-    # onts = [ont for ont in onts if ont["fsp"] in ["0/0/0", "0/0/1"]]
+    if args.local:
+        onts = [ont for ont in onts if ont["fsp"] in ["0/0/0", "0/0/1"]]
     ont = random.choice(onts)
     recent_onts[site].append({ont["sn"]: time.time()})
     return ont
@@ -147,9 +145,6 @@ def on_exit():
     with open(logging_file, "w") as f:
         for event in events:
             f.write(event + "\n")
-
-
-atexit.register(on_exit)
 
 
 def chaos_monkey():
@@ -251,6 +246,7 @@ def chaos_monkey():
             logging.info("Exiting chaos monkey KeyboardInterrupt")
             events.append(register_event(site, "Exiting chaos monkey KeyboardInterrupt"))
             break
+    on_exit()
 
 
 @asynccontextmanager

@@ -1,0 +1,52 @@
+_,Starting chaos monkey,2024-11-02 21:09:43_177
+site_2,Changing vlan type for JX1B12B308TU1HT3 from site_2,2024-11-02 21:09:49_250
+site_2,Changing gemport for 3GT6VEII49LJQ5EZ from site_2,2024-11-02 21:09:56_484
+site_2,Changing gemport for 1HP8CLKJ2KD1SZMA from site_2,2024-11-02 21:10:00_038
+site_2,Changing state of sshv6 from site_2,2024-11-02 21:10:09_856
+site_2,Changing snmp profile for 11GIWD6RQTZ32QCF from site_2,2024-11-02 21:10:17_076
+site_2,Changing s vlan for O3HEG0RDAS08OAWY from site_2,2024-11-02 21:10:27_567
+site_1,Changing s vlan for JCX4WA16ORE1H62I from site_1,2024-11-02 21:10:38_917
+site_1,Changing snmp profile for 50SO25GRE5DNBXV7 from site_1,2024-11-02 21:10:42_967
+site_2,Changing state of sftp-client from site_2,2024-11-02 21:10:55_924
+site_2,Unregistering INIBVTXPYG2W5SNP from site_2,2024-11-02 21:11:04_374
+site_2,Changing gemport for HQVB0UYP6G40TITL from site_2,2024-11-02 21:11:17_820
+site_1,Changing c vlan for KBJL0K2ISEME3SBL from site_1,2024-11-02 21:12:04_007
+site_2,Unregistering 02XKIO0923FNDSRA from site_2,2024-11-02 21:12:04_739
+site_2,Unregistering HCXNLLOFNO2BKBCZ from site_2,2024-11-02 21:12:30_251
+site_2,Changing state of telnetv6 from site_2,2024-11-02 21:12:35_490
+site_2,Changing c vlan for WQZ196MAWV43LTD6 from site_2,2024-11-02 21:12:39_139
+site_1,Changing vlan type for 1IKYSUH66GRBDKL3 from site_1,2024-11-02 21:12:41_416
+site_1,Changing gemport for ZS4EIS52EFPQ0CNO from site_1,2024-11-02 21:12:42_928
+site_1,Changing c vlan for TGKMFWZOO405MTY9 from site_1,2024-11-02 21:12:50_027
+site_1,Changing gemport for EF2WX26Z6EACSCBK from site_1,2024-11-02 21:13:03_539
+site_2,Changing state of trace from site_2,2024-11-02 21:13:09_515
+site_2,Changing s vlan for V0Q7FJ8306538L46 from site_2,2024-11-02 21:13:10_903
+site_2,Changing state of dhcpv6-relay from site_2,2024-11-02 21:13:56_276
+site_1,Changing c vlan for 9E4TQDCVXEQJ3YA1 from site_1,2024-11-02 21:14:11_990
+site_2,Changing gemport for F7WN5OTYOM4RU47B from site_2,2024-11-02 21:14:29_231
+site_1,Changing s vlan for 1HP8CLKJ2KD1SZMA from site_1,2024-11-02 21:14:45_502
+site_2,Unregistering 2GRUA2XM3CA4I0RY from site_2,2024-11-02 21:14:54_171
+site_1,Changing snmp profile for BKOIIS7CVD0JSHQL from site_1,2024-11-02 21:15:01_100
+site_2,Changing gemport for J8EN1RFM7RG57JWZ from site_2,2024-11-02 21:15:09_285
+site_1,Changing s vlan for D5LDY789NZHYN2IW from site_1,2024-11-02 21:15:09_630
+site_2,Changing c vlan for FZ9F7RJGB00Y4RN7 from site_2,2024-11-02 21:15:27_443
+site_1,Changing state of dhcp-relay from site_1,2024-11-02 21:15:37_110
+site_2,Unregistering FJON8FLW2N2WLBIZ from site_2,2024-11-02 21:15:49_236
+site_1,Changing s vlan for RCI9CBZ00MGC1023 from site_1,2024-11-02 21:15:49_944
+site_1,Changing state of dhcp-relay from site_1,2024-11-02 21:16:00_909
+site_2,Changing snmp profile for KBJL0K2ISEME3SBL from site_2,2024-11-02 21:16:14_379
+site_1,Changing s vlan for 398ELE07KLL6FHW1 from site_1,2024-11-02 21:16:51_020
+site_2,Changing state of capwap from site_2,2024-11-02 21:16:53_742
+site_2,Changing vlan type for LT70A0WEYUDD9EY6 from site_2,2024-11-02 21:16:56_508
+site_1,Changing s vlan for 3FPF70EFU69ASXZ1 from site_1,2024-11-02 21:17:01_935
+site_1,Changing c vlan for 1HP8CLKJ2KD1SZMA from site_1,2024-11-02 21:17:18_425
+site_2,Changing c vlan for RK65NIGKB6NVPTAM from site_2,2024-11-02 21:17:29_624
+site_1,Changing state of dhcp-relay from site_1,2024-11-02 21:17:38_766
+site_2,Changing snmp profile for ZO6FUE7WPDMBMR06 from site_2,2024-11-02 21:18:05_969
+site_2,Changing c vlan for ZO6FUE7WPDMBMR06 from site_2,2024-11-02 21:18:29_975
+site_2,Changing snmp profile for PG6I7ACS0DHW9I36 from site_2,2024-11-02 21:19:21_325
+site_2,Changing gemport for O3HEG0RDAS08OAWY from site_2,2024-11-02 21:20:05_620
+site_1,Changing vlan type for HXNJDESSKQXSO8MC from site_1,2024-11-02 21:20:12_143
+site_1,Changing gemport for GUELBJ5ZKUULRL4F from site_1,2024-11-02 21:20:19_534
+site_1,Changing vlan type for R99TSX6NCU7BTAR8 from site_1,2024-11-02 21:20:49_095
+_,Exiting chaos monkey,2024-11-02 21:22:03_825

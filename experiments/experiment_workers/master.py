@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 import os
-import sys
 import time
 from datetime import datetime
 from threading import Lock, Event
@@ -8,11 +7,20 @@ import subprocess
 import threading
 import uuid
 import copy
+import argparse
 
 import celery
 import yaml
 
 from worker import register_ont, fix_service
+
+args = argparse.ArgumentParser()
+args.add_argument(
+    "--local",
+    action="store_true",
+    help="Run the script locally"
+)
+args = args.parse_args()
 
 RABBITMQ_IP = os.environ.get('RABBITMQ_IP', 'localhost')
 
@@ -427,7 +435,7 @@ def timer(task, worker):
     rounds = 0
     while not start_running.is_set():
         time.sleep(1)
-    while rounds < 5:
+    while rounds < 5*len(all_info):
         while not round_finished.is_set():
             time.sleep(1)
         round_finished.clear()
@@ -439,7 +447,7 @@ def timer(task, worker):
 
 if __name__ == '__main__':
     worker = None
-    if len(sys.argv) == 1 or not sys.argv[1] == 'local':
+    if not args.local:
         subprocess.run(["docker", "compose", "up", "-d", "--build"])
     task = threading.Thread(target=fixer, name='fixer', daemon=True)
     task.start()
@@ -449,7 +457,7 @@ if __name__ == '__main__':
         hostname=os.getenv('HOSTNAME', 'localhost'),
         queues=['celery', 'master'],
     )
-    if len(sys.argv) == 1 or not sys.argv[1] == 'local':
+    if not args.local:
         timer_thread = threading.Thread(
             target=timer,
             args=(task, worker),
@@ -460,7 +468,7 @@ if __name__ == '__main__':
     with open('events_log.csv', 'a') as f:
         for event in events:
             f.write(f"{event}\n")
-    if len(sys.argv) == 1 or not sys.argv[1] == 'local':
+    if not args.local:
         subprocess.run(["docker", "compose", "stop"])
         time.sleep(2)
-        # subprocess.run(["docker", "compose", "down"])
+        subprocess.run(["docker", "compose", "down"])

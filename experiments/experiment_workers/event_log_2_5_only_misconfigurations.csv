@@ -1,0 +1,28 @@
+time,site,event,timestamp
+2024-11-02 22:50:14_228,05986036-0d2c-4615-9fea-83ac2d1b6af0,site_2,detected,service changed,snmpv6
+2024-11-02 22:50:30_093,05986036-0d2c-4615-9fea-83ac2d1b6af0,site_2,fixed,service changed,snmpv6
+2024-11-02 22:52:19_562,02aab37c-7e72-483e-9f68-84a7adab7e68,site_1,detected,service changed,snmpv6
+2024-11-02 22:52:35_154,02aab37c-7e72-483e-9f68-84a7adab7e68,site_1,fixed,service changed,snmpv6
+2024-11-02 22:53:50_665,69c13eea-8b4d-48e4-9eb9-9befc2327df5,site_2,detected,gemport,02XKIO0923FNDSRA
+2024-11-02 22:53:50_665,869785b0-9071-48b7-941a-383bd710075f,site_2,detected,gemport,7N6QKIXAILUOT6A6
+2024-11-02 22:53:50_696,dbbbb495-923e-4d7d-93cb-3595807bc7b4,site_2,detected,s_vlan,O6WJAM22NS4LX5UG
+2024-11-02 22:53:50_709,dcff2479-cb4b-4641-87c3-df77627acb82,site_2,detected,vlan_type,4PVDQXMGADM1FQMZ
+2024-11-02 22:53:50_722,35888c2f-13f7-4f76-abea-b84e683649a7,site_2,detected,snmp_profile,PWJNTECM5EVAUGAL
+2024-11-02 22:53:50_722,49b9ccf8-f718-4900-a528-aaf7fa0cc8fc,site_2,detected,snmp_profile,U6VD8EM1CK5VEU60
+2024-11-02 22:53:50_722,a22eaa64-4190-48eb-8e96-21d7007f50a9,site_2,detected,snmp_profile,FC9A7V2ZPN47LIT2
+2024-11-02 22:55:02_514,69c13eea-8b4d-48e4-9eb9-9befc2327df5,site_2,fixed,gemport,02XKIO0923FNDSRA
+2024-11-02 22:55:25_613,35888c2f-13f7-4f76-abea-b84e683649a7,site_2,fixed,snmp_profile,PWJNTECM5EVAUGAL
+2024-11-02 22:55:31_636,dcff2479-cb4b-4641-87c3-df77627acb82,site_2,fixed,vlan_type,4PVDQXMGADM1FQMZ
+2024-11-02 22:57:01_688,7262c7da-5e38-4190-93a0-8a14f16814a9,site_1,detected,service changed,dhcpv6-relay
+2024-11-02 22:57:16_987,7262c7da-5e38-4190-93a0-8a14f16814a9,site_1,fixed,service changed,dhcpv6-relay
+2024-11-02 22:57:27_019,dbbbb495-923e-4d7d-93cb-3595807bc7b4,site_2,fixed,s_vlan,O6WJAM22NS4LX5UG
+2024-11-02 22:57:32_032,49b9ccf8-f718-4900-a528-aaf7fa0cc8fc,site_2,fixed,snmp_profile,U6VD8EM1CK5VEU60
+2024-11-02 22:57:54_074,a22eaa64-4190-48eb-8e96-21d7007f50a9,site_2,fixed,snmp_profile,FC9A7V2ZPN47LIT2
+2024-11-02 22:58:06_090,869785b0-9071-48b7-941a-383bd710075f,site_2,fixed,gemport,7N6QKIXAILUOT6A6
+2024-11-02 22:58:15_518,4be1e374-9e9c-40fd-a18e-e74f0de8ef66,site_2,detected,unregistered,9E4TQDCVXEQJ3YA1
+2024-11-02 22:58:15_540,1234c6a5-dc02-4bd0-912e-34e16087839b,site_2,detected,gemport,JX1B12B308TU1HT3
+2024-11-02 22:58:15_557,41ff121e-8433-479e-a88f-a959b30d6fda,site_2,detected,c_vlan,OC18QFHY6MTV98ZG
+2024-11-02 22:58:15_558,52fce20b-a8c3-42b6-9c19-0cf8d158ad54,site_2,detected,c_vlan,974JIRLE7IEEQ9OO
+2024-11-02 22:58:15_590,f6063e6f-70bb-437a-99c2-374346d1aee1,site_2,detected,vlan_type,QJLT825IMOUYPDTD
+2024-11-02 22:58:18_887,08c666fa-9d4d-470e-be4f-3b62cef41e64,site_2,detected,service changed,ftp-client
+2024-11-02 22:58:33_171,08c666fa-9d4d-470e-be4f-3b62cef41e64,site_2,fixed,service changed,ftp-client

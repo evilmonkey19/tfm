@@ -1,0 +1,34 @@
+time,site,event,timestamp
+2024-10-27 19:31:11_320,69f7b6f2-206c-4eba-93a4-1de5f39ec449,site_2,detected,snmp_profile,R0DIXWSNKPZKLJV3
+2024-10-27 19:31:11_321,c42f55f6-8749-4345-8d88-c79ec9c0063b,site_2,detected,snmp_profile,49O7TP6UUYX473C2
+2024-10-27 19:33:32_332,41221ac8-d3f1-4507-8e66-b61d927e64c5,site_1,detected,service changed,radius
+2024-10-27 19:33:48_078,41221ac8-d3f1-4507-8e66-b61d927e64c5,site_1,fixed,service changed,radius
+2024-10-27 19:34:15_135,69f7b6f2-206c-4eba-93a4-1de5f39ec449,site_2,fixed,snmp_profile,R0DIXWSNKPZKLJV3
+2024-10-27 19:34:52_192,c42f55f6-8749-4345-8d88-c79ec9c0063b,site_2,fixed,snmp_profile,49O7TP6UUYX473C2
+2024-10-27 19:35:10_756,dcf8d333-94db-4817-9db0-da22827ca4f2,site_2,detected,unregistered,2PV0WLH034AC7QVD
+2024-10-27 19:35:10_756,3e4351ba-a236-4518-aba3-169bc0756c36,site_2,detected,unregistered,SCJEA2YJEK258R0U
+2024-10-27 19:35:10_800,1479d73a-a4b7-4a89-9922-5824a32cb8df,site_2,detected,gemport,DK05E3CZGW8JX56S
+2024-10-27 19:35:10_834,7dc89848-c8c3-471b-8e5a-46a8c1b92f28,site_2,detected,c_vlan,TIJGDP6RDE68IZX7
+2024-10-27 19:35:10_835,66932f6d-a551-4603-afcf-1c995e777ff4,site_2,detected,c_vlan,U6VD8EM1CK5VEU60
+2024-10-27 19:35:10_874,743b97cc-c87b-4aaa-8ecc-8a5b58627987,site_2,detected,vlan_type,RHBC8OCTHGN03U6G
+2024-10-27 19:35:10_904,0f3f8974-d188-4907-9312-99202ccd3a01,site_2,detected,snmp_profile,2GRUA2XM3CA4I0RY
+2024-10-27 19:35:10_904,511f6b8c-e582-4c58-b33e-ddd080129424,site_2,detected,snmp_profile,7N6QKIXAILUOT6A6
+2024-10-27 19:35:14_127,66040e22-90d1-473b-b192-068492514611,site_2,detected,service changed,portal
+2024-10-27 19:35:14_127,624c3916-4eeb-4b47-932a-ad829e2c8184,site_2,detected,service changed,trace
+2024-10-27 19:38:29_899,0f3f8974-d188-4907-9312-99202ccd3a01,site_2,fixed,snmp_profile,2GRUA2XM3CA4I0RY
+2024-10-27 19:38:41_981,1479d73a-a4b7-4a89-9922-5824a32cb8df,site_2,fixed,gemport,DK05E3CZGW8JX56S
+2024-10-27 19:38:42_989,66040e22-90d1-473b-b192-068492514611,site_2,fixed,service changed,portal
+2024-10-27 19:38:56_058,624c3916-4eeb-4b47-932a-ad829e2c8184,site_2,fixed,service changed,trace
+2024-10-27 19:38:59_074,743b97cc-c87b-4aaa-8ecc-8a5b58627987,site_2,fixed,vlan_type,RHBC8OCTHGN03U6G
+2024-10-27 19:39:03_089,7dc89848-c8c3-471b-8e5a-46a8c1b92f28,site_2,fixed,c_vlan,TIJGDP6RDE68IZX7
+2024-10-27 19:39:20_155,3e4351ba-a236-4518-aba3-169bc0756c36,site_2,fixed,unregistered,SCJEA2YJEK258R0U
+2024-10-27 19:39:35_201,511f6b8c-e582-4c58-b33e-ddd080129424,site_2,fixed,snmp_profile,7N6QKIXAILUOT6A6
+2024-10-27 19:39:41_211,dcf8d333-94db-4817-9db0-da22827ca4f2,site_2,fixed,unregistered,2PV0WLH034AC7QVD
+2024-10-27 19:40:10_254,66932f6d-a551-4603-afcf-1c995e777ff4,site_2,fixed,c_vlan,U6VD8EM1CK5VEU60
+2024-10-27 19:40:10_892,d0adcd45-6ace-46a7-b1fb-48945bb6a4fd,site_2,detected,unregistered,11GIWD6RQTZ32QCF
+2024-10-27 19:40:10_896,3d04e83e-58ab-4293-9b98-65b00b85bb8c,site_2,detected,unregistered,71SEN8JTXCIIW6I5
+2024-10-27 19:40:10_945,e7f3331a-dd8f-42f7-a4a5-ab5ec1281a11,site_2,detected,gemport,O3HEG0RDAS08OAWY
+2024-10-27 19:40:10_988,38d0d498-b023-4175-ab2a-b410a52720de,site_2,detected,c_vlan,4UMHJMPG6QSUC8UY
+2024-10-27 19:40:11_061,626ef0c0-bacb-42be-a9be-c92b4295dd19,site_2,detected,vlan_type,0THR8E2MVVPSUJMI
+2024-10-27 19:40:11_090,8ebbf4ff-e60e-4fbe-b805-ece298ca8431,site_2,detected,snmp_profile,O6WJAM22NS4LX5UG
+2024-10-27 19:40:11_090,506a5ddc-7b9a-4e42-8284-6955871f5620,site_2,detected,snmp_profile,QKBEIVG5V6PVGDY5

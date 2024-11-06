@@ -1,0 +1,18 @@
+time,site,event,timestamp
+2024-10-27 16:53:24_225,afaf4584-c6f1-434c-a984-2c807ab57a3c,site_1,detected,unregistered,GSJEOEUR4X29OHT6
+2024-10-27 16:53:24_296,536a3e40-c209-4cb6-ad97-9fb3ba38ef43,site_1,detected,s_vlan,XA3FX69KFHI6E9DV
+2024-10-27 16:53:24_313,28e03eee-964c-4493-81e4-1e772791d42e,site_1,detected,vlan_type,65BTJWIW8XFM625H
+2024-10-27 16:53:24_335,e1b287d1-6969-4eb7-b994-17d04f45fc70,site_1,detected,snmp_profile,60ZGMGS341U37LJV
+2024-10-27 16:53:24_336,77de6ed2-5d1a-4b44-afe5-aa7997ad9b7b,site_1,detected,snmp_profile,LFVV9JWTJVMHS9DT
+2024-10-27 16:53:27_550,caa7ae0f-bebb-4a4d-bd1c-f5f8786efb75,site_1,detected,service changed,ftp-client
+2024-10-27 16:53:41_700,caa7ae0f-bebb-4a4d-bd1c-f5f8786efb75,site_1,fixed,service changed,ftp-client
+2024-10-27 16:56:59_619,77de6ed2-5d1a-4b44-afe5-aa7997ad9b7b,site_1,fixed,snmp_profile,LFVV9JWTJVMHS9DT
+2024-10-27 16:57:47_819,e1b287d1-6969-4eb7-b994-17d04f45fc70,site_1,fixed,snmp_profile,60ZGMGS341U37LJV
+2024-10-27 16:57:54_839,536a3e40-c209-4cb6-ad97-9fb3ba38ef43,site_1,fixed,s_vlan,XA3FX69KFHI6E9DV
+2024-10-27 16:58:26_908,afaf4584-c6f1-434c-a984-2c807ab57a3c,site_1,fixed,unregistered,GSJEOEUR4X29OHT6
+2024-10-27 16:59:37_842,d529e162-d530-4557-933b-9b369125e5fb,site_1,detected,service changed,ftp-client
+2024-10-27 16:59:37_842,10aea34a-a925-4f21-ae7e-c2892d518ef1,site_1,detected,service changed,radius
+2024-10-27 16:59:37_842,3ff1bac6-8a2d-49e0-bf7b-2de54d56ffe7,site_1,detected,service changed,snmp
+2024-10-27 17:04:52_484,abb5f747-916e-4258-b77e-c87cb9ca092d,site_1,detected,service changed,ssh
+2024-10-27 17:10:09_206,99aa1f2a-e74e-4887-bc79-f48259543c50,site_1,detected,service changed,ntp
+2024-10-27 17:10:09_206,a17469d4-78c2-4ed3-8626-964be0fe8514,site_1,detected,service changed,portal

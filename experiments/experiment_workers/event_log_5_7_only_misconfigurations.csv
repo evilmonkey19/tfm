@@ -1,0 +1,117 @@
+time,site,event,timestamp
+2024-11-06 17:29:49_323,7578a325-d234-484c-8652-182606c57db8,site_5,detected,service changed,ssh
+2024-11-06 17:30:05_045,7578a325-d234-484c-8652-182606c57db8,site_5,fixed,service changed,ssh
+2024-11-06 17:32:27_176,cb5b7a31-3bfa-4849-aa5d-ed7c522b2f84,site_1,detected,service changed,telnet
+2024-11-06 17:32:45_124,cb5b7a31-3bfa-4849-aa5d-ed7c522b2f84,site_1,fixed,service changed,telnet
+2024-11-06 17:32:59_952,df2ab2f8-407f-4328-944a-ecf9ef576879,site_3,detected,service changed,snmp
+2024-11-06 17:32:59_952,b752c2dd-f316-4aa2-80ec-879d501aca08,site_3,detected,service changed,web-proxy
+2024-11-06 17:33:15_167,df2ab2f8-407f-4328-944a-ecf9ef576879,site_3,fixed,service changed,snmp
+2024-11-06 17:33:16_169,b752c2dd-f316-4aa2-80ec-879d501aca08,site_3,fixed,service changed,web-proxy
+2024-11-06 17:33:36_923,89823860-5753-45c6-ac0a-c02a521df110,site_5,detected,vlan_type,23FSSXH3A7H9NCUJ
+2024-11-06 17:33:36_946,aa043e3e-3237-48a9-bcbc-efb560c56a44,site_5,detected,snmp_profile,YXUE1SWJZY5H8DH3
+2024-11-06 17:33:40_207,0ab9c606-b2c9-4085-a7f0-a9a8899a5fc2,site_5,detected,service changed,ssh
+2024-11-06 17:33:57_223,0ab9c606-b2c9-4085-a7f0-a9a8899a5fc2,site_5,fixed,service changed,ssh
+2024-11-06 17:35:17_997,3ab7b88c-7489-40aa-abf4-a139b11b8638,site_4,detected,service changed,ntp
+2024-11-06 17:35:17_998,a9a1224c-61a5-4358-a68e-62569fde5b33,site_4,detected,service changed,ntp6
+2024-11-06 17:35:17_998,7e8edf59-ab3d-443f-a24e-c3089784c340,site_4,detected,service changed,trace
+2024-11-06 17:35:33_409,3ab7b88c-7489-40aa-abf4-a139b11b8638,site_4,fixed,service changed,ntp
+2024-11-06 17:35:33_409,7e8edf59-ab3d-443f-a24e-c3089784c340,site_4,fixed,service changed,trace
+2024-11-06 17:35:34_416,a9a1224c-61a5-4358-a68e-62569fde5b33,site_4,fixed,service changed,ntp6
+2024-11-06 17:37:28_635,89823860-5753-45c6-ac0a-c02a521df110,site_5,fixed,vlan_type,23FSSXH3A7H9NCUJ
+2024-11-06 17:37:31_639,aa043e3e-3237-48a9-bcbc-efb560c56a44,site_5,fixed,snmp_profile,YXUE1SWJZY5H8DH3
+2024-11-06 17:37:34_766,59533d0a-e1e1-476b-bbce-b13799e711e3,site_1,detected,service changed,twamp
+2024-11-06 17:37:50_661,59533d0a-e1e1-476b-bbce-b13799e711e3,site_1,fixed,service changed,twamp
+2024-11-06 17:38:10_752,c5ef2668-69e8-42c6-80f8-823bbfd030fc,site_5,detected,unregistered,NETC70QU8K2CXGAU
+2024-11-06 17:38:10_753,11782029-5aed-4c68-897f-fa0f76ac1dba,site_5,detected,unregistered,S143TD1MUQ1NBGRK
+2024-11-06 17:38:10_864,41ac2bb2-480f-4803-bbc3-3340ecf373f5,site_5,detected,c_vlan,ITB4VWHF8PZFJQV4
+2024-11-06 17:38:10_884,0407f4a8-ad90-44ec-ab86-7b9418f6505d,site_5,detected,s_vlan,FZWC2MZLB3IESWJ2
+2024-11-06 17:38:10_905,c1c2ad60-5918-46db-add8-df6b1741e9dc,site_5,detected,vlan_type,2KLPJ2K3JLZ2NZJ7
+2024-11-06 17:38:14_081,7bf6e1d1-fbde-4894-b959-0cda5251bf81,site_5,detected,service changed,ssh
+2024-11-06 17:38:14_081,7de2c74a-8658-451c-bf24-8ec21eec683d,site_5,detected,service changed,sshv6
+2024-11-06 17:38:27_710,25ad7acb-83ed-4004-b920-65354ff955c6,site_3,detected,service changed,ntp6
+2024-11-06 17:38:27_710,aa5ded1f-1cb7-4895-83f9-9be86e33f89d,site_3,detected,service changed,web-proxy
+2024-11-06 17:38:30_775,7bf6e1d1-fbde-4894-b959-0cda5251bf81,site_5,fixed,service changed,ssh
+2024-11-06 17:38:31_779,7de2c74a-8658-451c-bf24-8ec21eec683d,site_5,fixed,service changed,sshv6
+2024-11-06 17:38:41_836,25ad7acb-83ed-4004-b920-65354ff955c6,site_3,fixed,service changed,ntp6
+2024-11-06 17:38:42_848,aa5ded1f-1cb7-4895-83f9-9be86e33f89d,site_3,fixed,service changed,web-proxy
+2024-11-06 17:39:03_918,41ac2bb2-480f-4803-bbc3-3340ecf373f5,site_5,fixed,c_vlan,ITB4VWHF8PZFJQV4
+2024-11-06 17:39:38_142,65f10978-f37d-4d1b-a4e3-9a930248ba69,site_4,detected,service changed,mqtt
+2024-11-06 17:39:38_142,42764259-f4a5-41b3-bd04-3e5970255cb8,site_4,detected,service changed,netconf
+2024-11-06 17:39:38_142,827b6ba1-44b3-4363-ac74-cbb3f134212f,site_4,detected,service changed,snmp
+2024-11-06 17:39:46_043,0407f4a8-ad90-44ec-ab86-7b9418f6505d,site_5,fixed,s_vlan,FZWC2MZLB3IESWJ2
+2024-11-06 17:39:55_077,65f10978-f37d-4d1b-a4e3-9a930248ba69,site_4,fixed,service changed,mqtt
+2024-11-06 17:39:55_078,827b6ba1-44b3-4363-ac74-cbb3f134212f,site_4,fixed,service changed,snmp
+2024-11-06 17:39:56_081,42764259-f4a5-41b3-bd04-3e5970255cb8,site_4,fixed,service changed,netconf
+2024-11-06 17:40:06_101,11782029-5aed-4c68-897f-fa0f76ac1dba,site_5,fixed,unregistered,S143TD1MUQ1NBGRK
+2024-11-06 17:41:20_240,c5ef2668-69e8-42c6-80f8-823bbfd030fc,site_5,fixed,unregistered,NETC70QU8K2CXGAU
+2024-11-06 17:41:37_236,861eade1-9b7b-45c8-a6f4-ec53705f0d00,site_2,detected,service changed,capwap
+2024-11-06 17:41:37_236,78eb4176-8a6d-44f5-8cb9-9cb579e5f660,site_2,detected,service changed,sftp-client
+2024-11-06 17:41:51_301,861eade1-9b7b-45c8-a6f4-ec53705f0d00,site_2,fixed,service changed,capwap
+2024-11-06 17:41:52_303,78eb4176-8a6d-44f5-8cb9-9cb579e5f660,site_2,fixed,service changed,sftp-client
+2024-11-06 17:41:54_306,c1c2ad60-5918-46db-add8-df6b1741e9dc,site_5,fixed,vlan_type,2KLPJ2K3JLZ2NZJ7
+2024-11-06 17:42:35_897,efbbe9c1-e2e1-42d9-824d-ed9dc66b4be0,site_5,detected,gemport,VW2V0ZOXTO8VD28K
+2024-11-06 17:42:35_967,ad948c04-8579-45b2-8388-c7a8d2d1c3cc,site_5,detected,s_vlan,74OXX9R08YQLATPM
+2024-11-06 17:42:35_986,fde20af2-1d78-44fb-8faa-3a9766af0b94,site_5,detected,vlan_type,29BLU4C1SYNFT8TI
+2024-11-06 17:42:39_304,fa2f08b1-a17d-46da-98bf-65e8fee751e1,site_5,detected,service changed,mqtt
+2024-11-06 17:42:39_304,8554ae93-ed88-4cbe-9207-6db700ac58fd,site_5,detected,service changed,ssh
+2024-11-06 17:42:39_304,f450736e-1aae-4ada-bacd-3dd0d4aaafea,site_5,detected,service changed,sshv6
+2024-11-06 17:42:39_305,15d59f66-3264-41c0-89cd-156ae5a4184b,site_5,detected,service changed,telnetv6
+2024-11-06 17:42:49_364,fdca75b6-3016-420b-92d0-acbd9021cf78,site_1,detected,service changed,ftp-client
+2024-11-06 17:42:53_397,fa2f08b1-a17d-46da-98bf-65e8fee751e1,site_5,fixed,service changed,mqtt
+2024-11-06 17:42:53_398,f450736e-1aae-4ada-bacd-3dd0d4aaafea,site_5,fixed,service changed,sshv6
+2024-11-06 17:42:54_402,8554ae93-ed88-4cbe-9207-6db700ac58fd,site_5,fixed,service changed,ssh
+2024-11-06 17:42:55_406,15d59f66-3264-41c0-89cd-156ae5a4184b,site_5,fixed,service changed,telnetv6
+2024-11-06 17:43:03_427,fdca75b6-3016-420b-92d0-acbd9021cf78,site_1,fixed,service changed,ftp-client
+2024-11-06 17:43:49_538,ad948c04-8579-45b2-8388-c7a8d2d1c3cc,site_5,fixed,s_vlan,74OXX9R08YQLATPM
+2024-11-06 17:43:55_519,8c14698b-637f-4608-8a2f-648fc9d5ded2,site_3,detected,service changed,telnetv6
+2024-11-06 17:43:55_519,d79dc6b4-e1b0-4835-bebe-278853d09c24,site_3,detected,service changed,web-proxy
+2024-11-06 17:44:00_843,fcc305c0-f760-4b51-8811-f3c274d04602,site_4,detected,service changed,sftp-client
+2024-11-06 17:44:00_843,cf4f9849-e965-4152-8a65-25604474ad46,site_4,detected,service changed,ssh
+2024-11-06 17:44:10_652,8c14698b-637f-4608-8a2f-648fc9d5ded2,site_3,fixed,service changed,telnetv6
+2024-11-06 17:44:11_656,d79dc6b4-e1b0-4835-bebe-278853d09c24,site_3,fixed,service changed,web-proxy
+2024-11-06 17:44:16_669,cf4f9849-e965-4152-8a65-25604474ad46,site_4,fixed,service changed,ssh
+2024-11-06 17:44:17_672,fcc305c0-f760-4b51-8811-f3c274d04602,site_4,fixed,service changed,sftp-client
+2024-11-06 17:45:27_373,9df284a7-c278-47e2-acf5-66eecb03c269,site_2,detected,service changed,sftp-client
+2024-11-06 17:45:41_831,9df284a7-c278-47e2-acf5-66eecb03c269,site_2,fixed,service changed,sftp-client
+2024-11-06 17:46:06_902,efbbe9c1-e2e1-42d9-824d-ed9dc66b4be0,site_5,fixed,gemport,VW2V0ZOXTO8VD28K
+2024-11-06 17:46:18_917,fde20af2-1d78-44fb-8faa-3a9766af0b94,site_5,fixed,vlan_type,29BLU4C1SYNFT8TI
+2024-11-06 17:46:55_326,5d23a72f-76ad-4795-a293-a62d4525ac1f,site_5,detected,gemport,XJ6NHO7DDX1KQWJG
+2024-11-06 17:46:55_327,41d6686d-be16-4abb-89a0-577687dda993,site_5,detected,gemport,ZV7DSXC60XNDTJV8
+2024-11-06 17:46:55_371,d4c3e0dc-7df7-421d-9e46-4567fc30b892,site_5,detected,s_vlan,J30MS5BOTKUR35EG
+2024-11-06 17:46:55_394,6aa847d9-69ab-44a9-9287-74c5d39c4e6c,site_5,detected,vlan_type,HMA81L18IKHRI128
+2024-11-06 17:46:55_415,ad909924-a9e1-419e-8c17-a80ffcd6b9fa,site_5,detected,snmp_profile,4I7RYE6574JP1HUL
+2024-11-06 17:46:58_650,71b50368-e2a9-4387-8c12-5b643e2ddd22,site_5,detected,service changed,capwap
+2024-11-06 17:46:58_650,183a9698-af1b-45a5-ae6c-777c0fe7e709,site_5,detected,service changed,ssh
+2024-11-06 17:46:58_650,be1d79cc-f292-4c5e-b2ed-00c63ce86ed8,site_5,detected,service changed,sshv6
+2024-11-06 17:47:13_014,71b50368-e2a9-4387-8c12-5b643e2ddd22,site_5,fixed,service changed,capwap
+2024-11-06 17:47:13_015,be1d79cc-f292-4c5e-b2ed-00c63ce86ed8,site_5,fixed,service changed,sshv6
+2024-11-06 17:47:14_020,183a9698-af1b-45a5-ae6c-777c0fe7e709,site_5,fixed,service changed,ssh
+2024-11-06 17:48:03_921,783370cd-fbd1-4020-a2e8-ec855cacb173,site_1,detected,service changed,ftp-client
+2024-11-06 17:48:03_921,0829aafc-63b8-4d4e-9400-ce98131aa021,site_1,detected,service changed,telnet
+2024-11-06 17:48:18_291,783370cd-fbd1-4020-a2e8-ec855cacb173,site_1,fixed,service changed,ftp-client
+2024-11-06 17:48:19_296,0829aafc-63b8-4d4e-9400-ce98131aa021,site_1,fixed,service changed,telnet
+2024-11-06 17:48:29_720,cb860485-fecc-44bb-b4d7-4bf15af1e5a8,site_4,detected,service changed,sftp-client
+2024-11-06 17:48:29_720,5926cb00-5469-4d2e-915a-1be2bff92f23,site_4,detected,service changed,ssh
+2024-11-06 17:48:39_431,d4c3e0dc-7df7-421d-9e46-4567fc30b892,site_5,fixed,s_vlan,J30MS5BOTKUR35EG
+2024-11-06 17:48:45_455,cb860485-fecc-44bb-b4d7-4bf15af1e5a8,site_4,fixed,service changed,sftp-client
+2024-11-06 17:48:46_459,5926cb00-5469-4d2e-915a-1be2bff92f23,site_4,fixed,service changed,ssh
+2024-11-06 17:49:19_535,f168a389-1cfb-4a46-b4cd-6c2191f1abc8,site_2,detected,service changed,sftp-client
+2024-11-06 17:49:19_535,c1531c84-7585-4af4-9941-a8be7b2eb282,site_2,detected,service changed,telnetv6
+2024-11-06 17:49:21_081,eb36bc53-fad6-44db-8004-446166fa5851,site_3,detected,service changed,web-proxy
+2024-11-06 17:49:33_628,f168a389-1cfb-4a46-b4cd-6c2191f1abc8,site_2,fixed,service changed,sftp-client
+2024-11-06 17:49:34_632,c1531c84-7585-4af4-9941-a8be7b2eb282,site_2,fixed,service changed,telnetv6
+2024-11-06 17:49:36_638,eb36bc53-fad6-44db-8004-446166fa5851,site_3,fixed,service changed,web-proxy
+2024-11-06 17:50:07_713,5d23a72f-76ad-4795-a293-a62d4525ac1f,site_5,fixed,gemport,XJ6NHO7DDX1KQWJG
+2024-11-06 17:50:26_753,41d6686d-be16-4abb-89a0-577687dda993,site_5,fixed,gemport,ZV7DSXC60XNDTJV8
+2024-11-06 17:50:45_786,ad909924-a9e1-419e-8c17-a80ffcd6b9fa,site_5,fixed,snmp_profile,4I7RYE6574JP1HUL
+2024-11-06 17:51:07_810,6aa847d9-69ab-44a9-9287-74c5d39c4e6c,site_5,fixed,vlan_type,HMA81L18IKHRI128
+2024-11-06 17:51:33_199,1c9d70c6-d48e-462d-a5f6-f293e9a704c7,site_5,detected,unregistered,JBWSDIA68UKQK31G
+2024-11-06 17:51:33_289,fa96219e-613d-408c-9df6-43a018292943,site_5,detected,s_vlan,FACA0W7YF6QK25TU
+2024-11-06 17:51:33_306,a3ddca96-4c68-461c-8c40-d10c6bed5df7,site_5,detected,vlan_type,BPUHB4H48IZALZGR
+2024-11-06 17:51:33_327,ca1fef02-c66c-4fd2-90f9-9343113587db,site_5,detected,snmp_profile,3EJXYAPKJGYAMFDW
+2024-11-06 17:51:33_327,804672a9-e1e6-4781-a875-aea5cd6899cf,site_5,detected,snmp_profile,KK0AFI1OFUM06147
+2024-11-06 17:51:36_597,cf5e989e-1993-44be-9061-b4020bb30b49,site_5,detected,service changed,netconf
+2024-11-06 17:51:50_886,cf5e989e-1993-44be-9061-b4020bb30b49,site_5,fixed,service changed,netconf
+2024-11-06 17:53:07_020,1c9d70c6-d48e-462d-a5f6-f293e9a704c7,site_5,fixed,unregistered,JBWSDIA68UKQK31G
+2024-11-06 17:53:38_170,ca1fef02-c66c-4fd2-90f9-9343113587db,site_5,fixed,snmp_profile,3EJXYAPKJGYAMFDW
+2024-11-06 17:54:03_838,fa96219e-613d-408c-9df6-43a018292943,site_5,fixed,s_vlan,FACA0W7YF6QK25TU

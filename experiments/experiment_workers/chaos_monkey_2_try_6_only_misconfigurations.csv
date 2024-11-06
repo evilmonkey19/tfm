@@ -1,0 +1,35 @@
+_,Starting chaos monkey,2024-11-02 22:04:56_792
+site_1,Changing s vlan for XY33IL64XIW3YD66 from site_1,2024-11-02 22:05:06_218
+site_1,Changing s vlan for PK5J4B4SN0XOGGNY from site_1,2024-11-02 22:05:59_135
+site_2,Unregistering M4PSMFU3JJQ0G2RR from site_2,2024-11-02 22:06:13_520
+site_2,Changing state of web-proxy from site_2,2024-11-02 22:06:20_767
+site_1,Changing state of sftp-client from site_1,2024-11-02 22:07:24_620
+site_2,Changing snmp profile for 6H53R6HNICHQFYCV from site_2,2024-11-02 22:07:36_780
+site_1,Changing state of snmpv6 from site_1,2024-11-02 22:07:43_597
+site_2,Changing state of ftp-client from site_2,2024-11-02 22:08:09_881
+site_2,Changing vlan type for E1CFKHNKDBX3J082 from site_2,2024-11-02 22:08:18_510
+site_1,Changing gemport for 49O7TP6UUYX473C2 from site_1,2024-11-02 22:08:38_378
+site_1,Changing s vlan for 1IKYSUH66GRBDKL3 from site_1,2024-11-02 22:08:45_478
+site_2,Changing state of telnetv6 from site_2,2024-11-02 22:08:50_146
+site_1,Changing vlan type for WQE92KI5S3C4KVQ8 from site_1,2024-11-02 22:09:24_076
+site_2,Unregistering WQE92KI5S3C4KVQ8 from site_2,2024-11-02 22:09:28_957
+site_2,Changing vlan type for HEKKGK2LCHTW60M4 from site_2,2024-11-02 22:09:59_558
+site_1,Changing gemport for 49O7TP6UUYX473C2 from site_1,2024-11-02 22:10:07_651
+site_2,Changing gemport for VUYY3C1XNQABNZFR from site_2,2024-11-02 22:10:15_328
+site_2,Changing state of snmp from site_2,2024-11-02 22:10:19_022
+site_1,Changing snmp profile for KQUI89SFMGLD5TPN from site_1,2024-11-02 22:10:57_277
+site_1,Unregistering E06EY6KE01TPQ5S7 from site_1,2024-11-02 22:11:07_804
+site_1,Changing state of ipdr from site_1,2024-11-02 22:11:30_491
+site_2,Changing s vlan for 6L9Z7C9VYYT1RLBJ from site_2,2024-11-02 22:12:05_646
+site_1,Changing gemport for 9NK75X66XCHJZC7U from site_1,2024-11-02 22:12:20_419
+site_2,Unregistering 1HSYEHAF6GE14IEA from site_2,2024-11-02 22:13:29_718
+site_1,Changing c vlan for 0B81QUYX5SJYHGPU from site_1,2024-11-02 22:13:40_551
+site_1,Changing s vlan for PWJNTECM5EVAUGAL from site_1,2024-11-02 22:13:49_232
+site_1,Unregistering ZX2F9DMWU95N494U from site_1,2024-11-02 22:13:57_428
+site_1,Unregistering 5WH41PCL9ICR1YZ7 from site_1,2024-11-02 22:14:24_849
+site_2,Changing snmp profile for V1D2I9B6PFWVT9IJ from site_2,2024-11-02 22:14:37_246
+site_2,Changing snmp profile for H1GAMK2SHLT10L5F from site_2,2024-11-02 22:15:51_462
+site_2,Changing snmp profile for SNJPEIZ1I36GOSR1 from site_2,2024-11-02 22:16:08_016
+site_2,Changing snmp profile for JCX4WA16ORE1H62I from site_2,2024-11-02 22:16:18_284
+site_2,Connection error,2024-11-02 22:16:47_067
+_,Exiting chaos monkey,2024-11-02 22:16:47_067
