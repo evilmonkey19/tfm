@@ -11,7 +11,9 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "args": [
-                "--local"
+                "--only",
+                "errors",
+                "--local",
             ]
         }
     ]

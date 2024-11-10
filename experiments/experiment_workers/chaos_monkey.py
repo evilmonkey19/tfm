@@ -48,7 +48,7 @@ errors = [
 ]
 
 
-pattern = r"^chaos_monkey_(\d+)?_try_(\d+)?.*\.csv$"
+pattern = r"^chaos_monkey_(\d+)?_try_(\d+)?_only_errors.*\.csv$"
 filenames = os.listdir()
 max_sites_try = (0, 0)
 
@@ -62,7 +62,7 @@ for filename in filenames:
 if max_sites_try[1] == 10:
     max_sites_try = (max_sites_try[0] + 1, 0)
 max_sites_try = (max_sites_try[0], max_sites_try[1] + 1)
-SITES = max_sites_try[0]
+SITES = max_sites_try[0] if max_sites_try[0] > 0 else 1
 TRY = max_sites_try[1]
 
 urls = {
