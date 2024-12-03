@@ -1,0 +1,30 @@
+time,site,event,timestamp
+2024-11-12 18:03:00_193,,site_2,error,OLT is down
+2024-11-12 18:03:00_199,,site_1,error,OLT is down
+2024-11-12 18:12:28_975,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 18:13:54_587,,site_2,error,ONT 76OHM541X9FH9G4G has low voltage
+2024-11-12 18:13:54_587,,site_2,error,ONT JF909M2JOTBZ280Y has normal voltage
+2024-11-12 18:13:54_588,,site_2,error,ONT RCI9CBZ00MGC1023 has high voltage
+2024-11-12 18:13:57_842,,site_2,error,Boards: board 4 is Standby_active
+2024-11-12 18:17:06_235,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 18:17:31_470,,site_2,error,ONT TIJGDP6RDE68IZX7 has normal voltage
+2024-11-12 18:17:31_472,,site_2,error,ONT ASBQJG4B9BRYRZD7 has high voltage
+2024-11-12 18:17:31_475,,site_2,error,ONT EH22MAGLKBPD3S3F has normal voltage
+2024-11-12 18:21:07_162,,site_2,error,ONT BOQQ2IZD7COUT3LX has normal voltage
+2024-11-12 18:21:07_162,,site_2,error,ONT GUELBJ5ZKUULRL4F has low voltage
+2024-11-12 18:21:07_163,,site_2,error,ONT WQE92KI5S3C4KVQ8 has high voltage
+2024-11-12 18:21:07_164,,site_2,error,ONT R0DIXWSNKPZKLJV3 has high voltage
+2024-11-12 18:21:07_164,,site_2,error,ONT V0CB35FYMWEVE1O9 has low voltage
+2024-11-12 18:21:42_501,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 18:24:44_236,,site_2,error,ONT YGL6OOQE1OHUMTKW has high voltage
+2024-11-12 18:24:44_237,,site_2,error,ONT PG6I7ACS0DHW9I36 has low voltage
+2024-11-12 18:24:44_237,,site_2,error,ONT 6HF1NZ5CNWJCH265 has normal voltage
+2024-11-12 18:24:44_238,,site_2,error,ONT FQBL4H1KMVBQA66A has normal voltage
+2024-11-12 18:25:09_441,,site_1,error,OLT is down
+2024-11-12 18:25:19_343,,site_1,error,OLT is up
+2024-11-12 18:25:22_700,,site_1,error,Boards: board 4 is Normal
+2024-11-12 18:28:20_383,,site_2,error,ONT 9PC7C1UT79CRGS41 has high voltage
+2024-11-12 18:28:20_384,,site_2,error,ONT Q3RA0QDE9JPUADY0 has normal voltage
+2024-11-12 18:28:20_385,,site_2,error,ONT 7M0IWAQVWB3YETX1 has normal voltage
+2024-11-12 18:28:23_642,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-12 18:29:57_076,,site_1,error,Boards: board 4 is Standby_failed

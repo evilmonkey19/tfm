@@ -1,0 +1,335 @@
+_,Starting chaos monkey,2024-11-19 20:16:56_237
+site_5,Changing board state to Standby_active,2024-11-19 20:17:02_034
+site_6,Changing board state to Standby_active,2024-11-19 20:17:05_986
+site_7,Changing board state to Standby_active,2024-11-19 20:17:06_916
+site_5,Changing voltage for GVXMEDXDW2E5ZNYP from site_5 to set_normal_voltage,2024-11-19 20:17:10_345
+site_6,Changing voltage for HOEQ8O9SUMPE80JN from site_6 to set_normal_voltage,2024-11-19 20:17:18_751
+site_5,Changing board state to Standby_failed,2024-11-19 20:17:25_004
+site_2,Changing board state to Standby_active,2024-11-19 20:17:25_991
+site_3,Changing board state to Standby_active,2024-11-19 20:17:27_887
+site_2,Changing voltage for FR8I24HB0WB7T468 from site_2 to set_high_voltage,2024-11-19 20:17:32_102
+site_2,Changing board state to Standby_failed,2024-11-19 20:17:35_836
+site_6,Changing voltage for XRTUB87HZOQB2TD5 from site_6 to set_normal_voltage,2024-11-19 20:17:39_581
+site_7,Changing board state to Standby_failed,2024-11-19 20:17:44_334
+site_5,Changing board state to Standby_active,2024-11-19 20:17:46_010
+site_3,Changing board state to Standby_failed,2024-11-19 20:17:48_370
+site_6,Changing board state to Standby_failed,2024-11-19 20:17:53_742
+site_6,Changing board state to Standby_active,2024-11-19 20:17:55_754
+site_3,Changing board state to Standby_active,2024-11-19 20:17:57_011
+site_5,Changing board state to Standby_failed,2024-11-19 20:18:02_190
+site_7,Changing board state to Standby_active,2024-11-19 20:18:04_044
+site_2,Changing voltage for GVXMEDXDW2E5ZNYP from site_2 to set_normal_voltage,2024-11-19 20:18:07_331
+site_1,Changing board state to Standby_active,2024-11-19 20:18:14_301
+site_7,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:18:17_571
+site_7,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:18:21_350
+site_4,Changing voltage for 3EW0CWX46TAPWDZ3 from site_4 to set_high_voltage,2024-11-19 20:18:24_583
+site_5,Changing voltage for 0FLW1HTQA4EC2ZEV from site_5 to set_normal_voltage,2024-11-19 20:18:29_425
+site_7,Changing board state to Standby_active,2024-11-19 20:18:30_689
+site_6,Changing board state to Standby_failed,2024-11-19 20:18:32_061
+site_4,Changing board state to Standby_active,2024-11-19 20:18:40_067
+site_7,Changing board state to Standby_failed,2024-11-19 20:18:40_662
+site_1,Changing board state to Standby_failed,2024-11-19 20:18:41_196
+site_6,Changing voltage for QRJP94RG06U8UWSC from site_6 to set_low_voltage,2024-11-19 20:18:42_028
+site_1,Changing board state to Standby_active,2024-11-19 20:18:43_047
+site_7,Changing voltage for WQTLUF0K8JCZ3W4O from site_7 to set_low_voltage,2024-11-19 20:18:43_677
+site_3,Changing voltage for RBQQLRUTJ1SV96ZX from site_3 to set_high_voltage,2024-11-19 20:18:48_830
+site_1,Changing voltage for ZD98BY29VUQO6VTN from site_1 to set_low_voltage,2024-11-19 20:18:50_659
+site_7,Changing board state to Standby_active,2024-11-19 20:18:52_550
+site_7,Changing board state to Standby_failed,2024-11-19 20:18:56_022
+site_7,Changing board state to Standby_active,2024-11-19 20:18:57_313
+site_6,Changing voltage for 3EW0CWX46TAPWDZ3 from site_6 to set_low_voltage,2024-11-19 20:18:59_898
+site_3,Changing voltage for F2GT8ETBMLYU8PC5 from site_3 to set_low_voltage,2024-11-19 20:19:01_749
+site_4,Changing voltage for ZK0MG8FQWMPKCZNI from site_4 to set_normal_voltage,2024-11-19 20:19:05_761
+site_3,Changing board state to Standby_failed,2024-11-19 20:19:08_709
+site_5,Changing board state to Standby_active,2024-11-19 20:19:10_860
+site_2,Changing board state to Standby_active,2024-11-19 20:19:13_803
+site_3,Changing board state to Standby_active,2024-11-19 20:19:15_336
+site_3,Changing board state to Standby_failed,2024-11-19 20:19:15_987
+site_7,Changing board state to Standby_failed,2024-11-19 20:19:19_218
+site_1,Changing board state to Standby_failed,2024-11-19 20:19:21_981
+site_5,Changing board state to Standby_failed,2024-11-19 20:19:23_472
+site_4,Changing board state to Standby_failed,2024-11-19 20:19:31_506
+site_2,Changing board state to Standby_failed,2024-11-19 20:19:32_838
+site_2,Changing voltage for 72SD9F2T0RZ400AK from site_2 to set_high_voltage,2024-11-19 20:19:44_835
+site_5,Changing board state to Standby_active,2024-11-19 20:19:46_386
+site_2,Changing voltage for 94ID05IH7SCWT0SW from site_2 to set_high_voltage,2024-11-19 20:19:48_135
+site_3,Changing board state to Standby_active,2024-11-19 20:20:05_353
+site_4,Changing board state to Standby_active,2024-11-19 20:20:06_529
+site_2,Changing board state to Standby_active,2024-11-19 20:20:06_947
+site_5,Changing board state to Standby_failed,2024-11-19 20:20:10_271
+site_3,Changing board state to Standby_failed,2024-11-19 20:20:13_760
+site_3,Changing board state to Standby_active,2024-11-19 20:20:16_454
+site_5,Changing voltage for TZYLQST2LFN7A7IG from site_5 to set_low_voltage,2024-11-19 20:20:20_093
+site_4,Changing board state to Standby_failed,2024-11-19 20:20:24_709
+site_6,Changing board state to Standby_active,2024-11-19 20:20:25_471
+site_3,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:20:37_368
+site_3,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:20:46_192
+site_4,Changing voltage for F2GT8ETBMLYU8PC5 from site_4 to set_low_voltage,2024-11-19 20:20:48_385
+site_3,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:20:51_985
+site_3,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:21:06_926
+site_6,Changing voltage for 04CY6S4GHLR6E1VX from site_6 to set_normal_voltage,2024-11-19 20:21:10_584
+site_5,Changing voltage for TZYLQST2LFN7A7IG from site_5 to set_high_voltage,2024-11-19 20:21:19_864
+site_7,Changing voltage for Q7NXBMSU01KBW3JS from site_7 to set_normal_voltage,2024-11-19 20:21:19_991
+site_5,Changing voltage for EVJCGOKASVBO85S7 from site_5 to set_low_voltage,2024-11-19 20:21:21_162
+site_7,Changing voltage for CDTA129BFJI4ZO04 from site_7 to set_low_voltage,2024-11-19 20:21:24_129
+site_6,Changing voltage for MZ5HG4HN6K5EM5WM from site_6 to set_normal_voltage,2024-11-19 20:21:26_013
+site_3,Changing board state to Standby_active,2024-11-19 20:21:26_688
+site_2,Changing voltage for WVOY1VTBNO5NHFCS from site_2 to set_normal_voltage,2024-11-19 20:21:28_714
+site_2,Changing board state to Standby_failed,2024-11-19 20:21:33_780
+site_1,Changing board state to Standby_active,2024-11-19 20:21:40_240
+site_6,Changing voltage for 94ID05IH7SCWT0SW from site_6 to set_low_voltage,2024-11-19 20:21:42_466
+site_1,Changing board state to Standby_failed,2024-11-19 20:21:43_983
+site_2,Changing voltage for 8E913U7XCVXNUIQJ from site_2 to set_normal_voltage,2024-11-19 20:21:48_290
+site_4,Changing voltage for Q7NXBMSU01KBW3JS from site_4 to set_low_voltage,2024-11-19 20:21:49_906
+site_1,Changing voltage for LT2EGU9PIFZU91YL from site_1 to set_normal_voltage,2024-11-19 20:21:51_529
+site_6,Changing voltage for 6EPS6K6TM8X32S6B from site_6 to set_normal_voltage,2024-11-19 20:21:53_842
+site_1,Changing board state to Standby_active,2024-11-19 20:22:03_600
+site_4,Changing board state to Standby_active,2024-11-19 20:22:06_862
+site_3,Changing board state to Standby_failed,2024-11-19 20:22:09_921
+site_5,Changing voltage for ZK0MG8FQWMPKCZNI from site_5 to set_normal_voltage,2024-11-19 20:22:16_884
+site_4,Changing board state to Standby_failed,2024-11-19 20:22:18_298
+site_7,Changing board state to Standby_active,2024-11-19 20:22:25_918
+site_6,Changing voltage for E2S7R6EO7L5G2H9T from site_6 to set_normal_voltage,2024-11-19 20:22:26_781
+site_3,Changing board state to Standby_active,2024-11-19 20:22:28_653
+site_2,Changing voltage for MV3JB3Z9RV6ACC8C from site_2 to set_normal_voltage,2024-11-19 20:22:29_420
+site_1,Changing board state to Standby_failed,2024-11-19 20:22:34_320
+site_4,Changing voltage for R17W7TELMHSMJUFT from site_4 to set_low_voltage,2024-11-19 20:22:34_785
+site_2,Changing board state to Standby_active,2024-11-19 20:22:37_988
+site_7,Changing board state to Standby_failed,2024-11-19 20:22:43_608
+site_1,Changing voltage for P3D20LT6DTV7R1RS from site_1 to set_low_voltage,2024-11-19 20:22:45_532
+site_2,Changing board state to Standby_failed,2024-11-19 20:22:46_542
+site_6,Changing voltage for R17W7TELMHSMJUFT from site_6 to set_low_voltage,2024-11-19 20:22:57_076
+site_2,Changing voltage for 3EW0CWX46TAPWDZ3 from site_2 to set_low_voltage,2024-11-19 20:23:02_737
+site_3,Changing voltage for P3D20LT6DTV7R1RS from site_3 to set_low_voltage,2024-11-19 20:23:08_452
+site_3,Changing board state to Standby_failed,2024-11-19 20:23:09_398
+site_1,Changing board state to Standby_active,2024-11-19 20:23:14_697
+site_1,Changing voltage for TZYLQST2LFN7A7IG from site_1 to set_low_voltage,2024-11-19 20:23:21_780
+site_5,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:23:35_882
+site_5,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:23:47_830
+site_4,Changing voltage for PXUZ4FEV3HNWIA2I from site_4 to set_normal_voltage,2024-11-19 20:23:48_954
+site_7,Changing voltage for ME5GAVCLWZZ8DD09 from site_7 to set_normal_voltage,2024-11-19 20:23:51_028
+site_5,Changing voltage for CNTT208G2DNU5FGI from site_5 to set_normal_voltage,2024-11-19 20:23:51_177
+site_3,Changing voltage for PXUZ4FEV3HNWIA2I from site_3 to set_normal_voltage,2024-11-19 20:23:51_608
+site_7,Changing board state to Standby_active,2024-11-19 20:23:52_748
+site_2,Changing voltage for R17W7TELMHSMJUFT from site_2 to set_low_voltage,2024-11-19 20:23:59_927
+site_7,Changing voltage for R17W7TELMHSMJUFT from site_7 to set_high_voltage,2024-11-19 20:24:01_030
+site_7,Changing voltage for P5MLUDBTRDZTOQ54 from site_7 to set_high_voltage,2024-11-19 20:24:09_629
+site_5,Changing board state to Standby_active,2024-11-19 20:24:10_716
+site_4,Changing board state to Standby_active,2024-11-19 20:24:12_112
+site_2,Changing board state to Standby_active,2024-11-19 20:24:12_934
+site_3,Changing board state to Standby_active,2024-11-19 20:24:17_298
+site_6,Changing board state to Standby_failed,2024-11-19 20:24:24_025
+site_1,Changing board state to Standby_failed,2024-11-19 20:24:30_724
+site_7,Changing voltage for 5NTA3OQAOLIYYOQU from site_7 to set_normal_voltage,2024-11-19 20:24:34_186
+site_3,Changing voltage for GS2FSDE95YY3I2EQ from site_3 to set_low_voltage,2024-11-19 20:24:38_128
+site_4,Changing board state to Standby_failed,2024-11-19 20:24:43_633
+site_5,Changing voltage for PXUZ4FEV3HNWIA2I from site_5 to set_normal_voltage,2024-11-19 20:24:51_587
+site_7,Changing voltage for 4XUBU9IGL94A1C5H from site_7 to set_low_voltage,2024-11-19 20:24:53_691
+site_1,Changing voltage for 2Y2FYT4UD6OSSCWJ from site_1 to set_normal_voltage,2024-11-19 20:24:54_223
+site_7,Changing board state to Standby_failed,2024-11-19 20:24:57_659
+site_2,Changing board state to Standby_failed,2024-11-19 20:25:01_935
+site_1,Changing board state to Standby_active,2024-11-19 20:25:02_910
+site_2,Changing voltage for CNTT208G2DNU5FGI from site_2 to set_normal_voltage,2024-11-19 20:25:05_999
+site_5,Changing board state to Standby_failed,2024-11-19 20:25:10_566
+site_6,Changing voltage for GS2FSDE95YY3I2EQ from site_6 to set_low_voltage,2024-11-19 20:25:15_372
+site_4,Changing voltage for 5NTA3OQAOLIYYOQU from site_4 to set_low_voltage,2024-11-19 20:25:16_313
+site_1,Changing board state to Standby_failed,2024-11-19 20:25:18_167
+site_1,Changing voltage for WFTK2XMFVVK032SA from site_1 to set_normal_voltage,2024-11-19 20:25:23_898
+site_3,Changing board state to Standby_failed,2024-11-19 20:25:24_483
+site_3,Changing board state to Standby_active,2024-11-19 20:25:32_412
+site_2,Changing board state to Standby_active,2024-11-19 20:25:38_876
+site_6,Changing board state to Standby_active,2024-11-19 20:25:39_791
+site_5,Changing board state to Standby_active,2024-11-19 20:25:41_187
+site_1,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:25:56_891
+site_1,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:26:09_778
+site_4,Changing board state to Standby_active,2024-11-19 20:26:13_536
+site_1,Changing voltage for 82Z6FQO2RJFGZIGM from site_1 to set_normal_voltage,2024-11-19 20:26:27_369
+site_4,Changing board state to Standby_failed,2024-11-19 20:26:29_058
+site_4,Changing board state to Standby_active,2024-11-19 20:26:30_093
+site_7,Changing board state to Standby_active,2024-11-19 20:26:35_139
+site_2,Changing board state to Standby_failed,2024-11-19 20:26:37_748
+site_7,Changing voltage for ZKH169X3YHXFGRSG from site_7 to set_low_voltage,2024-11-19 20:26:38_822
+site_3,Changing board state to Standby_failed,2024-11-19 20:26:44_760
+site_1,Changing voltage for 0BA8DSHOJRTAELSF from site_1 to set_low_voltage,2024-11-19 20:26:51_349
+site_5,Changing voltage for CNTT208G2DNU5FGI from site_5 to set_normal_voltage,2024-11-19 20:26:52_993
+site_4,Changing voltage for DB2DFWDL1CDZZOF0 from site_4 to set_low_voltage,2024-11-19 20:26:54_045
+site_4,Changing voltage for 62JKDTNI1P8XBBXU from site_4 to set_normal_voltage,2024-11-19 20:26:59_941
+site_2,Changing board state to Standby_active,2024-11-19 20:27:02_670
+site_2,Changing board state to Standby_failed,2024-11-19 20:27:08_647
+site_3,Changing board state to Standby_active,2024-11-19 20:27:14_318
+site_7,Changing board state to Standby_failed,2024-11-19 20:27:16_264
+site_7,Changing board state to Standby_active,2024-11-19 20:27:22_147
+site_2,Changing board state to Standby_active,2024-11-19 20:27:29_169
+site_3,Changing board state to Standby_failed,2024-11-19 20:27:30_000
+site_4,Changing voltage for 4XUBU9IGL94A1C5H from site_4 to set_normal_voltage,2024-11-19 20:27:31_986
+site_5,Changing board state to Standby_failed,2024-11-19 20:27:36_107
+site_5,Changing voltage for E2S7R6EO7L5G2H9T from site_5 to set_normal_voltage,2024-11-19 20:27:40_877
+site_3,Changing board state to Standby_active,2024-11-19 20:27:41_864
+site_4,Changing voltage for Q1NYYSWIT0HLH6S7 from site_4 to set_low_voltage,2024-11-19 20:28:00_665
+site_4,Changing voltage for CDTA129BFJI4ZO04 from site_4 to set_normal_voltage,2024-11-19 20:28:02_581
+site_6,Changing board state to Standby_failed,2024-11-19 20:28:06_667
+site_3,Changing voltage for JICDZRAF72U9MZOB from site_3 to set_normal_voltage,2024-11-19 20:28:06_916
+site_3,Changing board state to Standby_failed,2024-11-19 20:28:07_523
+site_4,Changing board state to Standby_failed,2024-11-19 20:28:07_786
+site_4,Changing board state to Standby_active,2024-11-19 20:28:09_221
+site_4,Changing board state to Standby_failed,2024-11-19 20:28:12_196
+site_6,Changing board state to Standby_active,2024-11-19 20:28:13_353
+site_2,Changing voltage for DB2DFWDL1CDZZOF0 from site_2 to set_high_voltage,2024-11-19 20:28:19_500
+site_7,Changing voltage for PMDQG2N9HVR3DORQ from site_7 to set_low_voltage,2024-11-19 20:28:21_349
+site_7,Changing board state to Standby_failed,2024-11-19 20:28:26_608
+site_1,Changing board state to Standby_active,2024-11-19 20:28:27_576
+site_4,Changing voltage for CDTA129BFJI4ZO04 from site_4 to set_normal_voltage,2024-11-19 20:28:36_318
+site_2,Changing board state to Standby_failed,2024-11-19 20:28:41_490
+site_6,Changing board state to Standby_failed,2024-11-19 20:28:42_309
+site_7,Changing voltage for PXUZ4FEV3HNWIA2I from site_7 to set_normal_voltage,2024-11-19 20:28:43_564
+site_7,Changing voltage for 4XUBU9IGL94A1C5H from site_7 to set_normal_voltage,2024-11-19 20:28:54_841
+site_7,Changing voltage for MV3JB3Z9RV6ACC8C from site_7 to set_normal_voltage,2024-11-19 20:28:55_009
+site_2,Changing voltage for MZ5HG4HN6K5EM5WM from site_2 to set_normal_voltage,2024-11-19 20:28:59_189
+site_4,Changing voltage for PXUZ4FEV3HNWIA2I from site_4 to set_low_voltage,2024-11-19 20:29:02_607
+site_3,Changing board state to Standby_active,2024-11-19 20:29:02_727
+site_6,Changing board state to Standby_active,2024-11-19 20:29:08_962
+site_7,Changing voltage for WQTLUF0K8JCZ3W4O from site_7 to set_normal_voltage,2024-11-19 20:29:24_626
+site_6,Changing board state to Standby_failed,2024-11-19 20:29:31_411
+site_5,Changing voltage for JICDZRAF72U9MZOB from site_5 to set_normal_voltage,2024-11-19 20:29:33_292
+site_3,Changing voltage for 62JKDTNI1P8XBBXU from site_3 to set_normal_voltage,2024-11-19 20:29:45_550
+site_4,Changing board state to Standby_active,2024-11-19 20:29:47_526
+site_4,Changing board state to Standby_failed,2024-11-19 20:29:49_233
+site_4,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:29:51_979
+site_4,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:30:05_019
+site_3,Changing board state to Standby_failed,2024-11-19 20:30:09_391
+site_5,Changing voltage for Y7SEZUM3DMK4MSS0 from site_5 to set_high_voltage,2024-11-19 20:30:17_288
+site_3,Changing voltage for 97F6IGWWO077N4B5 from site_3 to set_high_voltage,2024-11-19 20:30:18_218
+site_2,Changing board state to Standby_active,2024-11-19 20:30:21_430
+site_3,Changing board state to Standby_active,2024-11-19 20:30:21_612
+site_5,Changing voltage for RBQQLRUTJ1SV96ZX from site_5 to set_low_voltage,2024-11-19 20:30:41_308
+site_3,Changing board state to Standby_failed,2024-11-19 20:30:41_952
+site_3,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:30:56_001
+site_3,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:31:12_184
+site_3,Changing voltage for Y7SEZUM3DMK4MSS0 from site_3 to set_high_voltage,2024-11-19 20:31:13_860
+site_2,Changing board state to Standby_failed,2024-11-19 20:31:14_117
+site_1,Changing voltage for MZ5HG4HN6K5EM5WM from site_1 to set_normal_voltage,2024-11-19 20:31:14_948
+site_6,Changing voltage for 04CY6S4GHLR6E1VX from site_6 to set_normal_voltage,2024-11-19 20:31:22_162
+site_3,Changing board state to Standby_active,2024-11-19 20:31:23_303
+site_4,Changing board state to Standby_active,2024-11-19 20:31:26_945
+site_7,Changing board state to Standby_active,2024-11-19 20:31:27_464
+site_3,Changing board state to Standby_failed,2024-11-19 20:31:28_959
+site_7,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:31:42_009
+site_7,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:31:46_792
+site_4,Changing board state to Standby_failed,2024-11-19 20:31:47_772
+site_5,Changing board state to Standby_active,2024-11-19 20:31:47_853
+site_2,Changing board state to Standby_active,2024-11-19 20:32:02_255
+site_7,Changing voltage for STXLDI35LJ29FMEI from site_7 to set_normal_voltage,2024-11-19 20:32:03_532
+site_7,Changing voltage for GVXMEDXDW2E5ZNYP from site_7 to set_normal_voltage,2024-11-19 20:32:06_777
+site_3,Changing board state to Standby_active,2024-11-19 20:32:09_154
+site_7,Changing voltage for WQTLUF0K8JCZ3W4O from site_7 to set_low_voltage,2024-11-19 20:32:18_031
+site_4,Changing board state to Standby_active,2024-11-19 20:32:25_648
+site_3,Changing voltage for PIRCAAETV6KZSR9R from site_3 to set_high_voltage,2024-11-19 20:32:27_745
+site_1,Changing voltage for FR8I24HB0WB7T468 from site_1 to set_high_voltage,2024-11-19 20:32:29_945
+site_2,Changing voltage for WQTLUF0K8JCZ3W4O from site_2 to set_normal_voltage,2024-11-19 20:32:31_859
+site_6,Changing voltage for PMDQG2N9HVR3DORQ from site_6 to set_high_voltage,2024-11-19 20:32:36_459
+site_6,Changing voltage for WQTLUF0K8JCZ3W4O from site_6 to set_normal_voltage,2024-11-19 20:32:38_157
+site_7,Changing board state to Standby_active,2024-11-19 20:32:40_722
+site_7,Changing board state to Standby_failed,2024-11-19 20:32:44_244
+site_1,Changing voltage for 15FOFS277V2PN76Z from site_1 to set_high_voltage,2024-11-19 20:32:46_242
+site_5,Changing board state to Standby_failed,2024-11-19 20:32:47_302
+site_6,Changing board state to Standby_active,2024-11-19 20:32:56_349
+site_5,Changing board state to Standby_active,2024-11-19 20:32:58_267
+site_5,Changing board state to Standby_failed,2024-11-19 20:33:00_175
+site_7,Changing voltage for 2WMGR015ZSEQRWQ4 from site_7 to set_low_voltage,2024-11-19 20:33:02_227
+site_4,Changing board state to Standby_failed,2024-11-19 20:33:04_190
+site_2,Changing board state to Standby_failed,2024-11-19 20:33:08_899
+site_7,Changing voltage for RBQQLRUTJ1SV96ZX from site_7 to set_high_voltage,2024-11-19 20:33:09_987
+site_1,Changing voltage for R17W7TELMHSMJUFT from site_1 to set_high_voltage,2024-11-19 20:33:11_602
+site_5,Changing board state to Standby_active,2024-11-19 20:33:13_006
+site_4,Changing board state to Standby_active,2024-11-19 20:33:22_993
+site_3,Changing voltage for 82Z6FQO2RJFGZIGM from site_3 to set_normal_voltage,2024-11-19 20:33:25_042
+site_6,Changing voltage for 0076KR8S77FO53P5 from site_6 to set_high_voltage,2024-11-19 20:33:31_063
+site_3,Changing voltage for CGEW2DOQYGUKGR3S from site_3 to set_low_voltage,2024-11-19 20:33:33_042
+site_3,Changing board state to Standby_failed,2024-11-19 20:33:34_694
+site_5,Changing voltage for 94ID05IH7SCWT0SW from site_5 to set_low_voltage,2024-11-19 20:33:40_801
+site_7,Changing voltage for AJ57MVMJ0LCOUNT8 from site_7 to set_normal_voltage,2024-11-19 20:33:43_269
+site_6,Changing board state to Standby_failed,2024-11-19 20:33:45_711
+site_3,Changing voltage for WVOY1VTBNO5NHFCS from site_3 to set_normal_voltage,2024-11-19 20:33:49_429
+site_2,Changing voltage for PKT83MZBCW9PBUJB from site_2 to set_normal_voltage,2024-11-19 20:33:52_410
+site_6,Changing voltage for MV3JB3Z9RV6ACC8C from site_6 to set_normal_voltage,2024-11-19 20:33:54_299
+site_5,Changing voltage for XRTUB87HZOQB2TD5 from site_5 to set_normal_voltage,2024-11-19 20:33:59_027
+site_1,Changing board state to Standby_failed,2024-11-19 20:33:59_581
+site_6,Changing voltage for P3D20LT6DTV7R1RS from site_6 to set_high_voltage,2024-11-19 20:34:00_664
+site_2,Changing board state to Standby_active,2024-11-19 20:34:06_478
+site_5,Changing board state to Standby_failed,2024-11-19 20:34:10_804
+site_7,Changing board state to Standby_active,2024-11-19 20:34:14_164
+site_5,Changing voltage for A2F9MMA2C226PNUX from site_5 to set_normal_voltage,2024-11-19 20:34:15_160
+site_1,Changing board state to Standby_active,2024-11-19 20:34:17_667
+site_4,Changing voltage for 4VZPOFTH7T9K2Q6N from site_4 to set_normal_voltage,2024-11-19 20:34:17_980
+site_7,Changing voltage for 0FLW1HTQA4EC2ZEV from site_7 to set_normal_voltage,2024-11-19 20:34:19_969
+site_1,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:34:38_926
+site_1,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:34:50_670
+site_7,Changing voltage for DNZ50PXV88Q7UNA2 from site_7 to set_high_voltage,2024-11-19 20:34:54_172
+site_5,Changing voltage for Q7NXBMSU01KBW3JS from site_5 to set_normal_voltage,2024-11-19 20:35:03_556
+site_1,Changing voltage for STXLDI35LJ29FMEI from site_1 to set_high_voltage,2024-11-19 20:35:06_895
+site_4,Changing voltage for AJ57MVMJ0LCOUNT8 from site_4 to set_high_voltage,2024-11-19 20:35:07_400
+site_4,Changing board state to Standby_failed,2024-11-19 20:35:08_830
+site_4,Changing voltage for HDD7216U0MFKYXVJ from site_4 to set_high_voltage,2024-11-19 20:35:18_574
+site_2,Changing board state to Standby_failed,2024-11-19 20:35:20_737
+site_7,Changing board state to Standby_failed,2024-11-19 20:35:23_984
+site_1,Changing board state to Standby_active,2024-11-19 20:35:24_231
+site_6,Changing board state to Standby_active,2024-11-19 20:35:25_941
+site_2,Changing voltage for CGEW2DOQYGUKGR3S from site_2 to set_low_voltage,2024-11-19 20:35:32_817
+site_4,Changing board state to Standby_active,2024-11-19 20:35:34_077
+site_1,Changing board state to Standby_failed,2024-11-19 20:35:42_501
+site_6,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:35:55_273
+site_6,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:36:05_366
+site_3,Changing voltage for F2GT8ETBMLYU8PC5 from site_3 to set_high_voltage,2024-11-19 20:36:14_735
+site_6,Changing voltage for 62JKDTNI1P8XBBXU from site_6 to set_normal_voltage,2024-11-19 20:36:20_097
+site_3,Changing board state to Standby_active,2024-11-19 20:36:24_419
+site_5,Changing board state to Standby_active,2024-11-19 20:36:25_146
+site_3,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:36:36_212
+site_3,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:36:53_519
+site_5,Changing board state to Standby_failed,2024-11-19 20:36:56_626
+site_1,Changing board state to Standby_active,2024-11-19 20:37:10_873
+site_7,Changing voltage for XBHRLS2QBE024EMT from site_7 to set_normal_voltage,2024-11-19 20:37:12_352
+site_1,Changing voltage for F2GT8ETBMLYU8PC5 from site_1 to set_low_voltage,2024-11-19 20:37:16_487
+site_3,Changing voltage for FR8I24HB0WB7T468 from site_3 to set_high_voltage,2024-11-19 20:37:20_357
+site_1,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:37:37_585
+site_1,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:37:52_332
+site_4,Changing board state to Standby_failed,2024-11-19 20:37:54_272
+site_3,Changing board state to Standby_active,2024-11-19 20:38:04_745
+site_6,Changing voltage for CC37AG5XN1VLWYST from site_6 to set_normal_voltage,2024-11-19 20:38:06_045
+site_4,Changing board state to Standby_active,2024-11-19 20:38:07_310
+site_2,Changing voltage for 62JKDTNI1P8XBBXU from site_2 to set_normal_voltage,2024-11-19 20:38:08_967
+site_7,Changing voltage for MZ5HG4HN6K5EM5WM from site_7 to set_normal_voltage,2024-11-19 20:38:10_557
+site_7,Changing board state to Standby_active,2024-11-19 20:38:17_255
+site_6,Changing board state to Standby_active,2024-11-19 20:38:21_125
+site_3,Changing board state to Standby_failed,2024-11-19 20:38:21_851
+site_2,Changing board state to Standby_active,2024-11-19 20:38:23_177
+site_1,Changing voltage for M4H0CPROCAB15QX6 from site_1 to set_high_voltage,2024-11-19 20:38:26_059
+site_5,Changing board state to Standby_active,2024-11-19 20:38:27_086
+site_2,Changing board state to Standby_failed,2024-11-19 20:38:31_118
+site_6,Changing board state to Standby_failed,2024-11-19 20:38:34_747
+site_7,Changing board state to Standby_failed,2024-11-19 20:38:44_133
+site_4,Changing voltage for PXUZ4FEV3HNWIA2I from site_4 to set_normal_voltage,2024-11-19 20:38:53_982
+site_5,Changing voltage for 41LQF3Y32EW7JW1E from site_5 to set_normal_voltage,2024-11-19 20:38:54_566
+site_7,Changing voltage for DNZ50PXV88Q7UNA2 from site_7 to set_normal_voltage,2024-11-19 20:38:54_896
+site_4,Changing board state to Standby_failed,2024-11-19 20:39:03_692
+site_1,Changing board state to Standby_active,2024-11-19 20:39:03_903
+site_4,Changing voltage for WEDLT70M7OZIMZV5 from site_4 to set_normal_voltage,2024-11-19 20:39:09_483
+site_3,Changing board state to Standby_active,2024-11-19 20:39:09_677
+site_5,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:39:25_169
+site_5,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-11-19 20:39:31_353
+site_7,Changing voltage for 3EW0CWX46TAPWDZ3 from site_7 to set_low_voltage,2024-11-19 20:39:45_073
+site_1,Changing voltage for 8E913U7XCVXNUIQJ from site_1 to set_normal_voltage,2024-11-19 20:39:48_875
+site_6,Changing board state to Standby_active,2024-11-19 20:39:57_723
+site_6,Changing board state to Standby_failed,2024-11-19 20:40:01_954
+site_4,Changing board state to Standby_active,2024-11-19 20:40:07_297
+site_6,Changing voltage for ZK0MG8FQWMPKCZNI from site_6 to set_normal_voltage,2024-11-19 20:40:08_931
+site_7,Changing board state to Standby_active,2024-11-19 20:40:12_366
+site_3,Changing board state to Standby_failed,2024-11-19 20:40:18_999
+site_7,Changing board state to Standby_failed,2024-11-19 20:40:25_303
+site_4,Changing board state to Standby_failed,2024-11-19 20:40:27_908
+site_3,Changing board state to Standby_active,2024-11-19 20:40:32_038
+site_1,Changing voltage for HDD7216U0MFKYXVJ from site_1 to set_high_voltage,2024-11-19 20:40:32_917
+site_7,Changing voltage for 94ID05IH7SCWT0SW from site_7 to set_high_voltage,2024-11-19 20:40:34_941
+site_5,Changing board state to Standby_active,2024-11-19 20:40:35_365
+site_5,Changing voltage for 4XUBU9IGL94A1C5H from site_5 to set_high_voltage,2024-11-19 20:40:41_818
+site_1,Changing voltage for TZYLQST2LFN7A7IG from site_1 to set_high_voltage,2024-11-19 20:40:45_614
+_,Exiting chaos monkey,2024-11-19 20:40:51_539

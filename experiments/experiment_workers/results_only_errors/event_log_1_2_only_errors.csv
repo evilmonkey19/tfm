@@ -1,0 +1,28 @@
+time,site,event,timestamp
+2024-11-12 08:17:24_299,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 08:21:58_975,,site_1,error,ONT 4Q2EPG6K97DEZAO2 has low voltage
+2024-11-12 08:21:58_976,,site_1,error,ONT BX8CB981XBERHROT has high voltage
+2024-11-12 08:21:58_976,,site_1,error,ONT 7OM1TFLE4DP87VFJ has normal voltage
+2024-11-12 08:21:58_978,,site_1,error,ONT 25K5JOYDQT37AT9G has low voltage
+2024-11-12 08:26:34_177,,site_1,error,ONT PXFR0IKVXDVN8ATR has high voltage
+2024-11-12 08:26:34_178,,site_1,error,ONT B4XU99VGVMYM4QAE has high voltage
+2024-11-12 08:26:34_178,,site_1,error,ONT OH2QI4YTCSPNJ9C2 has low voltage
+2024-11-12 08:26:37_386,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 08:26:57_613,,site_1,error,OLT is down
+2024-11-12 08:27:00_298,,site_1,error,OLT is up
+2024-11-12 08:27:03_725,,site_1,error,Boards: board 4 is Normal
+2024-11-12 08:31:34_852,,site_1,error,ONT 4Q2EPG6K97DEZAO2 has normal voltage
+2024-11-12 08:31:34_852,,site_1,error,ONT BX8CB981XBERHROT has normal voltage
+2024-11-12 08:31:34_853,,site_1,error,ONT 7OM1TFLE4DP87VFJ has normal voltage
+2024-11-12 08:31:34_853,,site_1,error,ONT PXFR0IKVXDVN8ATR has normal voltage
+2024-11-12 08:31:34_853,,site_1,error,ONT B4XU99VGVMYM4QAE has normal voltage
+2024-11-12 08:31:34_854,,site_1,error,ONT OH2QI4YTCSPNJ9C2 has normal voltage
+2024-11-12 08:31:34_855,,site_1,error,ONT 25K5JOYDQT37AT9G has normal voltage
+2024-11-12 08:31:34_855,,site_1,error,ONT Y8P0KUQHVZTSZQYU has normal voltage
+2024-11-12 08:31:38_023,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 08:36:10_538,,site_1,error,ONT 52S478J5TXPAEJT2 has normal voltage
+2024-11-12 08:36:10_539,,site_1,error,ONT 9MA1GQFT31PQZ7BX has low voltage
+2024-11-12 08:36:10_540,,site_1,error,ONT PETLDJED074V1GHY has low voltage
+2024-11-12 08:36:35_811,,site_1,error,OLT is down
+2024-11-12 08:36:48_904,,site_1,error,OLT is up
+2024-11-12 08:36:52_333,,site_1,error,Boards: board 4 is Normal

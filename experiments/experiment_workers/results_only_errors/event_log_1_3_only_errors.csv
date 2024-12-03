@@ -1,0 +1,37 @@
+time,site,event,timestamp
+2024-11-12 08:48:35_388,,site_1,error,ONT P5M43UM9HSSVC1CW has normal voltage
+2024-11-12 08:48:38_668,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 08:53:09_976,,site_1,error,ONT 9MA1GQFT31PQZ7BX has low voltage
+2024-11-12 08:53:09_979,,site_1,error,ONT FG5D75FJZY4ZKN7N has high voltage
+2024-11-12 08:57:43_204,,site_1,error,ONT DNLIPQQE41GRI9H0 has normal voltage
+2024-11-12 08:57:43_205,,site_1,error,ONT XZ4YTBKNMD5U90ZH has low voltage
+2024-11-12 08:57:43_206,,site_1,error,ONT BRPCWEEQ5OSDK3U4 has normal voltage
+2024-11-12 08:57:43_208,,site_1,error,ONT BNPE4SCSYK8TJ2YW has high voltage
+2024-11-12 08:57:46_447,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 08:59:41_086,,site_1,error,OLT is down
+2024-11-12 08:59:57_606,,site_1,error,OLT is up
+2024-11-12 09:00:00_979,,site_1,error,Boards: board 4 is Normal
+2024-11-12 09:04:31_008,,site_1,error,ONT DNLIPQQE41GRI9H0 has normal voltage
+2024-11-12 09:04:31_009,,site_1,error,ONT XZ4YTBKNMD5U90ZH has normal voltage
+2024-11-12 09:04:31_010,,site_1,error,ONT 9MA1GQFT31PQZ7BX has normal voltage
+2024-11-12 09:04:31_011,,site_1,error,ONT BRPCWEEQ5OSDK3U4 has normal voltage
+2024-11-12 09:04:31_012,,site_1,error,ONT IMZQ7S39P8LQ52WD has normal voltage
+2024-11-12 09:04:31_012,,site_1,error,ONT P5M43UM9HSSVC1CW has normal voltage
+2024-11-12 09:04:31_013,,site_1,error,ONT BNPE4SCSYK8TJ2YW has normal voltage
+2024-11-12 09:04:31_014,,site_1,error,ONT FG5D75FJZY4ZKN7N has normal voltage
+2024-11-12 09:04:34_321,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 09:07:14_751,,site_1,error,OLT is down
+2024-11-12 09:07:30_606,,site_1,error,OLT is up
+2024-11-12 09:07:34_148,,site_1,error,Boards: board 4 is Normal
+2024-11-12 09:12:01_463,,site_1,error,OLT is down
+2024-11-12 09:12:14_006,,site_1,error,OLT is up
+2024-11-12 09:12:17_490,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 09:13:57_779,,site_1,error,OLT is down
+2024-11-12 09:14:05_327,,site_1,error,OLT is up
+2024-11-12 09:14:08_855,,site_1,error,Boards: board 4 is Normal
+2024-11-12 09:16:24_080,,site_1,error,OLT is down
+2024-11-12 09:16:39_445,,site_1,error,OLT is up
+2024-11-12 09:17:54_095,,site_1,error,OLT is down
+2024-11-12 09:18:02_050,,site_1,error,OLT is up
+2024-11-12 09:22:36_797,,site_1,error,ONT Z6DSLF6KQPIV86YM has normal voltage
+2024-11-12 09:22:36_797,,site_1,error,ONT IMZQ7S39P8LQ52WD has normal voltage

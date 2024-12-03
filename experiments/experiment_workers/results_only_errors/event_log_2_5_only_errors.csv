@@ -1,0 +1,32 @@
+time,site,event,timestamp
+2024-11-12 18:39:20_203,,site_2,error,Boards: board 4 is Standby_active
+2024-11-12 18:41:36_286,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 18:42:56_864,,site_2,error,ONT 2GRUA2XM3CA4I0RY has normal voltage
+2024-11-12 18:42:56_865,,site_2,error,ONT TGKMFWZOO405MTY9 has normal voltage
+2024-11-12 18:43:00_129,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-12 18:46:23_733,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 18:46:38_369,,site_2,error,ONT PSLVRYNMLR2T0WI4 has high voltage
+2024-11-12 18:46:38_371,,site_2,error,ONT QLIEEX38NH5OMGHA has normal voltage
+2024-11-12 18:48:21_724,,site_2,error,OLT is down
+2024-11-12 18:48:36_000,,site_2,error,OLT is up
+2024-11-12 18:48:39_361,,site_2,error,Boards: board 4 is Normal
+2024-11-12 18:49:21_330,,site_1,error,OLT is down
+2024-11-12 18:49:27_129,,site_1,error,OLT is up
+2024-11-12 18:49:30_529,,site_1,error,Boards: board 4 is Normal
+2024-11-12 18:52:15_289,,site_2,error,ONT 2GRUA2XM3CA4I0RY has normal voltage
+2024-11-12 18:52:15_289,,site_2,error,ONT PSLVRYNMLR2T0WI4 has normal voltage
+2024-11-12 18:52:15_290,,site_2,error,ONT TGKMFWZOO405MTY9 has normal voltage
+2024-11-12 18:52:15_290,,site_2,error,ONT QLIEEX38NH5OMGHA has normal voltage
+2024-11-12 18:52:15_291,,site_2,error,ONT PCPQEG2D0OPT22AN has high voltage
+2024-11-12 18:52:18_561,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-12 18:54:15_614,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 18:55:55_144,,site_2,error,ONT ZXDEB8RTKQZZQ3XB has normal voltage
+2024-11-12 18:55:55_146,,site_2,error,ONT QJLT825IMOUYPDTD has normal voltage
+2024-11-12 18:55:58_421,,site_2,error,Boards: board 4 is Standby_active
+2024-11-12 18:58:06_335,,site_2,error,OLT is down
+2024-11-12 18:58:18_591,,site_2,error,OLT is up
+2024-11-12 18:58:22_052,,site_2,error,Boards: board 4 is Normal
+2024-11-12 18:59:02_135,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 19:01:57_805,,site_2,error,ONT ZXDEB8RTKQZZQ3XB has normal voltage
+2024-11-12 19:01:57_808,,site_2,error,ONT QJLT825IMOUYPDTD has normal voltage
+2024-11-12 19:01:57_810,,site_2,error,ONT PCPQEG2D0OPT22AN has normal voltage

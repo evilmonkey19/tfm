@@ -1,0 +1,52 @@
+time,site,event,timestamp
+2024-11-19 08:39:58_348,,site_5,error,Boards: board 4 is Standby_failed
+2024-11-19 08:41:06_145,,site_4,error,Boards: board 4 is Standby_active
+2024-11-19 08:41:54_534,,site_3,error,OLT is down
+2024-11-19 08:42:06_270,,site_3,error,OLT is up
+2024-11-19 08:42:06_273,,site_3,error,OLT is down
+2024-11-19 08:42:21_833,,site_3,error,OLT is up
+2024-11-19 08:42:42_531,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-19 08:43:44_616,,site_5,error,ONT 7EDC3RCZ7VPUBE2D has normal voltage
+2024-11-19 08:43:44_617,,site_5,error,ONT 1G0T0PQYBFGXT1KN has normal voltage
+2024-11-19 08:43:44_617,,site_5,error,ONT AJVBCWD9WFX6IRH9 has normal voltage
+2024-11-19 08:43:53_828,,site_2,error,Boards: board 4 is Standby_active
+2024-11-19 08:45:24_280,,site_4,error,Boards: board 4 is Standby_failed
+2024-11-19 08:47:43_580,,site_3,error,Boards: board 4 is Standby_failed
+2024-11-19 08:47:48_695,,site_1,error,Boards: board 4 is Standby_active
+2024-11-19 08:49:27_173,,site_4,error,OLT is down
+2024-11-19 08:49:41_605,,site_4,error,OLT is up
+2024-11-19 08:49:45_002,,site_4,error,Boards: board 4 is Normal
+2024-11-19 08:50:43_154,,site_5,error,OLT is down
+2024-11-19 08:50:48_028,,site_5,error,OLT is up
+2024-11-19 08:50:51_507,,site_5,error,Boards: board 4 is Normal
+2024-11-19 08:53:08_762,,site_3,error,Boards: board 4 is Standby_active
+2024-11-19 08:54:03_715,,site_4,error,Boards: board 4 is Standby_failed
+2024-11-19 08:54:32_671,,site_5,error,ONT 7EDC3RCZ7VPUBE2D has normal voltage
+2024-11-19 08:54:32_672,,site_5,error,ONT 1G0T0PQYBFGXT1KN has normal voltage
+2024-11-19 08:54:32_673,,site_5,error,ONT AJVBCWD9WFX6IRH9 has normal voltage
+2024-11-19 08:54:35_930,,site_5,error,Boards: board 4 is Standby_active
+2024-11-19 08:55:25_744,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-19 08:58:07_725,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-19 08:58:24_344,,site_5,error,ONT NETC70QU8K2CXGAU has high voltage
+2024-11-19 08:58:24_346,,site_5,error,ONT 7FX5KDPRTLB1IMB6 has low voltage
+2024-11-19 08:58:27_542,,site_5,error,Boards: board 4 is Standby_failed
+2024-11-19 08:58:29_151,,site_3,error,Boards: board 4 is Standby_failed
+2024-11-19 08:58:29_750,,site_4,error,Boards: board 4 is Standby_active
+2024-11-19 08:58:56_736,,site_5,error,OLT is down
+2024-11-19 08:59:08_452,,site_5,error,OLT is up
+2024-11-19 08:59:11_860,,site_5,error,Boards: board 4 is Normal
+2024-11-19 08:59:34_405,,site_1,error,OLT is down
+2024-11-19 08:59:45_217,,site_1,error,OLT is up
+2024-11-19 08:59:48_583,,site_1,error,Boards: board 4 is Normal
+2024-11-19 09:00:55_332,,site_3,error,OLT is down
+2024-11-19 09:01:09_574,,site_3,error,OLT is up
+2024-11-19 09:01:13_012,,site_3,error,Boards: board 4 is Normal
+2024-11-19 09:02:54_561,,site_4,error,Boards: board 4 is Standby_failed
+2024-11-19 09:03:00_631,,site_5,error,ONT NETC70QU8K2CXGAU has normal voltage
+2024-11-19 09:03:00_635,,site_5,error,ONT 7FX5KDPRTLB1IMB6 has normal voltage
+2024-11-19 09:03:03_938,,site_5,error,Boards: board 4 is Standby_failed
+2024-11-19 09:03:10_099,,site_2,error,Boards: board 4 is Standby_active
+2024-11-19 09:04:29_148,,site_4,error,OLT is down
+2024-11-19 09:04:42_665,,site_4,error,OLT is up
+2024-11-19 09:04:46_062,,site_4,error,Boards: board 4 is Normal
+2024-11-19 09:04:57_037,,site_1,error,Boards: board 4 is Standby_failed

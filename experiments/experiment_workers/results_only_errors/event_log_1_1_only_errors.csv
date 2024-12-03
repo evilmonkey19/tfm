@@ -1,0 +1,24 @@
+time,site,event,timestamp
+2024-11-11 23:33:12_291,,site_1,error,OLT is down
+2024-11-11 23:33:26_296,,site_1,error,OLT is up
+2024-11-11 23:35:25_562,,site_1,error,OLT is down
+2024-11-11 23:35:34_334,,site_1,error,OLT is up
+2024-11-11 23:40:14_089,,site_1,error,OLT is down
+2024-11-11 23:40:24_351,,site_1,error,OLT is up
+2024-11-11 23:43:22_402,,site_1,error,OLT is down
+2024-11-11 23:43:25_103,,site_1,error,OLT is up
+2024-11-11 23:46:27_240,,site_1,error,OLT is down
+2024-11-11 23:46:38_653,,site_1,error,OLT is up
+2024-11-11 23:51:24_842,,site_1,error,Boards: board 4 is Standby_active
+2024-11-11 23:56:06_076,,site_1,error,ONT FQMKXCFBMLB1PJJ6 has high voltage
+2024-11-11 23:56:06_077,,site_1,error,ONT OQDIMPLW9JTAYW2Q has normal voltage
+2024-11-11 23:56:09_283,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 00:00:49_824,,site_1,error,ONT 0DN4YPEFUIFHC5L6 has low voltage
+2024-11-12 00:00:49_824,,site_1,error,ONT XRS8KZZUQ8FC7RQR has high voltage
+2024-11-12 00:00:49_825,,site_1,error,ONT XTFD7Q7VXJO4HPW4 has normal voltage
+2024-11-12 00:00:49_826,,site_1,error,ONT BXSZR843F3XURERM has low voltage
+2024-11-12 00:05:29_938,,site_1,error,ONT 51YDRHI3QHP9LPWL has high voltage
+2024-11-12 00:05:29_939,,site_1,error,ONT 4TUWBEQ3J2C3M9AS has high voltage
+2024-11-12 00:05:29_940,,site_1,error,ONT EXMFLFVT1QN9EAMS has high voltage
+2024-11-12 00:05:29_940,,site_1,error,ONT L5W02UMNKVMXL2XB has low voltage
+2024-11-12 00:05:33_237,,site_1,error,Boards: board 4 is Standby_active

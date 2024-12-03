@@ -1,0 +1,47 @@
+time,site,event,timestamp
+2024-11-13 10:10:06_340,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-13 10:12:18_828,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-13 10:12:46_220,,site_3,error,Boards: board 4 is Standby_active
+2024-11-13 10:16:20_135,,site_1,error,OLT is down
+2024-11-13 10:16:22_816,,site_1,error,OLT is up
+2024-11-13 10:16:26_200,,site_1,error,Boards: board 4 is Normal
+2024-11-13 10:17:29_610,,site_2,error,Boards: board 4 is Standby_active
+2024-11-13 10:17:43_730,,site_3,error,ONT 3JUBDFOK6L8ZIKL4 has normal voltage
+2024-11-13 10:17:43_731,,site_3,error,ONT KTT3DWGW5MGWGGO4 has normal voltage
+2024-11-13 10:17:43_734,,site_3,error,ONT 43FZIAFB5M3PUM5V has low voltage
+2024-11-13 10:17:46_965,,site_3,error,Boards: board 4 is Standby_failed
+2024-11-13 10:21:12_352,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-13 10:21:12_588,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-13 10:22:42_929,,site_3,error,ONT FVUZ6CNMAY5UNPW8 has high voltage
+2024-11-13 10:22:42_930,,site_3,error,ONT I2OUH8807W0FOKYC has low voltage
+2024-11-13 10:22:42_930,,site_3,error,ONT YN8RMIOOSRVTONX5 has normal voltage
+2024-11-13 10:22:42_930,,site_3,error,ONT BMLNGP9ZKY5TQJQ2 has low voltage
+2024-11-13 10:22:42_931,,site_3,error,ONT W36PNDZSE2MPCO0J has normal voltage
+2024-11-13 10:22:42_932,,site_3,error,ONT RJ3J4JA43ISHGU0M has normal voltage
+2024-11-13 10:22:46_045,,site_3,error,Boards: board 4 is Standby_active
+2024-11-13 10:22:57_188,,site_2,error,OLT is down
+2024-11-13 10:23:10_268,,site_2,error,OLT is up
+2024-11-13 10:23:13_606,,site_2,error,Boards: board 4 is Standby_active
+2024-11-13 10:25:59_962,,site_1,error,Boards: board 4 is Standby_active
+2024-11-13 10:27:42_122,,site_3,error,ONT 4GAJBG7GZF51UJ49 has normal voltage
+2024-11-13 10:27:42_127,,site_3,error,ONT 0FQTW2H6XU2OKS21 has normal voltage
+2024-11-13 10:28:17_671,,site_3,error,OLT is down
+2024-11-13 10:28:27_163,,site_3,error,OLT is up
+2024-11-13 10:28:30_573,,site_3,error,Boards: board 4 is Normal
+2024-11-13 10:30:35_719,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-13 10:33:31_456,,site_3,error,ONT FVUZ6CNMAY5UNPW8 has normal voltage
+2024-11-13 10:33:31_458,,site_3,error,ONT 3JUBDFOK6L8ZIKL4 has normal voltage
+2024-11-13 10:33:31_459,,site_3,error,ONT I2OUH8807W0FOKYC has normal voltage
+2024-11-13 10:33:31_459,,site_3,error,ONT 4GAJBG7GZF51UJ49 has normal voltage
+2024-11-13 10:33:31_459,,site_3,error,ONT YN8RMIOOSRVTONX5 has normal voltage
+2024-11-13 10:33:31_460,,site_3,error,ONT KTT3DWGW5MGWGGO4 has normal voltage
+2024-11-13 10:33:31_460,,site_3,error,ONT BMLNGP9ZKY5TQJQ2 has normal voltage
+2024-11-13 10:33:31_461,,site_3,error,ONT W36PNDZSE2MPCO0J has normal voltage
+2024-11-13 10:33:31_462,,site_3,error,ONT RJ3J4JA43ISHGU0M has normal voltage
+2024-11-13 10:33:31_463,,site_3,error,ONT KCD9YK179Y9LRD0F has low voltage
+2024-11-13 10:33:31_463,,site_3,error,ONT 43FZIAFB5M3PUM5V has normal voltage
+2024-11-13 10:33:31_465,,site_3,error,ONT 0FQTW2H6XU2OKS21 has normal voltage
+2024-11-13 10:33:31_465,,site_3,error,ONT ZIMX08633FYGMIOC has normal voltage
+2024-11-13 10:33:31_466,,site_3,error,ONT 99NIGKVTLWAJG7VP has high voltage
+2024-11-13 10:33:34_664,,site_3,error,Boards: board 4 is Standby_failed
+2024-11-13 10:34:18_214,,site_2,error,Boards: board 4 is Standby_active

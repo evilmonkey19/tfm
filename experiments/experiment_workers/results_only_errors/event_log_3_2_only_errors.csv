@@ -1,0 +1,18 @@
+time,site,event,timestamp
+2024-11-12 21:44:49_796,,site_1,error,OLT is down
+2024-11-12 21:44:49_799,,site_3,error,OLT is down
+2024-11-12 21:50:20_718,,site_3,error,OLT is down
+2024-11-12 21:50:39_024,,site_3,error,OLT is up
+2024-11-12 21:52:10_796,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-12 21:54:23_514,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 21:55:36_960,,site_3,error,ONT O25K54WFM23SXQEE has normal voltage
+2024-11-12 21:55:36_962,,site_3,error,ONT W70QKF62W88YRJQP has low voltage
+2024-11-12 21:55:36_962,,site_3,error,ONT PZU7PI6ZVMISBJ5R has normal voltage
+2024-11-12 21:55:40_246,,site_3,error,Boards: board 4 is Standby_failed
+2024-11-12 21:55:50_659,,site_2,error,Boards: board 4 is Standby_active
+2024-11-12 22:00:37_347,,site_3,error,ONT JFA2UY5JUI6VA301 has normal voltage
+2024-11-12 22:00:37_347,,site_3,error,ONT 43FZIAFB5M3PUM5V has low voltage
+2024-11-12 22:00:40_517,,site_3,error,Boards: board 4 is Standby_active
+2024-11-12 22:00:53_873,,site_2,error,OLT is down
+2024-11-12 22:01:05_244,,site_2,error,OLT is up
+2024-11-12 22:01:08_721,,site_2,error,Boards: board 4 is Normal

@@ -1,6 +1,0 @@
-_,Starting chaos monkey,2024-11-10 13:33:03_459
-site_1,Changing voltage for 5UYUWE3316U1KQC2 from site_1 to set_normal_voltage,2024-11-10 13:33:16_397
-site_1,Changing board state to Standby_active,2024-11-10 13:33:51_401
-site_1,Changing voltage for 5UYUWE3316U1KQC2 from site_1 to set_low_voltage,2024-11-10 13:34:09_307
-site_1,Changing board state to Standby_failed,2024-11-10 13:34:27_812
-_,Exiting chaos monkey,2024-11-10 13:34:40_400

@@ -1,0 +1,23 @@
+time,site,event,timestamp
+2024-11-12 10:43:46_457,,site_1,error,OLT is down
+2024-11-12 10:53:04_768,,site_1,error,ONT H3L800CWWWPL1LE9 has high voltage
+2024-11-12 10:53:04_771,,site_1,error,ONT ZEXOP9MINSVEZR9X has high voltage
+2024-11-12 10:53:07_989,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 10:55:42_890,,site_1,error,OLT is down
+2024-11-12 10:55:50_162,,site_1,error,OLT is up
+2024-11-12 10:55:53_593,,site_1,error,Boards: board 4 is Normal
+2024-11-12 10:58:03_164,,site_1,error,OLT is down
+2024-11-12 10:58:16_867,,site_1,error,OLT is up
+2024-11-12 11:02:51_648,,site_1,error,ONT H3L800CWWWPL1LE9 has normal voltage
+2024-11-12 11:02:51_650,,site_1,error,ONT ZEXOP9MINSVEZR9X has normal voltage
+2024-11-12 11:02:55_006,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 11:07:28_413,,site_1,error,ONT S9NVSZAMTPVWNUYZ has normal voltage
+2024-11-12 11:07:28_415,,site_1,error,ONT 3RCPQ7RUIODQ2SWF has normal voltage
+2024-11-12 11:07:28_416,,site_1,error,ONT DFRA1GOM5BHVL4N9 has high voltage
+2024-11-12 11:07:31_842,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 11:12:05_149,,site_1,error,ONT P1BMAYU75LZT9QGF has low voltage
+2024-11-12 11:12:05_150,,site_1,error,ONT CSVMUMOSX6QWY63I has high voltage
+2024-11-12 11:12:05_151,,site_1,error,ONT G5K4L1B2UMFVMOIL has normal voltage
+2024-11-12 11:12:08_448,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 11:16:44_072,,site_1,error,ONT 8HLFHGCKAH9AISLT has high voltage
+2024-11-12 11:16:47_445,,site_1,error,Boards: board 4 is Standby_failed

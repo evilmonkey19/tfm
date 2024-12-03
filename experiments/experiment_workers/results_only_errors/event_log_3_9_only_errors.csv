@@ -1,0 +1,30 @@
+time,site,event,timestamp
+2024-11-13 11:56:04_250,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-13 11:58:25_391,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-13 11:58:48_197,,site_3,error,Boards: board 4 is Standby_active
+2024-11-13 11:59:44_002,,site_2,error,Boards: board 4 is Standby_active
+2024-11-13 12:01:43_073,,site_1,error,OLT is down
+2024-11-13 12:01:52_664,,site_1,error,OLT is up
+2024-11-13 12:01:56_092,,site_1,error,Boards: board 4 is Normal
+2024-11-13 12:03:25_298,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-13 12:03:53_255,,site_3,error,ONT EEWAD1TJ8BK4ZY3W has low voltage
+2024-11-13 12:03:53_255,,site_3,error,ONT 3J4HBX5UUMIOSHDD has high voltage
+2024-11-13 12:03:53_256,,site_3,error,ONT OCB9DXTJA84JA842 has normal voltage
+2024-11-13 12:03:53_258,,site_3,error,ONT ICYDLZ5Y2RMD8DQD has low voltage
+2024-11-13 12:03:53_259,,site_3,error,ONT GMBGLFC45A4QZ55I has high voltage
+2024-11-13 12:06:42_516,,site_1,error,Boards: board 4 is Standby_active
+2024-11-13 12:08:32_896,,site_2,error,OLT is down
+2024-11-13 12:08:43_016,,site_2,error,OLT is up
+2024-11-13 12:08:46_415,,site_2,error,Boards: board 4 is Normal
+2024-11-13 12:08:49_749,,site_3,error,ONT KTT3DWGW5MGWGGO4 has normal voltage
+2024-11-13 12:08:49_750,,site_3,error,ONT CSF2HQE2IHE6C904 has low voltage
+2024-11-13 12:12:27_958,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-13 12:13:51_589,,site_3,error,ONT 7IXMCP62C08LP3VZ has normal voltage
+2024-11-13 12:13:51_590,,site_3,error,ONT PLIAOSGY0X85870B has normal voltage
+2024-11-13 12:13:51_590,,site_3,error,ONT 2ZX7LHTHPMDTFP30 has normal voltage
+2024-11-13 12:13:54_781,,site_3,error,Boards: board 4 is Standby_failed
+2024-11-13 12:16:07_890,,site_2,error,Boards: board 4 is Standby_active
+2024-11-13 12:18:54_911,,site_3,error,ONT 8VKV127F5FX4C3PC has high voltage
+2024-11-13 12:18:54_912,,site_3,error,ONT SZU56ML50KHJHX72 has normal voltage
+2024-11-13 12:18:54_913,,site_3,error,ONT UBIS282GY7TAFAXG has high voltage
+2024-11-13 12:18:54_916,,site_3,error,ONT 398E2JF8ANZ5ZXD9 has high voltage

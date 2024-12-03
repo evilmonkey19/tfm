@@ -1,0 +1,32 @@
+time,site,event,timestamp
+2024-11-12 10:08:53_097,,site_1,error,OLT is down
+2024-11-12 10:13:53_348,,site_1,error,OLT is down
+2024-11-12 10:14:09_022,,site_1,error,OLT is up
+2024-11-12 10:18:43_555,,site_1,error,ONT M1UXHLX0AT09UA9I has high voltage
+2024-11-12 10:18:46_823,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 10:20:46_170,,site_1,error,OLT is down
+2024-11-12 10:20:59_584,,site_1,error,OLT is up
+2024-11-12 10:21:03_028,,site_1,error,Boards: board 4 is Normal
+2024-11-12 10:25:32_743,,site_1,error,ONT M1UXHLX0AT09UA9I has normal voltage
+2024-11-12 10:25:36_020,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 10:30:09_858,,site_1,error,ONT N59KZBZBID12VC0L has normal voltage
+2024-11-12 10:30:09_858,,site_1,error,ONT N1HMOATFRB6G499C has normal voltage
+2024-11-12 10:30:09_859,,site_1,error,ONT T8YOZJD1MHGDI1OW has high voltage
+2024-11-12 10:34:45_857,,site_1,error,ONT ZUFTOPCWFB4GXCQL has low voltage
+2024-11-12 10:34:45_857,,site_1,error,ONT PZMW82YN6O248CA6 has low voltage
+2024-11-12 10:34:45_858,,site_1,error,ONT GJ9DTS9APTHRX1TC has low voltage
+2024-11-12 10:34:45_859,,site_1,error,ONT 6I2GL381MRA17R0E has low voltage
+2024-11-12 10:34:45_859,,site_1,error,ONT R6HBAJZAIRWQZOWH has normal voltage
+2024-11-12 10:37:17_999,,site_1,error,OLT is down
+2024-11-12 10:37:27_564,,site_1,error,OLT is up
+2024-11-12 10:37:31_019,,site_1,error,Boards: board 4 is Normal
+2024-11-12 10:42:01_854,,site_1,error,ONT ZUFTOPCWFB4GXCQL has normal voltage
+2024-11-12 10:42:01_855,,site_1,error,ONT N59KZBZBID12VC0L has normal voltage
+2024-11-12 10:42:01_855,,site_1,error,ONT N1HMOATFRB6G499C has normal voltage
+2024-11-12 10:42:01_856,,site_1,error,ONT PZMW82YN6O248CA6 has normal voltage
+2024-11-12 10:42:01_857,,site_1,error,ONT T8YOZJD1MHGDI1OW has normal voltage
+2024-11-12 10:42:01_858,,site_1,error,ONT GJ9DTS9APTHRX1TC has normal voltage
+2024-11-12 10:42:01_858,,site_1,error,ONT 6I2GL381MRA17R0E has normal voltage
+2024-11-12 10:42:01_858,,site_1,error,ONT R6HBAJZAIRWQZOWH has normal voltage
+2024-11-12 10:42:01_859,,site_1,error,ONT G5K4L1B2UMFVMOIL has low voltage
+2024-11-12 10:42:05_080,,site_1,error,Boards: board 4 is Standby_active

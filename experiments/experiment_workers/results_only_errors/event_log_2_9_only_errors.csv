@@ -1,0 +1,36 @@
+time,site,event,timestamp
+2024-11-12 20:38:31_504,,site_2,error,OLT is down
+2024-11-12 20:38:31_509,,site_3,error,OLT is down
+2024-11-12 20:38:31_512,,site_1,error,OLT is down
+2024-11-12 20:45:09_999,,site_1,error,OLT is down
+2024-11-12 20:45:12_625,,site_1,error,OLT is up
+2024-11-12 20:45:16_025,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 20:45:53_922,,site_2,error,Boards: board 4 is Standby_active
+2024-11-12 20:48:11_673,,site_2,error,OLT is down
+2024-11-12 20:48:24_669,,site_2,error,OLT is up
+2024-11-12 20:48:28_027,,site_2,error,Boards: board 4 is Normal
+2024-11-12 20:50:01_574,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 20:52:08_728,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-12 20:54:55_677,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 20:55:44_481,,site_2,error,ONT QLIEEX38NH5OMGHA has normal voltage
+2024-11-12 20:55:44_482,,site_2,error,ONT AAZO5X3O1FOJT7MD has normal voltage
+2024-11-12 20:59:26_430,,site_2,error,ONT VUYY3C1XNQABNZFR has normal voltage
+2024-11-12 20:59:26_430,,site_2,error,ONT SQN35IYE2YY3E9PQ has high voltage
+2024-11-12 20:59:26_433,,site_2,error,ONT ASZPC1M3IQY1BYVP has normal voltage
+2024-11-12 20:59:26_434,,site_2,error,ONT FHT596CQWO5LP3ZU has high voltage
+2024-11-12 20:59:26_435,,site_2,error,ONT 71SEN8JTXCIIW6I5 has high voltage
+2024-11-12 21:01:16_771,,site_2,error,OLT is down
+2024-11-12 21:01:25_188,,site_2,error,OLT is up
+2024-11-12 21:01:28_554,,site_2,error,Boards: board 4 is Standby_active
+2024-11-12 21:03:15_779,,site_2,error,OLT is down
+2024-11-12 21:03:18_456,,site_2,error,OLT is up
+2024-11-12 21:03:21_872,,site_2,error,Boards: board 4 is Normal
+2024-11-12 21:06:59_313,,site_2,error,ONT VUYY3C1XNQABNZFR has normal voltage
+2024-11-12 21:06:59_313,,site_2,error,ONT SQN35IYE2YY3E9PQ has normal voltage
+2024-11-12 21:06:59_314,,site_2,error,ONT QLIEEX38NH5OMGHA has normal voltage
+2024-11-12 21:06:59_314,,site_2,error,ONT ASZPC1M3IQY1BYVP has normal voltage
+2024-11-12 21:06:59_315,,site_2,error,ONT FHT596CQWO5LP3ZU has normal voltage
+2024-11-12 21:06:59_316,,site_2,error,ONT 71SEN8JTXCIIW6I5 has normal voltage
+2024-11-12 21:06:59_317,,site_2,error,ONT AAZO5X3O1FOJT7MD has normal voltage
+2024-11-12 21:07:02_598,,site_2,error,Boards: board 4 is Standby_active
+2024-11-12 21:09:18_828,,site_1,error,Boards: board 4 is Standby_failed

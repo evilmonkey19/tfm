@@ -1,0 +1,31 @@
+time,site,event,timestamp
+2024-11-12 20:06:45_619,,site_2,error,OLT is down
+2024-11-12 20:06:45_626,,site_3,error,OLT is down
+2024-11-12 20:06:45_629,,site_1,error,OLT is down
+2024-11-12 20:14:04_120,,site_2,error,Boards: board 4 is Standby_active
+2024-11-12 20:16:20_447,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 20:17:38_919,,site_2,error,ONT 2GRUA2XM3CA4I0RY has normal voltage
+2024-11-12 20:17:38_921,,site_2,error,ONT WX98ANZLVBL6VCHX has normal voltage
+2024-11-12 20:17:38_921,,site_2,error,ONT S4KH6W8Y0AOVDB2E has high voltage
+2024-11-12 20:17:42_162,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-12 20:18:04_263,,site_2,error,OLT is down
+2024-11-12 20:18:13_197,,site_2,error,OLT is up
+2024-11-12 20:18:16_580,,site_2,error,Boards: board 4 is Normal
+2024-11-12 20:21:03_898,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 20:21:52_588,,site_2,error,ONT 2GRUA2XM3CA4I0RY has normal voltage
+2024-11-12 20:21:52_590,,site_2,error,ONT WX98ANZLVBL6VCHX has normal voltage
+2024-11-12 20:21:52_590,,site_2,error,ONT S4KH6W8Y0AOVDB2E has normal voltage
+2024-11-12 20:21:55_672,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-12 20:24:25_131,,site_2,error,OLT is down
+2024-11-12 20:24:35_126,,site_2,error,OLT is up
+2024-11-12 20:24:38_505,,site_2,error,Boards: board 4 is Normal
+2024-11-12 20:26:38_368,,site_2,error,OLT is down
+2024-11-12 20:26:44_359,,site_2,error,OLT is up
+2024-11-12 20:30:27_653,,site_2,error,Boards: board 4 is Standby_active
+2024-11-12 20:30:32_176,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 20:34:04_347,,site_2,error,ONT 9E4TQDCVXEQJ3YA1 has normal voltage
+2024-11-12 20:34:04_348,,site_2,error,ONT 56NRWP7O8OFQTT0Z has normal voltage
+2024-11-12 20:34:04_348,,site_2,error,ONT QJLT825IMOUYPDTD has normal voltage
+2024-11-12 20:34:04_349,,site_2,error,ONT V0Q7FJ8306538L46 has normal voltage
+2024-11-12 20:34:07_642,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-12 20:35:14_113,,site_1,error,Boards: board 4 is Standby_failed

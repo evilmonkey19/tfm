@@ -1,0 +1,49 @@
+_,Starting chaos monkey,2024-11-12 10:23:52_521
+site_1,Changing voltage for E7AT6EE9C8P45Y2Q from site_1 to set_normal_voltage,2024-11-12 10:24:17_681
+site_1,Changing voltage for 0GDPOQ3X2LTP0WFX from site_1 to set_normal_voltage,2024-11-12 10:24:22_937
+site_1,Changing voltage for BFV9HWMPZ7RK399T from site_1 to set_normal_voltage,2024-11-12 10:24:36_153
+site_1,Changing voltage for JAYHV92Z84DFS0H8 from site_1 to set_normal_voltage,2024-11-12 10:24:48_613
+site_1,Changing voltage for PBGQS00OGJABDGOQ from site_1 to set_normal_voltage,2024-11-12 10:25:34_873
+site_1,Changing board state to Standby_active,2024-11-12 10:25:57_625
+site_1,Changing voltage for U6EXV02RHXUN5920 from site_1 to set_high_voltage,2024-11-12 10:26:20_659
+site_1,Changing voltage for 4BVVIKFXYER2P3D7 from site_1 to set_normal_voltage,2024-11-12 10:26:21_553
+site_1,Changing voltage for FG5D75FJZY4ZKN7N from site_1 to set_high_voltage,2024-11-12 10:26:28_403
+site_1,Changing board state to Standby_failed,2024-11-12 10:26:45_304
+site_1,Changing board state to Standby_active,2024-11-12 10:27:23_602
+site_1,Changing board state to Standby_failed,2024-11-12 10:28:01_415
+site_1,Changing voltage for 87D7YFO9MYDUOMQK from site_1 to set_normal_voltage,2024-11-12 10:28:13_911
+site_1,Changing board state to Standby_active,2024-11-12 10:28:51_492
+site_1,Changing voltage for IUIFA2ILQTX0QFQE from site_1 to set_high_voltage,2024-11-12 10:29:45_876
+site_1,Changing voltage for 1VLM8A1QYKGMU7Q2 from site_1 to set_normal_voltage,2024-11-12 10:30:13_574
+site_1,Changing voltage for BKOX4RIEXCT7U7X0 from site_1 to set_low_voltage,2024-11-12 10:31:14_526
+site_1,Changing board state to Standby_failed,2024-11-12 10:32:18_320
+site_1,Changing voltage for N7XCJTE2F73TP1CQ from site_1 to set_high_voltage,2024-11-12 10:33:00_725
+site_1,Changing voltage for 7YWFY9FKLOV7H31U from site_1 to set_high_voltage,2024-11-12 10:34:58_816
+site_1,Changing board state to Standby_active,2024-11-12 10:35:13_498
+site_1,Changing voltage for OH2QI4YTCSPNJ9C2 from site_1 to set_low_voltage,2024-11-12 10:35:58_669
+site_1,Changing board state to Standby_failed,2024-11-12 10:36:15_182
+site_1,Changing voltage for LGMLW91BBCWLQCPL from site_1 to set_low_voltage,2024-11-12 10:36:17_901
+site_1,Changing board state to Standby_active,2024-11-12 10:36:34_652
+site_1,Changing board state to Standby_failed,2024-11-12 10:36:54_615
+site_1,Changing voltage for DBUIYY0NTKAPM3UA from site_1 to set_low_voltage,2024-11-12 10:37:24_359
+site_1,Changing voltage for NZ07WVE983I3E04T from site_1 to set_high_voltage,2024-11-12 10:37:29_794
+site_1,Changing voltage for 1TX9QJGW1DTV7Z7Y from site_1 to set_low_voltage,2024-11-12 10:38:01_297
+site_1,Changing board state to Standby_active,2024-11-12 10:38:13_794
+site_1,Changing voltage for 0DN4YPEFUIFHC5L6 from site_1 to set_low_voltage,2024-11-12 10:38:36_033
+site_1,Changing voltage for 0GDPOQ3X2LTP0WFX from site_1 to set_low_voltage,2024-11-12 10:39:17_382
+site_1,Changing voltage for N59KZBZBID12VC0L from site_1 to set_normal_voltage,2024-11-12 10:39:21_340
+site_1,Changing board state to Standby_failed,2024-11-12 10:39:22_774
+site_1,Changing voltage for 1ED8T625JIARPOV8 from site_1 to set_high_voltage,2024-11-12 10:39:39_501
+site_1,Changing voltage for 70GFW961Y6IZWK15 from site_1 to set_high_voltage,2024-11-12 10:39:47_642
+site_1,Changing board state to Standby_active,2024-11-12 10:39:59_605
+site_1,Changing voltage for 0F2X15MR8N78PL8K from site_1 to set_high_voltage,2024-11-12 10:41:06_181
+site_1,Changing board state to Standby_failed,2024-11-12 10:43:24_689
+site_1,Changing board state to Standby_active,2024-11-12 10:43:51_163
+site_1,Changing voltage for 3A45TT4FHS0SMKUA from site_1 to set_low_voltage,2024-11-12 10:44:52_737
+site_1,Changing board state to Standby_failed,2024-11-12 10:44:56_337
+site_1,Changing board state to Standby_active,2024-11-12 10:44:57_619
+site_1,Changing voltage for WXAZUEPP32OLEU27 from site_1 to set_high_voltage,2024-11-12 10:45:49_791
+site_1,Changing voltage for 9S68K0BI27YQYMO7 from site_1 to set_normal_voltage,2024-11-12 10:46:25_610
+site_1,Changing voltage for UXX7VVJF57FWM52V from site_1 to set_normal_voltage,2024-11-12 10:46:58_805
+site_1,Changing board state to Standby_failed,2024-11-12 10:47:43_034
+_,Exiting chaos monkey,2024-11-12 10:47:59_212

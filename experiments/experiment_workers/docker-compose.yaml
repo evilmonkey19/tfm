@@ -6,11 +6,81 @@ networks:
     ipam:
       config:
       - subnet: 192.168.1.0/24
+  huawei2-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 192.168.2.0/24
+  huawei3-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 192.168.3.0/24
+  huawei4-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 192.168.4.0/24
+  huawei5-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 192.168.5.0/24
+  huawei6-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 192.168.6.0/24
+  huawei7-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 192.168.7.0/24
+  huawei8-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 192.168.8.0/24
   worker1-net:
     driver: bridge
     ipam:
       config:
       - subnet: 10.1.0.0/16
+  worker2-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 10.2.0.0/16
+  worker3-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 10.3.0.0/16
+  worker4-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 10.4.0.0/16
+  worker5-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 10.5.0.0/16
+  worker6-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 10.6.0.0/16
+  worker7-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 10.7.0.0/16
+  worker8-net:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 10.8.0.0/16
 services:
   chaos_monkey:
     build:
@@ -20,8 +90,36 @@ services:
     networks:
       huawei1-net:
         ipv4_address: 192.168.1.4
+      huawei2-net:
+        ipv4_address: 192.168.2.4
+      huawei3-net:
+        ipv4_address: 192.168.3.4
+      huawei4-net:
+        ipv4_address: 192.168.4.4
+      huawei5-net:
+        ipv4_address: 192.168.5.4
+      huawei6-net:
+        ipv4_address: 192.168.6.4
+      huawei7-net:
+        ipv4_address: 192.168.7.4
+      huawei8-net:
+        ipv4_address: 192.168.8.4
       worker1-net:
         ipv4_address: 10.1.0.4
+      worker2-net:
+        ipv4_address: 10.2.0.4
+      worker3-net:
+        ipv4_address: 10.3.0.4
+      worker4-net:
+        ipv4_address: 10.4.0.4
+      worker5-net:
+        ipv4_address: 10.5.0.4
+      worker6-net:
+        ipv4_address: 10.6.0.4
+      worker7-net:
+        ipv4_address: 10.7.0.4
+      worker8-net:
+        ipv4_address: 10.8.0.4
     ports:
     - 3500:3500
     volumes:
@@ -39,12 +137,117 @@ services:
     networks:
       huawei1-net:
         ipv4_address: 192.168.1.3
+  huawei_smartax-site-2:
+    build:
+      context: .
+      dockerfile: huawei_smartax.Dockerfile
+    command: fastapi run fakenos-web.py
+    depends_on:
+    - worker-site-2
+    environment:
+    - HOSTNAME=huawei_smartax_site_2
+    - CONFIGURATION_FILE=site_2.yaml.j2
+    networks:
+      huawei2-net:
+        ipv4_address: 192.168.2.3
+  huawei_smartax-site-3:
+    build:
+      context: .
+      dockerfile: huawei_smartax.Dockerfile
+    command: fastapi run fakenos-web.py
+    depends_on:
+    - worker-site-3
+    environment:
+    - HOSTNAME=huawei_smartax_site_3
+    - CONFIGURATION_FILE=site_3.yaml.j2
+    networks:
+      huawei3-net:
+        ipv4_address: 192.168.3.3
+  huawei_smartax-site-4:
+    build:
+      context: .
+      dockerfile: huawei_smartax.Dockerfile
+    command: fastapi run fakenos-web.py
+    depends_on:
+    - worker-site-4
+    environment:
+    - HOSTNAME=huawei_smartax_site_4
+    - CONFIGURATION_FILE=site_4.yaml.j2
+    networks:
+      huawei4-net:
+        ipv4_address: 192.168.4.3
+  huawei_smartax-site-5:
+    build:
+      context: .
+      dockerfile: huawei_smartax.Dockerfile
+    command: fastapi run fakenos-web.py
+    depends_on:
+    - worker-site-5
+    environment:
+    - HOSTNAME=huawei_smartax_site_5
+    - CONFIGURATION_FILE=site_5.yaml.j2
+    networks:
+      huawei5-net:
+        ipv4_address: 192.168.5.3
+  huawei_smartax-site-6:
+    build:
+      context: .
+      dockerfile: huawei_smartax.Dockerfile
+    command: fastapi run fakenos-web.py
+    depends_on:
+    - worker-site-6
+    environment:
+    - HOSTNAME=huawei_smartax_site_6
+    - CONFIGURATION_FILE=site_6.yaml.j2
+    networks:
+      huawei6-net:
+        ipv4_address: 192.168.6.3
+  huawei_smartax-site-7:
+    build:
+      context: .
+      dockerfile: huawei_smartax.Dockerfile
+    command: fastapi run fakenos-web.py
+    depends_on:
+    - worker-site-7
+    environment:
+    - HOSTNAME=huawei_smartax_site_7
+    - CONFIGURATION_FILE=site_7.yaml.j2
+    networks:
+      huawei7-net:
+        ipv4_address: 192.168.7.3
+  huawei_smartax-site-8:
+    build:
+      context: .
+      dockerfile: huawei_smartax.Dockerfile
+    command: fastapi run fakenos-web.py
+    depends_on:
+    - worker-site-8
+    environment:
+    - HOSTNAME=huawei_smartax_site_8
+    - CONFIGURATION_FILE=site_8.yaml.j2
+    networks:
+      huawei8-net:
+        ipv4_address: 192.168.8.3
   rabbitmq:
     image: rabbitmq:management
     networks:
       default: null
       worker1-net:
         ipv4_address: 10.1.0.2
+      worker2-net:
+        ipv4_address: 10.2.0.2
+      worker3-net:
+        ipv4_address: 10.3.0.2
+      worker4-net:
+        ipv4_address: 10.4.0.2
+      worker5-net:
+        ipv4_address: 10.5.0.2
+      worker6-net:
+        ipv4_address: 10.6.0.2
+      worker7-net:
+        ipv4_address: 10.7.0.2
+      worker8-net:
+        ipv4_address: 10.8.0.2
     ports:
     - 5672:5672
     - 15672:15672
@@ -53,6 +256,20 @@ services:
     networks:
       worker1-net:
         ipv4_address: 10.1.0.3
+      worker2-net:
+        ipv4_address: 10.2.0.3
+      worker3-net:
+        ipv4_address: 10.3.0.3
+      worker4-net:
+        ipv4_address: 10.4.0.3
+      worker5-net:
+        ipv4_address: 10.5.0.3
+      worker6-net:
+        ipv4_address: 10.6.0.3
+      worker7-net:
+        ipv4_address: 10.7.0.3
+      worker8-net:
+        ipv4_address: 10.8.0.3
     ports:
     - 6379:6379
   worker-site-1:
@@ -75,5 +292,159 @@ services:
         ipv4_address: 192.168.1.2
       worker1-net:
         ipv4_address: 10.1.0.10
+    volumes:
+    - /home/enric/tfm/experiments/experiment_workers:/app:rw
+  worker-site-2:
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    command: python worker.py
+    depends_on:
+    - rabbitmq
+    environment:
+    - RABBITMQ_IP=10.2.0.2
+    - REDIS_IP=10.2.0.3
+    - CHAOS_MONKEY_IP=10.2.0.4
+    - HUAWEI_SMARTAX_IP=192.168.2.3
+    - HOSTNAME=worker_site_2
+    - QUEUE_NAME=site_2
+    - CONFIGURATION_FILE=site_2.yaml.j2
+    networks:
+      huawei2-net:
+        ipv4_address: 192.168.2.2
+      worker2-net:
+        ipv4_address: 10.2.0.10
+    volumes:
+    - /home/enric/tfm/experiments/experiment_workers:/app:rw
+  worker-site-3:
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    command: python worker.py
+    depends_on:
+    - rabbitmq
+    environment:
+    - RABBITMQ_IP=10.3.0.2
+    - REDIS_IP=10.3.0.3
+    - CHAOS_MONKEY_IP=10.3.0.4
+    - HUAWEI_SMARTAX_IP=192.168.3.3
+    - HOSTNAME=worker_site_3
+    - QUEUE_NAME=site_3
+    - CONFIGURATION_FILE=site_3.yaml.j2
+    networks:
+      huawei3-net:
+        ipv4_address: 192.168.3.2
+      worker3-net:
+        ipv4_address: 10.3.0.10
+    volumes:
+    - /home/enric/tfm/experiments/experiment_workers:/app:rw
+  worker-site-4:
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    command: python worker.py
+    depends_on:
+    - rabbitmq
+    environment:
+    - RABBITMQ_IP=10.4.0.2
+    - REDIS_IP=10.4.0.3
+    - CHAOS_MONKEY_IP=10.4.0.4
+    - HUAWEI_SMARTAX_IP=192.168.4.3
+    - HOSTNAME=worker_site_4
+    - QUEUE_NAME=site_4
+    - CONFIGURATION_FILE=site_4.yaml.j2
+    networks:
+      huawei4-net:
+        ipv4_address: 192.168.4.2
+      worker4-net:
+        ipv4_address: 10.4.0.10
+    volumes:
+    - /home/enric/tfm/experiments/experiment_workers:/app:rw
+  worker-site-5:
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    command: python worker.py
+    depends_on:
+    - rabbitmq
+    environment:
+    - RABBITMQ_IP=10.5.0.2
+    - REDIS_IP=10.5.0.3
+    - CHAOS_MONKEY_IP=10.5.0.4
+    - HUAWEI_SMARTAX_IP=192.168.5.3
+    - HOSTNAME=worker_site_5
+    - QUEUE_NAME=site_5
+    - CONFIGURATION_FILE=site_5.yaml.j2
+    networks:
+      huawei5-net:
+        ipv4_address: 192.168.5.2
+      worker5-net:
+        ipv4_address: 10.5.0.10
+    volumes:
+    - /home/enric/tfm/experiments/experiment_workers:/app:rw
+  worker-site-6:
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    command: python worker.py
+    depends_on:
+    - rabbitmq
+    environment:
+    - RABBITMQ_IP=10.6.0.2
+    - REDIS_IP=10.6.0.3
+    - CHAOS_MONKEY_IP=10.6.0.4
+    - HUAWEI_SMARTAX_IP=192.168.6.3
+    - HOSTNAME=worker_site_6
+    - QUEUE_NAME=site_6
+    - CONFIGURATION_FILE=site_6.yaml.j2
+    networks:
+      huawei6-net:
+        ipv4_address: 192.168.6.2
+      worker6-net:
+        ipv4_address: 10.6.0.10
+    volumes:
+    - /home/enric/tfm/experiments/experiment_workers:/app:rw
+  worker-site-7:
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    command: python worker.py
+    depends_on:
+    - rabbitmq
+    environment:
+    - RABBITMQ_IP=10.7.0.2
+    - REDIS_IP=10.7.0.3
+    - CHAOS_MONKEY_IP=10.7.0.4
+    - HUAWEI_SMARTAX_IP=192.168.7.3
+    - HOSTNAME=worker_site_7
+    - QUEUE_NAME=site_7
+    - CONFIGURATION_FILE=site_7.yaml.j2
+    networks:
+      huawei7-net:
+        ipv4_address: 192.168.7.2
+      worker7-net:
+        ipv4_address: 10.7.0.10
+    volumes:
+    - /home/enric/tfm/experiments/experiment_workers:/app:rw
+  worker-site-8:
+    build:
+      context: .
+      dockerfile: worker.Dockerfile
+    command: python worker.py
+    depends_on:
+    - rabbitmq
+    environment:
+    - RABBITMQ_IP=10.8.0.2
+    - REDIS_IP=10.8.0.3
+    - CHAOS_MONKEY_IP=10.8.0.4
+    - HUAWEI_SMARTAX_IP=192.168.8.3
+    - HOSTNAME=worker_site_8
+    - QUEUE_NAME=site_8
+    - CONFIGURATION_FILE=site_8.yaml.j2
+    networks:
+      huawei8-net:
+        ipv4_address: 192.168.8.2
+      worker8-net:
+        ipv4_address: 10.8.0.10
     volumes:
     - /home/enric/tfm/experiments/experiment_workers:/app:rw

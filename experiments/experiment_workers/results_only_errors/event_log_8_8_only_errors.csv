@@ -1,0 +1,63 @@
+time,site,event,timestamp
+2024-11-20 13:46:29_412,,site_7,error,OLT is down
+2024-11-20 13:46:42_625,,site_7,error,OLT is up
+2024-11-20 13:47:31_921,,site_8,error,OLT is down
+2024-11-20 13:47:45_288,,site_8,error,OLT is up
+2024-11-20 13:48:28_667,,site_5,error,Boards: board 4 is Standby_active
+2024-11-20 13:48:34_539,,site_2,error,Boards: board 4 is Standby_active
+2024-11-20 13:48:36_362,,site_6,error,OLT is down
+2024-11-20 13:48:42_483,,site_6,error,OLT is up
+2024-11-20 13:48:44_290,,site_7,error,Boards: board 4 is Standby_active
+2024-11-20 13:49:32_373,,site_1,error,OLT is down
+2024-11-20 13:49:49_948,,site_1,error,OLT is up
+2024-11-20 13:49:59_172,,site_4,error,Boards: board 4 is Standby_active
+2024-11-20 13:50:18_112,,site_8,error,Boards: board 4 is Standby_active
+2024-11-20 13:52:15_881,,site_3,error,Boards: board 4 is Standby_active
+2024-11-20 13:52:40_967,,site_5,error,Boards: board 4 is Standby_failed
+2024-11-20 13:52:42_011,,site_7,error,Boards: board 4 is Standby_failed
+2024-11-20 13:52:45_000,,site_8,error,ONT MRSRGWZAVG46WZZK has high voltage
+2024-11-20 13:52:45_001,,site_8,error,ONT ATWCPFXF1NLREALD has normal voltage
+2024-11-20 13:52:48_255,,site_8,error,Boards: board 4 is Standby_failed
+2024-11-20 13:53:08_500,,site_6,error,Boards: board 4 is Standby_failed
+2024-11-20 13:54:48_732,,site_4,error,Boards: board 4 is Standby_failed
+2024-11-20 13:55:17_098,,site_8,error,ONT NIWU3TOWGFK9JK7X has low voltage
+2024-11-20 13:55:17_099,,site_8,error,ONT EX67JGS13JV1NUI9 has high voltage
+2024-11-20 13:55:17_099,,site_8,error,ONT W0A662CJC0XH04IZ has low voltage
+2024-11-20 13:55:20_294,,site_8,error,Boards: board 4 is Standby_active
+2024-11-20 13:55:36_913,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-20 13:56:39_771,,site_7,error,Boards: board 4 is Standby_active
+2024-11-20 13:57:03_654,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-20 13:57:46_186,,site_8,error,ONT BUNR1IXXQRR396F6 has normal voltage
+2024-11-20 13:57:49_412,,site_8,error,Boards: board 4 is Standby_failed
+2024-11-20 13:58:08_508,,site_3,error,Boards: board 4 is Standby_failed
+2024-11-20 13:58:37_863,,site_7,error,Boards: board 4 is Standby_failed
+2024-11-20 13:59:34_687,,site_4,error,Boards: board 4 is Standby_active
+2024-11-20 13:59:44_876,,site_1,error,OLT is down
+2024-11-20 13:59:59_000,,site_1,error,OLT is up
+2024-11-20 14:00:02_444,,site_1,error,Boards: board 4 is Normal
+2024-11-20 14:00:14_436,,site_8,error,OLT is down
+2024-11-20 14:00:19_637,,site_8,error,OLT is up
+2024-11-20 14:00:23_074,,site_8,error,Boards: board 4 is Normal
+2024-11-20 14:00:45_742,,site_1,error,OLT is down
+2024-11-20 14:00:55_996,,site_1,error,OLT is up
+2024-11-20 14:01:00_591,,site_5,error,Boards: board 4 is Standby_active
+2024-11-20 14:02:34_178,,site_7,error,Boards: board 4 is Standby_active
+2024-11-20 14:02:48_112,,site_8,error,ONT NIWU3TOWGFK9JK7X has normal voltage
+2024-11-20 14:02:48_113,,site_8,error,ONT BUNR1IXXQRR396F6 has normal voltage
+2024-11-20 14:02:48_114,,site_8,error,ONT MRSRGWZAVG46WZZK has normal voltage
+2024-11-20 14:02:48_114,,site_8,error,ONT EX67JGS13JV1NUI9 has normal voltage
+2024-11-20 14:02:48_115,,site_8,error,ONT W0A662CJC0XH04IZ has normal voltage
+2024-11-20 14:02:48_115,,site_8,error,ONT ATWCPFXF1NLREALD has normal voltage
+2024-11-20 14:02:51_330,,site_8,error,Boards: board 4 is Standby_active
+2024-11-20 14:03:03_023,,site_8,error,OLT is down
+2024-11-20 14:03:13_327,,site_8,error,OLT is up
+2024-11-20 14:03:16_694,,site_8,error,Boards: board 4 is Normal
+2024-11-20 14:03:36_822,,site_8,error,OLT is down
+2024-11-20 14:03:52_337,,site_8,error,OLT is up
+2024-11-20 14:04:24_041,,site_4,error,Boards: board 4 is Standby_failed
+2024-11-20 14:04:55_213,,site_1,error,OLT is down
+2024-11-20 14:05:12_462,,site_1,error,OLT is up
+2024-11-20 14:05:24_717,,site_2,error,Boards: board 4 is Standby_active
+2024-11-20 14:05:46_252,,site_8,error,OLT is down
+2024-11-20 14:06:00_851,,site_8,error,OLT is up
+2024-11-20 14:06:04_250,,site_8,error,Boards: board 4 is Standby_active

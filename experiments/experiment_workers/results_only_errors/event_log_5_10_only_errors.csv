@@ -1,0 +1,58 @@
+time,site,event,timestamp
+2024-11-19 09:46:35_317,,site_3,error,OLT is down
+2024-11-19 09:46:45_178,,site_3,error,OLT is up
+2024-11-19 09:48:16_442,,site_5,error,Boards: board 4 is Standby_active
+2024-11-19 09:48:27_411,,site_1,error,OLT is down
+2024-11-19 09:48:42_680,,site_1,error,OLT is up
+2024-11-19 09:49:23_644,,site_4,error,Boards: board 4 is Standby_active
+2024-11-19 09:52:02_722,,site_5,error,ONT I2Q89AK0TY8NAFFN has high voltage
+2024-11-19 09:52:02_723,,site_5,error,ONT 2GQDTMEZ79ZKN1MA has normal voltage
+2024-11-19 09:52:06_106,,site_5,error,Boards: board 4 is Standby_failed
+2024-11-19 09:52:09_317,,site_3,error,Boards: board 4 is Standby_active
+2024-11-19 09:53:39_680,,site_4,error,Boards: board 4 is Standby_failed
+2024-11-19 09:53:49_889,,site_1,error,Boards: board 4 is Standby_active
+2024-11-19 09:55:51_174,,site_2,error,OLT is down
+2024-11-19 09:55:52_561,,site_5,error,ONT A7IZHXIWQGVILAJR has low voltage
+2024-11-19 09:55:53_964,,site_2,error,OLT is up
+2024-11-19 09:57:12_041,,site_5,error,OLT is down
+2024-11-19 09:57:25_130,,site_5,error,OLT is up
+2024-11-19 09:57:28_534,,site_5,error,Boards: board 4 is Normal
+2024-11-19 09:57:33_186,,site_3,error,Boards: board 4 is Standby_failed
+2024-11-19 09:58:58_652,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-19 09:59:29_710,,site_5,error,OLT is down
+2024-11-19 09:59:41_364,,site_5,error,OLT is up
+2024-11-19 09:59:46_666,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-19 10:00:02_032,,site_3,error,OLT is down
+2024-11-19 10:00:19_785,,site_3,error,OLT is up
+2024-11-19 10:00:23_198,,site_3,error,Boards: board 4 is Normal
+2024-11-19 10:01:07_659,,site_3,error,OLT is down
+2024-11-19 10:01:19_611,,site_3,error,OLT is up
+2024-11-19 10:02:26_582,,site_4,error,Boards: board 4 is Standby_active
+2024-11-19 10:03:33_868,,site_5,error,ONT A7IZHXIWQGVILAJR has normal voltage
+2024-11-19 10:03:33_869,,site_5,error,ONT I2Q89AK0TY8NAFFN has normal voltage
+2024-11-19 10:03:33_870,,site_5,error,ONT 2GQDTMEZ79ZKN1MA has normal voltage
+2024-11-19 10:03:33_871,,site_5,error,ONT 19UYB9QXS1RB15U7 has high voltage
+2024-11-19 10:03:40_098,,site_2,error,Boards: board 4 is Standby_active
+2024-11-19 10:04:01_822,,site_2,error,OLT is down
+2024-11-19 10:04:10_815,,site_2,error,OLT is up
+2024-11-19 10:04:14_156,,site_2,error,Boards: board 4 is Normal
+2024-11-19 10:06:07_312,,site_5,error,OLT is down
+2024-11-19 10:06:15_925,,site_5,error,OLT is up
+2024-11-19 10:06:19_376,,site_5,error,OLT is down
+2024-11-19 10:06:30_863,,site_5,error,OLT is up
+2024-11-19 10:06:39_664,,site_3,error,Boards: board 4 is Standby_active
+2024-11-19 10:06:48_827,,site_4,error,Boards: board 4 is Standby_failed
+2024-11-19 10:08:04_739,,site_2,error,Boards: board 4 is Standby_active
+2024-11-19 10:10:19_334,,site_5,error,ONT 19UYB9QXS1RB15U7 has normal voltage
+2024-11-19 10:10:22_587,,site_5,error,Boards: board 4 is Standby_failed
+2024-11-19 10:11:34_048,,site_5,error,OLT is down
+2024-11-19 10:11:49_376,,site_5,error,OLT is up
+2024-11-19 10:11:52_885,,site_5,error,Boards: board 4 is Normal
+2024-11-19 10:12:03_619,,site_3,error,Boards: board 4 is Standby_failed
+2024-11-19 10:13:05_890,,site_2,error,OLT is down
+2024-11-19 10:13:08_591,,site_2,error,OLT is up
+2024-11-19 10:13:12_011,,site_2,error,Boards: board 4 is Normal
+2024-11-19 10:13:21_582,,site_4,error,OLT is down
+2024-11-19 10:13:37_598,,site_4,error,OLT is up
+2024-11-19 10:13:41_021,,site_4,error,Boards: board 4 is Normal
+2024-11-19 10:14:28_305,,site_1,error,Boards: board 4 is Standby_active

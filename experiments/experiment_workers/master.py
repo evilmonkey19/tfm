@@ -410,20 +410,20 @@ def check_onts_voltage(queue, onts: list):
             continue
         # Low voltage
         if float(ont["voltage"]) <= 3.0:
-            # print("Value is too low for ", ont["sn"])
+            print("Value is too low for ", ont["sn"])
             register_event(
                 site=queue,
                 event=f"ONT {ont['sn']} has low voltage"
             )
         # High voltage
         elif float(ont["voltage"]) >= 3.6:
-            # print("Value is too high for ", ont["sn"])
+            print("Value is too high for ", ont["sn"])
             register_event(
                 site=queue,
                 event=f"ONT {ont['sn']} has high voltage"
             )
         else:
-            # print("Value is normal for ", ont["sn"])
+            print("Value is normal for ", ont["sn"])
             register_event(
                 site=queue,
                 event=f"ONT {ont['sn']} has normal voltage"

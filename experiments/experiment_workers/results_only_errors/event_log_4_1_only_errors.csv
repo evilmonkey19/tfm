@@ -1,0 +1,45 @@
+time,site,event,timestamp
+2024-11-13 13:06:49_338,,site_1,error,OLT is down
+2024-11-13 13:07:08_459,,site_1,error,OLT is up
+2024-11-13 13:08:37_057,,site_2,error,Boards: board 4 is Standby_active
+2024-11-13 13:09:39_868,,site_4,error,Boards: board 4 is Standby_failed
+2024-11-13 13:11:30_772,,site_3,error,Boards: board 4 is Standby_failed
+2024-11-13 13:12:45_186,,site_2,error,OLT is down
+2024-11-13 13:12:56_281,,site_2,error,OLT is up
+2024-11-13 13:12:59_686,,site_2,error,Boards: board 4 is Normal
+2024-11-13 13:15:55_719,,site_4,error,OLT is down
+2024-11-13 13:16:12_533,,site_4,error,OLT is up
+2024-11-13 13:16:15_943,,site_4,error,Boards: board 4 is Normal
+2024-11-13 13:16:43_138,,site_3,error,Boards: board 4 is Standby_active
+2024-11-13 13:16:43_259,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-13 13:17:06_791,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-13 13:17:35_882,,site_1,error,OLT is down
+2024-11-13 13:17:47_812,,site_1,error,OLT is up
+2024-11-13 13:17:51_240,,site_1,error,Boards: board 4 is Normal
+2024-11-13 13:19:35_862,,site_4,error,OLT is down
+2024-11-13 13:19:52_449,,site_4,error,OLT is up
+2024-11-13 13:20:33_977,,site_2,error,Boards: board 4 is Standby_active
+2024-11-13 13:20:48_235,,site_3,error,OLT is down
+2024-11-13 13:20:50_932,,site_3,error,OLT is up
+2024-11-13 13:20:54_294,,site_3,error,Boards: board 4 is Normal
+2024-11-13 13:21:50_349,,site_4,error,OLT is down
+2024-11-13 13:22:01_300,,site_4,error,OLT is up
+2024-11-13 13:22:41_639,,site_2,error,OLT is down
+2024-11-13 13:22:46_424,,site_1,error,Boards: board 4 is Standby_active
+2024-11-13 13:22:53_410,,site_2,error,OLT is up
+2024-11-13 13:26:06_890,,site_3,error,Boards: board 4 is Standby_failed
+2024-11-13 13:26:22_939,,site_4,error,Boards: board 4 is Standby_active
+2024-11-13 13:26:41_878,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-13 13:28:18_377,,site_4,error,OLT is down
+2024-11-13 13:28:27_687,,site_4,error,OLT is up
+2024-11-13 13:28:31_051,,site_4,error,Boards: board 4 is Normal
+2024-11-13 13:30:40_871,,site_2,error,OLT is down
+2024-11-13 13:30:47_598,,site_2,error,OLT is up
+2024-11-13 13:30:50_975,,site_2,error,Boards: board 4 is Normal
+2024-11-13 13:31:14_867,,site_3,error,Boards: board 4 is Standby_active
+2024-11-13 13:32:45_892,,site_4,error,Boards: board 4 is Standby_failed
+2024-11-13 13:34:32_677,,site_2,error,Boards: board 4 is Standby_active
+2024-11-13 13:37:01_522,,site_4,error,ONT AH6XNJ3AA82P3LBU has high voltage
+2024-11-13 13:37:01_522,,site_4,error,ONT J2TB9JQK7YU6VDFK has low voltage
+2024-11-13 13:37:01_524,,site_4,error,ONT M5YRG6Q5EJBHPNCN has normal voltage
+2024-11-13 13:37:04_809,,site_4,error,Boards: board 4 is Standby_active

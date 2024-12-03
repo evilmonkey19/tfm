@@ -1,0 +1,29 @@
+time,site,event,timestamp
+2024-11-12 11:19:11_708,,site_1,error,OLT is down
+2024-11-12 11:28:28_375,,site_1,error,ONT 0GDPOQ3X2LTP0WFX has normal voltage
+2024-11-12 11:28:28_376,,site_1,error,ONT JAYHV92Z84DFS0H8 has normal voltage
+2024-11-12 11:28:28_377,,site_1,error,ONT 4BVVIKFXYER2P3D7 has normal voltage
+2024-11-12 11:28:31_645,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 11:33:04_365,,site_1,error,ONT U6EXV02RHXUN5920 has high voltage
+2024-11-12 11:33:04_365,,site_1,error,ONT BFV9HWMPZ7RK399T has normal voltage
+2024-11-12 11:33:04_365,,site_1,error,ONT E7AT6EE9C8P45Y2Q has normal voltage
+2024-11-12 11:33:04_366,,site_1,error,ONT 87D7YFO9MYDUOMQK has normal voltage
+2024-11-12 11:33:04_366,,site_1,error,ONT PBGQS00OGJABDGOQ has normal voltage
+2024-11-12 11:33:04_368,,site_1,error,ONT FG5D75FJZY4ZKN7N has high voltage
+2024-11-12 11:37:43_752,,site_1,error,ONT 1VLM8A1QYKGMU7Q2 has normal voltage
+2024-11-12 11:37:43_753,,site_1,error,ONT N7XCJTE2F73TP1CQ has high voltage
+2024-11-12 11:37:43_753,,site_1,error,ONT IUIFA2ILQTX0QFQE has high voltage
+2024-11-12 11:37:43_755,,site_1,error,ONT BKOX4RIEXCT7U7X0 has low voltage
+2024-11-12 11:42:18_803,,site_1,error,ONT DBUIYY0NTKAPM3UA has low voltage
+2024-11-12 11:42:18_804,,site_1,error,ONT LGMLW91BBCWLQCPL has low voltage
+2024-11-12 11:42:18_805,,site_1,error,ONT 7YWFY9FKLOV7H31U has high voltage
+2024-11-12 11:42:18_805,,site_1,error,ONT OH2QI4YTCSPNJ9C2 has low voltage
+2024-11-12 11:42:18_806,,site_1,error,ONT NZ07WVE983I3E04T has high voltage
+2024-11-12 11:42:22_061,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 11:46:53_325,,site_1,error,ONT 0DN4YPEFUIFHC5L6 has low voltage
+2024-11-12 11:46:53_325,,site_1,error,ONT 1ED8T625JIARPOV8 has high voltage
+2024-11-12 11:46:53_326,,site_1,error,ONT N59KZBZBID12VC0L has normal voltage
+2024-11-12 11:46:53_326,,site_1,error,ONT 1TX9QJGW1DTV7Z7Y has low voltage
+2024-11-12 11:46:53_327,,site_1,error,ONT 70GFW961Y6IZWK15 has high voltage
+2024-11-12 11:46:53_328,,site_1,error,ONT 0GDPOQ3X2LTP0WFX has low voltage
+2024-11-12 11:46:53_329,,site_1,error,ONT 0F2X15MR8N78PL8K has high voltage

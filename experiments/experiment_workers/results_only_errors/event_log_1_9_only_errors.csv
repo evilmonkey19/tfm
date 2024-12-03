@@ -1,0 +1,36 @@
+time,site,event,timestamp
+2024-11-12 13:44:17_987,,site_1,error,OLT is down
+2024-11-12 13:44:34_551,,site_1,error,OLT is up
+2024-11-12 13:46:01_443,,site_1,error,OLT is down
+2024-11-12 13:46:12_274,,site_1,error,OLT is up
+2024-11-12 13:50:49_981,,site_1,error,OLT is down
+2024-11-12 13:50:52_672,,site_1,error,OLT is up
+2024-11-12 13:53:43_027,,site_1,error,OLT is down
+2024-11-12 13:53:45_707,,site_1,error,OLT is up
+2024-11-12 13:58:24_549,,site_1,error,ONT 5NHTKZKOMMXEOS7E has normal voltage
+2024-11-12 13:58:27_873,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 14:03:05_403,,site_1,error,ONT 0A917RSZI450NGOY has low voltage
+2024-11-12 14:03:05_404,,site_1,error,ONT AMLUQ5IWHK85N6JZ has high voltage
+2024-11-12 14:03:05_404,,site_1,error,ONT 1ED8T625JIARPOV8 has high voltage
+2024-11-12 14:03:05_405,,site_1,error,ONT F6BA4B97S4PY0GK8 has low voltage
+2024-11-12 14:03:05_406,,site_1,error,ONT 3RCPQ7RUIODQ2SWF has normal voltage
+2024-11-12 14:03:05_406,,site_1,error,ONT 9S68K0BI27YQYMO7 has normal voltage
+2024-11-12 14:03:05_407,,site_1,error,ONT NM7HQZ2YGEWSASPP has normal voltage
+2024-11-12 14:03:05_408,,site_1,error,ONT 6YKKXWASN06MAIPU has low voltage
+2024-11-12 14:03:05_409,,site_1,error,ONT MALSDNW67S8ZRJ81 has normal voltage
+2024-11-12 14:03:08_575,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 14:04:05_955,,site_1,error,OLT is down
+2024-11-12 14:04:22_898,,site_1,error,OLT is up
+2024-11-12 14:04:26_248,,site_1,error,Boards: board 4 is Normal
+2024-11-12 14:09:00_465,,site_1,error,ONT 0A917RSZI450NGOY has normal voltage
+2024-11-12 14:09:00_465,,site_1,error,ONT AMLUQ5IWHK85N6JZ has normal voltage
+2024-11-12 14:09:00_465,,site_1,error,ONT 1ED8T625JIARPOV8 has normal voltage
+2024-11-12 14:09:00_467,,site_1,error,ONT F6BA4B97S4PY0GK8 has normal voltage
+2024-11-12 14:09:00_467,,site_1,error,ONT 3RCPQ7RUIODQ2SWF has normal voltage
+2024-11-12 14:09:00_468,,site_1,error,ONT 9S68K0BI27YQYMO7 has normal voltage
+2024-11-12 14:09:00_469,,site_1,error,ONT 0F2X15MR8N78PL8K has low voltage
+2024-11-12 14:09:00_469,,site_1,error,ONT NM7HQZ2YGEWSASPP has normal voltage
+2024-11-12 14:09:00_469,,site_1,error,ONT 6YKKXWASN06MAIPU has normal voltage
+2024-11-12 14:09:00_470,,site_1,error,ONT 5NHTKZKOMMXEOS7E has normal voltage
+2024-11-12 14:09:00_470,,site_1,error,ONT MALSDNW67S8ZRJ81 has normal voltage
+2024-11-12 14:09:03_764,,site_1,error,Boards: board 4 is Standby_active

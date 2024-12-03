@@ -1,0 +1,37 @@
+time,site,event,timestamp
+2024-11-12 19:35:19_400,,site_2,error,OLT is down
+2024-11-12 19:35:19_407,,site_3,error,OLT is down
+2024-11-12 19:35:19_411,,site_1,error,OLT is down
+2024-11-12 19:44:54_742,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 19:46:16_265,,site_2,error,ONT KFI3KS5VUZAS11Y5 has high voltage
+2024-11-12 19:46:16_266,,site_2,error,ONT I5Y77ZQVX8IDRPR6 has normal voltage
+2024-11-12 19:46:16_266,,site_2,error,ONT 118KBT97C3T359FX has high voltage
+2024-11-12 19:46:16_267,,site_2,error,ONT F7WN5OTYOM4RU47B has high voltage
+2024-11-12 19:46:19_521,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-12 19:49:58_745,,site_2,error,ONT DK05E3CZGW8JX56S has normal voltage
+2024-11-12 19:50:53_339,,site_1,error,OLT is down
+2024-11-12 19:51:09_785,,site_1,error,OLT is up
+2024-11-12 19:51:13_149,,site_1,error,Boards: board 4 is Normal
+2024-11-12 19:53:03_343,,site_2,error,OLT is down
+2024-11-12 19:53:12_449,,site_2,error,OLT is up
+2024-11-12 19:53:15_759,,site_2,error,Boards: board 4 is Normal
+2024-11-12 19:55:57_917,,site_1,error,Boards: board 4 is Standby_active
+2024-11-12 19:56:50_816,,site_2,error,ONT KFI3KS5VUZAS11Y5 has normal voltage
+2024-11-12 19:56:50_817,,site_2,error,ONT I5Y77ZQVX8IDRPR6 has normal voltage
+2024-11-12 19:56:50_817,,site_2,error,ONT DK05E3CZGW8JX56S has normal voltage
+2024-11-12 19:56:50_817,,site_2,error,ONT 118KBT97C3T359FX has normal voltage
+2024-11-12 19:56:50_819,,site_2,error,ONT F7WN5OTYOM4RU47B has normal voltage
+2024-11-12 19:56:54_002,,site_2,error,Boards: board 4 is Standby_failed
+2024-11-12 20:00:30_545,,site_2,error,ONT JF909M2JOTBZ280Y has normal voltage
+2024-11-12 20:00:30_545,,site_2,error,ONT 118KBT97C3T359FX has low voltage
+2024-11-12 20:00:30_546,,site_2,error,ONT GY2Q3TGUGRCJ2D37 has normal voltage
+2024-11-12 20:00:30_546,,site_2,error,ONT 88YE1G4RNP34MZ9B has normal voltage
+2024-11-12 20:00:30_547,,site_2,error,ONT F6UZX9C32MYFACLX has normal voltage
+2024-11-12 20:00:30_548,,site_2,error,ONT 49O7TP6UUYX473C2 has normal voltage
+2024-11-12 20:00:42_905,,site_1,error,Boards: board 4 is Standby_failed
+2024-11-12 20:04:12_318,,site_2,error,ONT Q3RA0QDE9JPUADY0 has normal voltage
+2024-11-12 20:04:12_319,,site_2,error,ONT YPBR7468FOD10SB7 has high voltage
+2024-11-12 20:04:12_319,,site_2,error,ONT S3T32P3A7MZLMEGC has low voltage
+2024-11-12 20:04:12_322,,site_2,error,ONT JA7UYTTPNV043J06 has normal voltage
+2024-11-12 20:04:15_521,,site_2,error,Boards: board 4 is Standby_active
+2024-11-12 20:05:29_035,,site_1,error,Boards: board 4 is Standby_active
