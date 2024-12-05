@@ -1,0 +1,35 @@
+_,Starting chaos monkey,2024-12-04 21:16:50_432
+site_1,Changing board state to Standby_active,2024-12-04 21:17:15_254
+site_1,Changing voltage for KRIPS1E0KII20H29 from site_1 to set_low_voltage,2024-12-04 21:17:44_033
+site_1,Changing board state to Standby_failed,2024-12-04 21:18:49_111
+site_1,Changing voltage for 52S478J5TXPAEJT2 from site_1 to set_normal_voltage,2024-12-04 21:19:04_352
+site_1,Changing board state to Standby_active,2024-12-04 21:20:02_504
+site_1,Changing voltage for WZGPEM96TI81SNPU from site_1 to set_high_voltage,2024-12-04 21:20:34_700
+site_1,Changing voltage for LKYWK2N2UQLCAUNU from site_1 to set_normal_voltage,2024-12-04 21:20:43_875
+site_1,Changing voltage for CSVMUMOSX6QWY63I from site_1 to set_low_voltage,2024-12-04 21:21:32_520
+site_1,Changing board state to Standby_failed,2024-12-04 21:22:33_684
+site_1,Changing board state to Standby_active,2024-12-04 21:22:43_492
+site_1,Changing board state to Standby_failed,2024-12-04 21:23:19_198
+site_1,Changing board state to Standby_active,2024-12-04 21:23:31_897
+site_1,Changing board state to Standby_failed,2024-12-04 21:23:35_272
+site_1,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-12-04 21:24:05_524
+site_1,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-12-04 21:24:15_823
+site_1,Changing voltage for UPE9J0HJMNJXKC23 from site_1 to set_normal_voltage,2024-12-04 21:24:31_011
+site_1,Changing board state to Standby_active,2024-12-04 21:24:42_858
+site_1,Changing board state to Standby_failed,2024-12-04 21:25:14_731
+site_1,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-12-04 21:25:50_257
+site_1,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-12-04 21:26:02_993
+site_1,Changing board state to Standby_active,2024-12-04 21:26:32_137
+site_1,Changing board state to Standby_failed,2024-12-04 21:27:31_583
+site_1,Changing voltage for PNN2C1878DT59ZHG from site_1 to set_normal_voltage,2024-12-04 21:30:01_952
+site_1,Changing board state to Standby_active,2024-12-04 21:30:14_787
+site_1,Changing voltage for BFV9HWMPZ7RK399T from site_1 to set_normal_voltage,2024-12-04 21:31:31_404
+site_1,Changing board state to Standby_failed,2024-12-04 21:33:08_362
+site_1,Shutting down {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-12-04 21:34:20_722
+site_1,Starting {'username': 'admin', 'password': 'admin', 'port': 9000, 'platform': 'huawei_smartax', 'running': True},2024-12-04 21:34:28_354
+site_1,Changing board state to Standby_active,2024-12-04 21:35:10_998
+site_1,Changing board state to Standby_failed,2024-12-04 21:35:18_146
+site_1,Changing voltage for AUFLXFZYD7ETRWE5 from site_1 to set_normal_voltage,2024-12-04 21:35:35_662
+site_1,Changing board state to Standby_active,2024-12-04 21:35:40_884
+site_1,Changing voltage for WWFNNZADIZ5JN5BF from site_1 to set_high_voltage,2024-12-04 21:36:05_476
+_,Exiting chaos monkey,2024-12-04 21:36:22_010

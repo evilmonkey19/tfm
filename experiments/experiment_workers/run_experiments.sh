@@ -8,9 +8,9 @@
 #     done
 # done
 
-for i in {8..8}; do
+for i in {10..10}; do
     python generate_scenario.py $i errors
-    for j in {10..10}; do
+    for j in {9..10}; do
         cp events_log_template.csv events_log.csv
         python master.py
         mv events_log.csv event_log_${i}_${j}_only_errors.csv 
