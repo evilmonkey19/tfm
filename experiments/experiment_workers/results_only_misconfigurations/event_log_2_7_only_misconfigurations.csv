@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-02 23:28:56_768,158ba3e9-8a47-492e-81c4-c4a681faa9cb,site_1,detected,service changed,ntp
 2024-11-02 23:28:56_768,62fe0ada-cb2a-4ea6-b411-20d94530a7d5,site_1,detected,service changed,telnetv6
 2024-11-02 23:29:12_738,158ba3e9-8a47-492e-81c4-c4a681faa9cb,site_1,fixed,service changed,ntp

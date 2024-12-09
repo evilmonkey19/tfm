@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-06 16:23:27_516,09f424c1-8cff-476a-a5e5-655a0689b7bf,site_5,detected,service changed,ntp6
 2024-11-06 16:23:43_222,09f424c1-8cff-476a-a5e5-655a0689b7bf,site_5,fixed,service changed,ntp6
 2024-11-06 16:24:43_171,f6ef0de0-1b8d-480f-b1b6-71b15f07ea2b,site_4,detected,service changed,snmpv6
@@ -23,8 +23,6 @@ time,site,event,timestamp
 2024-11-06 16:29:33_704,27000144-2017-4d09-a431-98bd1dd2e11e,site_5,fixed,c_vlan,UQFTG9KG3JPU5JDI
 2024-11-06 16:29:41_721,96a2035a-daa1-4d45-80b7-c0cb3fb7eb37,site_5,fixed,gemport,VDBZ6V497NRLRKOC
 2024-11-06 16:30:19_776,6c7b9b9b-ca2b-4522-95e7-fa3aeba80bf4,site_5,fixed,unregistered,DSJ4OQJ97RBKMRYU
-2024-11-06 16:31:08_094,,site_1,error,OLT is down
-2024-11-06 16:31:10_774,,site_1,error,OLT is up
 2024-11-06 16:31:23_255,c05a7872-1148-4fd6-bb83-cf2a0e0c18a3,site_2,detected,service changed,dhcp-relay
 2024-11-06 16:31:23_255,11492519-d221-436e-aabc-56115c2dfa12,site_2,detected,service changed,sftp-client
 2024-11-06 16:31:23_255,95bdbff4-a58f-469d-baef-87b22dd55ade,site_2,detected,service changed,ssh

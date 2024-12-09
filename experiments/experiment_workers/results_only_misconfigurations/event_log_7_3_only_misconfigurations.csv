@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 10:59:24_390,022788b6-7a94-459e-9aa7-a4838efd8d10,site_7,detected,unregistered,ME5GAVCLWZZ8DD09
 2024-11-07 10:59:24_391,0ef9be65-b14a-401c-bb5e-0ae733d67cb6,site_7,detected,unregistered,82Z6FQO2RJFGZIGM
 2024-11-07 10:59:24_437,54219923-b317-483e-bbfd-2f1a03da4400,site_7,detected,vlan_type,AJ57MVMJ0LCOUNT8
@@ -68,14 +68,6 @@ time,site,event,timestamp
 2024-11-07 11:07:39_428,72af854e-f45a-4bc9-9160-456f439ccf93,site_7,detected,gemport,2WMGR015ZSEQRWQ4
 2024-11-07 11:07:39_443,b208bf35-3703-4400-aa8c-b7952eddd81c,site_7,detected,s_vlan,FR8I24HB0WB7T468
 2024-11-07 11:07:39_453,10ee4a16-6b91-4996-82eb-36076d47907e,site_7,detected,vlan_type,XBHRLS2QBE024EMT
-2024-11-07 11:07:39_461,,site_7,error,ONT EBDFEQGT3FA5B6QG has normal voltage
-2024-11-07 11:07:39_461,,site_7,error,ONT ZK0MG8FQWMPKCZNI has high voltage
-2024-11-07 11:07:39_461,,site_7,error,ONT Q7NXBMSU01KBW3JS has normal voltage
-2024-11-07 11:07:39_461,,site_7,error,ONT RBQQLRUTJ1SV96ZX has normal voltage
-2024-11-07 11:07:39_461,,site_7,error,ONT L1G2ITV851O5KXWI has normal voltage
-2024-11-07 11:07:39_461,,site_7,error,ONT ZKH169X3YHXFGRSG has normal voltage
-2024-11-07 11:07:39_461,,site_7,error,ONT 0WZBISL40HIMAI3C has normal voltage
-2024-11-07 11:07:39_461,,site_7,error,ONT CC37AG5XN1VLWYST has normal voltage
 2024-11-07 11:07:42_736,1d9a30fb-f77e-40cf-bbdb-7a8427485636,site_7,detected,service changed,sshv6
 2024-11-07 11:07:57_117,1d9a30fb-f77e-40cf-bbdb-7a8427485636,site_7,fixed,service changed,sshv6
 2024-11-07 11:08:05_597,e00df75c-1643-4d52-9e8f-0e0913c36d50,site_5,detected,service changed,ntp6
@@ -98,8 +90,6 @@ time,site,event,timestamp
 2024-11-07 11:09:43_690,b208bf35-3703-4400-aa8c-b7952eddd81c,site_7,fixed,s_vlan,FR8I24HB0WB7T468
 2024-11-07 11:09:51_717,4c4d264c-60e8-47a2-874f-55fd75328c82,site_3,fixed,service changed,snmp
 2024-11-07 11:10:08_748,72af854e-f45a-4bc9-9160-456f439ccf93,site_7,fixed,gemport,2WMGR015ZSEQRWQ4
-2024-11-07 11:10:21_006,,site_7,error,OLT is down
-2024-11-07 11:10:23_702,,site_7,error,OLT is up
 2024-11-07 11:10:27_092,30dd6fb2-19f0-4246-8b69-75ca3ba2f0ee,site_7,detected,service changed,radius
 2024-11-07 11:10:27_092,5b2f3606-96cc-4494-bd54-6c8504bbfe23,site_7,detected,service changed,sshv6
 2024-11-07 11:10:31_780,10ee4a16-6b91-4996-82eb-36076d47907e,site_7,fixed,vlan_type,XBHRLS2QBE024EMT
@@ -124,13 +114,6 @@ time,site,event,timestamp
 2024-11-07 11:12:16_254,db6903ae-ce29-4178-8d46-39282f24bae9,site_7,detected,s_vlan,GVXMEDXDW2E5ZNYP
 2024-11-07 11:12:16_261,ef7ed23a-96d0-4280-90ef-4c827a3733da,site_7,detected,vlan_type,TGSAF79UU3LX36R0
 2024-11-07 11:12:16_271,2ffb4059-296a-4ab6-9025-5fad2ff37f27,site_7,detected,snmp_profile,62JKDTNI1P8XBBXU
-2024-11-07 11:12:16_271,,site_7,error,ONT EBDFEQGT3FA5B6QG has normal voltage
-2024-11-07 11:12:16_271,,site_7,error,ONT ZK0MG8FQWMPKCZNI has normal voltage
-2024-11-07 11:12:16_271,,site_7,error,ONT Q7NXBMSU01KBW3JS has high voltage
-2024-11-07 11:12:16_271,,site_7,error,ONT RBQQLRUTJ1SV96ZX has normal voltage
-2024-11-07 11:12:16_271,,site_7,error,ONT L1G2ITV851O5KXWI has normal voltage
-2024-11-07 11:12:16_271,,site_7,error,ONT 0WZBISL40HIMAI3C has normal voltage
-2024-11-07 11:12:16_271,,site_7,error,ONT CC37AG5XN1VLWYST has normal voltage
 2024-11-07 11:12:19_664,34c74b9f-6978-4a4a-8855-cb360dba6913,site_7,detected,service changed,sshv6
 2024-11-07 11:12:32_124,b3ee35cb-69cb-4b71-9bba-d937b87ba261,site_5,fixed,service changed,dhcp-relay
 2024-11-07 11:12:32_125,2f4d3a48-050d-498b-955f-f7a3c8ff1f51,site_5,fixed,service changed,ipdr

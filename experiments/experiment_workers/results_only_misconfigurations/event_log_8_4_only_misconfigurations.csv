@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 16:27:34_809,a70debe5-02ce-4a0f-bb6b-b70fd20e4bd8,site_8,detected,unregistered,P989KH4GB7C6T7E3
 2024-11-07 16:27:34_811,8ba508d4-d646-4183-b103-3435c04df72a,site_8,detected,unregistered,3FG8V2YEI9L7O4B8
 2024-11-07 16:28:00_881,3b550249-e3dc-40b4-bd8c-340f23c2398e,site_7,detected,service changed,telnetv6
@@ -43,8 +43,6 @@ time,site,event,timestamp
 2024-11-07 16:35:27_218,d10e1a90-1952-4194-a695-b134a858392c,site_4,fixed,service changed,snmpv6
 2024-11-07 16:35:58_671,40e8fa8c-2cb9-486f-a72b-edce9a8638df,site_7,detected,service changed,netconf
 2024-11-07 16:36:13_515,40e8fa8c-2cb9-486f-a72b-edce9a8638df,site_7,fixed,service changed,netconf
-2024-11-07 16:37:06_670,,site_2,error,OLT is down
-2024-11-07 16:37:09_303,,site_2,error,OLT is up
 2024-11-07 16:37:12_734,3145a919-5b98-4a35-8ff9-7196ee07e911,site_2,detected,service changed,ftp-client
 2024-11-07 16:37:12_734,d7cb3752-9c2d-45db-b9c9-5c487337782a,site_2,detected,service changed,radius
 2024-11-07 16:37:12_734,3a346375-5027-43d2-9f4d-a34f03ec046c,site_2,detected,service changed,snmp

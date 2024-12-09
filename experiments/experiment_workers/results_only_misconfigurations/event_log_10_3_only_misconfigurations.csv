@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-08 10:45:34_034,81d5bff1-393e-4ac4-9d61-d121bcb47249,site_8,detected,service changed,sshv6
 2024-11-08 10:45:48_604,81d5bff1-393e-4ac4-9d61-d121bcb47249,site_8,fixed,service changed,sshv6
 2024-11-08 10:46:03_739,c48fb2f3-7912-4065-9c0e-af0e3fa020d7,site_9,detected,service changed,radius
@@ -56,8 +56,6 @@ time,site,event,timestamp
 2024-11-08 10:53:42_662,bf98ff32-59c5-4502-b420-4d4546439acd,site_8,fixed,service changed,ntp6
 2024-11-08 10:53:42_662,93da2e9a-5273-499c-a555-bb233c7ff97c,site_8,fixed,service changed,sshv6
 2024-11-08 10:53:43_665,4d3c527d-37d9-4b5e-beb1-07c417d1a38b,site_8,fixed,service changed,ssh
-2024-11-08 10:53:48_822,,site_7,error,OLT is down
-2024-11-08 10:53:51_481,,site_7,error,OLT is up
 2024-11-08 10:53:54_944,34ac7acc-d570-4b83-bffb-b60c3648ee49,site_7,detected,service changed,sftp-client
 2024-11-08 10:54:04_899,5b4468af-2779-4ee9-9544-f70270ab1528,site_4,detected,service changed,sshv6
 2024-11-08 10:54:11_820,34ac7acc-d570-4b83-bffb-b60c3648ee49,site_7,fixed,service changed,sftp-client

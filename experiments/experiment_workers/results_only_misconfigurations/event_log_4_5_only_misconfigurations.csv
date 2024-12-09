@@ -1,9 +1,7 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-06 10:58:29_880,065235d9-d814-4a5e-a797-23f9c56885ca,site_2,detected,service changed,snmp
 2024-11-06 10:58:45_601,065235d9-d814-4a5e-a797-23f9c56885ca,site_2,fixed,service changed,snmp
 2024-11-06 10:59:22_207,996be1bc-db5a-4b49-a0ad-55123e762131,site_4,detected,unregistered,J2TB9JQK7YU6VDFK
-2024-11-06 11:01:06_680,,site_3,error,OLT is down
-2024-11-06 11:01:09_405,,site_3,error,OLT is up
 2024-11-06 11:02:13_023,a456c772-8c46-407f-87f9-c1e6332f7f8d,site_2,detected,service changed,mqtt
 2024-11-06 11:02:27_881,a456c772-8c46-407f-87f9-c1e6332f7f8d,site_2,fixed,service changed,mqtt
 2024-11-06 11:03:15_937,996be1bc-db5a-4b49-a0ad-55123e762131,site_4,fixed,unregistered,J2TB9JQK7YU6VDFK

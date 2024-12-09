@@ -1,6 +1,4 @@
-time,site,event,timestamp
-2024-11-08 13:16:02_634,,site_5,error,OLT is down
-2024-11-08 13:16:05_323,,site_5,error,OLT is up
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-08 13:17:53_791,683565fc-6ddc-4ed6-a559-11bf095343b8,site_10,detected,unregistered,97HX2K0HCM6ZE07S
 2024-11-08 13:17:53_850,7a578502-58f2-4018-a3a5-12aacc7b6c46,site_10,detected,s_vlan,JJU8W22XYOCGWB2R
 2024-11-08 13:17:57_205,3b827886-b277-4c63-a26d-8777c3a86acb,site_10,detected,service changed,sshv6

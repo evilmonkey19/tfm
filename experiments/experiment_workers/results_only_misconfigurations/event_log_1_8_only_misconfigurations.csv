@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-10-27 16:13:27_751,e9eb2519-b4c8-4040-9506-26159b395697,site_1,detected,unregistered,X77UTF92HMJFXKMK
 2024-10-27 16:13:27_779,46d51dbf-c2db-465a-9bbe-f5ae7eecc9c5,site_1,detected,gemport,6I2GL381MRA17R0E
 2024-10-27 16:13:27_780,b5b26d6e-0672-4872-89e1-464c9bbd9f8e,site_1,detected,gemport,A8U0PRYZ70L8A69S

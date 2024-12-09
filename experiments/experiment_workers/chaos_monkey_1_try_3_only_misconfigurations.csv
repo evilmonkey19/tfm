@@ -1,0 +1,13 @@
+_,Starting chaos monkey,2024-12-08 22:31:07_280
+site_1,Changing snmp profile for MFL0108XX7CIHP0M from site_1,2024-12-08 22:33:23_418
+site_1,Unregistering HCUH6TM04KSF9NOR from site_1,2024-12-08 22:34:30_625
+site_1,Changing state of twamp from site_1,2024-12-08 22:34:44_986
+site_1,Changing vlan type for TP83CAUU2Y9SZGQO from site_1,2024-12-08 22:34:57_453
+site_1,Changing snmp profile for UXX7VVJF57FWM52V from site_1,2024-12-08 22:35:39_325
+site_1,Changing state of ftp-client from site_1,2024-12-08 22:35:46_633
+site_1,Changing gemport for ZDIBO4WWKP36TU5W from site_1,2024-12-08 22:36:09_933
+site_1,Changing gemport for OW8UUTYSDVXXX1VC from site_1,2024-12-08 22:36:19_863
+site_1,Unregistering 87D7YFO9MYDUOMQK from site_1,2024-12-08 22:36:30_537
+site_1,Unregistering 3A45TT4FHS0SMKUA from site_1,2024-12-08 22:37:12_794
+site_1,Unregistering 1BD13PAKRUQD9SFZ from site_1,2024-12-08 22:37:38_862
+_,Exiting chaos monkey,2024-12-08 22:38:30_618

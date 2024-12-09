@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 14:00:33_687,e9c90339-505e-4476-9c2d-79ac70d3fd58,site_7,detected,gemport,YN5SQ2AXPDO92F6E
 2024-11-07 14:00:33_737,5380c3f4-e132-4c01-bdb1-ba5536f08e36,site_7,detected,snmp_profile,62JKDTNI1P8XBBXU
 2024-11-07 14:01:54_315,e9c90339-505e-4476-9c2d-79ac70d3fd58,site_7,fixed,gemport,YN5SQ2AXPDO92F6E

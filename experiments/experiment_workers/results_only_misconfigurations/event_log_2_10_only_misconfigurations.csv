@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-03 00:32:03_915,f36d8488-45fe-4ae5-a248-e9953c0216b4,site_2,detected,snmp_profile,HQVB0UYP6G40TITL
 2024-11-03 00:32:07_174,6d9fd5e6-6219-4c9e-9ffb-aeb33a702fe5,site_2,detected,service changed,portal
 2024-11-03 00:32:07_175,93d9fd24-8540-4bdf-95a3-f239922e0f5c,site_2,detected,service changed,radius

@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 21:46:33_651,270c280d-df3a-4db8-839a-60cee0fae951,site_7,detected,service changed,dhcpv6-relay
 2024-11-07 21:46:47_784,270c280d-df3a-4db8-839a-60cee0fae951,site_7,fixed,service changed,dhcpv6-relay
 2024-11-07 21:48:36_236,977a7074-5769-47e9-a1d5-05b96eb2e94b,site_7,detected,service changed,sftp-client

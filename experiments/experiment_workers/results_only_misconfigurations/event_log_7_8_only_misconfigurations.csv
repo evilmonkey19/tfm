@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 13:26:06_722,2daeb5c7-d8a5-45ea-886d-5848894a5211,site_7,detected,unregistered,W9DRQARTHT44P08K
 2024-11-07 13:26:06_750,d82717e5-1639-43e5-a4f7-badd1c8dfbac,site_7,detected,s_vlan,Q7NXBMSU01KBW3JS
 2024-11-07 13:26:06_763,6feb79e3-153a-470a-aa6b-3799c13e395d,site_7,detected,snmp_profile,WFTK2XMFVVK032SA
@@ -118,8 +118,6 @@ time,site,event,timestamp
 2024-11-07 13:39:35_080,300b5035-18bd-4fa5-81a1-b27d177a5883,site_7,fixed,service changed,mqtt
 2024-11-07 13:39:37_094,101fc930-3062-4c40-a837-37dd470461c9,site_2,fixed,service changed,radius
 2024-11-07 13:39:49_153,9ef43e92-5ad9-42ba-90ba-ed5069b304e3,site_7,fixed,service changed,web-proxy
-2024-11-07 13:40:18_443,,site_6,error,OLT is down
-2024-11-07 13:40:21_082,,site_6,error,OLT is up
 2024-11-07 13:40:24_538,aac3fe75-ca3f-4bd0-9d84-00a302ceb711,site_6,detected,service changed,mqtt
 2024-11-07 13:40:24_538,96979db7-29c0-4759-a1f8-23b417a8d32f,site_6,detected,service changed,sshv6
 2024-11-07 13:40:41_395,aac3fe75-ca3f-4bd0-9d84-00a302ceb711,site_6,fixed,service changed,mqtt

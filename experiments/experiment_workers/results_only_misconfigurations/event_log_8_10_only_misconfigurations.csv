@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 19:18:45_919,015d9266-eb8f-4209-9973-0bd02ca26871,site_7,detected,service changed,mqtt
 2024-11-07 19:19:00_407,015d9266-eb8f-4209-9973-0bd02ca26871,site_7,fixed,service changed,mqtt
 2024-11-07 19:20:44_160,27e8e3ba-ede8-4927-bcef-84783adce609,site_7,detected,service changed,netconf

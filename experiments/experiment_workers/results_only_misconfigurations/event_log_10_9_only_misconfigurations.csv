@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-08 13:44:18_480,ae43f023-7316-4dbd-9607-959d8daf119b,site_8,detected,service changed,telnet
 2024-11-08 13:44:26_129,cc445aad-3498-4922-af21-296c158f4350,site_7,detected,service changed,ssh
 2024-11-08 13:44:32_782,ae43f023-7316-4dbd-9607-959d8daf119b,site_8,fixed,service changed,telnet
@@ -40,8 +40,6 @@ time,site,event,timestamp
 2024-11-08 13:51:04_433,300476e0-4fff-4488-bbeb-cb5bac421a60,site_6,fixed,service changed,portal
 2024-11-08 13:51:06_438,c41ade7f-7126-4198-b983-2b6c0984e400,site_6,fixed,service changed,capwap
 2024-11-08 13:51:24_478,b73f1366-bc31-4b23-8c5b-e33a4b10b693,site_10,fixed,s_vlan,K25P8GLLVJGGZJ2Y
-2024-11-08 13:52:08_189,,site_4,error,OLT is down
-2024-11-08 13:52:10_866,,site_4,error,OLT is up
 2024-11-08 13:52:14_268,f609f06f-2c6b-4f64-9e5d-c6f66fe05ace,site_4,detected,service changed,ssh
 2024-11-08 13:52:14_268,1834ca71-b43d-438f-8c4d-632ec1d43950,site_4,detected,service changed,telnetv6
 2024-11-08 13:52:14_268,9c6dbfd2-ebaa-44e1-b1fe-faf5ff989692,site_4,detected,service changed,web-proxy

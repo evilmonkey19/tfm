@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-06 18:36:46_257,cc395422-7f14-40ac-ac52-23cd7d5efe28,site_5,detected,unregistered,7RWQOI5KFGXZSO3N
 2024-11-06 18:36:49_645,a8387872-790e-4b28-b0ae-80f1bc8d67c9,site_5,detected,service changed,netconf
 2024-11-06 18:36:49_646,308aaa1b-9bf6-4337-97c5-740ac8b1ebff,site_5,detected,service changed,snmpv6
@@ -133,8 +133,6 @@ time,site,event,timestamp
 2024-11-06 18:57:29_116,87b2dcdc-2c94-4f8b-a96c-9afb590615d9,site_5,fixed,gemport,UQFTG9KG3JPU5JDI
 2024-11-06 18:58:54_309,169d9b84-53c9-41d2-ba4c-400ad5026770,site_5,fixed,snmp_profile,VW2V0ZOXTO8VD28K
 2024-11-06 18:59:26_346,f771402d-4762-4161-bbe2-768d85df3386,site_5,fixed,s_vlan,BA3PJBW8PUYU1GPF
-2024-11-06 18:59:33_656,,site_4,error,OLT is down
-2024-11-06 18:59:36_337,,site_4,error,OLT is up
 2024-11-06 18:59:39_741,c1d2f89d-b3d1-4629-833e-226a0e0e2dd1,site_4,detected,service changed,portal
 2024-11-06 18:59:39_741,4c8fbe9b-6287-4a39-9991-5702c1aca098,site_4,detected,service changed,sshv6
 2024-11-06 18:59:55_379,c1d2f89d-b3d1-4629-833e-226a0e0e2dd1,site_4,fixed,service changed,portal

@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-08 12:15:43_676,9f173f38-dccb-4d8b-a53a-84756427423c,site_10,detected,snmp_profile,RIGMLFM35R7DYWG0
 2024-11-08 12:15:47_876,21db2a56-ede5-4188-bf32-96f0f4f40ab2,site_7,detected,service changed,sftp-client
 2024-11-08 12:15:47_876,71fcacdc-4119-472f-a5c9-ae2cb25473ad,site_7,detected,service changed,telnetv6

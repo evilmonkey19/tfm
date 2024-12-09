@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-08 08:17:21_158,b7761915-8c52-4d84-bb9d-4bbd0a307753,site_7,detected,service changed,twamp
 2024-11-08 08:17:35_756,b7761915-8c52-4d84-bb9d-4bbd0a307753,site_7,fixed,service changed,twamp
 2024-11-08 08:18:24_811,719af8a5-012a-4988-b93d-b83972479ecb,site_5,detected,service changed,ntp6

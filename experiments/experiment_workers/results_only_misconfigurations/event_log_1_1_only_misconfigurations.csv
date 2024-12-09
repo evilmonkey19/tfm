@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-10-26 22:48:54_160,09736dfe-059b-4db2-b3b3-5422301af16f,site_1,detected,unregistered,60ZGMGS341U37LJV
 2024-10-26 22:48:54_162,7713e189-0a6a-40c1-a105-ecdb0a18f106,site_1,detected,unregistered,6TV1YJUZ7PPPC02T
 2024-10-26 22:48:54_162,d92723e9-e39f-475b-9294-60bd1e805f5a,site_1,detected,unregistered,WZGPEM96TI81SNPU

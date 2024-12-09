@@ -1,11 +1,9 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 15:32:16_314,1e6fd7f2-6a8c-4e4b-abb1-9bdccdd2fba7,site_8,detected,unregistered,JTG8XPF6U77LCXEC
 2024-11-07 15:32:39_124,12fbcf82-3577-45fc-96ba-0c1c4e2c1c02,site_7,detected,service changed,radius
 2024-11-07 15:32:53_908,12fbcf82-3577-45fc-96ba-0c1c4e2c1c02,site_7,fixed,service changed,radius
 2024-11-07 15:33:12_826,29178ff3-a075-4823-89b0-43c92759ac73,site_5,detected,service changed,ipdr
 2024-11-07 15:33:28_026,29178ff3-a075-4823-89b0-43c92759ac73,site_5,fixed,service changed,ipdr
-2024-11-07 15:34:12_066,,site_4,error,OLT is down
-2024-11-07 15:34:14_752,,site_4,error,OLT is up
 2024-11-07 15:34:18_202,49d47ce6-a774-4260-b3fa-9b67780c190a,site_4,detected,service changed,telnetv6
 2024-11-07 15:34:36_174,49d47ce6-a774-4260-b3fa-9b67780c190a,site_4,fixed,service changed,telnetv6
 2024-11-07 15:34:45_185,1e6fd7f2-6a8c-4e4b-abb1-9bdccdd2fba7,site_8,fixed,unregistered,JTG8XPF6U77LCXEC

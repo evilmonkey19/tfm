@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-03 00:11:03_974,464cf0b3-e7be-417f-ac3d-a8f05222fd71,site_2,detected,service changed,telnetv6
 2024-11-03 00:11:19_694,464cf0b3-e7be-417f-ac3d-a8f05222fd71,site_2,fixed,service changed,telnetv6
 2024-11-03 00:13:22_706,10830503-0ce2-4277-ba44-24e0892a5920,site_1,detected,service changed,ftp-client

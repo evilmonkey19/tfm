@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-06 13:39:34_526,7d75057e-5b44-4007-bb4d-cd9969d559c3,site_2,detected,service changed,mqtt
 2024-11-06 13:39:50_271,7d75057e-5b44-4007-bb4d-cd9969d559c3,site_2,fixed,service changed,mqtt
 2024-11-06 13:40:32_644,f3b65c7c-fddc-48ac-8755-65b48a6f5406,site_4,detected,c_vlan,QDHLF03IEWO1ZTJX

@@ -1,10 +1,8 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-08 11:46:29_707,31add1ad-f4f2-4c3b-8463-1bcaa943e73f,site_10,detected,service changed,ssh
 2024-11-08 11:46:36_865,633f0857-3d7c-4609-84db-a35bdf0e4cc1,site_7,detected,service changed,ipdr
 2024-11-08 11:46:44_500,31add1ad-f4f2-4c3b-8463-1bcaa943e73f,site_10,fixed,service changed,ssh
 2024-11-08 11:46:51_508,633f0857-3d7c-4609-84db-a35bdf0e4cc1,site_7,fixed,service changed,ipdr
-2024-11-08 11:47:25_999,,site_5,error,OLT is down
-2024-11-08 11:47:28_673,,site_5,error,OLT is up
 2024-11-08 11:47:32_027,54674f16-0589-4ff6-9f6d-46e3af0a9583,site_5,detected,service changed,sshv6
 2024-11-08 11:47:36_766,62176b27-271a-49c2-a2f4-f7efbcdf6401,site_2,detected,service changed,ipdr
 2024-11-08 11:47:48_555,54674f16-0589-4ff6-9f6d-46e3af0a9583,site_5,fixed,service changed,sshv6

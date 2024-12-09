@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-06 10:26:53_144,d322d2ed-da41-419c-96cb-b557ac0aa101,site_4,detected,c_vlan,FG60GQG97T5409X7
 2024-11-06 10:26:56_437,ed9778a1-0632-4dd7-9e19-ad66d8d60339,site_4,detected,service changed,dhcp-relay
 2024-11-06 10:26:56_437,5af6e40e-2093-4ce6-b894-894c47e7d1bb,site_4,detected,service changed,ipdr

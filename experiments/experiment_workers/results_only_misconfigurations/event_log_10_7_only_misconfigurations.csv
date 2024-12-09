@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-08 12:44:53_897,e5a02479-a266-4fdc-8330-22014dc68790,site_10,detected,unregistered,KHD9THK5R0Z5J5GU
 2024-11-08 12:44:53_986,fa8612ea-684b-424c-ace9-bf94c8c27eb7,site_10,detected,vlan_type,GDVL4RQKYBRQETXY
 2024-11-08 12:47:00_229,e6f8acad-68c0-4545-8e5b-89e857fe7d8d,site_7,detected,service changed,telnet
@@ -17,8 +17,6 @@ time,site,event,timestamp
 2024-11-08 12:49:36_424,f0e4cee2-7a25-4e60-9307-bd9aa39f7f53,site_9,detected,service changed,snmp
 2024-11-08 12:49:51_699,fc8b6992-0e73-4d30-bd9d-198875f341d5,site_9,fixed,service changed,sftp-client
 2024-11-08 12:49:52_703,f0e4cee2-7a25-4e60-9307-bd9aa39f7f53,site_9,fixed,service changed,snmp
-2024-11-08 12:49:57_289,,site_1,error,OLT is down
-2024-11-08 12:49:59_981,,site_1,error,OLT is up
 2024-11-08 12:50:03_436,3dddac2b-e22b-48f5-96cb-a11e343ea7dd,site_1,detected,service changed,dhcpv6-relay
 2024-11-08 12:50:03_436,1fbaf949-5437-4853-9ea0-662825c55fd0,site_1,detected,service changed,ipdr
 2024-11-08 12:50:19_807,3dddac2b-e22b-48f5-96cb-a11e343ea7dd,site_1,fixed,service changed,dhcpv6-relay
@@ -62,8 +60,6 @@ time,site,event,timestamp
 2024-11-08 12:55:15_437,4488348d-aef7-4f94-8931-38fe1422eb32,site_7,detected,service changed,mqtt
 2024-11-08 12:55:15_437,e43a0710-18c8-45a6-b9ab-55ab9e478073,site_7,detected,service changed,ssh
 2024-11-08 12:55:15_437,10bb7e08-a191-4dd9-9ecc-c0751580e71b,site_7,detected,service changed,sshv6
-2024-11-08 12:55:17_674,,site_8,error,OLT is down
-2024-11-08 12:55:20_410,,site_8,error,OLT is up
 2024-11-08 12:55:28_911,c6ad744f-8d38-422a-94b6-e87b576ee729,site_10,fixed,unregistered,SBYFPX4R771CVMPJ
 2024-11-08 12:55:28_917,4488348d-aef7-4f94-8931-38fe1422eb32,site_7,fixed,service changed,mqtt
 2024-11-08 12:55:29_920,e43a0710-18c8-45a6-b9ab-55ab9e478073,site_7,fixed,service changed,ssh

@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-02 22:33:52_158,ca45a808-54fe-4209-ab57-e9caff47e7ed,site_2,detected,unregistered,IT5328J2PD05OD23
 2024-11-02 22:33:52_173,65ec3b93-6a5f-4704-978a-8b9d9c93bd7e,site_2,detected,gemport,9NK75X66XCHJZC7U
 2024-11-02 22:33:52_200,6cf85f28-1e8b-4c6e-a83e-611eaadc78fe,site_2,detected,s_vlan,D9NWVYIWCTCVS029

@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-04 23:28:30_167,07a1ac3f-1b90-4ffc-9357-6fe37b70ae53,site_2,detected,service changed,dhcpv6-relay
 2024-11-04 23:28:45_760,07a1ac3f-1b90-4ffc-9357-6fe37b70ae53,site_2,fixed,service changed,dhcpv6-relay
 2024-11-04 23:30:58_499,0b58efe3-0b26-430c-9a35-a9c3ba5d0f2c,site_1,detected,service changed,twamp

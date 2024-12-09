@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-03 23:33:13_805,5d907ef5-de07-4a2f-9876-24d06f71ade4,site_2,detected,service changed,sftp-client
 2024-11-03 23:33:30_759,5d907ef5-de07-4a2f-9876-24d06f71ade4,site_2,fixed,service changed,sftp-client
 2024-11-03 23:35:46_386,a9d562ae-0866-4ab8-a51d-a54ed5081930,site_1,detected,service changed,snmpv6

@@ -1,1 +1,1 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn

@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 09:56:24_299,7089a49a-2f8c-4bce-a4c4-2353a53a083c,site_7,detected,unregistered,GS2FSDE95YY3I2EQ
 2024-11-07 09:56:24_319,f132c76e-6a49-4f46-8878-c103c5cf8509,site_7,detected,c_vlan,Y7SEZUM3DMK4MSS0
 2024-11-07 09:56:24_329,74896c54-0d21-4e56-ac3c-56e815f81f6a,site_7,detected,s_vlan,97F6IGWWO077N4B5
@@ -151,8 +151,6 @@ time,site,event,timestamp
 2024-11-07 10:13:29_034,c3ba5adb-4a27-454a-bd3e-ddbbd2fd7ee8,site_5,fixed,service changed,sftp-client
 2024-11-07 10:13:30_036,2637baee-a18e-4494-907b-40524307d9d2,site_5,fixed,service changed,ntp6
 2024-11-07 10:13:41_057,51e661ae-7d92-4425-bf4d-7e53995e19ed,site_7,fixed,vlan_type,Y7SEZUM3DMK4MSS0
-2024-11-07 10:13:44_175,,site_7,error,OLT is down
-2024-11-07 10:13:46_807,,site_7,error,OLT is up
 2024-11-07 10:13:50_123,024e50c8-c1af-475d-b333-2db2a45c28e3,site_7,detected,service changed,mqtt
 2024-11-07 10:13:50_123,6617bc38-81c0-4cb5-a9c0-a5bf36c420d7,site_7,detected,service changed,ssh
 2024-11-07 10:13:50_123,2edbb3be-c8b9-4d7e-b3c7-fde5a683a1ad,site_7,detected,service changed,sshv6
@@ -167,8 +165,6 @@ time,site,event,timestamp
 2024-11-07 10:14:54_194,d3fd2b67-5630-4450-b92d-34992c9e899b,site_6,fixed,service changed,ssh
 2024-11-07 10:14:55_196,ad133cf5-e666-4e94-8074-b8572c632867,site_6,fixed,service changed,portal
 2024-11-07 10:14:56_202,7d709add-8f29-4f84-992c-c1d8c575605e,site_6,fixed,service changed,telnet
-2024-11-07 10:15:45_916,,site_7,error,OLT is down
-2024-11-07 10:15:48_612,,site_7,error,OLT is up
 2024-11-07 10:15:51_943,e59ab89d-1cf8-4b7b-9e3d-fb1d1f94783d,site_7,detected,service changed,snmp
 2024-11-07 10:15:51_943,b4fe8c56-a8b6-461b-8596-349816442661,site_7,detected,service changed,ssh
 2024-11-07 10:15:51_943,0bf34568-5255-4bcb-9577-0d64d8a6dc83,site_7,detected,service changed,sshv6
@@ -185,7 +181,5 @@ time,site,event,timestamp
 2024-11-07 10:17:18_354,989ba71a-bbe1-46df-9a1e-7fd91c99ba40,site_1,fixed,service changed,dhcpv6-relay
 2024-11-07 10:17:20_358,5a51ac2d-f56b-47b4-8594-eb1bd02b0686,site_4,fixed,service changed,ftp-client
 2024-11-07 10:17:30_369,dcd7c7b9-8e9e-4261-a524-3143b9c71c1f,site_5,fixed,service changed,sftp-client
-2024-11-07 10:17:45_396,,site_7,error,OLT is down
-2024-11-07 10:17:48_088,,site_7,error,OLT is up
 2024-11-07 10:17:51_432,2aef2e21-852d-41d9-971a-f1d281ddba76,site_7,detected,service changed,ssh
 2024-11-07 10:17:51_432,8b54a032-c2f8-4670-b90c-0e8ffe1f6ada,site_7,detected,service changed,sshv6

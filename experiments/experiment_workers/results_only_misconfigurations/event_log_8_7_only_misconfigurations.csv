@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 17:55:31_699,4de69df8-f300-42ec-923d-282bbd48a403,site_5,detected,service changed,web-proxy
 2024-11-07 17:55:47_638,4de69df8-f300-42ec-923d-282bbd48a403,site_5,fixed,service changed,web-proxy
 2024-11-07 17:55:59_358,3dc19c30-47ba-41e1-b5ef-92006e11e5a3,site_6,detected,service changed,snmpv6
@@ -129,8 +129,6 @@ time,site,event,timestamp
 2024-11-07 18:11:06_535,e75935ad-f101-4e51-93c3-ad39468fa60b,site_7,fixed,service changed,sftp-client
 2024-11-07 18:11:09_541,08abdd10-5f69-4452-96d9-e3214caf0d12,site_8,fixed,s_vlan,1OB2WOHAJ789M8Q9
 2024-11-07 18:11:27_562,4ea3d3d1-bc37-4089-bca3-74aea509c117,site_8,fixed,c_vlan,5QEPL5WB2FSCYPT9
-2024-11-07 18:11:39_574,,site_3,error,OLT is down
-2024-11-07 18:11:42_249,,site_3,error,OLT is up
 2024-11-07 18:11:42_932,bd3bf7de-d11f-4c1a-baac-6132b0ec5a4d,site_8,detected,gemport,K7ESV0EKGGQ2AKHL
 2024-11-07 18:11:42_964,c4def8f9-45d8-4af1-9a59-c4c3021e12ac,site_8,detected,s_vlan,7UQLRJ8GUI9J0GY7
 2024-11-07 18:11:42_984,cb9d56e8-37da-48e8-b8ee-c57ab658e633,site_8,detected,vlan_type,790AB7S9OVACI7V3

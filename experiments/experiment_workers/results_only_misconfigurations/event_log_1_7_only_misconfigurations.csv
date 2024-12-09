@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-10-27 15:36:08_279,e1604eb6-4526-4cfd-bad7-cb6a1ceff3e4,site_1,detected,c_vlan,GJ9DTS9APTHRX1TC
 2024-10-27 15:36:08_326,fa9b96b6-7739-45af-9fb8-037aefd4f0f4,site_1,detected,vlan_type,3387ZG0ZXHOSYIN1
 2024-10-27 15:36:08_346,7e5445cf-5b5f-4215-9fda-5646c73367e6,site_1,detected,snmp_profile,FTTWTEVRB7ALS34B

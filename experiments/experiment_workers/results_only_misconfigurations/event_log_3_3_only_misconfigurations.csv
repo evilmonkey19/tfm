@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-03 23:03:06_936,3a942acb-8ed6-4744-83d2-1ef96b329a3d,site_3,detected,c_vlan,DS4RETILYFFPFDFL
 2024-11-03 23:03:07_005,c7c0fa2e-d25b-484e-ae75-2334491e9df5,site_3,detected,snmp_profile,T38BWN3SGT668MQ4
 2024-11-03 23:03:58_081,58234f05-0c98-4fcd-b61d-c647b0f9ef9a,site_2,detected,service changed,dhcp-relay

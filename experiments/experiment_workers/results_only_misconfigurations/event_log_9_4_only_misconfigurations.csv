@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 21:15:47_333,b8040091-f11a-4f11-bd42-78378c99041b,site_2,detected,service changed,ntp6
 2024-11-07 21:16:02_746,b8040091-f11a-4f11-bd42-78378c99041b,site_2,fixed,service changed,ntp6
 2024-11-07 21:16:13_577,b96ae361-0360-4f39-8aaf-17b04c6afba8,site_6,detected,service changed,ssh
@@ -99,9 +99,7 @@ time,site,event,timestamp
 2024-11-07 21:33:02_389,9d303438-e24e-4eaa-8aa5-9469fac794bb,site_9,fixed,service changed,sftp-client
 2024-11-07 21:33:02_389,f137dffd-15c1-4bb2-9846-e0e3a04804b7,site_8,fixed,service changed,telnet
 2024-11-07 21:33:03_394,031d7431-4bcf-4484-a506-2660e6fc9bf1,site_8,fixed,service changed,radius
-2024-11-07 21:33:04_780,,site_3,error,OLT is down
 2024-11-07 21:33:06_255,815671a0-7ee0-43ac-9bda-ee993b1a9c5b,site_7,detected,service changed,sshv6
-2024-11-07 21:33:07_460,,site_3,error,OLT is up
 2024-11-07 21:33:08_401,e6dee4b7-3e31-4c72-9ded-c2b20bd84e61,site_9,fixed,gemport,QCCIBCRFJ89UUJ8Y
 2024-11-07 21:33:20_707,0d409d2b-7ea4-42ff-bc03-850a8d6789c0,site_4,detected,service changed,ftp-client
 2024-11-07 21:33:20_708,433020af-ca77-4876-be28-6113f31eafc5,site_4,detected,service changed,ipdr

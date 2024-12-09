@@ -1,10 +1,8 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-08 10:16:20_944,8286a961-ce63-427f-aa2b-a8cbd63e9f67,site_8,detected,service changed,web-proxy
 2024-11-08 10:16:35_298,8286a961-ce63-427f-aa2b-a8cbd63e9f67,site_8,fixed,service changed,web-proxy
 2024-11-08 10:18:31_904,a3412624-1aef-4a17-b1f5-8b2d604f7fa4,site_7,detected,service changed,dhcpv6-relay
 2024-11-08 10:18:47_382,a3412624-1aef-4a17-b1f5-8b2d604f7fa4,site_7,fixed,service changed,dhcpv6-relay
-2024-11-08 10:18:48_118,,site_4,error,OLT is down
-2024-11-08 10:18:50_772,,site_4,error,OLT is up
 2024-11-08 10:18:58_680,7936f461-1648-4e3e-b872-9d194e3f8d23,site_8,detected,service changed,ftp-client
 2024-11-08 10:18:58_680,7deea10e-956c-4969-bae9-6c19ad3ebc07,site_8,detected,service changed,netconf
 2024-11-08 10:18:58_680,ab1263d8-69d0-4570-8584-b5de43b12af7,site_8,detected,service changed,web-proxy
@@ -34,8 +32,6 @@ time,site,event,timestamp
 2024-11-08 10:22:00_039,df11db06-3ded-45e0-927a-49ce80f5fd73,site_10,fixed,vlan_type,FZUQP5RHLSZ7B894
 2024-11-08 10:22:05_190,31077d1b-a287-4342-9abb-d9a47ba96835,site_3,detected,service changed,ftp-client
 2024-11-08 10:22:07_984,5469bd82-cf95-4fec-b7d4-8a80aafcede1,site_5,detected,service changed,dhcp-relay
-2024-11-08 10:22:15_778,,site_6,error,OLT is down
-2024-11-08 10:22:18_455,,site_6,error,OLT is up
 2024-11-08 10:22:24_133,5469bd82-cf95-4fec-b7d4-8a80aafcede1,site_5,fixed,service changed,dhcp-relay
 2024-11-08 10:22:25_136,31077d1b-a287-4342-9abb-d9a47ba96835,site_3,fixed,service changed,ftp-client
 2024-11-08 10:22:36_927,94e9b32c-fe9c-4c5f-b54c-68779bd64f7f,site_7,detected,service changed,snmp

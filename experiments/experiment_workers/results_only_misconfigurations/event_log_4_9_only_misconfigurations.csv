@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-06 13:07:33_522,0c25e5e2-9979-42a8-9bad-d06e0a165bad,site_2,detected,service changed,ftp-client
 2024-11-06 13:07:33_522,c7bd17dd-51a1-4ef0-b273-26b45b9c441d,site_2,detected,service changed,portal
 2024-11-06 13:07:49_326,0c25e5e2-9979-42a8-9bad-d06e0a165bad,site_2,fixed,service changed,ftp-client

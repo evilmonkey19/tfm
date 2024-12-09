@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 19:47:51_788,32778956-557c-4fc9-b8bf-8b294e114432,site_2,detected,service changed,ipdr
 2024-11-07 19:48:08_534,32778956-557c-4fc9-b8bf-8b294e114432,site_2,fixed,service changed,ipdr
 2024-11-07 19:48:56_393,9aec7232-26c9-4754-804f-969873ae4977,site_7,detected,service changed,telnet

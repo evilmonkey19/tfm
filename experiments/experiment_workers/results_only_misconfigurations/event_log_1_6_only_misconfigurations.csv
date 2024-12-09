@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-10-27 15:02:28_964,de5d0787-ce36-4551-87ee-7137caf76953,site_1,detected,unregistered,H1XUJI1LPTU4V5E4
 2024-10-27 15:02:28_966,86a1925f-f30b-4c26-87ed-4098bf8566e7,site_1,detected,unregistered,L71ARCM7GE2ASMDR
 2024-10-27 15:02:32_299,d2086207-820e-484d-b287-a7dfe48cfa19,site_1,detected,service changed,ipdr

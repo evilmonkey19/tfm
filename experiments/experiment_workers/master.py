@@ -471,4 +471,4 @@ if __name__ == '__main__':
     if not args.local:
         subprocess.run(["docker", "compose", "stop"])
         time.sleep(2)
-        subprocess.run(["docker", "compose", "down"])
+        # subprocess.run(["docker", "compose", "down"])

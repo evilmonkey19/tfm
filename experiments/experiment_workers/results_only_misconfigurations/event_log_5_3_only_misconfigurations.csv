@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-06 15:16:21_852,d025e77b-a5e6-427c-a9e1-d75137133337,site_5,detected,snmp_profile,KNFZZH3KCSK1945X
 2024-11-06 15:16:25_035,0713732e-a6d2-499b-ab03-7ea61257600a,site_5,detected,service changed,ntp
 2024-11-06 15:16:25_035,494879f9-4190-4c13-b503-be2da978d2e3,site_5,detected,service changed,trace

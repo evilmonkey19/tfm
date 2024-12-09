@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-06 17:29:49_323,7578a325-d234-484c-8652-182606c57db8,site_5,detected,service changed,ssh
 2024-11-06 17:30:05_045,7578a325-d234-484c-8652-182606c57db8,site_5,fixed,service changed,ssh
 2024-11-06 17:32:27_176,cb5b7a31-3bfa-4849-aa5d-ed7c522b2f84,site_1,detected,service changed,telnet

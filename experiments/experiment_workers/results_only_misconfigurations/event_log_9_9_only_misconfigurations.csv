@@ -1,17 +1,13 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-08 08:46:13_703,270a2914-c714-455b-8f41-dfaaf403ec36,site_7,detected,service changed,portal
 2024-11-08 08:46:20_923,dcc293be-08f5-4ace-a9a5-cc9cd6d4d64b,site_9,detected,unregistered,RUIOHTX3YXPVM1X5
 2024-11-08 08:46:28_008,270a2914-c714-455b-8f41-dfaaf403ec36,site_7,fixed,service changed,portal
-2024-11-08 08:46:53_796,,site_2,error,OLT is down
-2024-11-08 08:46:56_291,,site_2,error,OLT is up
 2024-11-08 08:48:25_324,b8f9be17-4883-479b-a8ec-474dd432e385,site_8,detected,service changed,snmpv6
 2024-11-08 08:48:30_252,2bfa8028-e0e0-4017-ae41-7433b4f5de60,site_4,detected,service changed,ipdr
 2024-11-08 08:48:30_252,51122a40-10d8-4309-b5b1-85c62388b584,site_4,detected,service changed,telnet
 2024-11-08 08:48:41_227,b8f9be17-4883-479b-a8ec-474dd432e385,site_8,fixed,service changed,snmpv6
 2024-11-08 08:48:49_243,2bfa8028-e0e0-4017-ae41-7433b4f5de60,site_4,fixed,service changed,ipdr
 2024-11-08 08:48:50_245,51122a40-10d8-4309-b5b1-85c62388b584,site_4,fixed,service changed,telnet
-2024-11-08 08:50:11_012,,site_1,error,OLT is down
-2024-11-08 08:50:13_698,,site_1,error,OLT is up
 2024-11-08 08:50:27_386,dcc293be-08f5-4ace-a9a5-cc9cd6d4d64b,site_9,fixed,unregistered,RUIOHTX3YXPVM1X5
 2024-11-08 08:50:45_466,bca626c8-5ff0-4734-bc04-7004be940c34,site_9,detected,gemport,TXFI3GW59DU7WBM3
 2024-11-08 08:50:45_484,94226e9b-b5fd-4712-89f7-4eb3ce8abd0b,site_9,detected,c_vlan,JSRY1XMRZXDFK6AZ

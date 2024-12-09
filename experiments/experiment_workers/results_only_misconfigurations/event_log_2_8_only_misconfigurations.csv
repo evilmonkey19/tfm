@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-02 23:48:43_522,59316e11-eab4-4f93-8227-bbf5b5510cb6,site_2,detected,unregistered,PHDUUDJ2R9RH3YWJ
 2024-11-02 23:51:04_028,84b57c21-5e31-4444-822d-85c0d3e2c2f0,site_1,detected,service changed,dhcp-relay
 2024-11-02 23:51:04_029,59ed9f5e-a90e-43e1-afc6-3dd9a483a52b,site_1,detected,service changed,netconf

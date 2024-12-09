@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 17:27:19_125,4f608728-852e-43bd-b2b2-ece830bfa372,site_8,detected,c_vlan,MRSRGWZAVG46WZZK
 2024-11-07 17:27:19_126,d0803414-0410-414c-a513-19583a4f3a67,site_8,detected,c_vlan,O88ZHTDZO7Y3FRRA
 2024-11-07 17:27:19_168,4fd04e0a-9615-4a5b-b576-d1de9aaed71c,site_8,detected,s_vlan,R5ZLSI92IEQAASPI

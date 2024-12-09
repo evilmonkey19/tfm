@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 12:57:39_272,405293e0-f355-4631-8931-1401332290f0,site_7,detected,unregistered,6GXYS78A4UWT7VT1
 2024-11-07 12:57:39_307,b21e2086-e6ef-40b5-ac95-af7f8c1fc0ba,site_7,detected,s_vlan,9MHD1Y0DDAEU59FH
 2024-11-07 12:58:03_357,1cf96181-c8cc-4267-83af-0060bc74b315,site_5,detected,service changed,radius

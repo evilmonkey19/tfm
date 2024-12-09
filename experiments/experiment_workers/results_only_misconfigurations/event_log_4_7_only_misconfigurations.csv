@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-06 12:03:53_936,31835a41-0a6f-49e7-844d-8d55d96758e4,site_4,detected,unregistered,7T94PYMC378JM4JO
 2024-11-06 12:05:29_277,17f577c9-1a15-4737-b83a-594b5cbeab54,site_1,detected,service changed,portal
 2024-11-06 12:05:43_689,17f577c9-1a15-4737-b83a-594b5cbeab54,site_1,fixed,service changed,portal

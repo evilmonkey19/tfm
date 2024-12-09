@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-03 22:27:09_463,d6c9b849-f21a-4268-8db2-ff2365b0ce05,site_1,detected,service changed,telnet
 2024-11-03 22:27:25_338,d6c9b849-f21a-4268-8db2-ff2365b0ce05,site_1,fixed,service changed,telnet
 2024-11-03 22:27:39_072,910f9495-907c-4dc5-a8e8-e4b253aa0e92,site_3,detected,s_vlan,ESG3MP8BPNG1GL99

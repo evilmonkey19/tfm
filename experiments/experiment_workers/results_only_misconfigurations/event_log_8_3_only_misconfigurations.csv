@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 15:59:30_218,04258fbb-3939-4934-b0a0-4cf5c29aecc6,site_8,detected,snmp_profile,1680AHYS94MPGAHR
 2024-11-07 15:59:57_026,51492222-e83b-4d46-b0da-8da744d0134c,site_7,detected,service changed,ftp-client
 2024-11-07 16:00:11_068,51492222-e83b-4d46-b0da-8da744d0134c,site_7,fixed,service changed,ftp-client
@@ -87,8 +87,6 @@ time,site,event,timestamp
 2024-11-07 16:10:44_162,43f5bb03-bbb1-40a6-8708-780af9df47ae,site_8,detected,s_vlan,DPMJFH1DZ3VN6SCI
 2024-11-07 16:10:44_194,7d9dfd8e-4f5d-46d2-9b2c-d596fb90af9d,site_8,detected,vlan_type,790AB7S9OVACI7V3
 2024-11-07 16:10:44_223,172cded0-1bcd-41c0-9b7b-9a178a261dd2,site_8,detected,snmp_profile,JJ8YOGYEVYQXIVWG
-2024-11-07 16:10:44_649,,site_3,error,OLT is down
-2024-11-07 16:10:47_284,,site_3,error,OLT is up
 2024-11-07 16:10:47_642,af605e8f-f03c-40f8-bd7a-0d2a7646e060,site_8,detected,service changed,ftp-client
 2024-11-07 16:10:50_758,99b5f48a-c72d-4fd5-83ec-346ba33b285b,site_3,detected,service changed,sftp-client
 2024-11-07 16:11:02_624,af605e8f-f03c-40f8-bd7a-0d2a7646e060,site_8,fixed,service changed,ftp-client

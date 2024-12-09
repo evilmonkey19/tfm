@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-10-27 17:23:16_549,d4e165a0-debd-4dca-b696-5902debd0f3f,site_1,detected,c_vlan,1SKHXX1PO6ECH1FI
 2024-10-27 17:23:16_549,818b38ff-6ac8-409b-ba53-cb2f02136d28,site_1,detected,c_vlan,9XWHK2Q1I8CA2KML
 2024-10-27 17:23:16_628,c17ffc62-bea4-47a3-b50b-74d2f5b0dd90,site_1,detected,snmp_profile,J5NNQ8S7E8F2OF4T
@@ -11,24 +11,18 @@ time,site,event,timestamp
 2024-10-27 17:26:28_065,d4e165a0-debd-4dca-b696-5902debd0f3f,site_1,fixed,c_vlan,1SKHXX1PO6ECH1FI
 2024-10-27 17:27:43_237,818b38ff-6ac8-409b-ba53-cb2f02136d28,site_1,fixed,c_vlan,9XWHK2Q1I8CA2KML
 2024-10-27 17:28:16_291,ebdb397b-8c14-4732-bf69-c5fa8cc05d9f,site_1,fixed,snmp_profile,KBQQ72AQOA1NNELP
-2024-10-27 17:29:14_547,,site_1,error,OLT is down
-2024-10-27 17:29:17_185,,site_1,error,OLT is up
 2024-10-27 17:29:20_624,75e61895-1f5a-4ee5-ada6-2aa413fa534c,site_1,detected,service changed,ntp6
 2024-10-27 17:29:20_624,d6b02f5f-97a5-4757-843e-ca1676ec01b0,site_1,detected,service changed,sftp-client
 2024-10-27 17:29:20_624,74e30578-848c-4630-8147-621079da1f22,site_1,detected,service changed,web-proxy
 2024-10-27 17:29:37_374,75e61895-1f5a-4ee5-ada6-2aa413fa534c,site_1,fixed,service changed,ntp6
 2024-10-27 17:29:37_375,74e30578-848c-4630-8147-621079da1f22,site_1,fixed,service changed,web-proxy
 2024-10-27 17:29:38_376,d6b02f5f-97a5-4757-843e-ca1676ec01b0,site_1,fixed,service changed,sftp-client
-2024-10-27 17:34:32_012,,site_1,error,OLT is down
-2024-10-27 17:34:34_690,,site_1,error,OLT is up
 2024-10-27 17:34:38_138,cde1bb26-8c4a-4769-93fb-b18235ea55db,site_1,detected,service changed,sftp-client
 2024-10-27 17:34:38_138,06505599-c306-48cc-bf29-ea04c6768edf,site_1,detected,service changed,ssh
 2024-10-27 17:34:38_138,f0187b50-5479-4023-bfc8-01f613312f48,site_1,detected,service changed,web-proxy
 2024-10-27 17:34:53_562,cde1bb26-8c4a-4769-93fb-b18235ea55db,site_1,fixed,service changed,sftp-client
 2024-10-27 17:34:53_563,f0187b50-5479-4023-bfc8-01f613312f48,site_1,fixed,service changed,web-proxy
 2024-10-27 17:34:54_564,06505599-c306-48cc-bf29-ea04c6768edf,site_1,fixed,service changed,ssh
-2024-10-27 17:39:55_763,,site_1,error,OLT is down
-2024-10-27 17:39:58_446,,site_1,error,OLT is up
 2024-10-27 17:40:01_860,6917bb08-db0c-49c8-a5a2-bd4de16fb1aa,site_1,detected,service changed,dhcp-relay
 2024-10-27 17:40:01_860,8302bc26-da1a-413e-b84e-999233a11cf7,site_1,detected,service changed,sftp-client
 2024-10-27 17:40:01_860,dac474f2-3e25-40ff-a18f-40b8848f19c3,site_1,detected,service changed,ssh
@@ -39,8 +33,6 @@ time,site,event,timestamp
 2024-10-27 17:40:17_772,a7445707-8c08-4fb7-8a56-d2791bcbf8d4,site_1,fixed,service changed,web-proxy
 2024-10-27 17:40:18_775,8302bc26-da1a-413e-b84e-999233a11cf7,site_1,fixed,service changed,sftp-client
 2024-10-27 17:40:19_777,6611b9f1-13cd-4fbe-a17e-b748d0c35794,site_1,fixed,service changed,sshv6
-2024-10-27 17:45:12_877,,site_1,error,OLT is down
-2024-10-27 17:45:15_553,,site_1,error,OLT is up
 2024-10-27 17:45:18_978,6f412b3d-e42d-4409-b62b-908e340e4435,site_1,detected,service changed,sftp-client
 2024-10-27 17:45:18_978,a1c199ef-a85e-432e-b257-97bfafd651cd,site_1,detected,service changed,ssh
 2024-10-27 17:45:18_978,dca93461-d43b-4029-9662-f054f155c825,site_1,detected,service changed,sshv6
@@ -49,8 +41,6 @@ time,site,event,timestamp
 2024-10-27 17:45:36_003,dca93461-d43b-4029-9662-f054f155c825,site_1,fixed,service changed,sshv6
 2024-10-27 17:45:37_005,a1c199ef-a85e-432e-b257-97bfafd651cd,site_1,fixed,service changed,ssh
 2024-10-27 17:45:38_007,49e311aa-950b-4d22-8f1a-98ccf5d62ee1,site_1,fixed,service changed,web-proxy
-2024-10-27 17:50:27_327,,site_1,error,OLT is down
-2024-10-27 17:50:30_045,,site_1,error,OLT is up
 2024-10-27 17:50:33_445,1e9c83ba-6947-4560-9209-fde8e567717f,site_1,detected,service changed,mqtt
 2024-10-27 17:50:33_445,56cc1826-ec0c-466e-b34e-0ebdda0bc5d0,site_1,detected,service changed,sftp-client
 2024-10-27 17:50:33_445,6ab9ee82-25f8-4eb8-87d2-a8a24bb650a0,site_1,detected,service changed,ssh
@@ -61,8 +51,6 @@ time,site,event,timestamp
 2024-10-27 17:50:51_266,1e9c83ba-6947-4560-9209-fde8e567717f,site_1,fixed,service changed,mqtt
 2024-10-27 17:50:51_268,11fa88c2-49f5-4be3-b8e6-43571bbb79e3,site_1,fixed,service changed,web-proxy
 2024-10-27 17:50:52_269,6ab9ee82-25f8-4eb8-87d2-a8a24bb650a0,site_1,fixed,service changed,ssh
-2024-10-27 17:55:34_362,,site_1,error,OLT is down
-2024-10-27 17:55:37_047,,site_1,error,OLT is up
 2024-10-27 17:55:40_477,0142a081-ec2c-445f-bd9b-889d1161c3ee,site_1,detected,service changed,capwap
 2024-10-27 17:55:40_477,4fec8f02-dd19-4dad-9943-bbab2832e043,site_1,detected,service changed,sftp-client
 2024-10-27 17:55:40_477,ecce1533-14fd-44e6-ba9d-6970a202c305,site_1,detected,service changed,ssh
@@ -73,8 +61,6 @@ time,site,event,timestamp
 2024-10-27 17:55:57_469,4fec8f02-dd19-4dad-9943-bbab2832e043,site_1,fixed,service changed,sftp-client
 2024-10-27 17:55:58_471,ecce1533-14fd-44e6-ba9d-6970a202c305,site_1,fixed,service changed,ssh
 2024-10-27 17:55:59_473,e36307b0-d241-4299-af1c-2570555d4c49,site_1,fixed,service changed,web-proxy
-2024-10-27 18:00:26_396,,site_1,error,OLT is down
-2024-10-27 18:00:29_144,,site_1,error,OLT is up
 2024-10-27 18:00:32_624,d240e7b1-726f-4373-97b2-f8e5f8a1d329,site_1,detected,service changed,ftp-client
 2024-10-27 18:00:32_624,6efb62c6-792b-4b21-b122-7b7841ce1e3c,site_1,detected,service changed,sftp-client
 2024-10-27 18:00:32_624,9064f942-f44c-4051-a541-7bc98ddc8371,site_1,detected,service changed,ssh
@@ -85,8 +71,6 @@ time,site,event,timestamp
 2024-10-27 18:00:49_640,efd92860-a6d6-4a31-9a41-9044a4e58ae8,site_1,fixed,service changed,sshv6
 2024-10-27 18:00:50_641,9064f942-f44c-4051-a541-7bc98ddc8371,site_1,fixed,service changed,ssh
 2024-10-27 18:00:51_643,7afebc85-7883-4e68-961c-122145986ec3,site_1,fixed,service changed,web-proxy
-2024-10-27 18:05:16_322,,site_1,error,OLT is down
-2024-10-27 18:05:19_016,,site_1,error,OLT is up
 2024-10-27 18:05:22_449,c7f4c693-34c8-40d2-a6c7-158100d947d4,site_1,detected,service changed,ftp-client
 2024-10-27 18:05:22_449,134f84fa-c3a2-4642-a872-5a1f893a515e,site_1,detected,service changed,sftp-client
 2024-10-27 18:05:22_449,37f2543d-11ef-4419-a83a-44b4ce796e41,site_1,detected,service changed,ssh
@@ -96,9 +80,6 @@ time,site,event,timestamp
 2024-10-27 18:05:36_834,37f2543d-11ef-4419-a83a-44b4ce796e41,site_1,fixed,service changed,ssh
 2024-10-27 18:05:36_835,0879f0e1-0b05-4c35-b8d7-794aa9664d2d,site_1,fixed,service changed,web-proxy
 2024-10-27 18:05:37_836,134f84fa-c3a2-4642-a872-5a1f893a515e,site_1,fixed,service changed,sftp-client
-2024-10-27 18:05:38_838,34e2d2d4-1d9f-4005-a102-a98aa7e94960,site_1,fixed,service changed,sshv6
-2024-10-27 18:10:13_052,,site_1,error,OLT is down
-2024-10-27 18:10:15_738,,site_1,error,OLT is up
 2024-10-27 18:10:19_186,3743d21f-714b-4bf1-9379-dd9789892caa,site_1,detected,service changed,dhcpv6-relay
 2024-10-27 18:10:19_186,d3187305-9565-49c0-bec9-2274b6ada093,site_1,detected,service changed,ftp-client
 2024-10-27 18:10:19_186,9d43181e-9cf5-420a-ab4e-421ce82e88a8,site_1,detected,service changed,netconf
@@ -115,8 +96,6 @@ time,site,event,timestamp
 2024-10-27 18:10:37_117,d3187305-9565-49c0-bec9-2274b6ada093,site_1,fixed,service changed,ftp-client
 2024-10-27 18:10:37_118,97d5f14e-ff4c-4535-9dd0-0cb9e6c22de9,site_1,fixed,service changed,sshv6
 2024-10-27 18:10:38_120,0e07adf4-de31-48a8-a916-a513fb33ae59,site_1,fixed,service changed,sftp-client
-2024-10-27 18:15:17_639,,site_1,error,OLT is down
-2024-10-27 18:15:20_298,,site_1,error,OLT is up
 2024-10-27 18:15:23_725,b84f53ed-0778-4661-9f0d-2626cc5d1cd8,site_1,detected,service changed,ftp-client
 2024-10-27 18:15:23_725,f836e442-591e-48b9-8c5a-1a5d74ffea35,site_1,detected,service changed,sftp-client
 2024-10-27 18:15:23_725,f1d0aba7-4430-4751-99d0-2f46ae47a37e,site_1,detected,service changed,ssh
@@ -127,8 +106,6 @@ time,site,event,timestamp
 2024-10-27 18:15:39_309,483bffa3-487d-48d4-a061-faf723262997,site_1,fixed,service changed,web-proxy
 2024-10-27 18:15:40_312,f93c3c39-d2bb-471e-8cf4-277994cb4ecc,site_1,fixed,service changed,sshv6
 2024-10-27 18:15:41_312,f836e442-591e-48b9-8c5a-1a5d74ffea35,site_1,fixed,service changed,sftp-client
-2024-10-27 18:20:06_954,,site_1,error,OLT is down
-2024-10-27 18:20:09_613,,site_1,error,OLT is up
 2024-10-27 18:20:13_005,892948b5-b64f-41ab-b805-798cb935a359,site_1,detected,service changed,ftp-client
 2024-10-27 18:20:13_005,3c538c98-de11-4fc9-ba0b-c9156ee6006a,site_1,detected,service changed,sftp-client
 2024-10-27 18:20:13_005,68dc6611-acdd-4f4e-8a14-afdaa549cba4,site_1,detected,service changed,ssh
@@ -137,8 +114,6 @@ time,site,event,timestamp
 2024-10-27 18:20:29_502,892948b5-b64f-41ab-b805-798cb935a359,site_1,fixed,service changed,ftp-client
 2024-10-27 18:20:29_503,5bda39c1-134a-4453-891c-9df01dfa1aec,site_1,fixed,service changed,web-proxy
 2024-10-27 18:20:30_505,3c538c98-de11-4fc9-ba0b-c9156ee6006a,site_1,fixed,service changed,sftp-client
-2024-10-27 18:24:59_201,,site_1,error,OLT is down
-2024-10-27 18:25:01_878,,site_1,error,OLT is up
 2024-10-27 18:25:05_361,dcc5e117-e0a7-4aee-bd64-a04621544f2d,site_1,detected,service changed,ftp-client
 2024-10-27 18:25:05_361,3b2d6219-9db5-4181-890f-04c24ad224c6,site_1,detected,service changed,sftp-client
 2024-10-27 18:25:05_361,3fc3527c-ed19-4d56-b504-6a41a4cac6fb,site_1,detected,service changed,ssh
@@ -147,8 +122,6 @@ time,site,event,timestamp
 2024-10-27 18:25:19_702,3c23051c-afd7-473e-adbf-2f87672f97a3,site_1,fixed,service changed,web-proxy
 2024-10-27 18:25:20_705,3fc3527c-ed19-4d56-b504-6a41a4cac6fb,site_1,fixed,service changed,ssh
 2024-10-27 18:25:21_706,dcc5e117-e0a7-4aee-bd64-a04621544f2d,site_1,fixed,service changed,ftp-client
-2024-10-27 18:29:41_231,,site_1,error,OLT is down
-2024-10-27 18:29:43_909,,site_1,error,OLT is up
 2024-10-27 18:29:47_373,e4efa577-2caf-44a1-b388-738e6d423736,site_1,detected,service changed,ftp-client
 2024-10-27 18:29:47_373,084a758d-bd89-4d3a-b2f4-dedbff64ab11,site_1,detected,service changed,netconf
 2024-10-27 18:29:47_373,46919ea1-15fa-4b3e-ab4e-0d191d31729d,site_1,detected,service changed,sftp-client
@@ -159,8 +132,6 @@ time,site,event,timestamp
 2024-10-27 18:30:01_881,e4a89030-f582-4472-8957-37e4dd20b776,site_1,fixed,service changed,web-proxy
 2024-10-27 18:30:02_883,084a758d-bd89-4d3a-b2f4-dedbff64ab11,site_1,fixed,service changed,netconf
 2024-10-27 18:30:03_887,06237a83-b0ee-43f4-ba79-6793d2665eea,site_1,fixed,service changed,ssh
-2024-10-27 18:34:21_797,,site_1,error,OLT is down
-2024-10-27 18:34:24_491,,site_1,error,OLT is up
 2024-10-27 18:34:27_939,3917d53b-6508-4276-8ac5-13c97f76e0ab,site_1,detected,service changed,ftp-client
 2024-10-27 18:34:27_939,0a345493-cd7e-4284-924e-f8ec78e1e91d,site_1,detected,service changed,ntp6
 2024-10-27 18:34:27_939,2e34f3f7-4fe1-49b7-8ad0-da1dcc70b1b2,site_1,detected,service changed,sftp-client
@@ -171,8 +142,6 @@ time,site,event,timestamp
 2024-10-27 18:34:42_066,64212158-adc9-4e1b-9083-89b8d50f4bbd,site_1,fixed,service changed,web-proxy
 2024-10-27 18:34:43_073,0a345493-cd7e-4284-924e-f8ec78e1e91d,site_1,fixed,service changed,ntp6
 2024-10-27 18:34:44_076,d3e81789-16e1-4af8-91c8-531a8d4edd27,site_1,fixed,service changed,ssh
-2024-10-27 18:38:56_949,,site_1,error,OLT is down
-2024-10-27 18:38:59_619,,site_1,error,OLT is up
 2024-10-27 18:39:03_085,74f3ceea-8b5e-4d7c-a9b6-2153f7f3153a,site_1,detected,service changed,ftp-client
 2024-10-27 18:39:03_085,50f674a6-6e22-4e93-86c1-92ef30bdc74e,site_1,detected,service changed,sftp-client
 2024-10-27 18:39:03_085,9077bb72-5883-4d5d-b221-ce738542a98c,site_1,detected,service changed,ssh
@@ -181,8 +150,6 @@ time,site,event,timestamp
 2024-10-27 18:39:17_254,9077bb72-5883-4d5d-b221-ce738542a98c,site_1,fixed,service changed,ssh
 2024-10-27 18:39:18_256,50f674a6-6e22-4e93-86c1-92ef30bdc74e,site_1,fixed,service changed,sftp-client
 2024-10-27 18:39:19_257,8c7d43ed-70a7-4b09-a8cf-6157ffcea4cf,site_1,fixed,service changed,web-proxy
-2024-10-27 18:43:24_681,,site_1,error,OLT is down
-2024-10-27 18:43:27_346,,site_1,error,OLT is up
 2024-10-27 18:43:30_726,3caa0ee8-ca6d-45f8-a9f8-d3c5874c7a0f,site_1,detected,service changed,ftp-client
 2024-10-27 18:43:30_726,c9abfe51-d0ff-47b7-b4bf-9521b32811f9,site_1,detected,service changed,radius
 2024-10-27 18:43:30_726,26ed78be-1f1d-4937-b402-342e2d32e370,site_1,detected,service changed,sftp-client
@@ -193,8 +160,6 @@ time,site,event,timestamp
 2024-10-27 18:43:46_427,03657939-0b74-4360-bc88-5afdab4b62cd,site_1,fixed,service changed,web-proxy
 2024-10-27 18:43:47_428,c9abfe51-d0ff-47b7-b4bf-9521b32811f9,site_1,fixed,service changed,radius
 2024-10-27 18:43:48_430,71a38c20-5c5f-4e66-abb3-141b1c10b427,site_1,fixed,service changed,ssh
-2024-10-27 18:47:56_711,,site_1,error,OLT is down
-2024-10-27 18:47:59_374,,site_1,error,OLT is up
 2024-10-27 18:48:02_763,8d5c3162-6d59-4ec2-926e-3b68564e1f42,site_1,detected,service changed,ftp-client
 2024-10-27 18:48:02_763,fae1cdad-50dc-4fd6-aec3-e4ab648377c6,site_1,detected,service changed,ntp6
 2024-10-27 18:48:02_763,315b2c10-7334-403c-9461-518fa1306c6e,site_1,detected,service changed,sftp-client
@@ -205,16 +170,12 @@ time,site,event,timestamp
 2024-10-27 18:48:18_601,22d848e5-b10d-4d7c-b836-0cfd4b67dfa8,site_1,fixed,service changed,web-proxy
 2024-10-27 18:48:19_602,fae1cdad-50dc-4fd6-aec3-e4ab648377c6,site_1,fixed,service changed,ntp6
 2024-10-27 18:48:20_604,e3bfaa12-41f8-4f99-8335-7d13fdbb0bb2,site_1,fixed,service changed,telnetv6
-2024-10-27 18:52:27_029,,site_1,error,OLT is down
-2024-10-27 18:52:29_709,,site_1,error,OLT is up
 2024-10-27 18:52:33_269,b45ed37d-ddfd-4b0e-912f-846a438cae4b,site_1,detected,service changed,ftp-client
 2024-10-27 18:52:33_269,562c7156-00b0-44bf-99f3-105869972fff,site_1,detected,service changed,sftp-client
 2024-10-27 18:52:33_269,231b3edc-3647-4411-b1a8-914f2f75bf75,site_1,detected,service changed,web-proxy
 2024-10-27 18:52:47_751,562c7156-00b0-44bf-99f3-105869972fff,site_1,fixed,service changed,sftp-client
 2024-10-27 18:52:48_753,b45ed37d-ddfd-4b0e-912f-846a438cae4b,site_1,fixed,service changed,ftp-client
 2024-10-27 18:52:49_756,231b3edc-3647-4411-b1a8-914f2f75bf75,site_1,fixed,service changed,web-proxy
-2024-10-27 18:56:59_539,,site_1,error,OLT is down
-2024-10-27 18:57:02_225,,site_1,error,OLT is up
 2024-10-27 18:57:05_648,49f57bb9-df38-4bd5-ada3-5f0a4b64b275,site_1,detected,service changed,ftp-client
 2024-10-27 18:57:05_648,1a40648a-0aa7-4e0b-9fc5-f71f83fe6cc0,site_1,detected,service changed,netconf
 2024-10-27 18:57:05_648,46141dab-359d-42ac-88c1-9ed9b4fa3f45,site_1,detected,service changed,sftp-client
@@ -223,8 +184,6 @@ time,site,event,timestamp
 2024-10-27 18:57:20_923,46141dab-359d-42ac-88c1-9ed9b4fa3f45,site_1,fixed,service changed,sftp-client
 2024-10-27 18:57:21_924,1a40648a-0aa7-4e0b-9fc5-f71f83fe6cc0,site_1,fixed,service changed,netconf
 2024-10-27 18:57:22_926,f26d4af1-e4e5-4ef3-82d6-7733aee35807,site_1,fixed,service changed,web-proxy
-2024-10-27 19:01:29_642,,site_1,error,OLT is down
-2024-10-27 19:01:32_284,,site_1,error,OLT is up
 2024-10-27 19:01:35_655,3b4ee261-ab68-4162-be2a-45f82baa04c1,site_1,detected,service changed,ftp-client
 2024-10-27 19:01:35_655,a5762061-1914-4e77-90a0-b925798464b0,site_1,detected,service changed,sftp-client
 2024-10-27 19:01:35_655,31e6be37-be78-4fd6-9260-5b658acc7b2f,site_1,detected,service changed,telnetv6
@@ -233,16 +192,12 @@ time,site,event,timestamp
 2024-10-27 19:01:50_088,31e6be37-be78-4fd6-9260-5b658acc7b2f,site_1,fixed,service changed,telnetv6
 2024-10-27 19:01:51_090,a5762061-1914-4e77-90a0-b925798464b0,site_1,fixed,service changed,sftp-client
 2024-10-27 19:01:52_092,e4bd272a-2ad9-4031-b326-5f5409e71263,site_1,fixed,service changed,web-proxy
-2024-10-27 19:05:49_932,,site_1,error,OLT is down
-2024-10-27 19:05:52_586,,site_1,error,OLT is up
 2024-10-27 19:05:55_969,dda0f04b-6146-4749-9734-09c36faa4dff,site_1,detected,service changed,ftp-client
 2024-10-27 19:05:55_969,3db8badc-7ae5-47a0-9414-700dc07d7c60,site_1,detected,service changed,sftp-client
 2024-10-27 19:05:55_969,8e4c8668-90a1-4e68-b462-a84daeec33e5,site_1,detected,service changed,web-proxy
 2024-10-27 19:06:10_228,dda0f04b-6146-4749-9734-09c36faa4dff,site_1,fixed,service changed,ftp-client
 2024-10-27 19:06:10_229,8e4c8668-90a1-4e68-b462-a84daeec33e5,site_1,fixed,service changed,web-proxy
 2024-10-27 19:06:11_229,3db8badc-7ae5-47a0-9414-700dc07d7c60,site_1,fixed,service changed,sftp-client
-2024-10-27 19:10:06_878,,site_1,error,OLT is down
-2024-10-27 19:10:09_547,,site_1,error,OLT is up
 2024-10-27 19:10:12_948,b046e795-bf40-4ac4-a19b-d29dc1adf941,site_1,detected,service changed,ftp-client
 2024-10-27 19:10:12_948,30712832-c3bd-47ea-bd51-f3daddcf9c6e,site_1,detected,service changed,mqtt
 2024-10-27 19:10:12_948,0b6f2c08-3d5d-46df-8b20-dbd6541be51d,site_1,detected,service changed,ntp
@@ -253,8 +208,6 @@ time,site,event,timestamp
 2024-10-27 19:10:27_380,51fb5f90-9ce9-47d2-b0fb-c2108e99e5b5,site_1,fixed,service changed,web-proxy
 2024-10-27 19:10:28_381,30712832-c3bd-47ea-bd51-f3daddcf9c6e,site_1,fixed,service changed,mqtt
 2024-10-27 19:10:29_382,7c101168-98ca-4b30-8226-3dddc77348a9,site_1,fixed,service changed,sftp-client
-2024-10-27 19:14:20_712,,site_1,error,OLT is down
-2024-10-27 19:14:23_345,,site_1,error,OLT is up
 2024-10-27 19:14:26_681,af43ee79-9895-44d6-bff3-56773cd156ea,site_1,detected,service changed,ftp-client
 2024-10-27 19:14:26_681,a16acef1-e496-456d-bcf8-0043a0773963,site_1,detected,service changed,sftp-client
 2024-10-27 19:14:26_681,7c15f9c8-6a80-4e00-a0b1-720b623ef411,site_1,detected,service changed,telnetv6
@@ -263,8 +216,6 @@ time,site,event,timestamp
 2024-10-27 19:14:42_525,be5fdd7c-8055-417b-8fd2-5831c31499e4,site_1,fixed,service changed,web-proxy
 2024-10-27 19:14:43_526,a16acef1-e496-456d-bcf8-0043a0773963,site_1,fixed,service changed,sftp-client
 2024-10-27 19:14:44_528,7c15f9c8-6a80-4e00-a0b1-720b623ef411,site_1,fixed,service changed,telnetv6
-2024-10-27 19:18:36_877,,site_1,error,OLT is down
-2024-10-27 19:18:39_571,,site_1,error,OLT is up
 2024-10-27 19:18:43_007,3e1ac35a-ab73-4b7e-b481-5ad270db66cf,site_1,detected,service changed,ftp-client
 2024-10-27 19:18:43_008,748d2bf4-34f5-42a2-980c-c40f75d2d65e,site_1,detected,service changed,ipdr
 2024-10-27 19:18:43_008,8e1d1a9c-2b10-4852-9513-b61ce48a0d94,site_1,detected,service changed,sftp-client

@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-06 22:34:11_876,4633691c-78a2-4ff5-b480-e668e4b70ee1,site_5,detected,service changed,trace
 2024-11-06 22:34:29_668,4633691c-78a2-4ff5-b480-e668e4b70ee1,site_5,fixed,service changed,trace
 2024-11-06 22:34:33_277,7c05a4a8-ad6b-4b9b-ac63-955da1f78e20,site_6,detected,c_vlan,DIRF87KMCDSFK8Y7

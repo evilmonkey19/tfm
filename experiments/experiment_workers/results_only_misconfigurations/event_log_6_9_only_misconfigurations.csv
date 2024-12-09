@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 08:52:58_771,22570d39-a802-475b-b4d2-24728a951ddd,site_2,detected,service changed,telnetv6
 2024-11-07 08:53:12_917,22570d39-a802-475b-b4d2-24728a951ddd,site_2,fixed,service changed,telnetv6
 2024-11-07 08:53:19_195,2710b288-8d9a-4cc3-b3ec-c8657329d0ee,site_6,detected,snmp_profile,5FTEXMZSULPLJGQW
@@ -24,8 +24,6 @@ time,site,event,timestamp
 2024-11-07 09:01:06_559,cc389652-f04f-4c0b-bba8-86611980fef1,site_2,detected,service changed,ntp6
 2024-11-07 09:01:06_559,7e74e73a-2a3a-4485-a6b4-7ee9302ab670,site_2,detected,service changed,ssh
 2024-11-07 09:01:06_937,8860ab8c-736b-4703-8879-2d19fd5cd305,site_5,fixed,service changed,portal
-2024-11-07 09:01:18_005,,site_1,error,OLT is down
-2024-11-07 09:01:20_653,,site_1,error,OLT is up
 2024-11-07 09:01:20_983,7e74e73a-2a3a-4485-a6b4-7ee9302ab670,site_2,fixed,service changed,ssh
 2024-11-07 09:01:22_986,cc389652-f04f-4c0b-bba8-86611980fef1,site_2,fixed,service changed,ntp6
 2024-11-07 09:01:24_090,677bcf68-5619-4555-b6d9-bfc59eeab581,site_1,detected,service changed,dhcpv6-relay

@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 20:45:19_968,0fde8244-b899-4022-b1bb-7041bbb36757,site_8,detected,service changed,ssh
 2024-11-07 20:45:33_958,813b353b-72e4-4907-a11b-214ed9f2d13b,site_7,detected,service changed,snmp
 2024-11-07 20:45:34_330,0fde8244-b899-4022-b1bb-7041bbb36757,site_8,fixed,service changed,ssh
@@ -79,12 +79,10 @@ time,site,event,timestamp
 2024-11-07 20:56:25_601,1fbdedd1-34ed-4bf7-a5c4-b082db668a77,site_9,detected,snmp_profile,JSRY1XMRZXDFK6AZ
 2024-11-07 20:56:25_601,d2877f0f-7f30-48fa-b4d2-670b59abd2a3,site_9,detected,snmp_profile,6WMFV6TSU1JQEB0B
 2024-11-07 20:56:25_602,25e88208-f1d1-4518-ae55-992e74f32949,site_9,detected,snmp_profile,J94DPBAFNS5WDT8J
-2024-11-07 20:56:28_922,,site_6,error,OLT is down
 2024-11-07 20:56:29_058,a4012824-fd27-4d1e-bf1b-75de18ff0867,site_9,detected,service changed,portal
 2024-11-07 20:56:29_058,6fdca0a3-e6b9-4932-8a2a-16fd609279f4,site_9,detected,service changed,sftp-client
 2024-11-07 20:56:29_058,a865ea29-254b-452a-9033-a0192fb86f58,site_9,detected,service changed,ssh
 2024-11-07 20:56:29_058,794e77ce-3f9d-4f44-a724-192e4a856554,site_9,detected,service changed,telnet
-2024-11-07 20:56:31_559,,site_6,error,OLT is up
 2024-11-07 20:56:34_975,1f37fd17-1f50-4374-b9f2-267fad776c5a,site_6,detected,service changed,sftp-client
 2024-11-07 20:56:51_847,1f37fd17-1f50-4374-b9f2-267fad776c5a,site_6,fixed,service changed,sftp-client
 2024-11-07 20:57:22_151,8b8a680e-3030-4d4c-afcf-786b6ed596c7,site_9,fixed,gemport,NAMOWUJX3OK4QYRV

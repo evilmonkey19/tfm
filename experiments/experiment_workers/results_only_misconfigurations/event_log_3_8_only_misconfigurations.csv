@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-05 23:08:27_266,330c335e-4b7b-4a25-97df-6d8b26baa2e8,site_1,detected,service changed,mqtt
 2024-11-05 23:08:27_266,0359ddfb-a3dc-49cd-97e9-df47cd2ea6db,site_1,detected,service changed,netconf
 2024-11-05 23:08:27_266,6875dcd8-d0d1-4401-9b11-24341f082aac,site_1,detected,service changed,sshv6
@@ -7,8 +7,6 @@ time,site,event,timestamp
 2024-11-05 23:08:42_734,330c335e-4b7b-4a25-97df-6d8b26baa2e8,site_1,fixed,service changed,mqtt
 2024-11-05 23:08:42_735,6875dcd8-d0d1-4401-9b11-24341f082aac,site_1,fixed,service changed,sshv6
 2024-11-05 23:08:44_738,0359ddfb-a3dc-49cd-97e9-df47cd2ea6db,site_1,fixed,service changed,netconf
-2024-11-05 23:08:55_813,,site_3,error,OLT is down
-2024-11-05 23:08:58_497,,site_3,error,OLT is up
 2024-11-05 23:09:45_943,2f462f46-27df-4ba8-b96f-2f02515e5530,site_2,detected,service changed,snmp
 2024-11-05 23:10:00_781,2f462f46-27df-4ba8-b96f-2f02515e5530,site_2,fixed,service changed,snmp
 2024-11-05 23:13:16_365,a74ece4d-7c01-48db-9618-5cfd515f8cb3,site_1,detected,service changed,sshv6

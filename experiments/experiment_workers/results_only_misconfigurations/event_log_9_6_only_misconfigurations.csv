@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 22:13:57_305,048d075e-7efa-423d-aaaf-0f4216aa79e1,site_7,detected,service changed,ssh
 2024-11-07 22:14:08_544,839c01ff-897d-4aae-b225-0cd3a6e094a6,site_9,detected,s_vlan,I7OC5XK64NBHTYX5
 2024-11-07 22:14:11_796,d957ce90-b9f8-4e6e-ad10-ed5190c8fc85,site_9,detected,service changed,sftp-client

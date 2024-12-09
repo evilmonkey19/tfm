@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-07 18:46:43_712,ebf29401-8df0-443f-914d-c9444153ba31,site_8,detected,s_vlan,B3Y944V187HNK4DV
 2024-11-07 18:47:10_652,22a661a4-92ed-4d2b-8a44-7347c9b67b23,site_7,detected,service changed,twamp
 2024-11-07 18:47:24_837,22a661a4-92ed-4d2b-8a44-7347c9b67b23,site_7,fixed,service changed,twamp

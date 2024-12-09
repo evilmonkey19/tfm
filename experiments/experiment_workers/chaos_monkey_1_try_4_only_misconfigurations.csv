@@ -1,0 +1,36 @@
+_,Starting chaos monkey,2024-12-09 08:05:05_898
+site_1,Changing snmp profile for J6N88GDV24H8Q7RK from site_1,2024-12-09 08:05:31_343
+site_1,Changing s vlan for GJ9DTS9APTHRX1TC from site_1,2024-12-09 08:06:31_350
+site_1,Changing state of telnet from site_1,2024-12-09 08:07:06_585
+site_1,Changing gemport for PXFR0IKVXDVN8ATR from site_1,2024-12-09 08:08:37_558
+site_1,Changing gemport for DEJJRV1L5IJVWZ92 from site_1,2024-12-09 08:10:44_527
+site_1,Changing snmp profile for TERO92NKTU3A6P25 from site_1,2024-12-09 08:12:06_517
+site_1,Unregistering 0EWYLUA4YUL4DVXC from site_1,2024-12-09 08:12:26_209
+site_1,Changing c vlan for ML2H1LH4LNB4JIRF from site_1,2024-12-09 08:13:06_119
+site_1,Changing c vlan for X77UTF92HMJFXKMK from site_1,2024-12-09 08:13:17_704
+site_1,Unregistering R6HOXBNRYC57S8JL from site_1,2024-12-09 08:13:45_025
+site_1,Changing vlan type for LKYWK2N2UQLCAUNU from site_1,2024-12-09 08:14:30_358
+site_1,Changing c vlan for J5NNQ8S7E8F2OF4T from site_1,2024-12-09 08:14:45_261
+site_1,Changing gemport for 8HLFHGCKAH9AISLT from site_1,2024-12-09 08:16:09_583
+site_1,Changing state of web-proxy from site_1,2024-12-09 08:16:34_939
+site_1,Changing snmp profile for 4BVVIKFXYER2P3D7 from site_1,2024-12-09 08:18:06_871
+site_1,Changing gemport for 25K5JOYDQT37AT9G from site_1,2024-12-09 08:19:12_057
+site_1,Unregistering Q956SFI25D3WCKBM from site_1,2024-12-09 08:19:34_839
+site_1,Changing c vlan for XN0U6U4Y6YLW4SSM from site_1,2024-12-09 08:19:53_750
+site_1,Changing vlan type for 14HNRJ1LAGEEVYWS from site_1,2024-12-09 08:20:19_061
+site_1,Changing state of snmpv6 from site_1,2024-12-09 08:21:06_578
+site_1,Unregistering C6KTT4V3Y3J1E95U from site_1,2024-12-09 08:22:00_012
+site_1,Changing snmp profile for S9R6GZ60X0L5OFU7 from site_1,2024-12-09 08:22:17_322
+site_1,Changing s vlan for HCUH6TM04KSF9NOR from site_1,2024-12-09 08:22:34_408
+site_1,Changing vlan type for 87D7YFO9MYDUOMQK from site_1,2024-12-09 08:23:02_222
+site_1,Unregistering NM7HQZ2YGEWSASPP from site_1,2024-12-09 08:23:02_751
+site_1,Changing s vlan for BX8CB981XBERHROT from site_1,2024-12-09 08:23:50_975
+site_1,Changing state of sshv6 from site_1,2024-12-09 08:25:12_241
+site_1,Changing gemport for H1XUJI1LPTU4V5E4 from site_1,2024-12-09 08:25:14_107
+site_1,Changing gemport for 1VLM8A1QYKGMU7Q2 from site_1,2024-12-09 08:25:45_968
+site_1,Changing vlan type for 8HLFHGCKAH9AISLT from site_1,2024-12-09 08:26:16_190
+site_1,Changing gemport for OQDIMPLW9JTAYW2Q from site_1,2024-12-09 08:28:05_931
+site_1,Changing vlan type for 3R0FKTS6IXXFL7FP from site_1,2024-12-09 08:28:28_012
+site_1,Changing gemport for K3O800Y7679MIG7U from site_1,2024-12-09 08:28:42_775
+site_1,Connection error,2024-12-09 08:28:51_343
+_,Exiting chaos monkey,2024-12-09 08:28:51_344

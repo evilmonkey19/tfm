@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-06 15:49:32_695,321f1120-28b6-45d6-a810-bb79389b16de,site_5,detected,unregistered,0HOSOPJYELKXK9R9
 2024-11-06 15:49:36_079,e00c8c67-36dd-4c38-982f-76e7099f6444,site_5,detected,service changed,ftp-client
 2024-11-06 15:49:51_506,e00c8c67-36dd-4c38-982f-76e7099f6444,site_5,fixed,service changed,ftp-client
@@ -62,8 +62,6 @@ time,site,event,timestamp
 2024-11-06 16:03:56_586,07bfd8c1-7a7a-488f-bddb-1e8370d3f6f8,site_3,fixed,service changed,dhcpv6-relay
 2024-11-06 16:03:56_587,b0d42442-06eb-401b-b2aa-e582243af008,site_3,fixed,service changed,sshv6
 2024-11-06 16:03:57_590,23464f99-479b-4f98-92b5-479c42999e09,site_3,fixed,service changed,sftp-client
-2024-11-06 16:04:29_726,,site_2,error,OLT is down
-2024-11-06 16:04:32_421,,site_2,error,OLT is up
 2024-11-06 16:06:49_218,20e3967b-824f-4c77-8b69-244ad7f9c438,site_5,fixed,unregistered,GJEJL9WEFVXXKZ24
 2024-11-06 16:07:33_356,89a12b2b-ef3a-4a44-b2fc-85bcc9d4a9b6,site_5,fixed,snmp_profile,NUMZS2XWKSEPP77C
 2024-11-06 16:07:38_370,a3c835d7-e571-4626-b0ab-3f99925e1b2a,site_5,fixed,snmp_profile,6CIKUIUJ43GS4ZTR

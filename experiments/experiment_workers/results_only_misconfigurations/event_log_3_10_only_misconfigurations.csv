@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-06 00:10:34_892,6af2ed8f-bdfe-4217-85ee-ac29da3a4f26,site_2,detected,service changed,netconf
 2024-11-06 00:10:34_892,91ffd2d0-b390-42ea-8d51-702052e2610f,site_2,detected,service changed,ntp
 2024-11-06 00:10:34_893,fb4a2569-9e98-4b92-8042-72a5af3a38d5,site_2,detected,service changed,ntp6

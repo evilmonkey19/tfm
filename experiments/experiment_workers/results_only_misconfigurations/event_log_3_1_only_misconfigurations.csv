@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-03 21:48:44_671,8095012b-8f9d-4dfc-b13a-3329a3268b65,site_2,detected,service changed,capwap
 2024-11-03 21:48:44_671,98b38d29-0bb8-4822-97de-7c62a3285f2c,site_2,detected,service changed,ftp-client
 2024-11-03 21:48:59_945,8095012b-8f9d-4dfc-b13a-3329a3268b65,site_2,fixed,service changed,capwap
@@ -59,8 +59,6 @@ time,site,event,timestamp
 2024-11-03 22:05:24_986,1bea182d-bbb0-4137-9bcc-00328fe9730d,site_3,fixed,gemport,JW3NM16U1LYY4F22
 2024-11-03 22:05:25_988,c36c40dc-7712-48a5-867b-f4b2e05cbddf,site_3,fixed,vlan_type,7VGFW7TUIL71ZQOH
 2024-11-03 22:05:52_025,1751b065-11f1-4d7a-b1e0-364584b0da1f,site_3,fixed,snmp_profile,SS5YZD1TTAOL3PPH
-2024-11-03 22:07:07_732,,site_3,error,OLT is down
-2024-11-03 22:07:10_405,,site_3,error,OLT is up
 2024-11-03 22:07:13_785,a2f9e9ac-8e34-447e-a1f0-3591e8cc5636,site_3,detected,service changed,snmp
 2024-11-03 22:07:28_091,a2f9e9ac-8e34-447e-a1f0-3591e8cc5636,site_3,fixed,service changed,snmp
 2024-11-03 22:07:43_468,9fa2131c-e93e-4056-8c11-8be197ed1c4b,site_1,detected,service changed,sftp-client

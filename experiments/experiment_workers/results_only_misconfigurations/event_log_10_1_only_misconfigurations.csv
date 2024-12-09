@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-08 09:48:18_359,2074c6c3-6810-4a43-b3be-f51f30e9a5a0,site_2,detected,service changed,portal
 2024-11-08 09:48:18_838,2d78e7cb-e8a8-4e00-a421-9e947f3c1269,site_5,detected,service changed,snmp
 2024-11-08 09:48:32_735,2074c6c3-6810-4a43-b3be-f51f30e9a5a0,site_2,fixed,service changed,portal
@@ -10,8 +10,6 @@ time,site,event,timestamp
 2024-11-08 09:49:58_819,c3bd0a79-5b5f-42ab-9283-deb5fe866ec9,site_8,fixed,service changed,telnetv6
 2024-11-08 09:51:17_901,fbaed9dd-7860-4768-b1f6-e70fd7311f2c,site_7,detected,service changed,dhcpv6-relay
 2024-11-08 09:51:17_901,7f09b07b-be40-4eb3-a078-6114ef715bd8,site_7,detected,service changed,ftp-client
-2024-11-08 09:51:19_943,,site_2,error,OLT is down
-2024-11-08 09:51:22_669,,site_2,error,OLT is up
 2024-11-08 09:51:31_954,fbaed9dd-7860-4768-b1f6-e70fd7311f2c,site_7,fixed,service changed,dhcpv6-relay
 2024-11-08 09:51:32_956,7f09b07b-be40-4eb3-a078-6114ef715bd8,site_7,fixed,service changed,ftp-client
 2024-11-08 09:52:10_882,84d18b6e-cbd5-41bf-a6b8-5a5868fc10d8,site_1,detected,service changed,snmpv6
@@ -42,8 +40,6 @@ time,site,event,timestamp
 2024-11-08 09:55:00_964,a9f701b6-697c-4e98-8857-85d6298b9e80,site_8,detected,service changed,ssh
 2024-11-08 09:55:15_782,a9f701b6-697c-4e98-8857-85d6298b9e80,site_8,fixed,service changed,ssh
 2024-11-08 09:55:16_785,a9932c5f-9e04-4401-b826-eaa7ce2b106c,site_10,fixed,c_vlan,K25P8GLLVJGGZJ2Y
-2024-11-08 09:55:18_051,,site_7,error,OLT is down
-2024-11-08 09:55:20_729,,site_7,error,OLT is up
 2024-11-08 09:55:24_172,c0cb71b5-3cf7-4ef1-a7a0-b043f1ded11e,site_7,detected,service changed,ftp-client
 2024-11-08 09:55:28_308,fbf85f18-c483-4970-a52d-3061e60130c5,site_4,detected,service changed,ntp
 2024-11-08 09:55:28_308,8c567bcd-23e2-4455-a984-13d50654a8dd,site_4,detected,service changed,telnetv6
@@ -71,8 +67,6 @@ time,site,event,timestamp
 2024-11-08 09:58:19_221,6a0ba000-30a4-4e64-af86-e08f95bdf080,site_10,detected,vlan_type,PP8V0VIGADM3NU6W
 2024-11-08 09:58:22_496,5f1a7e9f-a60f-4826-a537-7720b97a72a0,site_10,detected,service changed,dhcpv6-relay
 2024-11-08 09:58:22_496,8171fbc6-1867-4e5d-86bc-6fd641bc8ece,site_10,detected,service changed,ntp6
-2024-11-08 09:58:24_592,,site_6,error,OLT is down
-2024-11-08 09:58:27_302,,site_6,error,OLT is up
 2024-11-08 09:58:30_728,3426c746-ceda-42f6-a1e5-f441dc31cf72,site_6,detected,service changed,ntp
 2024-11-08 09:58:30_728,1e4ea25d-1010-4302-95cb-6c4b44993e81,site_6,detected,service changed,web-proxy
 2024-11-08 09:58:38_515,5f1a7e9f-a60f-4826-a537-7720b97a72a0,site_10,fixed,service changed,dhcpv6-relay

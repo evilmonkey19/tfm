@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-02 23:07:29_478,545ada86-d8ce-42f9-a427-1932d8be8a3d,site_2,detected,unregistered,M4PSMFU3JJQ0G2RR
 2024-11-02 23:07:32_758,6d071af8-114b-42fb-b7d6-170a4cbd43e7,site_2,detected,service changed,web-proxy
 2024-11-02 23:07:48_411,6d071af8-114b-42fb-b7d6-170a4cbd43e7,site_2,fixed,service changed,web-proxy

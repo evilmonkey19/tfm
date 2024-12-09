@@ -1,4 +1,4 @@
-time,site,event,timestamp
+timestamp,uuid,site,fixed_detected,event_type,sn
 2024-11-08 11:15:24_641,9b4387a4-6c2a-4c02-a995-9ee89c5eb82b,site_9,detected,service changed,ftp-client
 2024-11-08 11:15:41_545,9b4387a4-6c2a-4c02-a995-9ee89c5eb82b,site_9,fixed,service changed,ftp-client
 2024-11-08 11:16:05_782,2f6c31a9-0226-4b43-9b67-012a8452b1f2,site_5,detected,service changed,sftp-client
@@ -26,8 +26,6 @@ time,site,event,timestamp
 2024-11-08 11:20:34_214,5cc513ce-b260-454c-aa09-4731cfecadcf,site_10,fixed,vlan_type,3TEJG7UA4XVG9I84
 2024-11-08 11:20:38_907,7388ccaa-c4ae-4d11-b8d7-ecce67dc93bc,site_5,detected,service changed,sftp-client
 2024-11-08 11:20:38_907,35683dee-0f7b-48cc-9161-8345a8b88887,site_5,detected,service changed,sshv6
-2024-11-08 11:20:40_187,,site_2,error,OLT is down
-2024-11-08 11:20:42_886,,site_2,error,OLT is up
 2024-11-08 11:20:46_359,b3676a94-fce5-43b6-9633-d920d1ac380d,site_2,detected,service changed,ftp-client
 2024-11-08 11:20:53_281,b1772259-b94d-4cc1-8b1c-ae8840c1979f,site_3,fixed,service changed,dhcpv6-relay
 2024-11-08 11:20:54_287,7388ccaa-c4ae-4d11-b8d7-ecce67dc93bc,site_5,fixed,service changed,sftp-client
