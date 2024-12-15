@@ -48,7 +48,7 @@ errors = [
 ]
 
 
-pattern = r"^chaos_monkey_(\d+)?_try_(\d+)?_only_misconfigurations.*\.csv$"
+pattern = r"^chaos_monkey_(\d+)?_try_(\d+)?_only_errors.*\.csv$"
 filenames = os.listdir()
 max_sites_try = (0, 0)
 
